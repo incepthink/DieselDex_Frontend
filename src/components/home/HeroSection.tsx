@@ -5,7 +5,7 @@ import Container from "../common/Container";
 
 const HeroSection = () => {
   return (
-    <div className="fixed top-0 bg-gradient-to-b from-[#FAF7F0] to-[#F7D4C3] w-full min-h-screen lg:h-screen">
+    <div className="fixed top-0 bg-gradient-to-b from-[#FAF7F0] to-[#F7D4C3] w-full h-screen">
       <Container className="h-full">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-4 lg:gap-0 w-full h-full">
           <section className="flex flex-col gap-4 lg:gap-16 w-full lg:w-1/2 mt-28 lg:mt-32">
@@ -26,8 +26,8 @@ const HeroSection = () => {
               </button>
             </div>
           </section>
-          <section className="flex justify-center items-center lg:justify-end lg:items-end w-full lg:w-1/2 h-full">
-            <div className="w-[240px] lg:w-[600px]">
+          <section className="flex justify-end items-end w-full lg:w-1/2 h-full">
+            <div className="w-full lg:w-[600px]">
               <Image
                 src={"/images/hero-image.png"}
                 alt="hero"
