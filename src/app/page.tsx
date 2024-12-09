@@ -1,7 +1,12 @@
+import LayoutWrapper from "@/components/common/LayoutWrapper";
+import HeroSection from "@/components/home/HeroSection";
+
 export default function Home() {
   return (
     <main>
-      <p className="font-black text-3xl">Ducky Dex?</p>
+      <LayoutWrapper>
+        <HeroSection />
+      </LayoutWrapper>
     </main>
   );
 }
