@@ -11,7 +11,7 @@ import SwapForm from "./SwapForm";
 const Swap = () => {
   return (
     <LayoutWrapper>
-      <div className="fixed top-0 bg-gradient-to-b from-[#FAF7F0] to-[#F7D4C3] w-full h-screen">
+      <div className="fixed top-0 bg-gradient-to-r from-[#FAF7F0] to-[#F7D4C3] w-full h-screen">
         <div className="absolute bottom-0 w-full z-0">
           <Image
             src={"/images/bg-image.png"}
