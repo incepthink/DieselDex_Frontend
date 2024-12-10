@@ -6,21 +6,17 @@ import { IoCloseCircleOutline, IoSearchOutline } from "react-icons/io5";
 import { useModal } from "@/context/ModalContext";
 
 interface Token {
-  name: string;
-  symbol: string;
+  label: string;
+  value: string;
   icon: string;
 }
 
-const tokens: Token[] = [
-  {
-    name: "PSYCHO Coin",
-    symbol: "PSYCHO",
-    icon: "/images/icon/icon-psycho.png",
-  },
-  { name: "Ethereum", symbol: "ETH", icon: "/images/icon/icon-eth.png" },
-];
+interface ChooseTokenProps {
+  tokens: Token[];
+  onSelect: (token: Token) => void;
+}
 
-const ChooseToken: React.FC = () => {
+const ChooseToken: React.FC<ChooseTokenProps> = ({ tokens, onSelect }) => {
   const { activeModal, closeModal } = useModal();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -28,8 +24,8 @@ const ChooseToken: React.FC = () => {
 
   const filteredTokens = tokens.filter(
     (token) =>
-      token.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      token.symbol.toLowerCase().includes(searchQuery.toLowerCase())
+      token.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      token.value.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -60,19 +56,20 @@ const ChooseToken: React.FC = () => {
             {filteredTokens.map((token, index) => (
               <button
                 key={index}
+                onClick={() => onSelect(token)}
                 className="w-full flex items-center gap-2 p-3 lg:p-4 hover:bg-[#FAF8F1] rounded-xl transition-colors"
               >
                 <Image
                   src={token.icon}
-                  alt={token.name}
+                  alt={token.label}
                   width={100}
                   height={100}
                   quality={100}
                   className="w-9 lg:w-10 h-9 lg:h-10 rounded-full"
                 />
                 <div className="flex flex-col items-start">
-                  <span className="text-base font-semibold">{token.symbol}</span>
-                  <span className="text-sm text-[#757575]">{token.name}</span>
+                  <span className="text-base font-semibold">{token.value}</span>
+                  <span className="text-sm text-[#757575]">{token.label}</span>
                 </div>
               </button>
             ))}
@@ -82,5 +79,4 @@ const ChooseToken: React.FC = () => {
     </div>
   );
 };
-
 export default ChooseToken;

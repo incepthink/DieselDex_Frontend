@@ -46,7 +46,7 @@ const Header: React.FC = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
-        <Link href="/">
+        <Link href="https://twitter.com/hash_case">
           <FaXTwitter className="text-black text-2xl hover:text-[#E16B31]" />
         </Link>
 
@@ -65,7 +65,7 @@ const Header: React.FC = () => {
           </button>
         ) : (
           <button
-            onClick={() => openModal("ChooseToken")}
+            onClick={() => openModal("WalletProfile")}
             className="flex justify-center items-center gap-2 px-4 py-2 font-medium rounded text-white bg-black hover:bg-[#E16B31] transition-all duration-300"
           >
             Launch App

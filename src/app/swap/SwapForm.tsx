@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import { IoSettingsOutline } from "react-icons/io5";
 import { RiLoopLeftFill } from "react-icons/ri";
+import { FaChevronDown } from "react-icons/fa";
 import CustomInput from "@/components/ui/CustomInput";
-import CustomSelector from "@/components/ui/CustomSelector";
 import { useModal } from "@/context/ModalContext";
-import Image from "next/image";
+import ChooseToken from "@/components/modal/ChooseToken";
 
 interface Token {
   label: string;
@@ -12,21 +13,35 @@ interface Token {
   icon: string;
 }
 
-const SwapForm: React.FC = () => {
-  const { openModal } = useModal();
+const tokens: Token[] = [
+  { label: "PSYCHO", value: "PSYCHO", icon: "/images/icon/icon-psycho.png" },
+  { label: "ETH", value: "ETH", icon: "/images/icon/icon-eth.png" },
+];
 
-  const [sellToken, setSellToken] = useState<string>("PSYCHO");
-  const [buyToken, setBuyToken] = useState<string>("ETH");
+const SwapForm: React.FC = () => {
+  const { openModal, closeModal } = useModal();
+
+  const [sellToken, setSellToken] = useState<Token>(tokens[0]);
+  const [buyToken, setBuyToken] = useState<Token>(tokens[1]);
   const [sellAmount, setSellAmount] = useState<string>("0");
   const [buyAmount, setBuyAmount] = useState<string>("0");
+  const [selectedFor, setSelectedFor] = useState<"sell" | "buy" | null>(null);
 
   const [isWalletConnect, setIsWalletConnect] = useState<boolean>(true);
   console.log(setIsWalletConnect);
 
-  const tokens: Token[] = [
-    { label: "PSYCHO", value: "PSYCHO", icon: "/images/icon/icon-psycho.png" },
-    { label: "ETH", value: "ETH", icon: "/images/icon/icon-eth.png" },
-  ];
+  const handleTokenSelect = (selectedToken: Token) => {
+    if (selectedFor === "sell" && sellToken.value !== selectedToken.value) {
+      setSellToken(selectedToken);
+    } else if (
+      selectedFor === "buy" &&
+      buyToken.value !== selectedToken.value
+    ) {
+      setBuyToken(selectedToken);
+    }
+    closeModal();
+    setSelectedFor(null);
+  };
 
   return (
     <div className="border border-black border-opacity-0 w-full p-4 lg:p-6 rounded-md h-full">
@@ -45,20 +60,39 @@ const SwapForm: React.FC = () => {
       <div className="space-y-4 mt-4">
         <div className="rounded-lg p-2 lg:p-4 bg-[#FAF8F1]">
           <p className="font-medium text-black text-opacity-75 mb-2">Sell</p>
-          <div className="flex justify-between gap-1 lg:gap-2">
-            <CustomInput
-              label=""
-              value={sellAmount}
-              onChange={(e) => setSellAmount(e.target.value)}
-              className="border-none"
-            />
-            <CustomSelector
-              label=""
-              value={sellToken}
-              onChange={(value: string) => setSellToken(value)}
-              options={tokens}
-              className="!border-none"
-            />
+          <div className="grid grid-cols-2 gap-1 lg:gap-2">
+            <div className="">
+              <CustomInput
+                label=""
+                value={sellAmount}
+                onChange={(e) => setSellAmount(e.target.value)}
+                className="border-none"
+              />
+            </div>
+
+            <div className="flex justify-end items-center w-full">
+              <div
+                onClick={() => {
+                  setSelectedFor("sell");
+                  openModal("ChooseToken");
+                }}
+              >
+                <div className="flex items-center gap-1 cursor-pointer">
+                  <Image
+                    src={sellToken.icon}
+                    alt={sellToken.label}
+                    width={100}
+                    height={100}
+                    quality={100}
+                    className="w-4 lg:w-5 h-4 lg:h-5 rounded-full"
+                  />
+                  <h1 className="font-medium">{sellToken.label}</h1>
+                  <div className="text-[#757575]">
+                    <FaChevronDown />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           {isWalletConnect && (
             <div className="flex justify-end items-end">
@@ -85,20 +119,38 @@ const SwapForm: React.FC = () => {
 
         <div className="rounded-lg p-2 lg:p-4 bg-[#FAF8F1]">
           <p className="font-medium text-black text-opacity-75 mb-2">Buy</p>
-          <div className="flex justify-between gap-2">
-            <CustomInput
-              label=""
-              value={buyAmount}
-              onChange={(e) => setBuyAmount(e.target.value)}
-              className="border-none"
-            />
-            <CustomSelector
-              label=""
-              value={buyToken}
-              onChange={(value: string) => setBuyToken(value)}
-              options={tokens}
-              className="!border-none"
-            />
+          <div className="grid grid-cols-2 gap-1 lg:gap-2">
+            <div className="">
+              <CustomInput
+                label=""
+                value={buyAmount}
+                onChange={(e) => setBuyAmount(e.target.value)}
+                className="border-none"
+              />
+            </div>
+            <div className="flex justify-end items-center w-full">
+              <div
+                onClick={() => {
+                  setSelectedFor("buy");
+                  openModal("ChooseToken");
+                }}
+              >
+                <div className="flex items-center gap-1 cursor-pointer">
+                  <Image
+                    src={buyToken.icon}
+                    alt={buyToken.label}
+                    width={100}
+                    height={100}
+                    quality={100}
+                    className="w-4 lg:w-5 h-4 lg:h-5 rounded-full"
+                  />
+                  <h1 className="font-medium">{buyToken.label}</h1>
+                  <div className="text-[#757575]">
+                    <FaChevronDown />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           {isWalletConnect && (
             <div className="flex justify-end items-end">
@@ -169,6 +221,10 @@ const SwapForm: React.FC = () => {
           </button>
         </div>
       </div>
+
+      {selectedFor && (
+        <ChooseToken tokens={tokens} onSelect={handleTokenSelect} />
+      )}
     </div>
   );
 };
