@@ -6,19 +6,24 @@ import CustomSelector from "@/components/ui/CustomSelector";
 import { useModal } from "@/context/ModalContext";
 import Image from "next/image";
 
+interface Token {
+  label: string;
+  value: string;
+  icon: string;
+}
+
 const SwapForm: React.FC = () => {
   const { openModal } = useModal();
 
-  const [sellToken, setSellToken] = useState("PSYCHO");
-  const [buyToken, setBuyToken] = useState("ETH");
-  const [sellAmount, setSellAmount] = useState("0");
-  const [buyAmount, setBuyAmount] = useState("0");
+  const [sellToken, setSellToken] = useState<string>("PSYCHO");
+  const [buyToken, setBuyToken] = useState<string>("ETH");
+  const [sellAmount, setSellAmount] = useState<string>("0");
+  const [buyAmount, setBuyAmount] = useState<string>("0");
 
-  const [isWalletConnect, setIsWalletConnect] = useState(true);
-
+  const [isWalletConnect, setIsWalletConnect] = useState<boolean>(true);
   console.log(setIsWalletConnect);
 
-  const tokens = [
+  const tokens: Token[] = [
     { label: "PSYCHO", value: "PSYCHO", icon: "/images/icon/icon-psycho.png" },
     { label: "ETH", value: "ETH", icon: "/images/icon/icon-eth.png" },
   ];
@@ -38,7 +43,7 @@ const SwapForm: React.FC = () => {
       </div>
 
       <div className="space-y-4 mt-4">
-        <div className="rounded-lg  p-2 lg:p-4 bg-[#FAF8F1]">
+        <div className="rounded-lg p-2 lg:p-4 bg-[#FAF8F1]">
           <p className="font-medium text-black text-opacity-75 mb-2">Sell</p>
           <div className="flex justify-between gap-1 lg:gap-2">
             <CustomInput
@@ -50,7 +55,7 @@ const SwapForm: React.FC = () => {
             <CustomSelector
               label=""
               value={sellToken}
-              onChange={(value: any) => setSellToken(value)}
+              onChange={(value: string) => setSellToken(value)}
               options={tokens}
               className="!border-none"
             />
@@ -90,14 +95,14 @@ const SwapForm: React.FC = () => {
             <CustomSelector
               label=""
               value={buyToken}
-              onChange={(value: any) => setBuyToken(value)}
+              onChange={(value: string) => setBuyToken(value)}
               options={tokens}
               className="!border-none"
             />
           </div>
           {isWalletConnect && (
             <div className="flex justify-end items-end">
-              <div className="flex justify-center items-center gap-1  text-[#757575]">
+              <div className="flex justify-center items-center gap-1 text-[#757575]">
                 <span className="text-sm lg:text-base font-medium">
                   Balance:
                 </span>

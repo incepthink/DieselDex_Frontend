@@ -29,10 +29,10 @@ const CreatePool: React.FC = () => {
 
   if (activeModal !== "CreatePool") return null;
 
-  const [sellToken, setSellToken] = useState("Choose Asset");
-  const [buyToken, setBuyToken] = useState("Choose Asset");
-  const [sellAmount, setSellAmount] = useState("0");
-  const [buyAmount, setBuyAmount] = useState("0");
+  const [sellToken, setSellToken] = useState<string>("Choose Asset");
+  const [buyToken, setBuyToken] = useState<string>("Choose Asset");
+  const [sellAmount, setSellAmount] = useState<string>("0");
+  const [buyAmount, setBuyAmount] = useState<string>("0");
 
   return (
     <div className="fixed inset-0 flex items-center justify-center p-4 w-full bg-black/50 z-50">
@@ -123,7 +123,7 @@ const CreatePool: React.FC = () => {
               <CustomSelector
                 label=""
                 value={sellToken}
-                onChange={(value: any) => setSellToken(value)}
+                onChange={(value: string) => setSellToken(value)}
                 options={tokens}
                 className="!border-none"
               />
@@ -138,7 +138,7 @@ const CreatePool: React.FC = () => {
               <CustomSelector
                 label=""
                 value={buyToken}
-                onChange={(value: any) => setBuyToken(value)}
+                onChange={(value: string) => setBuyToken(value)}
                 options={tokens}
                 className="!border-none"
               />
