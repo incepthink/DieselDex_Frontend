@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <div className="fixed top-0 bg-gradient-to-b from-[#FAF7F0] to-[#F7D4C3] w-full h-screen">
       <Container className="h-full">
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-4 lg:gap-0 w-full h-full">
+        <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-8 lg:gap-0 w-full lg:h-full">
           <section className="flex flex-col gap-4 lg:gap-16 w-full lg:w-1/2 mt-28 lg:mt-32">
             <div className="flex flex-col gap-2 lg:gap-4 w-full lg:w-[85%]">
               <h1 className="text-3xl lg:text-8xl font-black">
