@@ -27,12 +27,12 @@ const tokens = [
 const CreatePool: React.FC = () => {
   const { activeModal, closeModal } = useModal();
 
-  if (activeModal !== "CreatePool") return null;
-
   const [sellToken, setSellToken] = useState<string>("Choose Asset");
   const [buyToken, setBuyToken] = useState<string>("Choose Asset");
   const [sellAmount, setSellAmount] = useState<string>("0");
   const [buyAmount, setBuyAmount] = useState<string>("0");
+
+  if (activeModal !== "CreatePool") return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center p-4 w-full bg-black/50 z-50">
