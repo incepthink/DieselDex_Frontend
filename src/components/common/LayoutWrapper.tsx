@@ -6,6 +6,7 @@ import { ModalProvider } from "@/context/ModalContext";
 import ConnectYourWallet from "../modal/ConnectYourWallet";
 import WalletProfile from "../modal/WalletProfile";
 import CreatePool from "../modal/CreatePool";
+import Providers from "../providers/Providers";
 
 const LayoutWrapper = ({
   children,
@@ -13,13 +14,15 @@ const LayoutWrapper = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <ModalProvider>
-      <Header />
-      {children}
-      <ConnectYourWallet />
-      <WalletProfile />
-      <CreatePool />
-    </ModalProvider>
+    <Providers>
+      <ModalProvider>
+        <Header />
+        {children}
+        <ConnectYourWallet />
+        <WalletProfile />
+        <CreatePool />
+      </ModalProvider>
+    </Providers>
   );
 };
 
