@@ -1,19 +1,12 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { PiFilesDuotone } from "react-icons/pi";
 import { PiInfoDuotone } from "react-icons/pi";
 import { PiTrophyDuotone } from "react-icons/pi";
-import { IoSearchOutline } from "react-icons/io5";
 import Container from "@/components/common/Container";
 import LayoutWrapper from "@/components/common/LayoutWrapper";
-import { useModal } from "@/context/ModalContext";
-import usePoolsData from "@/hooks/usePoolsData";
-import DesktopPoolRow from "@/components/pages/liquidity-page/pools/desktopPools/DesktopPoolRow";
-import { useRouter } from "next/navigation";
 import Positions from "@/components/pages/liquidity-page/Positions/Positions";
-import LoaderV2 from "@/components/common/LoaderV2/LoaderV2";
 import Pools from "@/components/pages/liquidity-page/pools/Pools";
 
 const Liquidity = () => {
@@ -86,84 +79,84 @@ const Liquidity = () => {
 
 export default Liquidity;
 
-const PoolTable = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+// const PoolTable = () => {
+//   const [searchQuery, setSearchQuery] = useState("");
 
-  const router = useRouter();
+//   const router = useRouter();
 
-  const handleClick = () => {
-    router.push("/liquidity/create-pool");
-  };
+//   const handleClick = () => {
+//     router.push("/liquidity/create-pool");
+//   };
 
-  const { data, isLoading } = usePoolsData();
-  console.log(data);
+//   const { data, isLoading } = usePoolsData();
+//   console.log(data);
 
-  const filteredPools = data?.filter((pool) => {
-    const searchTerm = searchQuery.toLowerCase();
-    return (
-      pool.details.asset_0_symbol?.toLowerCase().includes(searchTerm) ||
-      pool.details.asset_0_symbol?.toLowerCase().includes(searchTerm)
-    );
-  });
+//   const filteredPools = data?.filter((pool) => {
+//     const searchTerm = searchQuery.toLowerCase();
+//     return (
+//       pool.details.asset_0_symbol?.toLowerCase().includes(searchTerm) ||
+//       pool.details.asset_0_symbol?.toLowerCase().includes(searchTerm)
+//     );
+//   });
 
-  return (
-    <div>
-      <div className='flex flex-col lg:flex-row justify-between items-start lg:items-center gap-2 mb-6'>
-        <h1 className='text-xl lg:text-2xl font-bold'>All Pools</h1>
-        <div className='relative'>
-          <IoSearchOutline className='absolute left-2 top-1/2 -translate-y-1/2 text-xl' />
-          <input
-            type='text'
-            placeholder='Search pools...'
-            className='pl-9 pr-4 py-2.5 bg-[#FAF8F1] w-[300px] rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-transparent'
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-      </div>
+//   return (
+//     <div>
+//       <div className='flex flex-col lg:flex-row justify-between items-start lg:items-center gap-2 mb-6'>
+//         <h1 className='text-xl lg:text-2xl font-bold'>All Pools</h1>
+//         <div className='relative'>
+//           <IoSearchOutline className='absolute left-2 top-1/2 -translate-y-1/2 text-xl' />
+//           <input
+//             type='text'
+//             placeholder='Search pools...'
+//             className='pl-9 pr-4 py-2.5 bg-[#FAF8F1] w-[300px] rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500 focus:border-transparent'
+//             onChange={(e) => setSearchQuery(e.target.value)}
+//           />
+//         </div>
+//       </div>
 
-      <div className='rounded-xl border border-black border-opacity-20 shadow-sm overflow-auto lg:overflow-hidden'>
-        <table className='w-full'>
-          <thead className='font-semibold text-[#84919A] bg-[#F6F8F9] '>
-            <tr className='border-0 text-start text-sm lg:text-base'>
-              <th className='px-4 py-4 text-left'>POOLS</th>
-              <th className='px-4 py-4'>APR</th>
-              <th className='px-4 py-4'>24H VOLUME</th>
-              <th className='px-4 py-4'>TVL</th>
-              <th className='px-4 py-4'>
-                <button
-                  onClick={() => handleClick()}
-                  className='px-4 lg:px-6 py-2 lg:py-2.5 rounded-md font-medium text-sm lg:text-lg text-white bg-[#E16B31]'
-                >
-                  Create Pool
-                </button>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {!isLoading ? (
-              filteredPools.length > 0 ? (
-                filteredPools?.map((pool, i) => (
-                  <DesktopPoolRow key={i} poolData={pool} />
-                ))
-              ) : (
-                <tr>
-                  <td
-                    colSpan={5}
-                    className='text-lg font-medium text-center py-6 text-black text-opacity-60'
-                  >
-                    No pools available
-                  </td>
-                </tr>
-              )
-            ) : (
-              <div className='flex justify-center flex-col items-center w-full'>
-                <LoaderV2 />
-                <p>Loading Table...</p>
-              </div>
-            )}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-};
+//       <div className='rounded-xl border border-black border-opacity-20 shadow-sm overflow-auto lg:overflow-hidden'>
+//         <table className='w-full'>
+//           <thead className='font-semibold text-[#84919A] bg-[#F6F8F9] '>
+//             <tr className='border-0 text-start text-sm lg:text-base'>
+//               <th className='px-4 py-4 text-left'>POOLS</th>
+//               <th className='px-4 py-4'>APR</th>
+//               <th className='px-4 py-4'>24H VOLUME</th>
+//               <th className='px-4 py-4'>TVL</th>
+//               <th className='px-4 py-4'>
+//                 <button
+//                   onClick={() => handleClick()}
+//                   className='px-4 lg:px-6 py-2 lg:py-2.5 rounded-md font-medium text-sm lg:text-lg text-white bg-[#E16B31]'
+//                 >
+//                   Create Pool
+//                 </button>
+//               </th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {!isLoading ? (
+//               filteredPools.length > 0 ? (
+//                 filteredPools?.map((pool, i) => (
+//                   <DesktopPoolRow key={i} poolData={pool} />
+//                 ))
+//               ) : (
+//                 <tr>
+//                   <td
+//                     colSpan={5}
+//                     className='text-lg font-medium text-center py-6 text-black text-opacity-60'
+//                   >
+//                     No pools available
+//                   </td>
+//                 </tr>
+//               )
+//             ) : (
+//               <div className='flex justify-center flex-col items-center w-full'>
+//                 <LoaderV2 />
+//                 <p>Loading Table...</p>
+//               </div>
+//             )}
+//           </tbody>
+//         </table>
+//       </div>
+//     </div>
+//   );
+// };

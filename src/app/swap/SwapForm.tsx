@@ -5,13 +5,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import Image from "next/image";
-import { IoSettingsOutline } from "react-icons/io5";
-import { RiLoopLeftFill } from "react-icons/ri";
-import { FaChevronDown } from "react-icons/fa";
-import CustomInput from "@/components/ui/CustomInput";
-// import { useModal } from "@/context/ModalContext";
-import ChooseToken from "@/components/modal/ChooseToken";
 import { useAssetImage } from "@/hooks/useAssetImage";
 import useAssetMetadata from "@/hooks/useAssetMetadata";
 import { PoolId } from "mira-dex-ts";
