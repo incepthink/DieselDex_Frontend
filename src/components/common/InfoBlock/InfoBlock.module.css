@@ -1,0 +1,17 @@
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoBlockValue {
+  color: var(--content-tertiary);
+}
+
+.infoBlockValuePositive {
+  color: var(--content-positive);
+}
+
+.pending {
+  color: var(--content-dimmed-light);
+}

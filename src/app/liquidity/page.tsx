@@ -14,6 +14,7 @@ import DesktopPoolRow from "@/components/pages/liquidity-page/pools/desktopPools
 import { useRouter } from "next/navigation";
 import Positions from "@/components/pages/liquidity-page/Positions/Positions";
 import LoaderV2 from "@/components/common/LoaderV2/LoaderV2";
+import Pools from "@/components/pages/liquidity-page/pools/Pools";
 
 const Liquidity = () => {
   return (
@@ -45,7 +46,7 @@ const Liquidity = () => {
             <Positions />
 
             <section className='w-full'>
-              <PoolTable />
+              <Pools />
             </section>
 
             <section className='grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 w-full mb-12 lg:mb-0'>
