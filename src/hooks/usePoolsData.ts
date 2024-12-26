@@ -4,6 +4,7 @@ import { ApiBaseUrl, IndexerUrl, SQDIndexerUrl } from "@/utils/constants";
 import { createPoolIdFromIdString, isPoolIdValid } from "@/utils/common";
 import request, { gql } from "graphql-request";
 import { time } from "console";
+import axios from "axios";
 
 export type PoolData = {
   id: string;
@@ -72,21 +73,22 @@ export const usePoolsData = (): {
 
   const { data, isLoading } = useQuery<any>({
     queryKey: ["pools"],
-    queryFn: () =>
-      request({
-        url: SQDIndexerUrl,
-        document: query,
-      }),
+    queryFn: async () => {
+      return await axios.get("http://localhost:5000/pools");
+    },
     // enabled: shouldFetch,
   });
 
-  const dataTransformed = data?.pools
+  console.log(data);
+
+  const dataTransformed = data?.data.success
     .map((pool: any): PoolData => {
       // const volume24h = pool.snapshots.reduce((acc: number, snapshot: any) => acc + parseFloat(snapshot.volumeUSD), 0);
-      const fees24h = pool.snapshots.reduce(
-        (acc: number, snapshot: any) => acc + parseFloat(snapshot.feesUSD),
-        0
-      );
+      // const fees24h = pool.snapshots.reduce(
+      //   (acc: number, snapshot: any) => acc + parseFloat(snapshot.feesUSD),
+      //   0
+      // );
+      const fees24h = 100;
       const apr = (fees24h / parseFloat(pool.tvlUSD)) * 365 * 100;
 
       return {
@@ -94,16 +96,17 @@ export const usePoolsData = (): {
         reserve_0: pool.reserve0Decimal,
         reserve_1: pool.reserve1Decimal,
         details: {
-          asset0Id: pool.asset0.id,
-          asset1Id: pool.asset1.id,
-          asset_0_symbol: pool.asset0.symbol as CoinName,
-          asset_1_symbol: pool.asset1.symbol as CoinName,
+          asset0Id: pool.Asset0.asset_id,
+          asset1Id: pool.Asset1.asset_id,
+          asset_0_symbol: pool.Asset0.symbol as CoinName,
+          asset_1_symbol: pool.Asset1.symbol as CoinName,
           apr,
-          volume: pool.snapshots.reduce(
-            (acc: number, snapshot: any) =>
-              acc + parseFloat(snapshot.volumeUSD),
-            0
-          ),
+          // volume: pool.snapshots.reduce(
+          //   (acc: number, snapshot: any) =>
+          //     acc + parseFloat(snapshot.volumeUSD),
+          //   0
+          // ),
+          volume: "100",
           tvl: parseFloat(pool.tvlUSD),
         },
         swap_count: 0,
