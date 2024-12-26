@@ -79,23 +79,20 @@ function SwapRouteItem({ pool }: { pool: PoolId }) {
 
   return (
     <>
-      <img src={firstAssetIcon || ""} alt={firstAssetMetadata.symbol} />
-      <img src={secondAssetIcon || ""} alt={secondAssetMetadata.symbol} />
+      <img
+        className='w-8 h-8 -mr-2'
+        src={firstAssetIcon || ""}
+        alt={firstAssetMetadata.symbol}
+      />
+      <img
+        className='w-6 h-6 mr-2'
+        src={secondAssetIcon || ""}
+        alt={secondAssetMetadata.symbol}
+      />
       <p>({poolFeePercent}%)</p>
     </>
   );
 }
-
-interface Token {
-  label: string;
-  value: string;
-  icon: string;
-}
-
-const tokens: Token[] = [
-  { label: "PSYCHO", value: "PSYCHO", icon: "/images/icon/icon-psycho.png" },
-  { label: "ETH", value: "ETH", icon: "/images/icon/icon-eth.png" },
-];
 
 const SwapForm: React.FC = () => {
   // const { openModal, closeModal } = useModal();
@@ -571,12 +568,15 @@ const SwapForm: React.FC = () => {
               </div>
               <div className='flex justify-between items-center gap-4'>
                 <p className='font-medium'>Order Routing</p>
-                <div className='flex justify-center items-center gap-1'>
+                <div className=''>
                   {previewData?.pools.map((pool, index) => {
                     const poolKey = createPoolKey(pool);
 
                     return (
-                      <div className='font-semibold' key={poolKey}>
+                      <div
+                        className='font-semibold flex justify-center items-center'
+                        key={poolKey}
+                      >
                         <SwapRouteItem pool={pool} />
                         {index !== previewData.pools.length - 1 && "+"}
                       </div>
@@ -623,7 +623,7 @@ const SwapForm: React.FC = () => {
           )}
         </div>
 
-        <div className=''>
+        <div className='pb-4'>
           <PriceImpact
             reservesPrice={reservesPrice}
             previewPrice={previewPrice}
