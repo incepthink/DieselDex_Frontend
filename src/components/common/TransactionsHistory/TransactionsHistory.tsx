@@ -55,21 +55,21 @@ const transformTransactionsDataAndGroupByDate = (
     if (!firstAssetExists || !secondAssetExists) {
       return;
     }
-    const firstAssetName = coinsConfig.get(firstAssetId)?.name!;
-    const secondAssetName = coinsConfig.get(secondAssetId)?.name!;
+    const firstAssetName = coinsConfig.get(firstAssetId)?.name;
+    const secondAssetName = coinsConfig.get(secondAssetId)?.name;
 
-    const firstAssetIcon = coinsConfig.get(firstAssetName)?.icon!;
-    const secondAssetIcon = coinsConfig.get(secondAssetName)?.icon!;
-    const firstAssetDecimals = coinsConfig.get(firstAssetName)?.decimals!;
-    const secondAssetDecimals = coinsConfig.get(secondAssetName)?.decimals!;
+    const firstAssetIcon = coinsConfig.get(firstAssetName!)?.icon;
+    const secondAssetIcon = coinsConfig.get(secondAssetName!)?.icon;
+    const firstAssetDecimals = coinsConfig.get(firstAssetName!)?.decimals;
+    const secondAssetDecimals = coinsConfig.get(secondAssetName!)?.decimals;
     const firstAssetIn =
-      Number(transaction.asset_0_in) / 10 ** firstAssetDecimals;
+      Number(transaction.asset_0_in) / 10 ** firstAssetDecimals!;
     const firstAssetOut =
-      Number(transaction.asset_0_out) / 10 ** firstAssetDecimals;
+      Number(transaction.asset_0_out) / 10 ** firstAssetDecimals!;
     const secondAssetIn =
-      Number(transaction.asset_1_in) / 10 ** secondAssetDecimals;
+      Number(transaction.asset_1_in) / 10 ** secondAssetDecimals!;
     const secondAssetOut =
-      Number(transaction.asset_1_out) / 10 ** secondAssetDecimals;
+      Number(transaction.asset_1_out) / 10 ** secondAssetDecimals!;
 
     let firstAssetAmount;
     let secondAssetAmount;
@@ -88,10 +88,12 @@ const transformTransactionsDataAndGroupByDate = (
       secondAssetNameToUse = reversedAssetsOrder
         ? firstAssetName
         : secondAssetName;
-      const firstAssetDecimals =
-        coinsConfig.get(firstAssetNameToUse)?.decimals!;
-      const secondAssetDecimals =
-        coinsConfig.get(secondAssetNameToUse)?.decimals!;
+      const firstAssetDecimals = coinsConfig.get(
+        firstAssetNameToUse!
+      )?.decimals;
+      const secondAssetDecimals = coinsConfig.get(
+        secondAssetNameToUse!
+      )?.decimals;
       const outputValue = Math.max(firstAssetOut, secondAssetOut);
       const inputValue = Math.max(firstAssetIn, secondAssetIn);
       firstAssetAmount = outputValue.toFixed(firstAssetDecimals);
@@ -119,13 +121,13 @@ const transformTransactionsDataAndGroupByDate = (
 
     const transformedTransaction: TransactionProps = {
       date,
-      firstAssetIcon,
-      secondAssetIcon,
+      firstAssetIcon: firstAssetIcon!,
+      secondAssetIcon: secondAssetIcon!,
       name,
       firstAssetAmount,
       secondAssetAmount,
-      firstAssetName: firstAssetNameToUse,
-      secondAssetName: secondAssetNameToUse,
+      firstAssetName: firstAssetNameToUse!,
+      secondAssetName: secondAssetNameToUse!,
       withdrawal: transaction.transaction_type === "REMOVE_LIQUIDITY",
       addLiquidity: transaction.transaction_type === "ADD_LIQUIDITY",
     };

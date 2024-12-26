@@ -31,7 +31,7 @@ const Positions = () => {
         </div>
       ) : (
         <>
-          {/* <MobilePositions positions={data} /> */}
+          <MobilePositions positions={data} />
           <DesktopPositions positions={data} />
         </>
       )}

@@ -109,6 +109,7 @@ const SwapForm: React.FC = () => {
     sell: initialSwapState.sell.assetId,
     buy: initialSwapState.buy.assetId,
   });
+  console.log(swapCoins);
 
   // const [sellToken, setSellToken] = useState<Token>(tokens[0]);
   // const [buyToken, setBuyToken] = useState<Token>(tokens[1]);

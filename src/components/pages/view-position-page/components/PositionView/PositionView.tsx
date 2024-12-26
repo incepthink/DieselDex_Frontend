@@ -15,7 +15,6 @@ import { floorToTwoSignificantDigits } from "@/utils/common";
 import { useCallback, useRef, useState } from "react";
 import useRemoveLiquidity from "@/hooks/useRemoveLiquidity";
 import { useRouter } from "next/navigation";
-import { coinsConfig } from "@/utils/coinsConfig";
 import RemoveLiquiditySuccessModal from "@/components/pages/view-position-page/components/RemoveLiquiditySuccessModal/RemoveLiquiditySuccessModal";
 import IconButton from "@/components/common/IconButton/IconButton";
 import { getLPAssetId, PoolId } from "mira-dex-ts";
@@ -48,7 +47,7 @@ const PositionView = ({ pool }: Props) => {
     openRemoveLiquidityModal,
     closeRemoveLiquidityModal,
   ] = useModal();
-  const [SuccessModal, openSuccessModal, closeSuccessModal] = useModal();
+  const [SuccessModal, openSuccessModal] = useModal();
   const [FailureModal, openFailureModal, closeFailureModal] = useModal();
 
   const router = useRouter();

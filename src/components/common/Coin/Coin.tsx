@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 import styles from "./Coin.module.css";
 import { clsx } from "clsx";
 import ChevronDownIcon from "@/components/icons/ChevronDown/ChevronDownIcon";

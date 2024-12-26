@@ -1,4 +1,4 @@
-import React, { forwardRef, MutableRefObject } from "react";
+import React, { forwardRef } from "react";
 import styles from "./DropDownMenu.module.css";
 import clsx from "clsx";
 

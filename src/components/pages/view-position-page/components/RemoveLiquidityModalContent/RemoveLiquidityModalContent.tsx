@@ -56,7 +56,7 @@ const RemoveLiquidityModalContent = ({
   const handleMouseUp = (
     e: MouseEvent<HTMLInputElement> | TouchEvent<HTMLInputElement>
   ) => {
-    // @ts-ignore
+    //@ts-ignore
     debouncedSetValue(Number(e.target.value));
   };
 

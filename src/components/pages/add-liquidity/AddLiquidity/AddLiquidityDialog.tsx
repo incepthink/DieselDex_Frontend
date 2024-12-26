@@ -60,7 +60,7 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
   const [secondAmount, setSecondAmount] = useState(new BN(0));
   const [secondAmountInput, setSecondAmountInput] = useState("");
   const [activeAsset, setActiveAsset] = useState<string | null>(null);
-  const [isStablePool, setIsStablePool] = useState(poolId[2]);
+  const isStablePool = poolId[2];
 
   const asset0Metadata = useAssetMetadata(poolId[0].bits);
   const asset1Metadata = useAssetMetadata(poolId[1].bits);

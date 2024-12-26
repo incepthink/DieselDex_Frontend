@@ -1,6 +1,4 @@
-import { memo, MouseEvent, useEffect, useRef } from "react";
-
-import styles from "./Info.module.css";
+import { memo, useEffect, useRef } from "react";
 import InfoIcon from "@/components/icons/Info/InfoIcon";
 
 type Props = {
@@ -9,10 +7,6 @@ type Props = {
 };
 
 const Info = ({ tooltipText, tooltipKey }: Props) => {
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-  };
-
   const buttonRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 

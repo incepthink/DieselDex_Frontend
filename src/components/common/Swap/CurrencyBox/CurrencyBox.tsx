@@ -4,8 +4,6 @@ import { clsx } from "clsx";
 import Coin from "@/components/common/Coin/Coin";
 import ChevronDownIcon from "@/components/icons/ChevronDown/ChevronDownIcon";
 import { CurrencyBoxMode } from "@/app/swap/SwapForm";
-import { CoinName, coinsConfig } from "@/utils/coinsConfig";
-
 import styles from "./CurrencyBox.module.css";
 import TextButton from "@/components/common/TextButton/TextButton";
 import { DefaultLocale, MinEthValueBN } from "@/utils/constants";

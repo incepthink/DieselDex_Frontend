@@ -1,4 +1,3 @@
-import SuccessIcon from "@/components/icons/Success/SuccessIcon";
 import styles from "../CreatePool/AddLiquidity.module.css";
 import ActionButton from "@/components/common/ActionButton/ActionButton";
 import { useCallback } from "react";
