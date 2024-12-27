@@ -1,18 +1,18 @@
 import { useAccount, useDisconnect, useIsConnected } from "@fuels/react";
-import useFormattedAddress from "@/src/hooks/useFormattedAddress/useFormattedAddress";
-import ActionButton from "@/src/components/common/ActionButton/ActionButton";
+import useFormattedAddress from "@/hooks/useFormattedAddress/useFormattedAddress";
+import ActionButton from "@/components/common/ActionButton/ActionButton";
 import { clsx } from "clsx";
 import styles from "./ConnectButton.module.css";
-import {useCallback, useState, useEffect, useMemo, useRef} from "react";
+import { useCallback, useState, useEffect, useMemo, useRef } from "react";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
-import { DropDownButtons } from "@/src/utils/DropDownButtons";
+import { DropDownButtons } from "@/utils/DropDownButtons";
 import { TouchCloseIcon } from "../../icons/DropDownClose/TouchCloseIcon";
 import { CloseIcon } from "../../icons/DropDownClose/CloseIcon";
 import { CopyNotification } from "../../common/CopyNotification/CopyNotification";
-import {openNewTab} from "@/src/utils/common";
-import TransactionsHistory from "@/src/components/common/TransactionsHistory/TransactionsHistory";
-import {FuelAppUrl} from "@/src/utils/constants";
-import {useScrollLock} from "usehooks-ts";
+import { openNewTab } from "@/utils/common";
+import TransactionsHistory from "@/components/common/TransactionsHistory/TransactionsHistory";
+import { FuelAppUrl } from "@/utils/constants";
+import { useScrollLock } from "usehooks-ts";
 
 type Props = {
   className?: string;
@@ -73,11 +73,11 @@ const DisconnectMobile = ({ className }: Props) => {
 
   const handleHistoryOpen = () => {
     setHistoryOpened(true);
-  }
+  };
 
   const handleHistoryClose = () => {
     setHistoryOpened(false);
-  }
+  };
 
   const handleExplorerClick = () => {
     openNewTab(`${FuelAppUrl}/account/${account}/transactions`);
@@ -103,12 +103,12 @@ const DisconnectMobile = ({ className }: Props) => {
           button.text === "Disconnect"
             ? handleDisconnect
             : button.text === "Transaction History"
-              ? handleHistoryOpen
-              : button.text === "Copy Address"
-                ? handleCopy
-                : button.text === "View in Explorer"
-                  ? handleExplorerClick
-                  : button.onClick,
+            ? handleHistoryOpen
+            : button.text === "Copy Address"
+            ? handleCopy
+            : button.text === "View in Explorer"
+            ? handleExplorerClick
+            : button.onClick,
       };
     });
   }, [handleDisconnect, handleCopy, handleExplorerClick]);
@@ -123,13 +123,11 @@ const DisconnectMobile = ({ className }: Props) => {
         className={clsx(className, styles.connected)}
         onClick={handleClick}
       >
-        {isConnected && <img src="/images/avatar.png" width="16" height="16" />}
+        {isConnected && <img src='/images/avatar.png' width='16' height='16' />}
         {formattedAddress}
       </ActionButton>
       {isMenuOpened && (
-        <div
-          className={styles.dropDownOverlay}
-        >
+        <div className={styles.dropDownOverlay}>
           <DropDownMenu buttons={menuButtons} ref={menuRef}>
             <button className={styles.dropDownTouchClose}>
               <TouchCloseIcon />
@@ -140,8 +138,13 @@ const DisconnectMobile = ({ className }: Props) => {
           </DropDownMenu>
         </div>
       )}
-      <TransactionsHistory onClose={handleHistoryClose} isOpened={isHistoryOpened} />
-      {isAddressCopied && <CopyNotification onClose={() => setAddressCopied(false)} />}
+      <TransactionsHistory
+        onClose={handleHistoryClose}
+        isOpened={isHistoryOpened}
+      />
+      {isAddressCopied && (
+        <CopyNotification onClose={() => setAddressCopied(false)} />
+      )}
     </>
   );
 };

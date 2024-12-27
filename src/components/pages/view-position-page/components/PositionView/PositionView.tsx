@@ -57,6 +57,8 @@ const PositionView = ({ pool }: Props) => {
   const isStablePool = pool[2];
 
   const { assets, lpTokenBalance } = usePositionData({ pool });
+  console.log(assets, lpTokenBalance, "Hiiiii");
+
   const { apr } = usePoolAPR(pool);
   const aprValue = apr
     ? `${apr.toLocaleString(DefaultLocale, {
@@ -157,7 +159,7 @@ const PositionView = ({ pool }: Props) => {
   return (
     <>
       <BackLink showOnDesktop href='/liquidity' title='Back to Pool' />
-      {/* <section className={clsx(styles.contentSection, "mobileOnly")}>
+      <section className={clsx(styles.contentSection, "mobileOnly")}>
         <div className={styles.coinPairAndLabel}>
           <CoinPair
             firstCoin={pool[0].bits}
@@ -238,7 +240,8 @@ const PositionView = ({ pool }: Props) => {
             Remove Liquidity
           </ActionButton>
         </div>
-      </section> */}
+      </section>
+
       <section className={clsx(styles.contentSection, "desktopOnly")}>
         <div className={styles.positionHeading}>
           <div className={styles.coinPairAndLabel}>
