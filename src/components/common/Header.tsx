@@ -6,10 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoClose, IoMenu } from "react-icons/io5";
-import { IoIosArrowDown } from "react-icons/io";
 import Container from "./Container";
-import { useModal } from "@/context/ModalContext";
-import { useIsConnected } from "@fuels/react";
 import ConnectButton from "./ConnectButton/ConnectButton";
 
 const navItems = [
@@ -19,13 +16,8 @@ const navItems = [
 
 const Header: React.FC = () => {
   const pathname = usePathname();
-  const { openModal } = useModal();
-  const { isConnected } = useIsConnected();
 
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isWalletConnect, setIsWalletConnect] = useState(false);
-
-  console.log(setIsWalletConnect);
 
   const NavLinks = ({ className }: { className?: string }) => (
     <nav

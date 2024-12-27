@@ -22,7 +22,7 @@ const CoinsListModal = ({
   balances,
   verifiedAssetsOnly,
 }: Props) => {
-  const { assets, isLoading } = useAssetList();
+  const { assets } = useAssetList();
   const [value, setValue] = useState("");
 
   const inputRef = useRef<HTMLInputElement>(null);

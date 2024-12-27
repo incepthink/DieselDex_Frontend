@@ -15,7 +15,6 @@ import { floorToTwoSignificantDigits } from "@/utils/common";
 import { useCallback, useRef, useState } from "react";
 import useRemoveLiquidity from "@/hooks/useRemoveLiquidity";
 import { useRouter } from "next/navigation";
-import { coinsConfig } from "@/utils/coinsConfig";
 import RemoveLiquiditySuccessModal from "@/components/pages/view-position-page/components/RemoveLiquiditySuccessModal/RemoveLiquiditySuccessModal";
 import IconButton from "@/components/common/IconButton/IconButton";
 import { getLPAssetId, PoolId } from "mira-dex-ts";
@@ -48,7 +47,7 @@ const PositionView = ({ pool }: Props) => {
     openRemoveLiquidityModal,
     closeRemoveLiquidityModal,
   ] = useModal();
-  const [SuccessModal, openSuccessModal, closeSuccessModal] = useModal();
+  const [SuccessModal, openSuccessModal] = useModal();
   const [FailureModal, openFailureModal, closeFailureModal] = useModal();
 
   const router = useRouter();
@@ -58,6 +57,8 @@ const PositionView = ({ pool }: Props) => {
   const isStablePool = pool[2];
 
   const { assets, lpTokenBalance } = usePositionData({ pool });
+  console.log(assets, lpTokenBalance, "Hiiiii");
+
   const { apr } = usePoolAPR(pool);
   const aprValue = apr
     ? `${apr.toLocaleString(DefaultLocale, {
@@ -158,7 +159,7 @@ const PositionView = ({ pool }: Props) => {
   return (
     <>
       <BackLink showOnDesktop href='/liquidity' title='Back to Pool' />
-      {/* <section className={clsx(styles.contentSection, "mobileOnly")}>
+      <section className={clsx(styles.contentSection, "mobileOnly")}>
         <div className={styles.coinPairAndLabel}>
           <CoinPair
             firstCoin={pool[0].bits}
@@ -239,7 +240,8 @@ const PositionView = ({ pool }: Props) => {
             Remove Liquidity
           </ActionButton>
         </div>
-      </section> */}
+      </section>
+
       <section className={clsx(styles.contentSection, "desktopOnly")}>
         <div className={styles.positionHeading}>
           <div className={styles.coinPairAndLabel}>

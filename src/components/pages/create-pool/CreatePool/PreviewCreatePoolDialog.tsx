@@ -24,7 +24,7 @@ type Props = {
 };
 
 const PreviewCreatePoolDialog = ({ previewData }: Props) => {
-  const [SuccessModal, openSuccessModal, closeSuccessModal] = useModal();
+  const [SuccessModal, openSuccessModal] = useModal();
   const firstAssetMetadata = useAssetMetadata(previewData.assets[0].assetId);
   const secondAssetMetadata = useAssetMetadata(previewData.assets[1].assetId);
 

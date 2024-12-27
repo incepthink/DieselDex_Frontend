@@ -8,6 +8,7 @@ import LoaderV2 from "@/components/common/LoaderV2/LoaderV2";
 
 const Positions = () => {
   const { data, isLoading } = usePositions();
+  console.log(data);
 
   return (
     <section className={styles.positions}>
@@ -31,7 +32,7 @@ const Positions = () => {
         </div>
       ) : (
         <>
-          {/* <MobilePositions positions={data} /> */}
+          <MobilePositions positions={data} />
           <DesktopPositions positions={data} />
         </>
       )}

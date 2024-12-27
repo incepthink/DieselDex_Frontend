@@ -4,11 +4,8 @@
 
 import styles from "../add-liquidity/AddLiquidityPageLayout.module.css";
 import CreatePool from "../create-pool/CreatePool/CreatePool";
-import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { isPoolKeyValid } from "@/utils/common";
 import LayoutWrapper from "@/components/common/LayoutWrapper";
-import Container from "@/components/common/Container";
 import Image from "next/image";
 
 const CreatePoolPageLayout = () => {

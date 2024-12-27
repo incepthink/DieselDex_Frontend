@@ -19,7 +19,7 @@ import { StablePoolTooltip, VolatilePoolTooltip } from "./CreatePoolTooltips";
 import usePoolsMetadata from "@/hooks/usePoolsMetadata";
 import useModal from "@/hooks/useModal/useModal";
 import CoinsListModal from "@/components/common/Swap/CoinsListModal/CoinsListModal";
-import { B256Address, BN, bn, formatUnits } from "fuels";
+import { B256Address, bn } from "fuels";
 import useAssetMetadata from "@/hooks/useAssetMetadata";
 import { useAssetPrice } from "@/hooks/useAssetPrice";
 import SparkleIcon from "@/components/icons/Sparkle/SparkleIcon";
@@ -50,7 +50,6 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
   const [firstAmountInput, setFirstAmountInput] = useState("");
   const [secondAmount, setSecondAmount] = useState("");
   const [secondAmountInput, setSecondAmountInput] = useState("");
-  const [activeAsset, setActiveAsset] = useState<B256Address | null>(null);
   const [isStablePool, setIsStablePool] = useState(false);
 
   const activeAssetForAssetSelector = useRef<string | null>(null);
@@ -66,9 +65,8 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
   const poolExists = Boolean(poolsMetadata && poolsMetadata?.[0]);
   let existingPoolKey = "";
   if (poolExists) {
-    // @ts-ignore
     existingPoolKey = createPoolKey(
-      poolsMetadata?.[0]?.poolId ?? poolsMetadata?.[1]?.poolId
+      (poolsMetadata?.[0]?.poolId ?? poolsMetadata?.[1]?.poolId)!
     );
   }
 
@@ -92,7 +90,6 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
           debouncedSetSecondAmount(value);
           setSecondAmountInput(value);
         }
-        setActiveAsset(coin);
       };
     },
     [debouncedSetFirstAmount, debouncedSetSecondAmount, firstAssetId]

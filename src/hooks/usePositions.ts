@@ -57,7 +57,7 @@ const usePositions = (): {
 
       const pools = await Promise.all(
         result.pools.map(async (pool: any) => {
-          const poolId = createPoolIdFromIdString(pool.id);
+          const poolId = createPoolIdFromIdString(pool.id, "-");
           const lpBalance = balances!.find(
             (balance) => balance.assetId === pool.lpToken.id
           );

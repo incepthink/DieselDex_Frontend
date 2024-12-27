@@ -42,6 +42,8 @@ export const DefaultLocale = "en-US" as const;
 
 export const CoinGeckoApiUrl = "https://pro-api.coingecko.com/api/v3" as const;
 
+export const BackendUrl = "http://localhost:5000";
+
 export const DisclaimerMessage = `Disclaimer
 1. I am not a person or entity who resides in, is a citizen of, is incorporated in, or has a registered office in the United States of America or any other Prohibited Localities, as defined in the Terms of Use.
 

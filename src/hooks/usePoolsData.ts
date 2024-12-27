@@ -1,6 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { CoinName } from "@/utils/coinsConfig";
-import { ApiBaseUrl, IndexerUrl, SQDIndexerUrl } from "@/utils/constants";
+import {
+  ApiBaseUrl,
+  BackendUrl,
+  IndexerUrl,
+  SQDIndexerUrl,
+} from "@/utils/constants";
 import { createPoolIdFromIdString, isPoolIdValid } from "@/utils/common";
 import request, { gql } from "graphql-request";
 import { time } from "console";
@@ -74,12 +79,10 @@ export const usePoolsData = (): {
   const { data, isLoading } = useQuery<any>({
     queryKey: ["pools"],
     queryFn: async () => {
-      return await axios.get("http://localhost:5000/pools");
+      return await axios.get(`${BackendUrl}/pools`);
     },
     // enabled: shouldFetch,
   });
-
-  console.log(data);
 
   const dataTransformed = data?.data.success
     .map((pool: any): PoolData => {
@@ -89,12 +92,12 @@ export const usePoolsData = (): {
       //   0
       // );
       const fees24h = 100;
-      const apr = (fees24h / parseFloat(pool.tvlUSD)) * 365 * 100;
+      const apr = (fees24h / parseFloat(pool.tvl)) * 365 * 100;
 
       return {
-        id: pool.id,
-        reserve_0: pool.reserve0Decimal,
-        reserve_1: pool.reserve1Decimal,
+        id: pool.pool_id,
+        reserve_0: pool.reserve_0,
+        reserve_1: pool.reserve_1,
         details: {
           asset0Id: pool.Asset0.asset_id,
           asset1Id: pool.Asset1.asset_id,
@@ -107,7 +110,7 @@ export const usePoolsData = (): {
           //   0
           // ),
           volume: "100",
-          tvl: parseFloat(pool.tvlUSD),
+          tvl: parseFloat(pool.tvl),
         },
         swap_count: 0,
         create_time: 0,

@@ -2,7 +2,6 @@ import styles from "./AddLiquidity.module.css";
 import CoinPair from "@/components/common/CoinPair/CoinPair";
 import Coin from "@/components/common/Coin/Coin";
 import ActionButton from "@/components/common/ActionButton/ActionButton";
-import { CoinName, coinsConfig } from "@/utils/coinsConfig";
 import useAddLiquidity from "@/hooks/useAddLiquidity";
 import useModal from "@/hooks/useModal/useModal";
 import AddLiquiditySuccessModal from "../AddLiquiditySuccessModal/AddLiquiditySuccessModal";

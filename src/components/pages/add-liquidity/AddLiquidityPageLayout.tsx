@@ -7,7 +7,7 @@ import styles from "./AddLiquidityPageLayout.module.css";
 import AddLiquidity from "./AddLiquidity/AddLiquidity";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { createPoolIdFromIdString, isPoolIdValid } from "@/utils/common";
+import { createPoolIdFromIdString } from "@/utils/common";
 import { isMobile } from "react-device-detect";
 import Image from "next/image";
 

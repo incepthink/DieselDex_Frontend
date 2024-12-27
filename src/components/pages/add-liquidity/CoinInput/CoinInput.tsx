@@ -1,9 +1,7 @@
 import Coin from "@/components/common/Coin/Coin";
-import { CoinName, coinsConfig } from "@/utils/coinsConfig";
-
 import styles from "./CoinInput.module.css";
 import { clsx } from "clsx";
-import { ChangeEvent, memo, useCallback, useEffect, useRef } from "react";
+import { ChangeEvent, memo, useCallback, useRef } from "react";
 import TextButton from "@/components/common/TextButton/TextButton";
 import { DefaultLocale, MinEthValueBN } from "@/utils/constants";
 import { BN } from "fuels";

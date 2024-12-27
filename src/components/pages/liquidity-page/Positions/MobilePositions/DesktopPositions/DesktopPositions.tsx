@@ -1,8 +1,5 @@
-import CoinPair from "@/components/common/CoinPair/CoinPair";
-
 import styles from "./DesktopPositions.module.css";
 import { createPoolKey } from "@/utils/common";
-import { useRouter } from "next/navigation";
 import { clsx } from "clsx";
 import { DesktopPosition } from "./DesktopPosition";
 import { Position } from "@/hooks/usePositions";
@@ -12,8 +9,6 @@ type Props = {
 };
 
 const DesktopPositions = ({ positions }: Props) => {
-  const router = useRouter();
-
   if (!positions) {
     return null;
   }
