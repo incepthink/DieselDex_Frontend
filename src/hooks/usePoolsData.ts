@@ -84,6 +84,8 @@ export const usePoolsData = (): {
     // enabled: shouldFetch,
   });
 
+  console.log(data);
+
   const dataTransformed = data?.data.success
     .map((pool: any): PoolData => {
       // const volume24h = pool.snapshots.reduce((acc: number, snapshot: any) => acc + parseFloat(snapshot.volumeUSD), 0);
