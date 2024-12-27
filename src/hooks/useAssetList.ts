@@ -34,7 +34,7 @@ export const useAssetList = (): {
       // });
 
       const results = await axios.get(`${BackendUrl}/assets/`);
-      console.log(results);
+      console.log(results, `${BackendUrl}/assets/`);
 
       const assets = results.data.assets.map(
         (asset: any): CoinDataWithPrice => {
@@ -58,6 +58,6 @@ export const useAssetList = (): {
       return assets;
     },
   });
-
+  console.log(data, `${BackendUrl}/assets/`);
   return { assets: data!, isLoading };
 };

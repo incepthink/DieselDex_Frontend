@@ -84,7 +84,7 @@ export const usePoolsData = (): {
     // enabled: shouldFetch,
   });
 
-  console.log(data);
+  console.log(data, `${BackendUrl}/assets/`);
 
   const dataTransformed = data?.data.success
     .map((pool: any): PoolData => {
