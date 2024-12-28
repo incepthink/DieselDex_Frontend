@@ -57,6 +57,5 @@ export const useAssetList = (): {
       return assets;
     },
   });
-
   return { assets: data!, isLoading };
 };
