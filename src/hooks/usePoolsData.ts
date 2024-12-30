@@ -110,7 +110,7 @@ export const usePoolsData = (): {
           //   0
           // ),
           volume: "100",
-          tvl: parseFloat(pool.tvl),
+          tvl: parseFloat(pool.tvlUSD),
         },
         swap_count: 0,
         create_time: 0,

@@ -52,17 +52,17 @@ const Header: React.FC = () => {
 
   const BrandLogo = () => (
     <Link href='/' className='flex items-center gap-2'>
-      <div className='w-6 lg:w-8'>
+      <div className='w-6 lg:w-10'>
         <Image
           src='/images/logo.png'
-          alt='Ducky Dex Logo'
+          alt='Diesel Dex Logo'
           width={100}
           height={100}
           quality={100}
           className='object-contain w-full'
         />
       </div>
-      <p className='text-lg lg:text-xl font-bold text-nowrap'>Ducky Dex</p>
+      <p className='text-lg lg:text-xl font-bold text-nowrap'>Diesel Dex</p>
     </Link>
   );
 
