@@ -1,9 +1,14 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { PiRocketLaunchDuotone } from "react-icons/pi";
 import Container from "../common/Container";
+import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
+  const router = useRouter();
+
   return (
     <div className='fixed top-0 bg-gradient-to-r from-[#FAF7F0] to-[#F7D4C3] w-full h-screen'>
       <Container className='h-full'>
@@ -20,7 +25,10 @@ const HeroSection = () => {
               </p>
             </div>
             <div>
-              <button className='flex justify-center items-center gap-2 px-6 py-2 lg:py-3 font-semibold rounded bg-[#E16B31] text-white'>
+              <button
+                className='flex justify-center items-center gap-2 px-6 py-2 lg:py-3 font-semibold rounded bg-[#E16B31] text-white'
+                onClick={() => router.push("/swap")}
+              >
                 Launch App
                 <PiRocketLaunchDuotone className='text-2xl lg:text-3xl' />
               </button>
