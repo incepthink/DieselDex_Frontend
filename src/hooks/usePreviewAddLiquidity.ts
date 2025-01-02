@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useReadonlyMira from "@/hooks/useReadonlyMira";
-import { buildPoolId } from "mira-dex-ts";
+import { buildPoolId } from "disel-dex-ts";
 import { BN } from "fuels";
 
 type Props = {

@@ -1,7 +1,8 @@
 import { CHAIN_IDS, TxParams } from "fuels";
-
+const miraCon =
+  "0x2e40f2b244b98ed6b8204b3de0156c6961f98525c8162f80162fcf53eebd90e7";
 export const DEFAULT_AMM_CONTRACT_ID =
-  "0x2e40f2b244b98ed6b8204b3de0156c6961f98525c8162f80162fcf53eebd90e7" as const;
+  "0x3f0f8628d6c59d5f78be5e6b573c74d5112f601e367b90763217439225ab4940" as const;
 
 export const ETH_ASSET_ID =
   "0xf8f8b6283d7fa5b672b530cbb84fcccb4ff8dc40f8176ef4544ddb1f1952ad07";
@@ -42,7 +43,7 @@ export const DefaultLocale = "en-US" as const;
 
 export const CoinGeckoApiUrl = "https://pro-api.coingecko.com/api/v3" as const;
 
-export const BackendUrl = "https://api.dieseldex.com";
+export const BackendUrl = "http://localhost:5000";
 
 export const DisclaimerMessage = `Disclaimer
 1. I am not a person or entity who resides in, is a citizen of, is incorporated in, or has a registered office in the United States of America or any other Prohibited Localities, as defined in the Terms of Use.

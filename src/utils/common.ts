@@ -1,6 +1,6 @@
 import { CoinName, coinsConfig } from "@/utils/coinsConfig";
 import { B256Address } from "fuels";
-import { buildPoolId, PoolId } from "mira-dex-ts";
+import { buildPoolId, PoolId } from "disel-dex-ts";
 
 export const openNewTab = (url: string) => {
   window.open(url, "_blank");

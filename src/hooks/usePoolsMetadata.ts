@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useReadonlyMira from "@/hooks/useReadonlyMira";
-import { PoolId } from "mira-dex-ts";
+import { PoolId } from "disel-dex-ts";
 
 const usePoolsMetadata = (pools: PoolId[] | undefined) => {
   const mira = useReadonlyMira();

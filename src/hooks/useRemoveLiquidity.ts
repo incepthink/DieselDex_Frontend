@@ -1,7 +1,7 @@
 import useMiraDex from "@/hooks/useMiraDex/useMiraDex";
 import { useMutation } from "@tanstack/react-query";
 import { useCallback } from "react";
-import { PoolId } from "mira-dex-ts";
+import { PoolId } from "disel-dex-ts";
 import { DefaultTxParams, MaxDeadline } from "@/utils/constants";
 import { useWallet } from "@fuels/react";
 import { bn, BN } from "fuels";

@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { CurrencyBoxMode, SwapState } from "@/app/swap/SwapForm";
 import useSwapData from "@/hooks/useAssetPair/useSwapData";
 import useReadonlyMira from "@/hooks/useReadonlyMira";
-import { buildPoolId, PoolId, Asset } from "mira-dex-ts";
+import { buildPoolId, PoolId, Asset } from "disel-dex-ts";
 import { ApiBaseUrl } from "@/utils/constants";
-import { InsufficientReservesError } from "mira-dex-ts/dist/sdk/errors";
+import { InsufficientReservesError } from "disel-dex-ts/dist/sdk/errors";
 import { BN } from "fuels";
 import useAssetMetadata from "./useAssetMetadata";
 

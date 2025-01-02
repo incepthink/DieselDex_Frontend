@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { ReadonlyMiraAmm } from "mira-dex-ts";
+import { ReadonlyMiraAmm } from "disel-dex-ts";
 import useProvider from "@/hooks/useProvider/useProvider";
 import { DEFAULT_AMM_CONTRACT_ID } from "@/utils/constants";
 

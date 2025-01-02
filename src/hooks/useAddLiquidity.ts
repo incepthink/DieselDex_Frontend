@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { useWallet } from "@fuels/react";
 import { DefaultTxParams, MaxDeadline } from "@/utils/constants";
 import { BN } from "fuels";
-import { buildPoolId } from "mira-dex-ts";
+import { buildPoolId } from "disel-dex-ts";
 
 type Props = {
   firstAsset: string;

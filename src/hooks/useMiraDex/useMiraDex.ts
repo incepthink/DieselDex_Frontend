@@ -1,5 +1,5 @@
 import { useWallet } from "@fuels/react";
-import { MiraAmm } from "mira-dex-ts";
+import { MiraAmm } from "disel-dex-ts";
 import { useMemo } from "react";
 import { DEFAULT_AMM_CONTRACT_ID } from "@/utils/constants";
 
