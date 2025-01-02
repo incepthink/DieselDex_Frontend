@@ -22,7 +22,7 @@ import { openNewTab } from "@/utils/common";
 import TransactionsHistory from "@/components/common/TransactionsHistory/TransactionsHistory";
 import { FuelAppUrl } from "@/utils/constants";
 import { useScrollLock } from "usehooks-ts";
-import { getResponse } from "@/app/swap/Layout";
+// import { getResponse } from "@/app/swap/Layout";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -107,15 +107,15 @@ const ConnectButton = ({ className }: Props) => {
     setMenuOpened(false);
   }, [disconnect]);
 
-  const router = useRouter();
+  // const router = useRouter();
 
   const handleClick = useCallback(async () => {
-    const { isAuthenticated, error } = await getResponse();
+    // const { isAuthenticated, error } = await getResponse();
 
-    if (!isAuthenticated || error) {
-      router.push("/login");
-      return;
-    }
+    // if (!isAuthenticated || error) {
+    //   router.push("/login");
+    //   return;
+    // }
 
     if (!isConnected) {
       handleConnection();
