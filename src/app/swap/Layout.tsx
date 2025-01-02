@@ -2,7 +2,7 @@
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { returnToken } from "../liquidity/add/page";
+import Cookies from "js-cookie";
 
 interface response {
   isAuthenticated: boolean;
@@ -11,7 +11,7 @@ interface response {
 
 export async function getResponse(): Promise<response> {
   try {
-    const token = await returnToken();
+    const token = Cookies.get("OutsideJWT");
 
     if (!token) {
       return {
@@ -20,13 +20,8 @@ export async function getResponse(): Promise<response> {
       };
     }
 
-    const { data } = await axios.get("/api/auth/me", {
-      params: {
-        isCustom: true,
-      },
-      headers: {
-        Cookie: `${token};`,
-      },
+    const { data } = await axios.post("/api/auth/me", {
+      token,
     });
 
     return {

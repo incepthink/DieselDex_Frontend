@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sign } from "jsonwebtoken";
-import { serialize } from "cookie";
 
 const MAX_AGE = 24 * 60 * 60;
 
@@ -35,20 +34,13 @@ export async function POST(req: NextRequest) {
     }
   );
 
-  const serialized = serialize("OutsideJWT", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    path: "/",
-    maxAge: MAX_AGE,
-  });
-
   const response = {
     status: "success",
+    token,
+    expiresIn: MAX_AGE,
   };
 
   return new NextResponse(JSON.stringify(response), {
     status: 200,
-    headers: { "Set-Cookie": serialized },
   });
 }

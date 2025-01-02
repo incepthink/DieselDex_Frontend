@@ -1,8 +1,8 @@
 import { verify } from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
-  const token = req.cookies.get("OutsideJWT");
+export async function POST(req: NextRequest) {
+  const { token } = await req.json();
 
   if (!token) {
     return new NextResponse(
@@ -17,14 +17,25 @@ export async function GET(req: NextRequest) {
   const secret = process.env.JWT_SECRET || "";
 
   try {
-    verify(token.value, secret);
+    const verified = verify(token, secret);
 
-    return new NextResponse(
-      JSON.stringify({ isAuthenticated: true, error: null }),
-      {
-        status: 200,
-      }
-    );
+    //@ts-expect-error json
+    if (verified.password === process.env.PASSWORD) {
+      return new NextResponse(
+        JSON.stringify({ isAuthenticated: true, error: null }),
+        {
+          status: 200,
+        }
+      );
+    } else {
+      return new NextResponse(
+        JSON.stringify({
+          isAuthenticated: false,
+          error: "Authentication Failed",
+        }),
+        { status: 401 }
+      );
+    }
   } catch (e) {
     return new NextResponse(
       JSON.stringify({ isAuthenticated: false, error: "something went wrong" }),
