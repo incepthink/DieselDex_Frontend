@@ -7,7 +7,7 @@ import { CurrencyBoxMode } from "@/app/swap/SwapForm";
 import styles from "./CurrencyBox.module.css";
 import TextButton from "@/components/common/TextButton/TextButton";
 import { DefaultLocale, MinEthValueBN } from "@/utils/constants";
-import { InsufficientReservesError } from "mira-dex-ts/dist/sdk/errors";
+import { InsufficientReservesError } from "disel-dex-ts/dist/sdk/errors";
 import { NoRouteFoundError } from "@/hooks/useSwapPreview";
 import { B256Address, BN } from "fuels";
 import useAssetMetadata from "@/hooks/useAssetMetadata";

@@ -17,7 +17,7 @@ import useRemoveLiquidity from "@/hooks/useRemoveLiquidity";
 import { useRouter } from "next/navigation";
 import RemoveLiquiditySuccessModal from "@/components/pages/view-position-page/components/RemoveLiquiditySuccessModal/RemoveLiquiditySuccessModal";
 import IconButton from "@/components/common/IconButton/IconButton";
-import { getLPAssetId, PoolId } from "mira-dex-ts";
+import { getLPAssetId, PoolId } from "disel-dex-ts";
 import { DEFAULT_AMM_CONTRACT_ID, DefaultLocale } from "@/utils/constants";
 import useFormattedAddress from "@/hooks/useFormattedAddress/useFormattedAddress";
 import LogoIcon from "@/components/icons/Logo/LogoIcon";

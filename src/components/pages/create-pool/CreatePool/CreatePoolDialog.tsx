@@ -14,7 +14,7 @@ import { createPoolKey, openNewTab } from "@/utils/common";
 import useCheckActiveNetwork from "@/hooks/useCheckActiveNetwork";
 import Info from "@/components/common/Info/Info";
 import { CreatePoolPreviewData } from "./PreviewCreatePoolDialog";
-import { buildPoolId } from "mira-dex-ts";
+import { buildPoolId } from "disel-dex-ts";
 import { StablePoolTooltip, VolatilePoolTooltip } from "./CreatePoolTooltips";
 import usePoolsMetadata from "@/hooks/usePoolsMetadata";
 import useModal from "@/hooks/useModal/useModal";

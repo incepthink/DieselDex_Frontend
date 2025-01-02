@@ -1,6 +1,6 @@
 import useReadonlyMira from "@/hooks/useReadonlyMira";
 import { useQuery } from "@tanstack/react-query";
-import { getLPAssetId, PoolId } from "mira-dex-ts";
+import { getLPAssetId, PoolId } from "disel-dex-ts";
 import { DEFAULT_AMM_CONTRACT_ID } from "@/utils/constants";
 import useBalances from "@/hooks/useBalances/useBalances";
 import { bn } from "fuels";

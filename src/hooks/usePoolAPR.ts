@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { PoolId } from "mira-dex-ts";
+import { PoolId } from "disel-dex-ts";
 import { createPoolIdString } from "@/utils/common";
 import { SQDIndexerUrl } from "@/utils/constants";
 import request, { gql } from "graphql-request";

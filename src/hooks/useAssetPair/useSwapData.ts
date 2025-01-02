@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { AssetIdInput } from "mira-dex-ts/dist/sdk/typegen/MiraAmmContract";
+import { AssetIdInput } from "disel-dex-ts/dist/sdk/typegen/MiraAmmContract";
 
 import { SwapState } from "@/app/swap/SwapForm";
 import useAssetMetadata from "../useAssetMetadata";

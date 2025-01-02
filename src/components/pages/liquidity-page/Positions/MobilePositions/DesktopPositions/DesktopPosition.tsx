@@ -1,6 +1,6 @@
 import useAssetMetadata from "@/hooks/useAssetMetadata";
 import { B256Address, formatUnits } from "fuels";
-import { buildPoolId } from "mira-dex-ts";
+import { buildPoolId } from "disel-dex-ts";
 import styles from "./DesktopPosition.module.css";
 import CoinPair from "@/components/common/CoinPair/CoinPair";
 import Link from "next/link";

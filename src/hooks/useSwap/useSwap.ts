@@ -7,7 +7,7 @@ import type { CurrencyBoxMode, SwapState } from "@/app/swap/SwapForm";
 import useMiraDex from "@/hooks/useMiraDex/useMiraDex";
 import useSwapData from "@/hooks/useAssetPair/useSwapData";
 import { DefaultTxParams, MaxDeadline } from "@/utils/constants";
-import { PoolId } from "mira-dex-ts";
+import { PoolId } from "disel-dex-ts";
 import useReadonlyMira from "../useReadonlyMira";
 
 type Props = {

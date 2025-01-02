@@ -8,7 +8,7 @@ import BackLink from "@/components/common/BackLink/BackLink";
 import { useRouter } from "next/navigation";
 import IconButton from "@/components/common/IconButton/IconButton";
 import CloseIcon from "@/components/icons/Close/CloseIcon";
-import { PoolId } from "mira-dex-ts";
+import { PoolId } from "disel-dex-ts";
 
 type Props = {
   poolId: PoolId;

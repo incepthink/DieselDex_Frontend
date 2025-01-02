@@ -1,7 +1,7 @@
 import MobilePositionItem from "@/components/pages/liquidity-page/Positions/MobilePositions/MobilePositionItem/MobilePositionItem";
 
 import styles from "./MobilePositions.module.css";
-import { PoolId } from "mira-dex-ts";
+import { PoolId } from "disel-dex-ts";
 import { Fragment, useCallback } from "react";
 import { createPoolKey } from "@/utils/common";
 import { useRouter } from "next/navigation";

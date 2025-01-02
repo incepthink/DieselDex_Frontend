@@ -23,7 +23,7 @@ import usePoolAPR from "@/hooks/usePoolAPR";
 import { DefaultLocale, FuelAppUrl } from "@/utils/constants";
 import Info from "@/components/common/Info/Info";
 import { AddLiquidityPreviewData } from "./PreviewAddLiquidityDialog";
-import { PoolId } from "mira-dex-ts";
+import { PoolId } from "disel-dex-ts";
 import {
   APRTooltip,
   StablePoolTooltip,
