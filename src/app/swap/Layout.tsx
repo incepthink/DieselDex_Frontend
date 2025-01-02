@@ -1,17 +1,33 @@
-"use client";
-
+// import { returnToken } from "@/components/auth";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { returnToken } from "../liquidity/add/page";
 
 interface response {
   isAuthenticated: boolean;
-  error: AxiosError | null;
+  error: AxiosError | null | string;
 }
 
 export async function getResponse(): Promise<response> {
   try {
-    const { data } = await axios.get("/api/auth/me");
+    const token = await returnToken();
+
+    if (!token) {
+      return {
+        isAuthenticated: false,
+        error: "No token",
+      };
+    }
+
+    const { data } = await axios.get("/api/auth/me", {
+      params: {
+        isCustom: true,
+      },
+      headers: {
+        Cookie: `${token};`,
+      },
+    });
 
     return {
       isAuthenticated: data.isAuthenticated,

@@ -1,13 +1,8 @@
 import { verify } from "jsonwebtoken";
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
-
-export async function GET() {
-  const cookieStore = cookies();
-
-  const token = cookieStore.get("OutsideJWT");
+export async function GET(req: NextRequest) {
+  const token = req.cookies.get("OutsideJWT");
 
   if (!token) {
     return new NextResponse(
