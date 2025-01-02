@@ -4,6 +4,7 @@ import LayoutWrapper from "@/components/common/LayoutWrapper";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import Cookies from "js-cookie";
 
 export default function Page() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -19,8 +20,11 @@ export default function Page() {
 
     try {
       const { data } = await axios.post("/api/auth/login", payload);
-      alert(JSON.stringify(data));
+      alert(JSON.stringify("Login Successfull"));
       setLoading(false);
+
+      Cookies.set("OutsideJWT", data.token, { expires: data.expiresIn });
+
       router.push("/");
       return;
     } catch (e) {
