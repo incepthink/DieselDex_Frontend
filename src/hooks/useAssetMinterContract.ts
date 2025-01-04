@@ -22,6 +22,7 @@ export const useAssetMinterContract = (
         };
       }
 
+      console.log("ASSETS", assets);
       for (const asset of assets) {
         if (asset.assetId === assetId) {
           return {
@@ -41,6 +42,8 @@ export const useAssetMinterContract = (
     enabled: assetId !== null && !assetListLoading,
     staleTime: Infinity,
   });
+
+  console.log(data);
 
   return data
     ? { ...data, isLoading }

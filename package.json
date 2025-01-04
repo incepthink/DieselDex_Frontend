@@ -15,7 +15,7 @@
     "chart.js": "^4.4.7",
     "chartjs-chart-financial": "^0.2.1",
     "cookie": "^1.0.2",
-    "disel-dex-ts": "^1.0.42",
+    "disel-dex-ts": "1.0.47",
     "fuels": "^0.96.1",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
