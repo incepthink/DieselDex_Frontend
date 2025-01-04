@@ -2,7 +2,7 @@ import { CHAIN_IDS, TxParams } from "fuels";
 const miraCon =
   "0x2e40f2b244b98ed6b8204b3de0156c6961f98525c8162f80162fcf53eebd90e7";
 export const DEFAULT_AMM_CONTRACT_ID =
-  "0x3f0f8628d6c59d5f78be5e6b573c74d5112f601e367b90763217439225ab4940" as const;
+  "0x51bb9bf2f9df6c3af3a52ca0bad250ce12df40f27f8ea542403230bfda987526" as const;
 
 export const ETH_ASSET_ID =
   "0xf8f8b6283d7fa5b672b530cbb84fcccb4ff8dc40f8176ef4544ddb1f1952ad07";
