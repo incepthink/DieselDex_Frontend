@@ -33,7 +33,7 @@ export const useAssetMinterContract = (
       }
 
       const req = await fetch(
-        `https://mainnet-explorer.fuel.network/assets/${assetId}`
+        `https://testnet-explorer.fuel.network/assets/${assetId}`
       );
       const res = await req.json();
 

@@ -39,6 +39,7 @@ const PreviewCreatePoolDialog = ({ previewData }: Props) => {
     secondAssetAmount: assets[1].amount,
     isPoolStable: isStablePool,
   });
+  console.log("PREVIEW DATA", previewData);
 
   const firstCoinAmount = previewData.assets[0].amount;
   const secondCoinAmount = previewData.assets[1].amount;

@@ -176,8 +176,8 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
     !isValidNetwork ||
     poolExists ||
     oneOfAssetsIsNotSelected ||
-    oneOfAmountsIsEmpty ||
-    insufficientBalance;
+    oneOfAmountsIsEmpty;
+  // insufficientBalance;
 
   const handleAssetClick = useCallback(
     (assetId: string | null) => {

@@ -44,6 +44,17 @@ const useCreatePool = ({
       return;
     }
 
+    console.log(
+      "-----firstAssetAmount",
+      firstAssetAmount,
+      firstAssetMetadata.decimals
+    );
+    console.log(
+      "-----secondAssetAmount",
+      secondAssetAmount,
+      secondAssetMetadata.decimals
+    );
+
     const firstCoinAmountToUse = bn.parseUnits(
       firstAssetAmount,
       firstAssetMetadata.decimals || 0
@@ -58,8 +69,8 @@ const useCreatePool = ({
     console.log("secondAssetContractID", secondAssetContract.contractId);
     console.log("secondAssetContractsubID", secondAssetContract.subId);
     console.log("isPoolStable", isPoolStable);
-    console.log("firstCoinAmountToUse", firstCoinAmountToUse);
-    console.log("secondCoinAmountToUse", secondCoinAmountToUse);
+    console.log("--------firstCoinAmountToUse", firstCoinAmountToUse);
+    console.log("--------secondCoinAmountToUse", secondCoinAmountToUse);
     console.log("MaxDeadline", MaxDeadline);
     console.log("DefaultTxParams", DefaultTxParams);
 
