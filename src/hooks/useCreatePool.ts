@@ -24,6 +24,9 @@ const useCreatePool = ({
 }: Props) => {
   const mira = useMiraDex();
   const { wallet } = useWallet();
+  console.log(firstAsset);
+  console.log(secondAsset);
+
   const firstAssetContract = useAssetMinterContract(firstAsset);
   const secondAssetContract = useAssetMinterContract(secondAsset);
   const firstAssetMetadata = useAssetMetadata(firstAsset);
@@ -49,6 +52,16 @@ const useCreatePool = ({
       secondAssetAmount,
       secondAssetMetadata.decimals || 0
     );
+
+    console.log("firstAssetContractID:", firstAssetContract.contractId);
+    console.log("firstAssetContractsubID", firstAssetContract.subId);
+    console.log("secondAssetContractID", secondAssetContract.contractId);
+    console.log("secondAssetContractsubID", secondAssetContract.subId);
+    console.log("isPoolStable", isPoolStable);
+    console.log("firstCoinAmountToUse", firstCoinAmountToUse);
+    console.log("secondCoinAmountToUse", secondCoinAmountToUse);
+    console.log("MaxDeadline", MaxDeadline);
+    console.log("DefaultTxParams", DefaultTxParams);
 
     const txRequest = await mira.createPoolAndAddLiquidity(
       firstAssetContract.contractId,
