@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactConfetti from "react-confetti";
 
-const Confetti = ({ show }) => {
+interface ChooseTokenProps {
+  show: any;
+}
+
+const Confetti: React.FC<ChooseTokenProps> = ({ show }) => {
   const [windowDimension, setWindowDimension] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
