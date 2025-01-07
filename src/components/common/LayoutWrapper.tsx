@@ -7,6 +7,7 @@ import ConnectYourWallet from "../modal/ConnectYourWallet";
 import WalletProfile from "../modal/WalletProfile";
 import CreatePool from "../modal/CreatePool";
 import Providers from "../providers/Providers";
+import WaitlistModal from "../modal/WaitlistModal";
 
 const LayoutWrapper = ({
   children,
@@ -21,6 +22,7 @@ const LayoutWrapper = ({
         <ConnectYourWallet />
         <WalletProfile />
         <CreatePool />
+        <WaitlistModal />
       </ModalProvider>
     </Providers>
   );
