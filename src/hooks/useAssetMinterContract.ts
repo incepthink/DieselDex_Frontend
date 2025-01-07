@@ -43,8 +43,6 @@ export const useAssetMinterContract = (
     staleTime: Infinity,
   });
 
-  console.log(data);
-
   return data
     ? { ...data, isLoading }
     : { contractId: null, subId: null, isLoading };

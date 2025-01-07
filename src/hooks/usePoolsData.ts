@@ -84,6 +84,9 @@ export const usePoolsData = (): {
     // enabled: shouldFetch,
   });
 
+  console.log(data);
+  
+
   const dataTransformed = data?.data.success
     .map((pool: any): PoolData => {
       // const volume24h = pool.snapshots.reduce((acc: number, snapshot: any) => acc + parseFloat(snapshot.volumeUSD), 0);
@@ -91,9 +94,9 @@ export const usePoolsData = (): {
       //   (acc: number, snapshot: any) => acc + parseFloat(snapshot.feesUSD),
       //   0
       // );
-      const fees24h = 100;
-      const apr = (fees24h / parseFloat(pool.tvl)) * 365 * 100;
-
+      
+      const apr = ((pool.fees24hr) / (parseFloat(pool.tvlUSD))) * 365;
+      
       return {
         id: pool.pool_id,
         reserve_0: pool.reserve_0,
@@ -109,7 +112,7 @@ export const usePoolsData = (): {
           //     acc + parseFloat(snapshot.volumeUSD),
           //   0
           // ),
-          volume: "100",
+          volume: pool.volume24hr,
           tvl: parseFloat(pool.tvlUSD),
         },
         swap_count: 0,
