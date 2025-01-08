@@ -22,9 +22,8 @@ const HeroSection = () => {
                 The Fast And Secure Dex On{" "}
                 <span className='text-[#E16B31] text-7xl'> Fuel</span>
               </h1>
-              <p className='lg:text-xl w-full lg:w-[70%]'>
-                Trade, Earn and get Rewards using the most efficient AMM on
-                Fuel.
+              <p className='lg:text-2xl w-full lg:w-[70%] font-medium'>
+                Join the Waitlist to earn exciting rewards
               </p>
             </div>
             <div>
