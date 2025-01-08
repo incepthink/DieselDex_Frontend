@@ -62,9 +62,8 @@ export const createPoolIdFromAssetNames = (
 
 // Mira API returns pool id as string '0x3f007b72f7bcb9b1e9abe2c76e63790cd574b7c34f1c91d6c2f407a5b55676b9_0xce90621a26908325c42e95acbbb358ca671a9a7b36dfb6a5405b407ad1efcd30_false'
 export const createPoolIdFromIdString = (id: string, splitBy?: string) => {
-  const [firstAssetId, secondAssetId, isStable] = id.split(
-    splitBy ? splitBy : "_"
-  );
+  const [firstAssetId, secondAssetId, isStable] = id.split('_');
+  
   return buildPoolId(firstAssetId, secondAssetId, isStable === "true");
 };
 
