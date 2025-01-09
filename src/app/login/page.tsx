@@ -18,7 +18,7 @@ export default function Page() {
 
     try {
       const { data } = await axios.post("/api/auth/login", payload);
-      alert(JSON.stringify(data));
+      alert("Authenticated");
       console.log(data);
 
       const token = data.token;
