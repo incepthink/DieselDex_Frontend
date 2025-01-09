@@ -16,16 +16,18 @@
     "chartjs-chart-financial": "^0.2.1",
     "disel-dex-ts": "1.0.45",
     "fuels": "^0.96.1",
+    "js-cookie": "^3.0.5",
+    "jsonwebtoken": "^9.0.2",
     "mira-dex-ts": "^1.0.42",
     "next": "14.2.20",
+    "next-query-params": "^5.0.1",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18",
     "react-icons": "^5.4.0",
     "use-query-params": "^2.2.1",
-    "usehooks-ts": "^3.1.0",
-    "next-query-params": "^5.0.1"
+    "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",

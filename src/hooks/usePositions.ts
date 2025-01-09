@@ -2,9 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import useReadonlyMira from "@/hooks/useReadonlyMira";
 import useBalances from "@/hooks/useBalances/useBalances";
 import request, { gql } from "graphql-request";
-import { SQDIndexerUrl } from "../utils/constants";
+import { BackendUrl, SQDIndexerUrl } from "../utils/constants";
 import { createPoolIdFromIdString } from "../utils/common";
 import { Asset, PoolId } from "disel-dex-ts";
+import axios from "axios";
 
 export interface Position {
   poolId: PoolId;
@@ -28,38 +29,44 @@ const usePositions = (): {
     queryFn: async () => {
       const assetIds = balances?.map((balance) => balance.assetId);
 
-      const query = gql`
-        query MyQuery {
-          pools(where: {
-            lpToken: {id_in: [${assetIds!
-              .map((assetId) => `"${assetId}"`)
-              .join(", ")}]}
-          }) {
-            id
-            lpToken {
-              id
-            }
-            asset0 {
-              id
-            }
-            asset1 {
-              id
-            }
-            isStable
-          }
-        }
-      `;
+      const result = await axios.post(`${BackendUrl}/pools/lp`, {
+        ids: assetIds
+      })
 
-      const result = await request<{ pools: any[] }>({
-        url: SQDIndexerUrl,
-        document: query,
-      });
+      // const query = gql`
+      //   query MyQuery {
+      //     pools(where: {
+      //       lpToken: {id_in: [${assetIds!
+      //         .map((assetId) => `"${assetId}"`)
+      //         .join(", ")}]}
+      //     }) {
+      //       id
+      //       lpToken {
+      //         id
+      //       }
+      //       asset0 {
+      //         id
+      //       }
+      //       asset1 {
+      //         id
+      //       }
+      //       isStable
+      //     }
+      //   }
+      // `;
+
+      // const result = await request<{ pools: any[] }>({
+      //   url: SQDIndexerUrl,
+      //   document: query,
+      // });
 
       const pools = await Promise.all(
-        result.pools.map(async (pool: any) => {
-          const poolId = createPoolIdFromIdString(pool.id, "_");
+        result.data.pools.map(async (pool: any) => {
+
+          if (pool !== null) { 
+          const poolId = createPoolIdFromIdString(pool.pool_id, "_");
           const lpBalance = balances!.find(
-            (balance) => balance.assetId === pool.lpToken.id
+            (balance) => balance.assetId === pool.lpId
           );
           const [token0Position, token1Position] =
             await mira!.getLiquidityPosition(
@@ -69,19 +76,21 @@ const usePositions = (): {
 
           return {
             poolId,
-            lpAssetId: pool.lpToken.id,
-            isStable: pool.isStable,
+            lpAssetId: pool.lpId,
+            isStable: pool.is_stable,
             token0Position,
             token1Position,
           };
+        }
         })
       );
-
-      return pools;
+      
+      
+      return pools.filter(element => element !== undefined);
     },
     enabled: miraExists && !!balances,
   });
-
+  console.log(data);
   return { data, isLoading };
 };
 

@@ -13,21 +13,21 @@ import AuthLayout from "./Layout";
 const Liquidity = () => {
   return (
     <LayoutWrapper>
-      {/* <AuthLayout> */}
-      <div className='fixed top-0 bg-gradient-to-r from-[#FAF7F0] to-[#F7D4C3] w-full h-screen'>
-        <div className='absolute bottom-0 w-full z-0'>
-          <Image
-            src={"/images/bg-image.png"}
-            alt='hero'
-            width={1000}
-            height={500}
-            quality={100}
-            className='object-contain w-full'
-          />
-        </div>
-        <Container>
-          <div className='flex flex-col justify-start items-start gap-10 rounded-xl p-4 lg:p-8 bg-white z-30 mt-16 lg:mt-20 h-[80%] lg:h-[82%] w-full overflow-y-scroll'>
-            {/* <section className='flex flex-col justify-center items-center gap-2 bg-[#FAF8F1] px-4 py-4 lg:py-6 w-full'>
+      <AuthLayout>
+        <div className="fixed top-0 bg-gradient-to-r from-[#FAF7F0] to-[#F7D4C3] w-full h-screen">
+          <div className="absolute bottom-0 w-full z-0">
+            <Image
+              src={"/images/bg-image.png"}
+              alt="hero"
+              width={1000}
+              height={500}
+              quality={100}
+              className="object-contain w-full"
+            />
+          </div>
+          <Container>
+            <div className="flex flex-col justify-start items-start gap-10 rounded-xl p-4 lg:p-8 bg-white z-30 mt-16 lg:mt-20 h-[80%] lg:h-[82%] w-full overflow-y-scroll">
+              {/* <section className='flex flex-col justify-center items-center gap-2 bg-[#FAF8F1] px-4 py-4 lg:py-6 w-full'>
               <div className='flex justify-center items-center'>
                 <div className='p-2 rounded-full bg-[#E16B31] text-xl text-white cursor-pointer'>
                   <PiFilesDuotone />
@@ -38,13 +38,13 @@ const Liquidity = () => {
               </p>
             </section> */}
 
-            <Positions />
+              <Positions />
 
-            <section className='w-full'>
-              <Pools />
-            </section>
+              <section className="w-full">
+                <Pools />
+              </section>
 
-            {/* <section className='grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 w-full mb-12 lg:mb-0'>
+              {/* <section className='grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 w-full mb-12 lg:mb-0'>
               <div className='flex justify-start items-center gap-2 bg-[#FAF8F1] px-4 lg:px-6 py-4 w-full'>
                 <div className='flex justify-center items-center'>
                   <div className='p-2 lg:p-3 rounded-md bg-[#E16B31] text-2xl lg:text-3xl text-white cursor-pointer'>
@@ -72,10 +72,10 @@ const Liquidity = () => {
                 </div>
               </div>
             </section> */}
-          </div>
-        </Container>
-      </div>
-      {/* </AuthLayout> */}
+            </div>
+          </Container>
+        </div>
+      </AuthLayout>
     </LayoutWrapper>
   );
 };

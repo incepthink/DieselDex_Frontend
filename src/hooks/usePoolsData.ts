@@ -88,8 +88,7 @@ export const usePoolsData = (): { data: PoolData[] | undefined, isLoading: boole
       //   0
       // );
       
-      // const apr = ((pool.fees24hr) / (parseFloat(pool.tvlUSD))) * 365;
-      const apr = 100;
+      const apr = ((pool.fees24hr) / (parseFloat(pool.tvlUSD))) * 365;
 
       return {
         id: pool.pool_id,
@@ -106,10 +105,8 @@ export const usePoolsData = (): { data: PoolData[] | undefined, isLoading: boole
           //     acc + parseFloat(snapshot.volumeUSD),
           //   0
           // ),
-          //volume: pool.volume24hr,
-          volume: 'n/a',
-          //tvl: parseFloat(pool.tvlUSD),
-          tvl: pool.tvl
+          volume: pool.volume24hr,
+          tvl: parseFloat(pool.tvlUSD),
         },
         swap_count: 0,
         create_time: 0,
