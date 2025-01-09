@@ -18,7 +18,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   trailingSlash: true,
-  output: "export",
+  //output: "export",
   images: {
     unoptimized: true,
   },
