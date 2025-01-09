@@ -1,7 +1,7 @@
 import { verify } from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest) {
+export default async function POST(req: NextRequest) {
   const body = await req.json();
   if (!body || !body.cookie) {
     return new NextResponse(
