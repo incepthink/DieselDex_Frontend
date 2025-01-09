@@ -3,7 +3,7 @@ import { sign } from "jsonwebtoken";
 
 const MAX_AGE = 24 * 60 * 60;
 
-export default async function POST(req: NextRequest) {
+export async function POST(req: NextRequest) {
   const body = await req.json();
   if (!body || !body.password) {
     return new NextResponse(
