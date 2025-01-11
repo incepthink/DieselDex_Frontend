@@ -3,7 +3,7 @@ import { CurrencyBoxMode, SwapState } from "@/app/swap/SwapForm";
 import useSwapData from "@/hooks/useAssetPair/useSwapData";
 import useReadonlyMira from "@/hooks/useReadonlyMira";
 import { buildPoolId, PoolId, Asset } from "disel-dex-ts";
-import { ApiBaseUrl } from "@/utils/constants";
+import { ApiBaseUrl, BackendUrl } from "@/utils/constants";
 import { InsufficientReservesError } from "disel-dex-ts/dist/sdk/errors";
 import { BN } from "fuels";
 import useAssetMetadata from "./useAssetMetadata";
@@ -67,7 +67,14 @@ const useSwapPreview = ({ swapState, mode }: Props) => {
       tradeType,
     ],
     queryFn: async () => {
-      const res = await fetch(`${ApiBaseUrl}/find_route`, {
+      console.log({
+        input: sellAssetId,
+        output: buyAssetId,
+        amount: normalizedAmount,
+        trade_type: tradeType,
+      });
+
+      const res = await fetch(`${BackendUrl}/route/get_route`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -89,6 +96,7 @@ const useSwapPreview = ({ swapState, mode }: Props) => {
       }
 
       const previewData: MultihopPreviewData = await res.json();
+      console.log(previewData);
 
       // API is returning unreliable data, let's re-simulate
       if (tradeType === "ExactInput") {
@@ -96,7 +104,7 @@ const useSwapPreview = ({ swapState, mode }: Props) => {
           { bits: sellAssetId },
           normalizedAmount,
           previewData.path.map(([input, output, stable]) =>
-            buildPoolId(`0x${input}`, `0x${output}`, stable)
+            buildPoolId(`${input}`, `${output}`, stable)
           )
         );
 
@@ -110,7 +118,7 @@ const useSwapPreview = ({ swapState, mode }: Props) => {
           { bits: buyAssetId },
           normalizedAmount,
           previewData.path.map(([input, output, stable]) =>
-            buildPoolId(`0x${input}`, `0x${output}`, stable)
+            buildPoolId(`${input}`, `${output}`, stable)
           )
         );
 
@@ -236,7 +244,7 @@ const useSwapPreview = ({ swapState, mode }: Props) => {
       multihopPreviewData as MultihopPreviewData;
     previewData = {
       pools: path.map(([input, output, stable]) =>
-        buildPoolId(`0x${input}`, `0x${output}`, stable)
+        buildPoolId(`${input}`, `${output}`, stable)
       ),
       previewAmount:
         mode === "sell"
