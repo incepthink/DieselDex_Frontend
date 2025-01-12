@@ -1,7 +1,12 @@
-import {useQuery} from "@tanstack/react-query";
-import {CoinName} from "@/utils/coinsConfig";
-import {ApiBaseUrl, BackendUrl, IndexerUrl, SQDIndexerUrl} from "@/utils/constants";
-import {createPoolIdFromIdString, isPoolIdValid} from "@/utils/common";
+import { useQuery } from "@tanstack/react-query";
+import { CoinName } from "@/utils/coinsConfig";
+import {
+  ApiBaseUrl,
+  BackendUrl,
+  IndexerUrl,
+  SQDIndexerUrl,
+} from "@/utils/constants";
+import { createPoolIdFromIdString, isPoolIdValid } from "@/utils/common";
 import request, { gql } from "graphql-request";
 import { time } from "console";
 import axios from "axios";
@@ -27,7 +32,10 @@ export type PoolsData = {
   pools: PoolData[];
 };
 
-export const usePoolsData = (): { data: PoolData[] | undefined, isLoading: boolean } => {
+export const usePoolsData = (): {
+  data: PoolData[] | undefined;
+  isLoading: boolean;
+} => {
   const timestamp24hAgo = Math.floor(Date.now() / 1000) - 24 * 60 * 60;
   const query = gql`
     query PoolQuery {
@@ -68,7 +76,6 @@ export const usePoolsData = (): { data: PoolData[] | undefined, isLoading: boole
     }
   `;
 
-  
   const { data, isLoading } = useQuery<any>({
     queryKey: ["pools"],
     queryFn: async () => {
@@ -78,7 +85,6 @@ export const usePoolsData = (): { data: PoolData[] | undefined, isLoading: boole
   });
 
   console.log(data);
-  
 
   const dataTransformed = data?.data.success
     .map((pool: any): PoolData => {
@@ -87,8 +93,8 @@ export const usePoolsData = (): { data: PoolData[] | undefined, isLoading: boole
       //   (acc: number, snapshot: any) => acc + parseFloat(snapshot.feesUSD),
       //   0
       // );
-      
-      const apr = ((pool.fees24hr) / (parseFloat(pool.tvlUSD))) * 365;
+
+      const apr = (pool.fees24hr / parseFloat(pool.tvlUSD)) * 365;
 
       return {
         id: pool.pool_id,
@@ -105,7 +111,7 @@ export const usePoolsData = (): { data: PoolData[] | undefined, isLoading: boole
           //     acc + parseFloat(snapshot.volumeUSD),
           //   0
           // ),
-          volume: pool.volume24hr,
+          volume: pool.swapVolume,
           tvl: parseFloat(pool.tvlUSD),
         },
         swap_count: 0,
@@ -118,8 +124,6 @@ export const usePoolsData = (): { data: PoolData[] | undefined, isLoading: boole
 };
 
 export default usePoolsData;
-
-
 
 // import { useQuery } from "@tanstack/react-query";
 // import { CoinName } from "@/utils/coinsConfig";
@@ -208,7 +212,6 @@ export default usePoolsData;
 //   });
 
 //   console.log(data);
-  
 
 //   const dataTransformed = data?.data.success
 //     .map((pool: any): PoolData => {
@@ -217,9 +220,9 @@ export default usePoolsData;
 //       //   (acc: number, snapshot: any) => acc + parseFloat(snapshot.feesUSD),
 //       //   0
 //       // );
-      
+
 //       const apr = ((pool.fees24hr) / (parseFloat(pool.tvlUSD))) * 365;
-      
+
 //       return {
 //         id: pool.pool_id,
 //         reserve_0: pool.reserve_0,

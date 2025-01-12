@@ -20,7 +20,7 @@ const DesktopPools = ({ poolsData }: Props) => {
         <tr>
           <th>Pools</th>
           <th>APR</th>
-          <th>24H Volume</th>
+          <th>Volume</th>
           <th>TVL</th>
           <th>
             <Link href='/liquidity/create-pool'>
