@@ -1,7 +1,9 @@
 .mobilePoolItem {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
+  padding-bottom: 28px;
+  border-bottom: 2px solid rgba(225, 108, 49, 0.1);
 }
 
 .infoSection {

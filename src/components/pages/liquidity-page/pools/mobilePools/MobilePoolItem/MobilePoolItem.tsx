@@ -68,10 +68,10 @@ const MobilePoolItem = ({ poolData }: Props) => {
           <InfoBlock title='TVL' value={tvlValue} />
         </div>
         <p className={styles.poolDescription}>{poolDescription}</p>
-      </div>
+      </div>  
       <ActionButton
         className={styles.addButton}
-        variant='secondary'
+        variant='highlight'
         onClick={handleAddClick}
         fullWidth
       >

@@ -2,7 +2,7 @@ import styles from './Loader.module.css';
 import {clsx} from "clsx";
 
 type Props = {
-  variant?: 'primary' | 'secondary' | 'outlined';
+  variant?: 'primary' | 'secondary' | 'outlined' | 'highlight';
 };
 
 const Loader = ({ variant }: Props) => {

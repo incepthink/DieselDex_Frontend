@@ -5,7 +5,7 @@ import Loader from "@/components/common/Loader/Loader";
 import styles from "./ActionButton.module.css";
 
 type ButtonType = "button" | "submit" | "reset";
-type ButtonVariant = "primary" | "secondary" | "outlined";
+type ButtonVariant = "primary" | "secondary" | "outlined" | "highlight";
 
 type Props = {
   children: ReactNode;
@@ -49,6 +49,7 @@ const ActionButton = forwardRef<HTMLButtonElement, Props>(function ActionButton(
         styles.btn,
         variant === "secondary" && styles.secondary,
         variant === "outlined" && styles.outlined,
+        variant === "highlight" && styles.highlight,
         loading && styles.loading,
         completed && styles.completed,
         fullWidth && styles.fullWidth,

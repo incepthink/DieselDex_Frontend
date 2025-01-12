@@ -18,12 +18,12 @@ export const VolatilePoolKey = "volatile" as const;
 // Entity used as query param for position/pool pages in format 'ETH-USDT-stable', mutually convertible with pool id
 export const createPoolKey = (poolId: PoolId) => {
   const poolStability = poolId[2] ? StablePoolKey : VolatilePoolKey;
-  return `${poolId[0].bits}-${poolId[1].bits}-${poolStability}`;
+  return `${poolId[0].bits}_${poolId[1].bits}_${poolStability}`;
 };
 
 // TODO: Reconsider this function, maybe have an API call for /pools?
 export const isPoolKeyValid = (key: string) => {
-  const [coinA, coinB] = key.split("-") as [string, string];
+  const [coinA, coinB] = key.split("_") as [string, string];
   // TODO: check isStable?
   return coinA.length === 66 && coinB.length === 66;
 };
@@ -62,8 +62,8 @@ export const createPoolIdFromAssetNames = (
 
 // Mira API returns pool id as string '0x3f007b72f7bcb9b1e9abe2c76e63790cd574b7c34f1c91d6c2f407a5b55676b9_0xce90621a26908325c42e95acbbb358ca671a9a7b36dfb6a5405b407ad1efcd30_false'
 export const createPoolIdFromIdString = (id: string, splitBy?: string) => {
-  const [firstAssetId, secondAssetId, isStable] = id.split('_');
-  
+  const [firstAssetId, secondAssetId, isStable] = id.split("_");
+
   return buildPoolId(firstAssetId, secondAssetId, isStable === "true");
 };
 

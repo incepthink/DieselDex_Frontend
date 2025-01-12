@@ -74,3 +74,15 @@
 .fullWidth {
   width: 100%;
 }
+
+.highlight {
+  background-color: rgba(225, 108, 49, 0.1);
+  color: #e16b31;
+  box-shadow: none;
+  transition: opacity 0.2s;
+  border: none;
+}
+
+.highlight:hover {
+  background-color: rgba(225, 108, 49, 0.3);
+}
