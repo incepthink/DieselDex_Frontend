@@ -91,7 +91,7 @@ const CurrencyBox = ({
 
   return (
     <div className={styles.currencyBox}>
-      <p className={styles.title}>{mode === "buy" ? "Buy" : "Sell"}</p>
+      <p className="font-semibold text-sm">{mode === "buy" ? "Buy" : "Sell"}</p>
       <div className={styles.content}>
         {errorMessage ? (
           <div className={styles.warningBox}>

@@ -45,7 +45,7 @@ const AddLiquidityPageLayout = () => {
           />
         </div>
         <main className={styles.addLiquidityLayout} ref={mainRef}>
-          <div className='z-20 mt-16 bg-white rounded-xl shadow-md h-[550px] overflow-y-scroll p-4 overflow-x-hidden'>
+          <div className='z-20 mt-16 bg-white rounded-xl shadow-md p-4 overflow-x-hidden'>
             <AddLiquidity poolId={poolId} />
           </div>
         </main>

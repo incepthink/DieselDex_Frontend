@@ -73,7 +73,7 @@ function SwapRouteItem({ pool }: { pool: PoolId }) {
   return (
     <>
       <img
-        className='w-8 h-8 -mr-2'
+        className='w-6 h-6 -mr-2'
         src={firstAssetIcon || ""}
         alt={firstAssetMetadata.symbol}
       />
@@ -568,7 +568,7 @@ const SwapForm: React.FC = () => {
 
                     return (
                       <div
-                        className='font-semibold flex justify-center items-center'
+                        className='font-semibold flex justify-center items-center mb-1'
                         key={poolKey}
                       >
                         <SwapRouteItem pool={pool} />
@@ -604,7 +604,7 @@ const SwapForm: React.FC = () => {
           )}
 
           {isConnected && (
-            <div className='w-96 flex justify-center'>
+            <div className='sm:w-96 flex justify-center'>
               <ActionButton
                 variant='primary'
                 disabled={swapDisabled}
@@ -617,7 +617,7 @@ const SwapForm: React.FC = () => {
           )}
         </div>
 
-        <div className='pb-4'>
+        <div className='pb-4 pt-2'>
           <PriceImpact
             reservesPrice={reservesPrice}
             previewPrice={previewPrice}

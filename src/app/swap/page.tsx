@@ -39,7 +39,7 @@ const Swap = () => {
             </section>
           </div> */}
 
-            <div className="z-20 mt-16 bg-white rounded-xl shadow-md h-[80%] overflow-y-scroll">
+            <div className="z-20 mt-16 bg-white rounded-xl shadow-md w-full sm:w-auto">
               <SwapForm />
             </div>
           </Container>
