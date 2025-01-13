@@ -30,7 +30,7 @@ export const isPoolKeyValid = (key: string) => {
 
 export const createPoolIdFromPoolKey = (key: string) => {
   const [firstCoinAssetId, secondCoinAssetId, poolStability] = key.split(
-    "-"
+    "_"
   ) as [
     B256Address,
     B256Address,
