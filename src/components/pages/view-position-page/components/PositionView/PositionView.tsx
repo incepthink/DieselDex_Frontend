@@ -193,7 +193,7 @@ const PositionView = ({ pool }: Props) => {
             <LogoIcon />
           </div>
           <p className={styles.tokenDisplayValue}>
-            {lpTokenDisplayValue} LP tokens
+            {lpTokenDisplayValue} DSL-LP tokens
           </p>
           <p className={styles.numberAndCopy}>
             Asset ID: {formattedLpTokenAssetId}
@@ -263,10 +263,11 @@ const PositionView = ({ pool }: Props) => {
         <div className={styles.topRow}>
           <div className={styles.miraBlock}>
             <div className={styles.miraLogo}>
-              <LogoIcon />
+              {/* <LogoIcon /> */}
+              <p className="text-3xl font-bold">DIESEL</p>
             </div>
             <p className={styles.tokenDisplayValue}>
-              {lpTokenDisplayValue} LP tokens
+              {lpTokenDisplayValue} DSL-LP tokens
             </p>
             <p className={styles.numberAndCopy}>
               Asset ID: {formattedLpTokenAssetId}
