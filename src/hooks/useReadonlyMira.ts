@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { ReadonlyMiraAmm } from "disel-dex-ts";
+import { ReadonlyDieselAmm } from "disel-dex-ts";
 import useProvider from "@/hooks/useProvider/useProvider";
 import { DEFAULT_AMM_CONTRACT_ID } from "@/utils/constants";
 
@@ -8,7 +8,7 @@ const useReadonlyMira = () => {
 
   return useMemo(() => {
     if (provider) {
-      return new ReadonlyMiraAmm(provider, DEFAULT_AMM_CONTRACT_ID);
+      return new ReadonlyDieselAmm(provider, DEFAULT_AMM_CONTRACT_ID);
     }
   }, [provider]);
 };

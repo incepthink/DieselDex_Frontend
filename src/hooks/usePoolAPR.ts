@@ -14,7 +14,9 @@ const usePoolAPR = (pool: PoolId) => {
       // CHANGE STRUCTURE OF ID
       const newID = poolIdString.replace(/-/g, "_");
       const res = await axios.get(`${BackendUrl}/pools/apr/${newID}`);
-      console.log(res, poolIdString);
+      console.log(newID);
+
+      console.log(res, newID);
 
       const apr = res.data.data.apr;
 

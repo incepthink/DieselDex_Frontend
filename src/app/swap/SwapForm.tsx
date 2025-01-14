@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { useAssetImage } from "@/hooks/useAssetImage";
 import useAssetMetadata from "@/hooks/useAssetMetadata";
-import { PoolId } from "mira-dex-ts";
+import { PoolId } from "disel-dex-ts";
 import useInitialSwapState from "@/hooks/useInitialSwapState/useInitialSwapState";
 import { useDebounceCallback, useLocalStorage } from "usehooks-ts";
 import { useConnectUI, useIsConnected } from "@fuels/react";
