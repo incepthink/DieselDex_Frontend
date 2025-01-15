@@ -45,6 +45,8 @@ const useAddLiquidity = ({
     } else {
       throw new Error("Invalid pool id or asset configs");
     }
+    console.log("asset0amt useAddliquidity", asset0Amount);
+    console.log("asset1amt useAddliquidity", asset1Amount);
 
     const minAsset0Amount = asset0Amount.mul(99).div(100);
     const minAsset1Amount = asset1Amount.mul(99).div(100);
