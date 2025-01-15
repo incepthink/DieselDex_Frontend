@@ -93,8 +93,11 @@ export const usePoolsData = (): {
       //   (acc: number, snapshot: any) => acc + parseFloat(snapshot.feesUSD),
       //   0
       // );
+      const feeRate = pool.isStable ? 0.05 : 0.3;
+      const apr =
+        (parseFloat(pool.volume24hr) * feeRate * 365) / parseFloat(pool.tvlUSD);
 
-      const apr = (pool.fees24hr / parseFloat(pool.tvlUSD)) * 365;
+      // const apr = (pool.fees24hr / parseFloat(pool.tvlUSD)) * 365 * 100;
 
       return {
         id: pool.pool_id,
