@@ -24,17 +24,17 @@ export const useAssetPrice = (
     queryKey: ["assetPrice", assetId],
     queryFn: async () => {
       // Query the backend to get the exchange rate
-      const data = await axios.post(`${BackendUrl}/assets/exchangeRate`, {
-        id: assetId,
-      });
-      console.log(data);
-      const assetPrice =
-        parseFloat(data.data.data.exchange_rate_eth) * ETH_PRICE_USD;
-      console.log(assetPrice);
+      // const data = await axios.post(`${BackendUrl}/assets/exchangeRate`, {
+      //   id: assetId,
+      // });
+      // console.log(data);
+      // const assetPrice =
+      //   parseFloat(data.data.data.exchange_rate_eth) * ETH_PRICE_USD;
+      // console.log(assetPrice);
 
-      if (assetPrice !== 0) {
-        return assetPrice;
-      }
+      // if (assetPrice !== 0) {
+      //   return assetPrice;
+      // }
 
       const provider = await providerPromise;
       const src7Contract = new Contract(
@@ -68,9 +68,10 @@ export const useAssetPrice = (
 
       return res.coins[`ethereum:${l1Address}`]?.price || null;
     },
-    enabled: !!assetId,
-    // (contractId === NATIVE_BRIDGE_MINTER_CONTRACT ||
-    //   assetId === ETH_ASSET_ID),
+    enabled:
+      !!assetId &&
+      (contractId === NATIVE_BRIDGE_MINTER_CONTRACT ||
+        assetId === ETH_ASSET_ID),
     staleTime: Infinity,
   });
 
