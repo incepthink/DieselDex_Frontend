@@ -130,9 +130,16 @@ const PositionView = ({ pool }: Props) => {
           firstAsset: coinAAmountToWithdrawStr,
           secondAsset: coinBAmountToWithdrawStr,
         };
-        await axios.get(`${BackendUrl}/pools`);
         closeRemoveLiquidityModal();
         openSuccessModal();
+        Promise.all([
+          axios.get(`${BackendUrl}/pools/`).catch((error) => {
+            console.error("Background pools fetch failed:", error);
+          }),
+        ]).catch((error) => {
+          // Handle any errors that might occur in Promise.all
+          console.error("Background tasks error:", error);
+        });
       }
     } catch (e) {
       console.error(e);

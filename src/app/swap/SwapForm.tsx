@@ -382,9 +382,22 @@ const SwapForm: React.FC = () => {
       if (txCostData?.tx) {
         const swapResult = await triggerSwap(txCostData.tx);
         if (swapResult) {
-          await axios.get(`${BackendUrl}/pools/`);
           openSuccess();
           await refetchBalances();
+
+          // Execute background tasks without awaiting them
+          Promise.all([
+            axios.get(`${BackendUrl}/pools/`).catch((error) => {
+              console.error("Background pools fetch failed:", error);
+            }),
+            // Add your Telegram bot notification here
+            // axios.post('YOUR_TELEGRAM_BOT_ENDPOINT', data).catch(error => {
+            //   console.error('Telegram notification failed:', error);
+            // })
+          ]).catch((error) => {
+            // Handle any errors that might occur in Promise.all
+            console.error("Background tasks error:", error);
+          });
         }
       }
     } catch (e) {
