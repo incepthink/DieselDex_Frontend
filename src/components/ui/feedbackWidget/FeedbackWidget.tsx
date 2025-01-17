@@ -82,9 +82,9 @@ export default function FeedbackWidget() {
   return (
     <div
       className={clsx(
-        "fixed sm:right-20 sm:bottom-20 right-8 bottom-8 transition-all ease-out",
+        "fixed sm:right-20 sm:bottom-20 right-8 bottom-8 transition-all ease-out flex justify-center items-center",
         !isExpanded &&
-          "sm:w-20 sm:h-20 h-16 w-16 bg-[#e16b31] rounded-full cursor-pointer border-2",
+          "sm:w-24 sm:h-24 h-16 w-16 bg-[#e16b31] rounded-full cursor-pointer border-2",
         isExpanded && "bg-white rounded-md"
       )}
       onClick={() => {
@@ -144,9 +144,12 @@ export default function FeedbackWidget() {
           </form>
         </div>
       ) : (
-        <div>
-          <img src="/images/logo.png" alt="logo" />
-        </div>
+        <p className="text-center font-semibold text-white sm:text-base text-xs -translate-y-0.5">
+          Feedback
+        </p>
+        // <div>
+        //   <img src="/images/logo.png" alt="logo" />
+        // </div>
       )}
     </div>
   );
