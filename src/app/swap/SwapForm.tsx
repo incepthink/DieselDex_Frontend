@@ -19,7 +19,7 @@ import useModal from "@/hooks/useModal/useModal";
 import useSwap from "@/hooks/useSwap/useSwap";
 import useCheckEthBalance from "@/hooks/useCheckEthBalance/useCheckEthBalance";
 import { createPoolKey, openNewTab } from "@/utils/common";
-import { FuelAppUrl } from "@/utils/constants";
+import { BackendUrl, FuelAppUrl } from "@/utils/constants";
 import useExchangeRate from "@/hooks/useExchangeRate/useExchangeRate";
 import useReservesPrice from "@/hooks/useReservesPrice";
 import { useAssetPrice } from "@/hooks/useAssetPrice";
@@ -34,6 +34,7 @@ import SwapSuccessModal from "@/components/common/Swap/SwapSuccessModal/SwapSucc
 import SwapFailureModal from "@/components/common/Swap/SwapFailureModal/SwapFailureModal";
 import PriceImpact from "@/components/common/Swap/PriceImpact/PriceImpact";
 import ExchangeRate from "@/components/common/Swap/ExchangeRate/ExchangeRate";
+import axios from "axios";
 
 export type CurrencyBoxMode = "buy" | "sell";
 export type CurrencyBoxState = {
@@ -73,12 +74,12 @@ function SwapRouteItem({ pool }: { pool: PoolId }) {
   return (
     <>
       <img
-        className='w-6 h-6 -mr-2'
+        className="w-6 h-6 -mr-2"
         src={firstAssetIcon || ""}
         alt={firstAssetMetadata.symbol}
       />
       <img
-        className='w-6 h-6 mr-2'
+        className="w-6 h-6 mr-2"
         src={secondAssetIcon || ""}
         alt={secondAssetMetadata.symbol}
       />
@@ -381,6 +382,7 @@ const SwapForm: React.FC = () => {
       if (txCostData?.tx) {
         const swapResult = await triggerSwap(txCostData.tx);
         if (swapResult) {
+          await axios.get(`${BackendUrl}/pools/`);
           openSuccess();
           await refetchBalances();
         }
@@ -492,12 +494,12 @@ const SwapForm: React.FC = () => {
 
   return (
     <>
-      <div className='border border-black border-opacity-0 w-full p-4 lg:p-6 rounded-md h-full'>
-        <div className='flex items-center justify-between'>
-          <p className='text-xl lg:text-xl font-bold'>Swap</p>
-          <div className='flex justify-center items-center gap-4'>
-            <div className='flex items-center gap-2 bg-black bg-opacity-10 rounded-md px-4 py-2'>
-              <p className='text-sm font-medium text-black text-opacity-60'>
+      <div className="border border-black border-opacity-0 w-full p-4 lg:p-6 rounded-md h-full">
+        <div className="flex items-center justify-between">
+          <p className="text-xl lg:text-xl font-bold">Swap</p>
+          <div className="flex justify-center items-center gap-4">
+            <div className="flex items-center gap-2 bg-black bg-opacity-10 rounded-md px-4 py-2">
+              <p className="text-sm font-medium text-black text-opacity-60">
                 {slippage / 100}% slippage
               </p>
             </div>
@@ -507,12 +509,12 @@ const SwapForm: React.FC = () => {
           </div>
         </div>
 
-        <div className='space-y-4 mt-4'>
-          <div className='rounded-lg p-2 lg:p-4 bg-[#FAF8F1]'>
+        <div className="space-y-4 mt-4">
+          <div className="rounded-lg p-2 lg:p-4 bg-[#FAF8F1]">
             <CurrencyBox
               value={sellValue}
               assetId={swapState.sell.assetId}
-              mode='sell'
+              mode="sell"
               balance={sellBalanceValue}
               setAmount={setAmount("sell")}
               loading={inputPreviewLoading || swapPending}
@@ -526,21 +528,21 @@ const SwapForm: React.FC = () => {
             />
           </div>
 
-          <div className='flex justify-center items-center gap-4'>
-            <div className='h-[1px] w-full bg-[#E5E9EB]' />
-            <div className='p-2 rounded-full bg-[#E16B31] text-xl text-white cursor-pointer'>
+          <div className="flex justify-center items-center gap-4">
+            <div className="h-[1px] w-full bg-[#E5E9EB]" />
+            <div className="p-2 rounded-full bg-[#E16B31] text-xl text-white cursor-pointer">
               <IconButton onClick={swapAssets}>
                 <ConvertIcon />
               </IconButton>
             </div>
-            <div className='h-[1px] w-full bg-[#E5E9EB]' />
+            <div className="h-[1px] w-full bg-[#E5E9EB]" />
           </div>
 
-          <div className='rounded-lg p-2 lg:p-4 bg-[#FAF8F1]'>
+          <div className="rounded-lg p-2 lg:p-4 bg-[#FAF8F1]">
             <CurrencyBox
               value={buyValue}
               assetId={swapState.buy.assetId}
-              mode='buy'
+              mode="buy"
               balance={buyBalanceValue}
               setAmount={setAmount("buy")}
               loading={outputPreviewLoading || swapPending}
@@ -555,20 +557,20 @@ const SwapForm: React.FC = () => {
           </div>
 
           {swapPending && (
-            <div className='flex flex-col w-full gap-1 text-[#757575] text-sm lg:text-base'>
-              <div className='flex justify-between items-center gap-4'>
-                <p className='font-medium'>Rate</p>
-                <p className='font-semibold'>{exchangeRate}</p>
+            <div className="flex flex-col w-full gap-1 text-[#757575] text-sm lg:text-base">
+              <div className="flex justify-between items-center gap-4">
+                <p className="font-medium">Rate</p>
+                <p className="font-semibold">{exchangeRate}</p>
               </div>
-              <div className='flex justify-between items-center gap-4'>
-                <p className='font-medium'>Order Routing</p>
-                <div className=''>
+              <div className="flex justify-between items-center gap-4">
+                <p className="font-medium">Order Routing</p>
+                <div className="">
                   {previewData?.pools.map((pool, index) => {
                     const poolKey = createPoolKey(pool);
 
                     return (
                       <div
-                        className='font-semibold flex justify-center items-center mb-1'
+                        className="font-semibold flex justify-center items-center mb-1"
                         key={poolKey}
                       >
                         <SwapRouteItem pool={pool} />
@@ -578,23 +580,23 @@ const SwapForm: React.FC = () => {
                   })}
                 </div>
               </div>
-              <div className='flex justify-between items-center gap-4'>
-                <p className='font-medium'>Estimated Fees</p>
-                <p className='font-semibold'>
+              <div className="flex justify-between items-center gap-4">
+                <p className="font-medium">Estimated Fees</p>
+                <p className="font-semibold">
                   {feeValue} {sellMetadata.symbol}
                 </p>
               </div>
-              <div className='flex justify-between items-center gap-4'>
-                <p className='font-medium'>Network Cost</p>
-                <p className='font-semibold'>{txCost?.toFixed(9)} ETH</p>
+              <div className="flex justify-between items-center gap-4">
+                <p className="font-medium">Network Cost</p>
+                <p className="font-semibold">{txCost?.toFixed(9)} ETH</p>
               </div>
             </div>
           )}
 
           {!isConnected && (
-            <div className='w-96 flex justify-center'>
+            <div className="w-96 flex justify-center">
               <ActionButton
-                variant='secondary'
+                variant="secondary"
                 onClick={connect}
                 loading={isConnecting}
               >
@@ -604,9 +606,9 @@ const SwapForm: React.FC = () => {
           )}
 
           {isConnected && (
-            <div className='sm:w-96 flex justify-center'>
+            <div className="sm:w-96 flex justify-center">
               <ActionButton
-                variant='primary'
+                variant="primary"
                 disabled={swapDisabled}
                 onClick={handleSwapClick}
                 loading={balancesPending || txCostPending}
@@ -617,7 +619,7 @@ const SwapForm: React.FC = () => {
           )}
         </div>
 
-        <div className='pb-4 pt-2'>
+        <div className="pb-4 pt-2">
           <PriceImpact
             reservesPrice={reservesPrice}
             previewPrice={previewPrice}
@@ -630,7 +632,7 @@ const SwapForm: React.FC = () => {
         )} */}
       </div>
       {/* {swapPending && <div className={styles.loadingOverlay}/>} */}
-      <SettingsModal title='Settings'>
+      <SettingsModal title="Settings">
         <SettingsModalContent
           slippage={slippage}
           slippageMode={slippageMode}
@@ -639,7 +641,7 @@ const SwapForm: React.FC = () => {
           closeModal={closeSettingsModal}
         />
       </SettingsModal>
-      <CoinsModal title='Choose token'>
+      <CoinsModal title="Choose token">
         <CoinsListModal selectCoin={handleCoinSelection} balances={balances} />
       </CoinsModal>
       <SuccessModal title={<></>}>

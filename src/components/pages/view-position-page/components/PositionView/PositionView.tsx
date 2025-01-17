@@ -18,7 +18,11 @@ import { useRouter } from "next/navigation";
 import RemoveLiquiditySuccessModal from "@/components/pages/view-position-page/components/RemoveLiquiditySuccessModal/RemoveLiquiditySuccessModal";
 import IconButton from "@/components/common/IconButton/IconButton";
 import { getLPAssetId, PoolId } from "disel-dex-ts";
-import { DEFAULT_AMM_CONTRACT_ID, DefaultLocale } from "@/utils/constants";
+import {
+  BackendUrl,
+  DEFAULT_AMM_CONTRACT_ID,
+  DefaultLocale,
+} from "@/utils/constants";
 import useFormattedAddress from "@/hooks/useFormattedAddress/useFormattedAddress";
 import LogoIcon from "@/components/icons/Logo/LogoIcon";
 import useCheckActiveNetwork from "@/hooks/useCheckActiveNetwork";
@@ -27,6 +31,8 @@ import TransactionFailureModal from "@/components/common/TransactionFailureModal
 import { CopyIcon } from "@/components/icons/Copy/CopyIcon";
 import { bn, formatUnits } from "fuels";
 import useAssetMetadata from "@/hooks/useAssetMetadata";
+import axios from "axios";
+import { QueryClient } from "@tanstack/react-query";
 
 type Props = {
   pool: PoolId;
@@ -124,6 +130,7 @@ const PositionView = ({ pool }: Props) => {
           firstAsset: coinAAmountToWithdrawStr,
           secondAsset: coinBAmountToWithdrawStr,
         };
+        await axios.get(`${BackendUrl}/pools`);
         closeRemoveLiquidityModal();
         openSuccessModal();
       }
@@ -158,7 +165,7 @@ const PositionView = ({ pool }: Props) => {
 
   return (
     <>
-      <BackLink showOnDesktop href='/liquidity' title='Back to Pool' />
+      <BackLink showOnDesktop href="/liquidity" title="Back to Pool" />
       <section className={clsx(styles.contentSection, "mobileOnly")}>
         <div className={styles.coinPairAndLabel}>
           <CoinPair
@@ -301,7 +308,7 @@ const PositionView = ({ pool }: Props) => {
           </div>
         </div>
         <div className={styles.priceBlockLargeDesktop}>
-          <p className='font-bold'>Selected Price</p>
+          <p className="font-bold">Selected Price</p>
           <div className={styles.priceBlocksDesktop}>
             <div className={styles.priceBlockDesktop}>
               <p className={styles.priceBlockTitle}>Low price</p>
@@ -335,7 +342,7 @@ const PositionView = ({ pool }: Props) => {
         </div>
       </section>
       <RemoveLiquidityModal
-        title='Remove Liquidity'
+        title="Remove Liquidity"
         titleClassName={styles.withdrawLiquidityTitle}
       >
         <RemoveLiquidityModalContent

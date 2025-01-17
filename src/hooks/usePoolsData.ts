@@ -79,9 +79,11 @@ export const usePoolsData = (): {
   const { data, isLoading } = useQuery<any>({
     queryKey: ["pools"],
     queryFn: async () => {
-      return await axios.get(`${BackendUrl}/pools`);
+      return await axios.get(`${BackendUrl}/pools/db`);
     },
     // enabled: shouldFetch,
+    staleTime: 0,
+    refetchOnWindowFocus: true,
   });
 
   console.log(data);

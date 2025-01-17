@@ -10,6 +10,9 @@ import { Dispatch, SetStateAction, useCallback } from "react";
 import TransactionFailureModal from "@/components/common/TransactionFailureModal/TransactionFailureModal";
 import { BN } from "fuels";
 import useAssetMetadata from "@/hooks/useAssetMetadata";
+import axios from "axios";
+import { BackendUrl } from "@/utils/constants";
+import { QueryClient } from "@tanstack/react-query";
 
 type AssetsData = {
   assetId: string;
@@ -68,6 +71,7 @@ const PreviewAddLiquidityDialog = ({ previewData, setPreviewData }: Props) => {
     try {
       const data = await mutateAsync();
       if (data?.id) {
+        await axios.get(`${BackendUrl}/pools/`);
         openSuccessModal();
       }
     } catch (e) {
@@ -105,8 +109,8 @@ const PreviewAddLiquidityDialog = ({ previewData, setPreviewData }: Props) => {
             <Coin assetId={assets[1].assetId} />
             <p>{secondAssetAmountString}</p>
           </div>
-          <div className='border-t-2 flex justify-between pt-2 border-neutral-300 mt-2'>
-            <p className='font-bold'>Fee tier</p>
+          <div className="border-t-2 flex justify-between pt-2 border-neutral-300 mt-2">
+            <p className="font-bold">Fee tier</p>
             <p>{feeText}</p>
           </div>
         </div>
