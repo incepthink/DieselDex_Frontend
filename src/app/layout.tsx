@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { satoshi } from "./fonts";
 import "./globals.css";
+import FeedbackWidget from "@/components/ui/feedbackWidget/FeedbackWidget";
 
 export const metadata: Metadata = {
   title: "Diesel Dex",
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${satoshi.variable} font-satoshi antialiased`}>
         {children}
+        <FeedbackWidget />
       </body>
     </html>
   );
