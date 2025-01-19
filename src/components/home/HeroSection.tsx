@@ -267,9 +267,9 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="flex justify-between w-full pb-14">
+          <div className="flex lg:flow-col flex-row justify-between w-full pb-14">
             <p>© 2025 www.dieseldex.com</p>
-            <div className="flex items-center gap-14">
+            <div className="flex lg:flow-col flex-row items-center gap-14">
               <p className="hover:text-[#00F48D] transition">
                 Terms of Service
               </p>

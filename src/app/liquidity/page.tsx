@@ -61,7 +61,7 @@ const Liquidity = () => {
 
             <section className="w-full text-black">
               <p className="text-xl mb-4">Current Price</p>
-              <div className="flex justify-center gap-24 items-center">
+              <div className="flex lg:flow-col flex-row  justify-center gap-24 items-center">
                 {data.map((item) => {
                   return (
                     <div className="p-6 py-4 rounded-3xl border-2 border-[#00EA82] flex gap-6">
