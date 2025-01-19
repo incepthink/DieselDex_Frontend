@@ -227,7 +227,7 @@ const HeroSection = () => {
       </Container>
 
       <div className="bg-[#2D2D2D] w-full mt-24">
-        <Container>
+        <Container className="flex flex-col">
           <div className="flex md:flex-row flex-col md:gap-24 gap-16 items-center md:p-24 p-4 md:py-24 py-14">
             <div>
               <div className="flex gap-4 items-center mb-8">
@@ -264,6 +264,17 @@ const HeroSection = () => {
                 Launch App
                 <PiRocketLaunchDuotone className="text-2xl lg:text-3xl" />
               </button>
+            </div>
+          </div>
+
+          <div className="flex justify-between w-full pb-14">
+            <p>© 2025 www.dieseldex.com</p>
+            <div className="flex items-center gap-14">
+              <p className="hover:text-[#00F48D] transition">
+                Terms of Service
+              </p>
+              <p className="hover:text-[#00F48D] transition">Privacy Policy</p>
+              <p className="hover:text-[#00F48D] transition">Cookies</p>
             </div>
           </div>
         </Container>

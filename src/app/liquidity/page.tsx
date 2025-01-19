@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { PiInfoDuotone } from "react-icons/pi";
 import { PiTrophyDuotone } from "react-icons/pi";
@@ -9,21 +9,41 @@ import LayoutWrapper from "@/components/common/LayoutWrapper";
 import Positions from "@/components/pages/liquidity-page/Positions/Positions";
 import Pools from "@/components/pages/liquidity-page/pools/Pools";
 import AuthLayout from "./Layout";
+import axios from "axios";
 
 const Liquidity = () => {
+  const [data, setData] = useState([
+    { name: "BTC", price: 0, image: "/images/bitcoin.png" },
+    { name: "Fuel", price: 0, image: "/images/fuel.png" },
+    { name: "ETH", price: 0, image: "/images/eth.png" },
+  ]);
+
+  const getPriceDefiLama = async () => {
+    const res = await axios.get(
+      "https://coins.llama.fi/prices/current/coingecko:bitcoin,coingecko:ethereum,fuel:0x1d5d97005e41cae2187a895fd8eab0506111e0e2f3331cd3912c15c24e3c1d82"
+    );
+    const fuelPrice =
+      res.data.coins[
+        "fuel:0x1d5d97005e41cae2187a895fd8eab0506111e0e2f3331cd3912c15c24e3c1d82"
+      ].price;
+    const ethPrice = res.data.coins["coingecko:ethereum"].price;
+    const bitcoinPrice = res.data.coins["coingecko:bitcoin"].price;
+
+    setData([
+      { name: "BTC", price: bitcoinPrice, image: "/images/bitcoin.png" },
+      { name: "Fuel", price: fuelPrice, image: "/images/fuel.png" },
+      { name: "ETH", price: ethPrice, image: "/images/eth.png" },
+    ]);
+  };
+
+  useEffect(() => {
+    getPriceDefiLama();
+  }, []);
+
   return (
     <LayoutWrapper>
       {/* <AuthLayout> */}
       <div className="fixed top-0 bg-black w-full h-screen">
-        <div className="absolute top-32" style={{ width: "1480px" }}>
-          <img src="/images/line.png" alt="" className="w-full" />
-        </div>
-        <div
-          className="absolute bottom-0 rotate-[135deg]"
-          style={{ width: "1800px" }}
-        >
-          <img src="/images/line.png" alt="" className="w-full" />
-        </div>
         <Container>
           <div className="flex flex-col justify-start items-start gap-10 rounded-xl p-4 lg:p-8 bg-white z-30 mt-16 lg:mt-20 h-[80%] lg:h-[82%] w-full overflow-y-scroll">
             {/* <section className='flex flex-col justify-center items-center gap-2 bg-[#FAF8F1] px-4 py-4 lg:py-6 w-full'>
@@ -38,6 +58,31 @@ const Liquidity = () => {
             </section> */}
 
             <Positions />
+
+            <section className="w-full text-black">
+              <p className="text-xl mb-4">Current Price</p>
+              <div className="flex justify-center gap-24 items-center">
+                {data.map((item) => {
+                  return (
+                    <div className="p-6 py-4 rounded-3xl border-2 border-[#00EA82] flex gap-6">
+                      <div className="w-14 h-14 rounded-full overflow-hidden">
+                        <img
+                          src={item.image}
+                          className="w-full h-full object-cover"
+                          alt=""
+                        />
+                      </div>
+                      <div className="flex flex-col gap-1">
+                        <p className="text-[#00EA82] font-medium">
+                          {item.name} Price
+                        </p>
+                        <p className="text-2xl">${item.price}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
 
             <section className="w-full">
               <Pools />

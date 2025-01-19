@@ -34,15 +34,6 @@ const AddLiquidityPageLayout = () => {
     <>
       <Header />
       <div className="fixed top-0 bg-black text-black w-full h-screen">
-        <div className="absolute top-32" style={{ width: "1480px" }}>
-          <img src="/images/line.png" alt="" className="w-full" />
-        </div>
-        <div
-          className="absolute bottom-0 rotate-[135deg]"
-          style={{ width: "1800px" }}
-        >
-          <img src="/images/line.png" alt="" className="w-full" />
-        </div>
         <main className={styles.addLiquidityLayout} ref={mainRef}>
           <div className="z-20 mt-16 bg-white rounded-xl shadow-md p-4 overflow-x-hidden">
             <AddLiquidity poolId={poolId} />

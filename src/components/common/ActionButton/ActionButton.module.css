@@ -13,14 +13,14 @@
   border-radius: 4px;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 1px 1px 20px 0 rgba(225, 108, 49, 0.1);
+  box-shadow: 1px 1px 20px 0 rgba(0, 244, 141, 0.1);
   transition: box-shadow 0.2s ease;
   padding-inline: 20px;
 }
 
 .btn:hover {
   text-decoration: none;
-  box-shadow: 1px 1px 30px 0 rgba(225, 108, 49, 0.1);
+  box-shadow: 1px 1px 30px 0 rgba(0, 244, 141, 0.1);
 }
 
 .btn:active {
@@ -28,14 +28,14 @@
 }
 
 .btn.loading:hover {
-  color: var(--content-inverse);
-  background-color: var(--accent-primary);
+  color: black;
+  background-color: #00F48D;
   cursor: default;
 }
 
 .btn:disabled {
-  background-color: var(--background-secondary);
-  border-color: var(--background-secondary);
+  background-color: #00F48D;
+  border-color: #00F48D;
   color: var(--content-dimmed-dark);
   box-shadow: unset;
   pointer-events: none;
@@ -49,18 +49,18 @@
 }
 
 .secondary:hover {
-  background-color: rgba(225, 108, 49, 0.1);
+  background-color: rgba(0, 244, 141, 0.1);
   box-shadow: none;
 }
 
 .secondary:active {
-  background-color: rgba(225, 108, 49, 0.3);
+  background-color: rgba(0, 244, 141, 0.3);
 }
 
 .outlined {
-  border: 1px solid rgb(225, 107, 49);
+  border: 1px solid #00F48D;
   background: transparent;
-  color: #e16b31;
+  color: #00F48D;
   box-shadow: none;
   transition: opacity 0.2s;
 }

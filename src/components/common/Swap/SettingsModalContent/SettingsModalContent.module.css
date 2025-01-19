@@ -30,7 +30,7 @@
 
 .slippageButton:hover {
   color: var(--content-primary);
-  border-color: var(--accent-primary);
+  border-color: #00F48D;
   cursor: pointer;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .slippageButtonActive {
-  border-color: var(--accent-primary);
+  border-color: #00F48D;
 }
 
 .slippageInput {
@@ -62,7 +62,7 @@
 
 .slippageInput:focus {
   color: var(--content-primary);
-  border-color: var(--accent-primary);
+  border-color: #00F48D;
 }
 
 .infoHeading {

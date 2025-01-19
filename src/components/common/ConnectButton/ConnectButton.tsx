@@ -22,7 +22,6 @@ import { openNewTab } from "@/utils/common";
 import TransactionsHistory from "@/components/common/TransactionsHistory/TransactionsHistory";
 import { FuelAppUrl } from "@/utils/constants";
 import { useScrollLock } from "usehooks-ts";
-import { getResponse } from "@/app/swap/Layout";
 import { useRouter } from "next/navigation";
 import useWindowSize from "@/hooks/useWindowSize";
 
@@ -111,13 +110,6 @@ const ConnectButton = ({ className }: Props) => {
   const router = useRouter();
 
   const handleClick = useCallback(async () => {
-    const { isAuthenticated, error } = await getResponse();
-
-    if (!isAuthenticated || error) {
-      router.push("/login");
-      return;
-    }
-
     if (!isConnected) {
       handleConnection();
     } else {
