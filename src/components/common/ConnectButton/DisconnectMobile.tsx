@@ -13,6 +13,7 @@ import { openNewTab } from "@/utils/common";
 import TransactionsHistory from "@/components/common/TransactionsHistory/TransactionsHistory";
 import { FuelAppUrl } from "@/utils/constants";
 import { useScrollLock } from "usehooks-ts";
+import useWindowSize from "@/hooks/useWindowSize";
 
 type Props = {
   className?: string;
@@ -117,18 +118,24 @@ const DisconnectMobile = ({ className }: Props) => {
     return null;
   }
 
+  const windowSize = useWindowSize();
+
   return (
     <>
       <ActionButton
         className={clsx(className, styles.connected)}
         onClick={handleClick}
       >
-        {isConnected && <img src='/images/avatar.png' width='16' height='16' />}
+        {isConnected && <img src="/images/avatar.png" width="16" height="16" />}
         {formattedAddress}
       </ActionButton>
       {isMenuOpened && (
         <div className={styles.dropDownOverlay}>
-          <DropDownMenu buttons={menuButtons} ref={menuRef}>
+          <DropDownMenu
+            windowSize={windowSize}
+            buttons={menuButtons}
+            ref={menuRef}
+          >
             <button className={styles.dropDownTouchClose}>
               <TouchCloseIcon />
             </button>
