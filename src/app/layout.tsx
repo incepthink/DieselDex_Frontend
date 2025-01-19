@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { satoshi } from "./fonts";
+import { orbitron, satoshi } from "./fonts";
 import "./globals.css";
 import FeedbackWidget from "@/components/ui/feedbackWidget/FeedbackWidget";
 
@@ -14,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body className={`${satoshi.variable} font-satoshi antialiased`}>
+    <html lang="en">
+      <body className={`${orbitron.variable} antialiased bg-black`}>
         {children}
         <FeedbackWidget />
       </body>

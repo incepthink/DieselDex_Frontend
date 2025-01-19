@@ -176,8 +176,8 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
     !isValidNetwork ||
     poolExists ||
     oneOfAssetsIsNotSelected ||
-    oneOfAmountsIsEmpty;
-  // insufficientBalance;
+    oneOfAmountsIsEmpty ||
+    insufficientBalance;
 
   const handleAssetClick = useCallback(
     (assetId: string | null) => {
@@ -246,13 +246,13 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
                 !isStablePool && styles.poolStabilityButtonActive
               )}
               onClick={() => handleStabilityChange(false)}
-              role='button'
+              role="button"
             >
               <div className={styles.poolStabilityButtonTitle}>
                 <p>Volatile pool</p>
                 <Info
                   tooltipText={VolatilePoolTooltip}
-                  tooltipKey='volatilePool'
+                  tooltipKey="volatilePool"
                 />
               </div>
               <p>0.30% fee tier</p>
@@ -263,11 +263,11 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
                 isStablePool && styles.poolStabilityButtonActive
               )}
               onClick={() => handleStabilityChange(true)}
-              role='button'
+              role="button"
             >
               <div className={styles.poolStabilityButtonTitle}>
                 <p>Stable pool</p>
-                <Info tooltipText={StablePoolTooltip} tooltipKey='stablePool' />
+                <Info tooltipText={StablePoolTooltip} tooltipKey="stablePool" />
               </div>
               <p>0.05% fee tier</p>
             </button>
@@ -326,18 +326,22 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
       )}
       {!isConnected ? (
         <ActionButton
-          variant='secondary'
+          variant="secondary"
           onClick={connect}
           loading={isConnecting}
         >
           Connect Wallet
         </ActionButton>
       ) : (
-        <ActionButton disabled={buttonDisabled} onClick={handleButtonClick}>
+        <ActionButton
+          disabled={buttonDisabled}
+          onClick={handleButtonClick}
+          variant="green"
+        >
           {buttonTitle}
         </ActionButton>
       )}
-      <AssetsListModal title='Choose token'>
+      <AssetsListModal title="Choose token">
         <CoinsListModal selectCoin={handleAssetSelection} balances={balances} />
       </AssetsListModal>
     </>

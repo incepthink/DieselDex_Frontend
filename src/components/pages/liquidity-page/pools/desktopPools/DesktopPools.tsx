@@ -16,15 +16,15 @@ const DesktopPools = ({ poolsData }: Props) => {
 
   return (
     <table className={clsx(styles.desktopPools, "desktopOnly")}>
-      <thead>
+      <thead className="bg-[#F6F8F9]">
         <tr>
           <th>Pools</th>
           <th>APR</th>
           <th>Volume</th>
           <th>TVL</th>
           <th>
-            <Link href='/liquidity/create-pool'>
-              <ActionButton className={styles.createButton}>
+            <Link href="/liquidity/create-pool">
+              <ActionButton className={styles.createButton} fullWidth={false}>
                 Create Pool
               </ActionButton>
             </Link>

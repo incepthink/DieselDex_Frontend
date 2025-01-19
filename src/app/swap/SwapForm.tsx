@@ -110,7 +110,6 @@ const SwapForm: React.FC = () => {
     sell: initialSwapState.sell.assetId,
     buy: initialSwapState.buy.assetId,
   });
-  console.log(swapCoins);
 
   // const [sellToken, setSellToken] = useState<Token>(tokens[0]);
   // const [buyToken, setBuyToken] = useState<Token>(tokens[1]);
@@ -347,8 +346,6 @@ const SwapForm: React.FC = () => {
     pools: previewData?.pools,
   });
 
-  console.log(txCostPending, balancesPending);
-
   const resetSwapErrors = useCallback(async () => {
     await refetchPreview();
     resetTxCost();
@@ -391,9 +388,14 @@ const SwapForm: React.FC = () => {
               console.error("Background pools fetch failed:", error);
             }),
             // Add your Telegram bot notification here
-            // axios.post('YOUR_TELEGRAM_BOT_ENDPOINT', data).catch(error => {
-            //   console.error('Telegram notification failed:', error);
-            // })
+            axios
+              .post(`${BackendUrl}/bot/message`, { id: swapResult.id })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((error) => {
+                console.error("Telegram notification failed:", error);
+              }),
           ]).catch((error) => {
             // Handle any errors that might occur in Promise.all
             console.error("Background tasks error:", error);
@@ -507,11 +509,11 @@ const SwapForm: React.FC = () => {
 
   return (
     <>
-      <div className="border border-black border-opacity-0 w-full p-4 lg:p-6 rounded-md h-full">
+      <div className="border border-black border-opacity-0 w-full p-4 lg:p-6 rounded-md h-full text-black">
         <div className="flex items-center justify-between">
-          <p className="text-xl lg:text-xl font-bold">Swap</p>
+          <p className="text-xl lg:text-xl font-semibold text-black">Swap</p>
           <div className="flex justify-center items-center gap-4">
-            <div className="flex items-center gap-2 bg-black bg-opacity-10 rounded-md px-4 py-2">
+            <div className="flex items-center gap-2 bg-black bg-opacity-10 rounded-lgf px-4 py-2">
               <p className="text-sm font-medium text-black text-opacity-60">
                 {slippage / 100}% slippage
               </p>
@@ -523,7 +525,7 @@ const SwapForm: React.FC = () => {
         </div>
 
         <div className="space-y-4 mt-4">
-          <div className="rounded-lg p-2 lg:p-4 bg-[#FAF8F1]">
+          <div className="rounded-lg p-1 lg:p-1 bg-[#E6FDF3]">
             <CurrencyBox
               value={sellValue}
               assetId={swapState.sell.assetId}
@@ -543,7 +545,7 @@ const SwapForm: React.FC = () => {
 
           <div className="flex justify-center items-center gap-4">
             <div className="h-[1px] w-full bg-[#E5E9EB]" />
-            <div className="p-2 rounded-full bg-[#E16B31] text-xl text-white cursor-pointer">
+            <div className="p-2 rounded-full bg-[#00EA82] text-xl text-black cursor-pointer">
               <IconButton onClick={swapAssets}>
                 <ConvertIcon />
               </IconButton>
@@ -551,7 +553,7 @@ const SwapForm: React.FC = () => {
             <div className="h-[1px] w-full bg-[#E5E9EB]" />
           </div>
 
-          <div className="rounded-lg p-2 lg:p-4 bg-[#FAF8F1]">
+          <div className="rounded-lg p-1 lg:p-1 bg-[#E6FDF3]">
             <CurrencyBox
               value={buyValue}
               assetId={swapState.buy.assetId}
@@ -609,7 +611,7 @@ const SwapForm: React.FC = () => {
           {!isConnected && (
             <div className="w-96 flex justify-center">
               <ActionButton
-                variant="secondary"
+                variant="green"
                 onClick={connect}
                 loading={isConnecting}
               >
@@ -621,7 +623,7 @@ const SwapForm: React.FC = () => {
           {isConnected && (
             <div className="sm:w-96 flex justify-center">
               <ActionButton
-                variant="primary"
+                variant="green"
                 disabled={swapDisabled}
                 onClick={handleSwapClick}
                 loading={balancesPending || txCostPending}
@@ -632,7 +634,7 @@ const SwapForm: React.FC = () => {
           )}
         </div>
 
-        <div className="pb-4 pt-2">
+        <div className="pb-2 pt-3">
           <PriceImpact
             reservesPrice={reservesPrice}
             previewPrice={previewPrice}

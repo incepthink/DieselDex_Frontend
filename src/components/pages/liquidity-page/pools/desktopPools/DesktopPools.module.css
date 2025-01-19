@@ -1,7 +1,8 @@
 .desktopPools {
-  border-radius: 24px;
   background-color: var(--background-grey-dark);
-  border-collapse: collapse;
+  border: 2px solid rgba(0,0,0,0.1);;
+  border-collapse: separate !important;
+  border-radius: 12px;
 }
 
 .desktopPools th {

@@ -27,7 +27,7 @@
   gap: 16px;
   padding: 12px;
   border-radius: 16px;
-  background-color: rgba(225, 108, 49, 0.1);
+  background-color: #E6FDF3;
 }
 
 .pending {
@@ -105,7 +105,7 @@
   gap: 8px;
   padding: 12px;
   border-radius: 8px;
-  background-color: rgba(225, 108, 49, 0.1);
+  background-color: #E6FDF3;
 }
 
 .priceBlockTop {
@@ -122,7 +122,7 @@
 .priceBlockValue {
   font-size: 20px;
   line-height: 24px;
-  color: rgba(225, 108, 49, 1);
+  color: #00EA82;
 }
 
 .priceBlockValueSmall {
@@ -213,7 +213,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: rgba(225, 108, 49, 0.1);
+    background-color: #E6FDF3;
   }
 
   .priceBlockDesktop {

@@ -29,8 +29,8 @@ const ChooseToken: React.FC<ChooseTokenProps> = ({ tokens, onSelect }) => {
   );
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center p-4 w-full bg-black/50 z-50">
-      <div className="bg-white rounded-2xl w-full max-w-md">
+    <div className="fixed inset-0 flex items-center justify-center p-4 w-full  bg-black/50 z-50">
+      <div className="bg-white rounded-2xl w-full max-w-md text-black">
         <div className="p-4 lg:p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg lg:text-xl font-semibold">Choose Token</h2>

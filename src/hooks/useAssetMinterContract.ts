@@ -22,7 +22,6 @@ export const useAssetMinterContract = (
         };
       }
 
-      console.log("ASSETS", assets);
       for (const asset of assets) {
         if (asset.assetId === assetId) {
           return {

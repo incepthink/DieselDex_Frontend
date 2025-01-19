@@ -49,7 +49,10 @@ export const DesktopPosition = ({
         </Link>
       </td>
       <td className={styles.labelCell}>
-        <Link className='text-[#e16b31]' href={positionPath}>
+        <Link
+          className="text-[rgb(0,234,130)] font-medium hover:text-[rgba(0,234,130,0.6)]"
+          href={positionPath}
+        >
           Active
         </Link>
       </td>

@@ -1,6 +1,7 @@
 import React, { forwardRef } from "react";
 import styles from "./DropDownMenu.module.css";
 import clsx from "clsx";
+import useWindowSize from "@/hooks/useWindowSize";
 
 type DropDownMenuProps = {
   buttons: {
@@ -11,13 +12,24 @@ type DropDownMenuProps = {
     tooltip?: string;
   }[];
   children?: React.ReactNode;
+  windowSize: { width: number | undefined; height: number | undefined };
 };
 
 const DropDownMenu = forwardRef<HTMLUListElement, DropDownMenuProps>(
-  function DropDownMenu({ buttons, children }, ref) {
+  function DropDownMenu({ buttons, children, windowSize }, ref) {
     return (
       <>
-        <ul className={styles.menuList} ref={ref}>
+        <ul
+          className={styles.menuList}
+          style={{
+            transform: `${
+              windowSize.width! > 1020
+                ? "translateX(-200px) translateY(20px)"
+                : ""
+            }`,
+          }}
+          ref={ref}
+        >
           {buttons.map((button) => (
             <li key={button.text}>
               <button

@@ -233,7 +233,7 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
             />
             <div className={styles.APR}>
               Estimated APR
-              <Info tooltipText={APRTooltip} tooltipKey='apr' />
+              <Info tooltipText={APRTooltip} tooltipKey="apr" />
               <span
                 className={clsx(
                   aprValue && styles.highlight,
@@ -251,13 +251,13 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
                 !isStablePool && styles.poolStabilityButtonActive,
                 styles.poolStabilityButtonDisabled
               )}
-              role='button'
+              role="button"
             >
               <div className={styles.poolStabilityButtonTitle}>
                 <p>Volatile pool</p>
                 <Info
                   tooltipText={VolatilePoolTooltip}
-                  tooltipKey='volatilePool'
+                  tooltipKey="volatilePool"
                 />
               </div>
               <p>0.30% fee tier</p>
@@ -269,11 +269,11 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
                 isStablePool && styles.poolStabilityButtonActive,
                 styles.poolStabilityButtonDisabled
               )}
-              role='button'
+              role="button"
             >
               <div className={styles.poolStabilityButtonTitle}>
                 <p>Stable pool</p>
-                <Info tooltipText={StablePoolTooltip} tooltipKey='stablePool' />
+                <Info tooltipText={StablePoolTooltip} tooltipKey="stablePool" />
               </div>
               <p>0.05% fee tier</p>
             </div>
@@ -303,14 +303,18 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
       </div>
       {!isConnected ? (
         <ActionButton
-          variant='secondary'
+          variant="secondary"
           onClick={connect}
           loading={isConnecting}
         >
           Connect Wallet
         </ActionButton>
       ) : (
-        <ActionButton disabled={buttonDisabled} onClick={handleButtonClick}>
+        <ActionButton
+          disabled={buttonDisabled}
+          onClick={handleButtonClick}
+          variant="green"
+        >
           {buttonTitle}
         </ActionButton>
       )}

@@ -1,3 +1,4 @@
+import { orbitron } from "@/app/fonts";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -15,6 +16,7 @@ const config: Config = {
       fontFamily: {
         roboto: ["var(--font-roboto)"],
         satoshi: ["var(--font-satoshi)"],
+        orbitron: ["var(--font-orbitron)"],
       },
     },
   },

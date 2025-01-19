@@ -5,6 +5,7 @@
 :root {
   --font-inter: "Inter";
   --font-prompt: "Prompt";
+  --font-orbitron: "Orbitron";
 
   /* --background-primary: #0e111e;
   --background-secondary: #1b1c23;
@@ -44,13 +45,14 @@ body {
   font-weight: 300;
   font-size: 16px;
   line-height: 22px;
-  color: var(--content-primary);
-  background-color: var(--background-primary);
+  color: white;
+  background-color: black;
+  font-family: var(--font-inter), sans-serif;
 }
 
 h1,
 h3 {
-  font-family: var(--font-prompt), sans-serif;
+  font-family: var(--font-inter), sans-serif;
   font-weight: 700;
   font-size: 44px;
   line-height: 48px;

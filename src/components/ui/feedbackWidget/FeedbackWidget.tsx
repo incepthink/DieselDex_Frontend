@@ -82,9 +82,9 @@ export default function FeedbackWidget() {
   return (
     <div
       className={clsx(
-        "fixed sm:right-20 sm:bottom-20 right-8 bottom-8 transition-all ease-out flex justify-center items-center",
+        "fixed sm:right-20 sm:bottom-20 right-8 bottom-8 transition-all ease-out flex justify-center items-center text-black",
         !isExpanded &&
-          "sm:w-24 sm:h-24 h-16 w-16 bg-[#e16b31] rounded-full cursor-pointer border-2",
+          "sm:w-24 sm:h-24 h-16 w-16 bg-[#00F48D] rounded-full cursor-pointer border-2",
         isExpanded && "bg-white rounded-md"
       )}
       onClick={() => {
@@ -92,7 +92,7 @@ export default function FeedbackWidget() {
       }}
     >
       {isExpanded ? (
-        <div className="p-3 border-2 border-[#e16b31] rounded-md shadow-2xl relative">
+        <div className="p-3 border-2 border-[#00F48D] rounded-md shadow-2xl relative">
           {shownstatus !== "" && (
             <div className="absolute -translate-y-3 -translate-x-3 rounded-md w-full h-full bg-white flex items-center justify-center">
               <p className="text-xl font-semibold text-center">{shownstatus}</p>
@@ -101,7 +101,7 @@ export default function FeedbackWidget() {
           <div className="flex justify-between items-center mb-4">
             <p className="font-semibold sm:text-2xl text-xl">Feedback</p>
             <button
-              className="bg-[#e16b31] rounded-full p-1"
+              className="bg-[#00F48D] rounded-full p-1"
               onClick={() => {
                 isExpanded === true && setIsExpanded(false);
               }}
@@ -119,7 +119,7 @@ export default function FeedbackWidget() {
               type="text"
               name="telegram"
               placeholder="Telegram"
-              className="bg-[#ffe9de] p-2 rounded sm:text-xl text-lg"
+              className="bg-[#E6FDF3] p-2 rounded sm:text-xl text-lg"
               value={data.telegram}
               onChange={(e) => handleChange(e)}
               required
@@ -129,14 +129,14 @@ export default function FeedbackWidget() {
               id=""
               placeholder="Message"
               rows={4}
-              className="bg-[#ffe9de] p-2 rounded sm:text-xl text-lg outline-none"
+              className="bg-[#E6FDF3] p-2 rounded sm:text-xl text-lg outline-none"
               value={data.message}
               onChange={(e) => handleChange(e)}
               required
             ></textarea>
             <button
               type="submit"
-              className="bg-[#e16b31] text-white py-2 px-4 rounded-sm disabled:opacity-85 sm:text-xl text-lg font-semibold"
+              className="bg-[#00F48D] text-black py-2 px-4 rounded-sm disabled:opacity-85 sm:text-xl text-lg font-semibold"
               disabled={loading}
             >
               {loading ? "Loading.." : "Submit"}
@@ -144,7 +144,7 @@ export default function FeedbackWidget() {
           </form>
         </div>
       ) : (
-        <p className="text-center font-semibold text-white sm:text-base text-xs -translate-y-0.5">
+        <p className="text-center font-semibold text-black sm:text-base text-xs -translate-y-0.5">
           Feedback
         </p>
         // <div>

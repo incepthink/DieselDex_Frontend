@@ -67,13 +67,6 @@ const useSwapPreview = ({ swapState, mode }: Props) => {
       tradeType,
     ],
     queryFn: async () => {
-      console.log({
-        input: sellAssetId,
-        output: buyAssetId,
-        amount: normalizedAmount,
-        trade_type: tradeType,
-      });
-
       const res = await fetch(`${BackendUrl}/route/get_route`, {
         method: "POST",
         headers: {
@@ -96,7 +89,6 @@ const useSwapPreview = ({ swapState, mode }: Props) => {
       }
 
       const previewData: MultihopPreviewData = await res.json();
-      console.log(previewData);
 
       // API is returning unreliable data, let's re-simulate
       if (tradeType === "ExactInput") {

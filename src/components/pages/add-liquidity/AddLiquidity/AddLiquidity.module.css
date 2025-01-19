@@ -19,7 +19,7 @@
   display: flex;
   width: 100%;
   align-items: center;
-  padding-bottom: 16px;
+  padding-bottom: 8px;
   border-bottom: 1px solid var(--background-grey-light);
 }
 
@@ -32,7 +32,7 @@
   text-align: center;
   font-weight: 500;
   font-size: 20px;
-  color: #e16b31;
+  color: black;
 }
 
 .section {
@@ -81,7 +81,7 @@
   flex-direction: column;
   gap: 10px;
   padding: 10px 12px;
-  background-color: var(--background-secondary);
+  background-color: #E6FDF3;
   color: var(--content-dimmed-light);
   border: 1px solid transparent;
   border-radius: 8px;
@@ -101,8 +101,8 @@
 .poolStabilityButtonActive {
   color: var(--content-primary);
   border: 2px solid;
-  border-color: #e16b31;
-  background-color: rgba(225, 108, 49, 0.1);
+  border-color: #00EA82;
+  background-color: #E6FDF3;
 }
 
 .poolStabilityButtonDisabled {
@@ -149,8 +149,8 @@
   display: flex;
   flex-direction: column;
   padding: 12px;
-  border-radius: 8px;
-  background-color: rgba(225, 108, 49, 0.1);
+  border-radius: 12px;
+  background-color: #E6FDF3;
 }
 
 .inputsPreview {

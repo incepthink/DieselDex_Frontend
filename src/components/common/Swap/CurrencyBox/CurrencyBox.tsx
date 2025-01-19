@@ -91,7 +91,7 @@ const CurrencyBox = ({
 
   return (
     <div className={styles.currencyBox}>
-      <p className="font-semibold text-sm">{mode === "buy" ? "Buy" : "Sell"}</p>
+      <p className="text-lg opacity-80">{mode === "buy" ? "Buy" : "Sell"}</p>
       <div className={styles.content}>
         {errorMessage ? (
           <div className={styles.warningBox}>
@@ -100,10 +100,10 @@ const CurrencyBox = ({
         ) : (
           <input
             className={styles.input}
-            type='text'
-            inputMode='decimal'
-            pattern='^[0-9]*[.,]?[0-9]*$'
-            placeholder='0'
+            type="text"
+            inputMode="decimal"
+            pattern="^[0-9]*[.,]?[0-9]*$"
+            placeholder="0"
             minLength={1}
             value={value}
             disabled={coinNotSelected || loading}

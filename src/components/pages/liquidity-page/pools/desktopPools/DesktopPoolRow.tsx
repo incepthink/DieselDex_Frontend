@@ -45,8 +45,8 @@ export default function DesktopPoolRow({ poolData }: { poolData: PoolData }) {
   }
 
   return (
-    <tr key={key} className='mt-2'>
-      <td className='pl-4'>
+    <tr key={key} className="mt-2">
+      <td className="pl-4">
         <CoinPair
           firstCoin={poolData.details.asset0Id}
           secondCoin={poolData.details.asset1Id}
@@ -59,13 +59,9 @@ export default function DesktopPoolRow({ poolData }: { poolData: PoolData }) {
       </td>
       <td>{volumeValue}</td>
       <td>{tvlValue}</td>
-      <td className='pr-4'>
+      <td className="pr-4">
         <Link href={`/liquidity/add?pool=${poolData.id}`}>
-          <ActionButton
-            className={styles.addButton}
-            variant='secondary'
-            fullWidth
-          >
+          <ActionButton className={styles.addButton} variant="highlight">
             Add Liquidity
           </ActionButton>
         </Link>

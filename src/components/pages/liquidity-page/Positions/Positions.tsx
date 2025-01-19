@@ -24,7 +24,9 @@ const Positions = () => {
             <div className={styles.icon}>
               <DocumentIcon />
             </div>
-            <p>Your liquidity will appear here</p>
+            <p className="font-medium text-lg">
+              Your liquidity will appear here
+            </p>
           </div>
           {/*<button className={styles.viewArchivedButton}>*/}
           {/*  View archive positions*/}

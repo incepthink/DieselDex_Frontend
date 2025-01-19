@@ -104,6 +104,56 @@ const initAdditionalAssetsConfig = () => {
         "0x0000000000000000000000000000000000000000000000000000000000000023",
       isVerified: false,
     },
+    {
+      contractId:
+        "0x81d5964bfbb24fd994591cc7d0a4137458d746ac0eb7ececb9a9cf2ae966d942",
+      decimals: 9,
+      assetId:
+        "0x61e10d15d424a879f301d1d715f525b5b6dcf9caad8dc2f6fa27055b2dc851c4",
+      icon: "https://firebasestorage.googleapis.com/v0/b/meme-fun-fuel.appspot.com/o/images%2F15336fa9-08eb-40bc-a09a-cafbf54a24c3.webp?alt=media&token=b4dcc61f-3b03-4120-bcd6-013c796bc382",
+      name: "A Hunter's Dream",
+      symbol: "CAW",
+    },
+    {
+      contractId:
+        "0x81d5964bfbb24fd994591cc7d0a4137458d746ac0eb7ececb9a9cf2ae966d942",
+      decimals: 9,
+      assetId:
+        "0x7bd0636f7bf10ea9f4aa47215dda0250c2cee64f5640326c5611c4c3c7408bf7",
+      icon: "https://firebasestorage.googleapis.com/v0/b/meme-fun-fuel.appspot.com/o/images%2FHappy_Cat_Meme.gif?alt=media&token=ceceeb47-f086-440a-834b-fcaad0956d54",
+      name: "Happy cat",
+      symbol: "HAPPY",
+    },
+    {
+      contractId:
+        "0x81d5964bfbb24fd994591cc7d0a4137458d746ac0eb7ececb9a9cf2ae966d942",
+      decimals: 9,
+      assetId:
+        "0x2655e694fbf1f367e4713b8d2817fae11b1cd6a94e9fb473d0d8844315e5f963",
+      icon: "https://firebasestorage.googleapis.com/v0/b/meme-fun-fuel.appspot.com/o/images%2Fart23.png?alt=media&token=1cdd643e-fc07-463d-9f92-d40039997479",
+      name: "Bera",
+      symbol: "BERA",
+    },
+    {
+      contractId:
+        "0x81d5964bfbb24fd994591cc7d0a4137458d746ac0eb7ececb9a9cf2ae966d942",
+      decimals: 9,
+      assetId:
+        "0x614f5caade6126ef1ff5a594e97d091d5d9fa174f673910f0314a63ee5a8a113",
+      icon: "https://firebasestorage.googleapis.com/v0/b/meme-fun-fuel.appspot.com/o/images%2Farch25.jpg?alt=media&token=27bf8c24-1fe5-4397-bd9f-8dcac2de951c",
+      name: "RetroByte",
+      symbol: "RETRO",
+    },
+    {
+      contractId:
+        "0x81d5964bfbb24fd994591cc7d0a4137458d746ac0eb7ececb9a9cf2ae966d942",
+      decimals: 9,
+      assetId:
+        "0xc1fdba80b28f51004ede0290e904a59a7dc69d2453706c169630118a80ccde94",
+      icon: "https://firebasestorage.googleapis.com/v0/b/meme-fun-fuel.appspot.com/o/images%2Ffuel.jpg?alt=media&token=1f316cf1-af9e-4935-804a-0af949782a38",
+      name: "Fuel Fairies",
+      symbol: "FAIRY",
+    },
   ];
 
   for (const asset of additionalAssets) {

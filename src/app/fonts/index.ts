@@ -12,3 +12,15 @@ export const satoshi = localFont({
   variable: "--font-satoshi",
   weight: "100 300 400 500 700 900",
 });
+
+export const orbitron = localFont({
+  src: "./Orbitron-Variable.ttf",
+  variable: "--font-orbitron",
+  weight: "100 300 400 500 700 900",
+});
+
+export const inter = localFont({
+  src: "./Inter-Variable.ttf",
+  variable: "--font-inter",
+  weight: "100 300 400 500 700 900",
+});

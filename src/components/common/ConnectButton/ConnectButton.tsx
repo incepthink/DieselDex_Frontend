@@ -24,6 +24,7 @@ import { FuelAppUrl } from "@/utils/constants";
 import { useScrollLock } from "usehooks-ts";
 import { getResponse } from "@/app/swap/Layout";
 import { useRouter } from "next/navigation";
+import useWindowSize from "@/hooks/useWindowSize";
 
 type Props = {
   className?: string;
@@ -185,6 +186,8 @@ const ConnectButton = ({ className }: Props) => {
     }
   }, [isHistoryOpened]);
 
+  const windowSize = useWindowSize();
+
   return (
     <>
       <ActionButton
@@ -197,7 +200,13 @@ const ConnectButton = ({ className }: Props) => {
         {title}
         {isConnected && (!isMenuOpened ? <ArrowDownIcon /> : <ArrowUpIcon />)}
       </ActionButton>
-      {isMenuOpened && <DropDownMenu buttons={menuButtons} ref={menuRef} />}
+      {isMenuOpened && (
+        <DropDownMenu
+          windowSize={windowSize}
+          buttons={menuButtons}
+          ref={menuRef}
+        />
+      )}
       <TransactionsHistory
         onClose={handleHistoryClose}
         isOpened={isHistoryOpened}

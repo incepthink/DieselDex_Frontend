@@ -23,15 +23,15 @@ const Header: React.FC = () => {
     <nav
       className={`flex flex-col lg:flex-row justify-between lg:items-center gap-6 lg:gap-8 w-full ${className}`}
     >
-      <div className='flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8'>
+      <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
         {navItems.map((item) => (
           <Link
             key={item.name}
             href={item.href}
-            className={`font-medium ${
+            className={`font-medium text-lg ${
               pathname === item.href
-                ? "text-[#E16B31]"
-                : "hover:text-[#E16B31] transition-all duration-300"
+                ? "text-[#00F48D]"
+                : "hover:text-[#00F48D] transition-all duration-300"
             }`}
             onClick={() => isMobileMenuOpen && setMobileMenuOpen(false)}
           >
@@ -40,43 +40,45 @@ const Header: React.FC = () => {
         ))}
       </div>
 
-      <div className='flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8'>
-        <Link href='https://twitter.com/hash_case'>
-          <FaXTwitter className='text-black text-2xl hover:text-[#E16B31]' />
+      <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
+        <Link href="https://twitter.com/hash_case">
+          <FaXTwitter className="text-white text-2xl hover:text-[#00F48D]" />
         </Link>
 
-        <ConnectButton />
+        <ConnectButton className="text-black bg-white" />
       </div>
     </nav>
   );
 
   const BrandLogo = () => (
-    <Link href='/' className='flex items-center gap-2'>
-      <div className='w-6 lg:w-10'>
+    <Link href="/" className="flex items-center gap-2">
+      <div className="w-8 lg:w-10 rounded-full overflow-hidden mr-2 ">
         <Image
-          src='/images/logo.png'
-          alt='Diesel Dex Logo'
+          src="/images/logo.jpeg"
+          alt="Diesel Dex Logo"
           width={100}
           height={100}
           quality={100}
-          className='object-contain w-full'
+          className="object-contain w-full"
         />
       </div>
-      <p className='text-lg lg:text-xl font-bold text-nowrap'>Diesel Dex</p>
+      <p className="text-xl lg:text-2xl font-bold text-nowrap">
+        Diesel <span className="text-[#00F48D] text-xl lg:text-2xl">Dex</span>
+      </p>
     </Link>
   );
 
   return (
-    <header className='shadow-sm fixed top-0 left-0 w-full z-50'>
-      <Container className='py-4'>
-        <div className='flex justify-between items-center gap-8 w-full'>
+    <header className="shadow-sm fixed top-0 left-0 w-full z-50 backdrop-blur-md">
+      <Container className="py-4">
+        <div className="flex justify-between items-center gap-20 w-full">
           <BrandLogo />
-          <div className='hidden lg:block w-full'>
+          <div className="hidden lg:block w-full">
             <NavLinks />
           </div>
 
           <button
-            className='lg:hidden text-3xl hover:text-[#E16B31]'
+            className="lg:hidden text-3xl hover:text-[#00F48D]"
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <IoClose /> : <IoMenu />}
@@ -85,20 +87,20 @@ const Header: React.FC = () => {
       </Container>
 
       {isMobileMenuOpen && (
-        <div className='fixed inset-0 flex bg-black/50 backdrop-blur z-40'>
-          <div className='relative w-3/4 h-full p-6 bg-white drop-shadow-lg'>
+        <div className="fixed inset-0 flex bg-black/50 backdrop-blur z-40">
+          <div className="relative w-3/4 h-full p-6 bg-black text-white drop-shadow-lg">
             <BrandLogo />
-            <NavLinks className='mt-8' />
+            <NavLinks className="mt-8" />
 
             <button
-              className='absolute top-6 right-6 text-3xl hover:text-[#E16B31]'
+              className="absolute top-6 right-6 text-3xl hover:text-[#00F48D]"
               onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
             >
               <IoClose />
             </button>
           </div>
 
-          <div className='flex-1' onClick={() => setMobileMenuOpen(false)} />
+          <div className="flex-1" onClick={() => setMobileMenuOpen(false)} />
         </div>
       )}
     </header>
