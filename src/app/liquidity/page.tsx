@@ -90,7 +90,7 @@ const Liquidity = () => {
         </section>
 
         <Container className="max-h-screen">
-          <div className="flex flex-col justify-start items-start gap-10 text-white p-4 lg:p-8 z-30 mt-16 lg:mt-20 w-full">
+          <div className="flex flex-col justify-start items-start gap-10 text-white p-4 lg:p-8 z-30 mt-4 w-full">
             {/* <section className='flex flex-col justify-center items-center gap-2 bg-[#FAF8F1] px-4 py-4 lg:py-6 w-full'>
               <div className='flex justify-center items-center'>
                 <div className='p-2 rounded-full bg-[#E16B31] text-xl text-white cursor-pointer'>

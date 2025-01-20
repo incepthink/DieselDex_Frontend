@@ -81,6 +81,7 @@ export default function FeedbackWidget() {
 
   return (
     <div
+      style={{ zIndex: "100" }}
       className={clsx(
         "fixed sm:right-20 sm:bottom-20 right-8 bottom-8 transition-all ease-out flex justify-center items-center text-black",
         !isExpanded &&
