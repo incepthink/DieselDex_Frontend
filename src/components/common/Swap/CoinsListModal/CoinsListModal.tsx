@@ -5,6 +5,7 @@ import styles from "./CoinsListModal.module.css";
 import { BN, CoinQuantity } from "fuels";
 import { useAssetList } from "@/hooks/useAssetList";
 import UnknownCoinListItem from "../UnknownCoinListItem";
+import clsx from "clsx";
 
 type Props = {
   selectCoin: (assetId: string | null) => void;
@@ -114,12 +115,20 @@ const CoinsListModal = ({
 
   return (
     <>
-      <div className={styles.tokenSearch}>
+      <div
+        style={{
+          boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+        }}
+        className={clsx(
+          "bg-white/10 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+          styles.tokenSearch
+        )}
+      >
         <SearchIcon />
         <input
           className={styles.tokenSearchInput}
-          type='text'
-          placeholder='Search by token or paste address'
+          type="text"
+          placeholder="Search by token or paste address"
           onChange={handleChange}
           ref={inputRef}
         />

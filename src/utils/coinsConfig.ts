@@ -154,6 +154,16 @@ const initAdditionalAssetsConfig = () => {
       name: "Fuel Fairies",
       symbol: "FAIRY",
     },
+    {
+      contractId:
+        "0x81d5964bfbb24fd994591cc7d0a4137458d746ac0eb7ececb9a9cf2ae966d942",
+      decimals: 9,
+      assetId:
+        "0xa168394dda72a436becdbd920e7cdea302b49f7b1160ed13c5102ebf185f3bf4",
+      icon: "/images/trump.jpeg",
+      name: "Green TRUMP",
+      symbol: "TRUMP",
+    },
   ];
 
   for (const asset of additionalAssets) {

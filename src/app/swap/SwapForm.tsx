@@ -35,6 +35,7 @@ import SwapFailureModal from "@/components/common/Swap/SwapFailureModal/SwapFail
 import PriceImpact from "@/components/common/Swap/PriceImpact/PriceImpact";
 import ExchangeRate from "@/components/common/Swap/ExchangeRate/ExchangeRate";
 import axios from "axios";
+import { IoSwapVertical } from "react-icons/io5";
 
 export type CurrencyBoxMode = "buy" | "sell";
 export type CurrencyBoxState = {
@@ -547,7 +548,8 @@ const SwapForm: React.FC = () => {
             <div className="h-[1px] w-full bg-[#E5E9EB]" />
             <div className="p-2 rounded-full bg-[#00EA82] text-xl text-black cursor-pointer">
               <IconButton onClick={swapAssets}>
-                <ConvertIcon />
+                {/* // change icon */}
+                <IoSwapVertical />
               </IconButton>
             </div>
             <div className="h-[1px] w-full bg-[#E5E9EB]" />
