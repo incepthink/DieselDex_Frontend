@@ -33,8 +33,8 @@ const Liquidity = () => {
 
     setData([
       { name: "BTC", price: bitcoinPrice, image: "/images/bitcoin.png" },
-      { name: "Fuel", price: fuelPrice, image: "/images/fuel.png" },
-      { name: "ETH", price: ethPrice, image: "/images/eth.png" },
+      { name: "Fuel", price: fuelPrice, image: "/images/fuel.svg" },
+      { name: "ETH", price: ethPrice, image: "/images/eth.svg" },
     ]);
   };
 
@@ -73,7 +73,7 @@ const Liquidity = () => {
                   <div className="lg:w-14 w-10 lg:h-14 h-10 rounded-full overflow-hidden">
                     <img
                       src={item.image}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-fill"
                       alt=""
                     />
                   </div>

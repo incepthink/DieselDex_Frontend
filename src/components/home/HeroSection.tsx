@@ -120,7 +120,7 @@ const HeroSection = () => {
         )}
       </div>
       <Container className="flex-col gap-24">
-        <div className="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-4 justify-between w-full xl:pt-0 md:pt-0 lg:pt-20">
+        <div className="grid xl:grid-cols-3 mx-auto lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-4 justify-between w-full xl:pt-0 md:pt-0 lg:pt-20">
           <div className="bg-[#1C1C1C] p-16 lg:px-32 px-10 rounded-md flex flex-col gap-8 justify-center items-center">
             <p className="text-6xl font-semibold text-[#00F48D]">
               ${data.tvlUSD}
