@@ -53,13 +53,13 @@ const Liquidity = () => {
           windowSize.width! < 1024 ? "pt-14" : "pt-24"
         )}
       >
-        <section className="w-full text-black mb-14 pt-10">
+        <section className="w-full text-black">
           <div
             className={clsx(
-              "flex justify-center items-center",
-              windowSize.width! > 1020
+              "flex justify-center items-center mb-14 pt-10",
+              windowSize.width! > 1024
                 ? "flex-row gap-24"
-                : "flex-col gap-10 mt-6 mb-6 hidden"
+                : "flex-col gap-10 hidden"
             )}
           >
             {data.map((item) => {
@@ -89,7 +89,7 @@ const Liquidity = () => {
           </div>
         </section>
 
-        <Container className="max-h-screen">
+        <Container className="">
           <div className="flex flex-col justify-start items-start gap-10 text-white p-4 lg:p-8 z-30 mt-4 w-full">
             {/* <section className='flex flex-col justify-center items-center gap-2 bg-[#FAF8F1] px-4 py-4 lg:py-6 w-full'>
               <div className='flex justify-center items-center'>

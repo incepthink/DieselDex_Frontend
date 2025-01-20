@@ -33,8 +33,8 @@ const Positions = () => {
 
     setPriceData([
       { name: "BTC", price: bitcoinPrice, image: "/images/bitcoin.png" },
-      { name: "Fuel", price: fuelPrice, image: "/images/fuel.png" },
-      { name: "ETH", price: ethPrice, image: "/images/eth.png" },
+      { name: "Fuel", price: fuelPrice, image: "/images/fuel.svg" },
+      { name: "ETH", price: ethPrice, image: "/images/eth.svg" },
     ]);
   };
 
@@ -47,16 +47,16 @@ const Positions = () => {
   return (
     <section
       className={clsx(
-        styles.positions,
-        windowSize.width! < 1024
-          ? (data && data.length === 0) || !data
-            ? "pt-[500px]"
-            : "pt-[800px]"
-          : ""
+        styles.positions
+        // windowSize.width! < 1024
+        //   ? (data && data.length === 0) || !data
+        //     ? "pt-[500px]"
+        //     : "pt-[800px]"
+        //   : ""
       )}
     >
-      {windowSize.width! < 1020 && (
-        <section className="w-full text-black mb-10 mt-96">
+      {windowSize.width! <= 1024 && (
+        <section className="w-full text-black mb-10">
           <div
             className={clsx(
               "flex flex-col justify-center items-center gap-6  "
