@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaTelegram, FaXTwitter } from "react-icons/fa6";
 import { IoClose, IoMenu } from "react-icons/io5";
 import Container from "./Container";
 import ConnectButton from "./ConnectButton/ConnectButton";
@@ -16,8 +16,8 @@ import {
 } from "@/components/ui/tooltip";
 
 const navItems = [
-  { name: "Swap", href: "/swap" },
-  { name: "Liquidity", href: "/liquidity" },
+  { name: "Swap", href: "/swap/" },
+  { name: "Liquidity", href: "/liquidity/" },
   { name: "Rewards", href: "", disabled: true },
 ];
 
@@ -30,7 +30,7 @@ const Header: React.FC = () => {
     <nav
       className={`flex flex-col lg:flex-row justify-between lg:items-center gap-6 lg:gap-8 w-full ${className}`}
     >
-      <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
+      <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-16">
         {navItems.map((item) => {
           if (item.disabled) {
             return (
@@ -40,13 +40,13 @@ const Header: React.FC = () => {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className={`font-medium text-lg disabled opacity-80 bg-[#00F48D] text-black rounded-full p-2 px-4 hover:text-black`}
+                      className={`font-medium text-lg `}
                     >
                       {item.name}
                     </Link>
                   </TooltipTrigger>
-                  <TooltipContent>
-                    <p className="mt-3">Coming Soon...</p>
+                  <TooltipContent className="bg-green-400/50">
+                    <p className="py-2">Coming Soon...</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -69,9 +69,13 @@ const Header: React.FC = () => {
         })}
       </div>
 
-      <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
+      <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-16">
         <a target="_blank" href="https://x.com/DieselDex_Fuel">
           <FaXTwitter className="text-white text-2xl hover:text-[#00F48D]" />
+        </a>
+
+        <a target="_blank" href="https://t.me/+TWXU1oStbYphMTll">
+          <FaTelegram className="text-white text-2xl hover:text-[#00F48D]" />
         </a>
 
         <ConnectButton className="text-black bg-white" />
@@ -83,7 +87,7 @@ const Header: React.FC = () => {
     <Link href="/" className="flex items-center gap-2">
       <div className="w-8 lg:w-10 rounded-full overflow-hidden mr-2 ">
         <Image
-          src="/images/logo.jpeg"
+          src="/images/logo.png"
           alt="Diesel Dex Logo"
           width={100}
           height={100}
@@ -99,7 +103,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="shadow-sm fixed top-0 left-0 w-full z-50 backdrop-blur-md">
-      <Container className="py-4">
+      <div className="py-4 px-8 max-w-[1800px] mx-auto">
         <div className="flex justify-between items-center gap-20 w-full">
           <BrandLogo />
           <div className="hidden lg:block w-full">
@@ -113,7 +117,7 @@ const Header: React.FC = () => {
             {isMobileMenuOpen ? <IoClose /> : <IoMenu />}
           </button>
         </div>
-      </Container>
+      </div>
 
       {isMobileMenuOpen && (
         <div className="fixed inset-0 flex bg-black/50 h-screen backdrop-blur z-40">

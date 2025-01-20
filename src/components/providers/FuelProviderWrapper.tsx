@@ -33,7 +33,7 @@ const wagmiConfig = createConfig({
 
 const fuelConfig = {
   connectors: defaultConnectors({
-    devMode: true,
+    devMode: false,
     // wcProjectId: WC_PROJECT_ID,
     //@ts-ignore
     ethWagmiConfig: wagmiConfig,
@@ -45,7 +45,7 @@ const FuelProviderWrapper: React.FC<{
 }> = ({ children }) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <FuelProvider theme='dark' fuelConfig={fuelConfig}>
+      <FuelProvider theme="dark" fuelConfig={fuelConfig}>
         {children}
       </FuelProvider>
     </QueryClientProvider>

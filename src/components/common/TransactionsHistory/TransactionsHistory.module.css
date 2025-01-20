@@ -16,7 +16,6 @@
 }
 
 .wrapper {
-  background: #faf6ef;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -55,8 +54,9 @@
 
 .transactionCloseButton {
   border-radius: 1000px;
-  background: #e16b31;
+  background: #00EA82;
   cursor: pointer;
+  color: black;
 }
 
 .transactionCloseButton:hover {
@@ -69,9 +69,9 @@
   gap: 20px;
   padding: 12px;
   border-radius: 10px;
-  color: white;
+  color: black;
   font-weight: 700;
-  background-color: #e16b31;
+  background-color: #00EA82;
 }
 
 .accountUserInfo {

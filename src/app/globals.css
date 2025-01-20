@@ -6,6 +6,7 @@
   --font-inter: "Inter";
   --font-prompt: "Prompt";
   --font-orbitron: "Orbitron";
+  --font-manrope: "Manrope";
 
   /* --background-primary: #0e111e;
   --background-secondary: #1b1c23;
@@ -47,12 +48,12 @@ body {
   line-height: 22px;
   color: white;
   background-color: black;
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-manrope), sans-serif;
 }
 
 h1,
 h3 {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   font-weight: 700;
   font-size: 44px;
   line-height: 48px;

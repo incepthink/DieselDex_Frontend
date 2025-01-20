@@ -214,8 +214,7 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
 
   const oneOfAmountsIsEmpty = firstAmount.eq(0) || secondAmount.eq(0);
 
-  const buttonDisabled =
-    !isValidNetwork || insufficientBalance || oneOfAmountsIsEmpty;
+  const buttonDisabled = !isValidNetwork || oneOfAmountsIsEmpty;
 
   const { price: asset0Price } = useAssetPrice(poolId[0].bits);
   const { price: asset1Price } = useAssetPrice(poolId[1].bits);

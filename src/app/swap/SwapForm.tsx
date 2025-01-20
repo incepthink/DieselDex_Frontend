@@ -36,6 +36,7 @@ import PriceImpact from "@/components/common/Swap/PriceImpact/PriceImpact";
 import ExchangeRate from "@/components/common/Swap/ExchangeRate/ExchangeRate";
 import axios from "axios";
 import { IoSwapVertical } from "react-icons/io5";
+import clsx from "clsx";
 
 export type CurrencyBoxMode = "buy" | "sell";
 export type CurrencyBoxState = {
@@ -636,7 +637,9 @@ const SwapForm: React.FC = () => {
           )}
         </div>
 
-        <div className="pb-2 pt-3">
+        <div
+          className={clsx(reservesPrice || previewPrice ? "pb-2 pt-3" : "h-0")}
+        >
           <PriceImpact
             reservesPrice={reservesPrice}
             previewPrice={previewPrice}

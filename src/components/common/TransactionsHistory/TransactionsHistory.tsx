@@ -176,13 +176,18 @@ const TransactionsHistory = forwardRef<
   return (
     <div className={isOpened ? styles.overlayOpened : styles.overlayClosed}>
       <div
-        className={`${styles.wrapper} ${isOpened ? styles.open : styles.close}`}
+        style={{
+          boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+        }}
+        className={`bg-green-400/30 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100 ${
+          styles.wrapper
+        } ${isOpened ? styles.open : styles.close}`}
         ref={ref}
       >
         <div className={styles.header}>
           <h2 className={styles.title}>Transactions History</h2>
           <button
-            type='button'
+            type="button"
             className={styles.transactionCloseButton}
             onClick={onClose}
           >
@@ -191,11 +196,11 @@ const TransactionsHistory = forwardRef<
         </div>
         <div className={styles.accountInfo}>
           <div className={styles.accountUserInfo}>
-            <img className={styles.accountAvatar} src='/images/avatar.png' />
+            <img className={styles.accountAvatar} src="/images/avatar.png" />
             <span className={styles.accountWallet}>{walletAddress}</span>
             <button
               className={styles.copyButton}
-              type='button'
+              type="button"
               onClick={handleCopy}
             >
               <CopyAddressIcon />

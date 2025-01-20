@@ -20,13 +20,13 @@ const DropDownMenu = forwardRef<HTMLUListElement, DropDownMenuProps>(
     return (
       <>
         <ul
-          className={styles.menuList}
+          className={clsx(
+            "bg-white/10 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+            styles.menuList
+          )}
           style={{
-            transform: `${
-              windowSize.width! > 1020
-                ? "translateX(-200px) translateY(20px)"
-                : ""
-            }`,
+            transform: `${windowSize.width! > 1020 ? "translateY(20px)" : ""}`,
+            boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
           }}
           ref={ref}
         >

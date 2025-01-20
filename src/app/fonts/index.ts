@@ -19,8 +19,8 @@ export const orbitron = localFont({
   weight: "100 300 400 500 700 900",
 });
 
-export const inter = localFont({
-  src: "./Inter-Variable.ttf",
-  variable: "--font-inter",
+export const manrope = localFont({
+  src: "./Manrope-Variable.ttf",
+  variable: "--font-manrope",
   weight: "100 300 400 500 700 900",
 });

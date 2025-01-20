@@ -98,17 +98,30 @@ const CurrencyBox = ({
             <p className={styles.warningLabel}>{errorMessage}</p>
           </div>
         ) : (
-          <input
-            className={styles.input}
-            type="text"
-            inputMode="decimal"
-            pattern="^[0-9]*[.,]?[0-9]*$"
-            placeholder="0"
-            minLength={1}
-            value={value}
-            disabled={coinNotSelected || loading}
-            onChange={handleChange}
-          />
+          <>
+            <input
+              className={clsx(loading && "opacity-0", styles.input)}
+              type="text"
+              inputMode="decimal"
+              pattern="^[0-9]*[.,]?[0-9]*$"
+              placeholder="0"
+              minLength={1}
+              value={value}
+              disabled={coinNotSelected || loading}
+              onChange={handleChange}
+            />
+            <div
+              className={`absolute w-8 h-8 ${!loading && "hidden"} ${
+                mode === "sell" ? "left-4" : "left-10"
+              }`}
+            >
+              <img
+                src="/images/loading.gif"
+                className="w-full h-full object-cover"
+                alt=""
+              />
+            </div>
+          </>
         )}
 
         <button

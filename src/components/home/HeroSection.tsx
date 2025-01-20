@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PiRocketLaunchDuotone } from "react-icons/pi";
 import Container from "../common/Container";
 import { useRouter } from "next/navigation";
-import { inter, orbitron, roboto } from "@/app/fonts";
+import { manrope, orbitron, roboto } from "@/app/fonts";
 import useWindowSize from "@/hooks/useWindowSize";
 import axios from "axios";
 import { BackendUrl } from "@/utils/constants";
@@ -74,7 +74,7 @@ const HeroSection = () => {
                   </span>
                 </h1>
                 <p
-                  className={`lg:text-2xl text-[rgba(255,255,255,0.8)] w-full lg:w-[80%] ${inter.variable}`}
+                  className={`lg:text-2xl text-[rgba(255,255,255,0.8)] w-full lg:w-[80%] ${manrope.variable}`}
                   style={{ lineHeight: "38.4px" }}
                 >
                   Trade, Earn and get Rewards using the most efficient AMM on
@@ -149,7 +149,7 @@ const HeroSection = () => {
             </span>
           </h2>
 
-          {mainData.map(({ title, para, id }) => {
+          {/* {mainData.map(({ title, para, id }) => {
             return (
               <div className="w-full flex flex-col items-center justify-center gap-4 text-center mt-4">
                 <div>
@@ -166,25 +166,53 @@ const HeroSection = () => {
                 )}
               </div>
             );
-          })}
+          })} */}
 
-          {/* <div className="flex lg:flex-row flex-col gap-4 mb-4">
-            <div className="lg:w-3/5 w-full h-96 bg-[#2D2D2D] p-24 rounded-3xl">
-              Better Prices
+          <div className="flex lg:flex-row flex-col gap-4 mb-4">
+            <div className="relative lg:w-3/5 w-full h-96 bg-[#2D2D2D] rounded-3xl overflow-hidden">
+              <img
+                src="/images/home-1.jpeg"
+                alt=""
+                className="w-full h-full object-cover"
+              />
+              <p className="absolute top-10 left-10 sm:text-3xl text-xl font-semibold">
+                Better Prices
+              </p>
             </div>
-            <div className="lg:w-2/5 w-full h-96 bg-[#2D2D2D] p-24 rounded-3xl">
-              Deeper Liquidity
+            <div className="relative lg:w-2/5 w-full h-96 bg-[#2D2D2D] rounded-3xl overflow-hidden">
+              <img
+                src="/images/home-2.jpeg"
+                alt=""
+                className="w-full h-full object-cover"
+              />
+              <p className="absolute top-10 left-10 sm:text-3xl text-xl font-semibold">
+                Deeper Liquidity
+              </p>
             </div>
           </div>
 
           <div className="flex lg:flex-row flex-col gap-4">
-            <div className="lg:w-2/5 w-full h-96 bg-[#2D2D2D] p-24 rounded-3xl">
-              Better Prices
+            <div className="relative lg:w-2/5 w-full h-96 bg-[#2D2D2D] rounded-3xl overflow-hidden">
+              <img
+                src="/images/home-3.jpeg"
+                alt=""
+                className="w-full h-full object-cover"
+              />
+              <p className="absolute top-10 left-10 sm:text-3xl text-xl font-semibold">
+                Charts
+              </p>
             </div>
-            <div className="lg:w-3/5 w-full h-96 bg-[#2D2D2D] p-24 rounded-3xl">
-              Deeper Liquidity
+            <div className="relative lg:w-3/5 w-full h-96 bg-[#2D2D2D] rounded-3xl overflow-hidden">
+              <img
+                src="/images/home-4.jpeg"
+                alt=""
+                className="w-full h-full object-cover"
+              />
+              <p className="absolute top-10 left-10 sm:text-3xl text-xl font-semibold">
+                Telegram Bot
+              </p>
             </div>
-          </div> */}
+          </div>
         </div>
 
         <div className="w-full bg-[#1C1C1C] p-16 rounded-3xl flex lg:flex-row flex-col justify-between">
@@ -232,7 +260,7 @@ const HeroSection = () => {
               <div className="flex gap-4 items-center mb-8">
                 <div className="w-10 h-10 rounded-full overflow-hidden">
                   <img
-                    src="/images/logo.jpeg"
+                    src="/images/logo.png"
                     alt=""
                     className="w-full h-full object-cover"
                   />
