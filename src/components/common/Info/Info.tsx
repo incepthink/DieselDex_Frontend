@@ -25,7 +25,7 @@ const Info = ({ tooltipText, tooltipKey }: Props) => {
 
   return (
     <div
-      className='group relative inline-block w-4 h-4'
+      className="group relative inline-block w-4 h-4"
       ref={buttonRef}
       onMouseEnter={({ clientX }) => {
         if (!tooltipRef.current || !buttonRef.current) return;
@@ -34,7 +34,7 @@ const Info = ({ tooltipText, tooltipKey }: Props) => {
       }}
     >
       <div
-        className='invisible group-hover:visible opacity-0 group-hover:opacity-100 w-32 leading-tight text-left transition bg-orange-600 text-white p-1 text-xs rounded absolute bottom-full mt-2'
+        className="invisible group-hover:visible opacity-0 group-hover:opacity-100 w-32 leading-tight text-left transition bg-green-600 text-white p-1 text-xs rounded absolute bottom-full mt-2"
         id={tooltipId}
         ref={tooltipRef}
       >

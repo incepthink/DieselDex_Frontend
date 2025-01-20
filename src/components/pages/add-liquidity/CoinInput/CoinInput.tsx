@@ -65,7 +65,13 @@ const CoinInput = ({
 
   return (
     <div
-      className={styles.coinInput}
+      style={{
+        boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+      }}
+      className={clsx(
+        "bg-white/10 text-white backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+        styles.coinInput
+      )}
       onClick={() => {
         if (!inputref.current) return;
         inputref.current.focus();
@@ -74,10 +80,10 @@ const CoinInput = ({
       <div className={clsx(styles.coinInputLine, styles.leftColumn)}>
         <input
           className={styles.input}
-          type='text'
-          inputMode='decimal'
-          pattern='^[0-9]*[.,]?[0-9]*$'
-          placeholder='0'
+          type="text"
+          inputMode="decimal"
+          pattern="^[0-9]*[.,]?[0-9]*$"
+          placeholder="0"
           minLength={1}
           value={value}
           disabled={loading}

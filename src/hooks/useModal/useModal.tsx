@@ -70,7 +70,16 @@ const useModal = (): [ReturnType, () => void, () => void] => {
                 closeModal();
               }}
             />
-            <div className={clsx(styles.modalWindow, className)}>
+            <div
+              style={{
+                boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+              }}
+              className={clsx(
+                "bg-white/20 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+                styles.modalWindow,
+                className
+              )}
+            >
               <div className={styles.modalHeading}>
                 <div className={clsx(styles.modalTitle, titleClassName)}>
                   {title}

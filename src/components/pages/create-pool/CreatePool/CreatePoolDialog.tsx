@@ -241,7 +241,11 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
           </div>
           <div className={styles.poolStability}>
             <div
+              style={{
+                boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+              }}
               className={clsx(
+                "bg-white/10 text-white backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
                 styles.poolStabilityButton,
                 !isStablePool && styles.poolStabilityButtonActive
               )}
@@ -258,7 +262,11 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
               <p>0.30% fee tier</p>
             </div>
             <button
+              style={{
+                boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+              }}
               className={clsx(
+                "bg-white/10 text-white backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
                 styles.poolStabilityButton,
                 isStablePool && styles.poolStabilityButtonActive
               )}

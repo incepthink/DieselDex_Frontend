@@ -18,14 +18,13 @@
   gap: 16px;
   padding: 16px;
   transform: translate(-50%, -50%);
-  background: white; /* modal-bg */
   width: 90%;
   margin: 0 auto;
   max-height: 80%;
   overflow: auto;
   border-radius: 12px;
   z-index: 11;
-  color: black;
+  color: white;
 }
 
 .modalHeading {
@@ -34,6 +33,7 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
+  color: #00EA82;
 }
 
 @media (min-width: 1024px) {

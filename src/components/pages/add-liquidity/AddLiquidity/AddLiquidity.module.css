@@ -32,7 +32,6 @@
   text-align: center;
   font-weight: 500;
   font-size: 20px;
-  color: black;
 }
 
 .section {
@@ -81,7 +80,6 @@
   flex-direction: column;
   gap: 10px;
   padding: 10px 12px;
-  background-color: #E6FDF3;
   color: var(--content-dimmed-light);
   border: 1px solid transparent;
   border-radius: 8px;
@@ -102,7 +100,6 @@
   color: var(--content-primary);
   border: 2px solid;
   border-color: #00EA82;
-  background-color: #E6FDF3;
 }
 
 .poolStabilityButtonDisabled {
@@ -150,7 +147,6 @@
   flex-direction: column;
   padding: 12px;
   border-radius: 12px;
-  background-color: #E6FDF3;
 }
 
 .inputsPreview {
@@ -269,7 +265,7 @@
 .priceWarning {
   font-size: 14px;
   line-height: 17px;
-  color: #ffb800;
+  color: #00EA82;
 }
 
 @media (min-width: 1024px) {

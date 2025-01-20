@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import PositionView from "@/components/pages/view-position-page/components/PositionView/PositionView";
 import LayoutWrapper from "@/components/common/LayoutWrapper";
 import Image from "next/image";
+import clsx from "clsx";
 
 const ViewPositionPageLayout = () => {
   const router = useRouter();
@@ -22,18 +23,16 @@ const ViewPositionPageLayout = () => {
     <>
       <LayoutWrapper>
         <div className="mt-16">
-          <div className="fixed top-0 bg-black text-black w-full h-screen">
-            <div className="absolute top-32" style={{ width: "1480px" }}>
-              <img src="/images/line.png" alt="" className="w-full" />
-            </div>
-            <div
-              className="absolute bottom-0 rotate-[135deg]"
-              style={{ width: "1800px" }}
-            >
-              <img src="/images/line.png" alt="" className="w-full" />
-            </div>
+          <div className="fixed top-0 bg-black text-black w-full lg:pt-24 pt-10">
             <main className={styles.viewPositionLayout}>
-              <div className="z-20 mt-16 bg-white rounded-xl shadow-md h-max-[550px] overflow-y-scroll p-6 overflow-x-hidden flex flex-col gap-6">
+              <div
+                style={{
+                  boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+                }}
+                className={clsx(
+                  "text-white bg-white/10 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100 z-20 mt-16 rounded-xl p-6 flex flex-col gap-6"
+                )}
+              >
                 <PositionView pool={poolId} />
               </div>
             </main>

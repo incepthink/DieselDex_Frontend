@@ -49,6 +49,8 @@
 
 .slippageButtonActive {
   border-color: #00F48D;
+  color: #00EA82;
+  background-color: rgba(255,255,255,0.1);
 }
 
 .slippageInput {
@@ -61,7 +63,7 @@
 }
 
 .slippageInput:focus {
-  color: var(--content-primary);
+  color: #00EA82;
   border-color: #00F48D;
 }
 

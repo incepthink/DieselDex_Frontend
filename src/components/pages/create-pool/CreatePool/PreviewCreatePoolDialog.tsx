@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import useCreatePool from "@/hooks/useCreatePool";
 import useAssetMetadata from "@/hooks/useAssetMetadata";
+import clsx from "clsx";
 
 type AssetsData = {
   assetId: string;
@@ -72,7 +73,15 @@ const PreviewCreatePoolDialog = ({ previewData }: Props) => {
             isStablePool={isStablePool}
           />
         </div>
-        <div className={styles.inputsPreview}>
+        <div
+          style={{
+            boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+          }}
+          className={clsx(
+            "bg-white/10 text-white backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+            styles.inputsPreview
+          )}
+        >
           <div className={styles.inputPreviewRow}>
             <Coin assetId={previewData.assets[0].assetId} />
             <p>{firstCoinAmount}</p>
@@ -81,8 +90,8 @@ const PreviewCreatePoolDialog = ({ previewData }: Props) => {
             <Coin assetId={previewData.assets[1].assetId} />
             <p>{secondCoinAmount}</p>
           </div>
-          <div className='border-t-2 flex justify-between pt-2 border-neutral-300 mt-2'>
-            <p className='font-bold'>Fee tier</p>
+          <div className="border-t-2 flex justify-between pt-2 border-neutral-300 mt-2">
+            <p className="font-bold">Fee tier</p>
             <p>{feeText}</p>
           </div>
         </div>

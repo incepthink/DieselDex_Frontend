@@ -28,7 +28,16 @@ const MobilePositions = ({ positions }: Props) => {
   }
 
   return (
-    <div className={clsx(styles.mobilePositions, "mobileOnly")}>
+    <div
+      style={{
+        boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+      }}
+      className={clsx(
+        " bg-white/10 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+        styles.mobilePositions,
+        "mobileOnly"
+      )}
+    >
       {positions.map((position, index) => {
         return (
           <Fragment key={createPoolKey(position.poolId)}>

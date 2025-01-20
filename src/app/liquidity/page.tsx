@@ -47,9 +47,51 @@ const Liquidity = () => {
   return (
     <LayoutWrapper>
       {/* <AuthLayout> */}
-      <div className="fixed top-0 bg-black w-full h-screen">
-        <Container>
-          <div className="flex flex-col justify-start items-start gap-10 rounded-xl p-4 lg:p-8 bg-white z-30 mt-16 lg:mt-20 h-[80%] lg:h-[82%] w-full overflow-y-scroll">
+      <div
+        className={clsx(
+          "bg-black w-full",
+          windowSize.width! < 1024 ? "pt-14" : "pt-24"
+        )}
+      >
+        <section className="w-full text-black mb-14">
+          <p className="text-xl mb-4">Current Price</p>
+          <div
+            className={clsx(
+              "flex justify-center items-center",
+              windowSize.width! > 1280
+                ? "flex-row gap-24"
+                : "flex-col gap-10 mt-6 mb-6"
+            )}
+          >
+            {data.map((item) => {
+              return (
+                <div
+                  style={{
+                    boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+                  }}
+                  className="p-8 text-white py-6 rounded-3xl bg-green-400/20 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100 flex gap-6 items-center"
+                >
+                  <div className="lg:w-14 w-10 lg:h-14 h-10 rounded-full overflow-hidden">
+                    <img
+                      src={item.image}
+                      className="w-full h-full object-cover"
+                      alt=""
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <p className="text-[#00EA82] font-medium">
+                      {item.name} Price
+                    </p>
+                    <p className="lg:text-2xl text-xl">${item.price}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        <Container className="max-h-screen">
+          <div className="flex flex-col justify-start items-start gap-10 text-white p-4 lg:p-8 z-30 mt-16 lg:mt-20 w-full">
             {/* <section className='flex flex-col justify-center items-center gap-2 bg-[#FAF8F1] px-4 py-4 lg:py-6 w-full'>
               <div className='flex justify-center items-center'>
                 <div className='p-2 rounded-full bg-[#E16B31] text-xl text-white cursor-pointer'>
@@ -62,38 +104,6 @@ const Liquidity = () => {
             </section> */}
 
             <Positions />
-
-            <section className="w-full text-black">
-              <p className="text-xl mb-4">Current Price</p>
-              <div
-                className={clsx(
-                  "flex justify-center items-center",
-                  windowSize.width! > 1280
-                    ? "flex-row gap-24"
-                    : "flex-col gap-10 mt-6 mb-6"
-                )}
-              >
-                {data.map((item) => {
-                  return (
-                    <div className="p-6 py-4 rounded-3xl border-2 border-[#00EA82] flex gap-6 backdrop-blur-3xl bg-green-100 items-center">
-                      <div className="lg:w-14 w-10 lg:h-14 h-10 rounded-full overflow-hidden">
-                        <img
-                          src={item.image}
-                          className="w-full h-full object-cover"
-                          alt=""
-                        />
-                      </div>
-                      <div className="flex flex-col gap-1">
-                        <p className="text-[#00EA82] font-medium">
-                          {item.name} Price
-                        </p>
-                        <p className="lg:text-2xl text-xl">${item.price}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
 
             <section className="w-full">
               <Pools />

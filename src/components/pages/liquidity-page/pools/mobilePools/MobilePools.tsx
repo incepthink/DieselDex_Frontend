@@ -15,7 +15,16 @@ const MobilePools = ({ poolsData }: Props) => {
   }
 
   return (
-    <div className={clsx(styles.mobilePools, "mobileOnly")}>
+    <div
+      style={{
+        boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+      }}
+      className={clsx(
+        " bg-white/10 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+        styles.mobilePools,
+        "mobileOnly"
+      )}
+    >
       {poolsData.map((poolData) => {
         if (!poolData) {
           return null;

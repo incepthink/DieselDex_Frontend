@@ -100,7 +100,7 @@ const RemoveLiquidityModalContent = ({
         </button>
       </div>
       <input
-        type='range'
+        type="range"
         className={styles.slider}
         min={0}
         max={100}
@@ -155,7 +155,7 @@ const RemoveLiquidityModalContent = ({
         >
           {buttonTitle}
         </ActionButton>
-        <ActionButton variant='outlined' onClick={closeModal}>
+        <ActionButton variant="outlined" onClick={closeModal}>
           Cancel
         </ActionButton>
       </div>

@@ -509,12 +509,12 @@ const SwapForm: React.FC = () => {
 
   return (
     <>
-      <div className="border border-black border-opacity-0 w-full p-4 lg:p-6 rounded-md h-full text-black">
+      <div className="border border-black border-opacity-0 w-full p-4 lg:p-6 rounded-md h-full text-white">
         <div className="flex items-center justify-between">
-          <p className="text-xl lg:text-xl font-semibold text-black">Swap</p>
+          <p className="text-xl lg:text-xl font-semibold ">Swap</p>
           <div className="flex justify-center items-center gap-4">
-            <div className="flex items-center gap-2 bg-black bg-opacity-10 rounded-lgf px-4 py-2">
-              <p className="text-sm font-medium text-black text-opacity-60">
+            <div className="flex items-center gap-2 bg-white bg-opacity-10 rounded-lgf px-4 py-2">
+              <p className="text-sm font-medium text-white text-opacity-60">
                 {slippage / 100}% slippage
               </p>
             </div>
@@ -525,7 +525,7 @@ const SwapForm: React.FC = () => {
         </div>
 
         <div className="space-y-4 mt-4">
-          <div className="rounded-lg p-1 lg:p-1 bg-[#E6FDF3]">
+          <div className="rounded-xl p-1 lg:p-1 bg-black backdrop-blur-2xl">
             <CurrencyBox
               value={sellValue}
               assetId={swapState.sell.assetId}
@@ -553,7 +553,7 @@ const SwapForm: React.FC = () => {
             <div className="h-[1px] w-full bg-[#E5E9EB]" />
           </div>
 
-          <div className="rounded-lg p-1 lg:p-1 bg-[#E6FDF3]">
+          <div className="rounded-lg p-1 lg:p-1 bg-black">
             <CurrencyBox
               value={buyValue}
               assetId={swapState.buy.assetId}

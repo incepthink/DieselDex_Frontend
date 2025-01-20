@@ -29,7 +29,19 @@ const Swap = () => {
             </section>
           </div> */}
 
-          <div className="z-20 mt-16 bg-white rounded-xl shadow-md w-full sm:w-auto">
+          <div
+            style={{ boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)" }}
+            className="relative z-20 mt-16 rounded-xl w-full sm:w-auto bg-white/20 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100"
+          >
+            {/* <div
+              className="absolute -z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 "
+              style={{
+                height: 1000,
+                width: 1000,
+                background:
+                  "radial-gradient(circle, rgba(0,234,128,1) 0%, rgba(2,0,36,0) 50%)",
+              }}
+            ></div> */}
             <SwapForm />
           </div>
         </Container>

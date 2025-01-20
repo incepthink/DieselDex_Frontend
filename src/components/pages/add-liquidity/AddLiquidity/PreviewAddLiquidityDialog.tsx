@@ -13,6 +13,7 @@ import useAssetMetadata from "@/hooks/useAssetMetadata";
 import axios from "axios";
 import { BackendUrl } from "@/utils/constants";
 import { QueryClient } from "@tanstack/react-query";
+import clsx from "clsx";
 
 type AssetsData = {
   assetId: string;
@@ -107,7 +108,15 @@ const PreviewAddLiquidityDialog = ({ previewData, setPreviewData }: Props) => {
             isStablePool={isStablePool}
           />
         </div>
-        <div className={styles.inputsPreview}>
+        <div
+          style={{
+            boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+          }}
+          className={clsx(
+            "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+            styles.inputsPreview
+          )}
+        >
           <div className={styles.inputPreviewRow}>
             <Coin assetId={assets[0].assetId} />
             <p>{firstAssetAmountString}</p>

@@ -18,7 +18,7 @@ import {
 const navItems = [
   { name: "Swap", href: "/swap" },
   { name: "Liquidity", href: "/liquidity" },
-  { name: "Points Program", href: "", disabled: true },
+  { name: "Rewards", href: "", disabled: true },
 ];
 
 const Header: React.FC = () => {

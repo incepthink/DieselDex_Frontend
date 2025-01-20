@@ -202,9 +202,19 @@ const PositionView = ({ pool }: Props) => {
             />
           </div>
         </div>
-        <div className={styles.miraBlock}>
+        <div
+          style={{
+            boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+          }}
+          className={clsx(
+            "bg-green-400/30 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+            styles.miraBlock
+          )}
+        >
           <div className={styles.miraLogo}>
-            <p className="text-3xl font-semibold -mt-4">DIESEL</p>
+            <p className="text-3xl font-semibold -mt-4 text-[#00EA82]">
+              DIESEL
+            </p>
           </div>
           <p className={styles.tokenDisplayValue}>
             {lpTokenDisplayValue} DSL-LP tokens
@@ -218,7 +228,16 @@ const PositionView = ({ pool }: Props) => {
         </div>
         <div className={styles.priceBlocks}>
           <p>Selected Price</p>
-          <div className={clsx(styles.priceBlock, styles.priceBlockTop)}>
+          <div
+            style={{
+              boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+            }}
+            className={clsx(
+              "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+              styles.priceBlock,
+              styles.priceBlockTop
+            )}
+          >
             <p className={styles.priceBlockTitle}>Current Price</p>
             <p
               className={clsx(
@@ -233,14 +252,30 @@ const PositionView = ({ pool }: Props) => {
             </p>
           </div>
           <div className={styles.bottomPriceBlocks}>
-            <div className={styles.priceBlock}>
+            <div
+              style={{
+                boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+              }}
+              className={clsx(
+                "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+                styles.priceBlock
+              )}
+            >
               <p className={styles.priceBlockTitle}>Low price</p>
               <p className={styles.priceBlockValue}>0</p>
               <p className={styles.priceBlockDescription}>
                 ${assetAMetadata.symbol} per {assetBMetadata.symbol}
               </p>
             </div>
-            <div className={styles.priceBlock}>
+            <div
+              style={{
+                boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+              }}
+              className={clsx(
+                "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+                styles.priceBlock
+              )}
+            >
               <p className={styles.priceBlockTitle}>High Price</p>
               <p className={styles.priceBlockValue}>∞</p>
               <p className={styles.priceBlockDescription}>
@@ -275,10 +310,18 @@ const PositionView = ({ pool }: Props) => {
           </ActionButton>
         </div>
         <div className={styles.topRow}>
-          <div className={styles.miraBlock}>
+          <div
+            style={{
+              boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+            }}
+            className={clsx(
+              "bg-green-400/30 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+              styles.miraBlock
+            )}
+          >
             <div className={styles.miraLogo}>
               {/* <LogoIcon /> */}
-              <p className="text-3xl font-bold">DIESEL</p>
+              <p className="text-3xl font-bold text-[#00EA82]">DIESEL</p>
             </div>
             <p className={styles.tokenDisplayValue}>
               {lpTokenDisplayValue} DSL-LP tokens
@@ -290,7 +333,15 @@ const PositionView = ({ pool }: Props) => {
               </IconButton>
             </p>
           </div>
-          <div className={styles.infoBlocks}>
+          <div
+            style={{
+              boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+            }}
+            className={clsx(
+              "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+              styles.infoBlocks
+            )}
+          >
             <div className={styles.infoBlock}>
               <p>Liquidity</p>
               <p>
@@ -314,7 +365,15 @@ const PositionView = ({ pool }: Props) => {
             </div>
           </div>
         </div>
-        <div className={styles.priceBlockLargeDesktop}>
+        <div
+          style={{
+            boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+          }}
+          className={clsx(
+            "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+            styles.priceBlockLargeDesktop
+          )}
+        >
           <p className="font-bold">Selected Price</p>
           <div className={styles.priceBlocksDesktop}>
             <div className={styles.priceBlockDesktop}>

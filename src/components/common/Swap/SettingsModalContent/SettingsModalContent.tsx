@@ -108,15 +108,15 @@ const SettingsModalContent = ({
         </div>
         {isCustomMode && (
           <input
-            type='text'
+            type="text"
             className={styles.slippageInput}
-            inputMode='decimal'
-            pattern='^[0-9]*[.,]?[0-9]*$'
+            inputMode="decimal"
+            pattern="^[0-9]*[.,]?[0-9]*$"
             value={inputValue}
             onChange={handleSlippageChange}
             onKeyDown={handleKeyDown}
             onBlur={handleInputBlur}
-            key='input'
+            key="input"
             ref={inputRef}
           />
         )}

@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 24px;
   width: 100%;
-  color: black;
+  color: white;
 }
 
 .positionsTitle {
@@ -18,7 +18,6 @@
   gap: 8px;
   border-radius: 16px;
   padding: 28px 16px;
-  background-color: #E6FDF3;
 }
 
 .positionsFallback img {

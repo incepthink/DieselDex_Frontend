@@ -246,7 +246,11 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
           </div>
           <div className={styles.poolStability}>
             <div
+              style={{
+                boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+              }}
               className={clsx(
+                "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
                 styles.poolStabilityButton,
                 !isStablePool && styles.poolStabilityButtonActive,
                 styles.poolStabilityButtonDisabled
@@ -264,7 +268,11 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
             </div>
 
             <div
+              style={{
+                boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+              }}
               className={clsx(
+                "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
                 styles.poolStabilityButton,
                 isStablePool && styles.poolStabilityButtonActive,
                 styles.poolStabilityButtonDisabled
