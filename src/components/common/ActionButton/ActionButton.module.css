@@ -24,7 +24,7 @@
 }
 
 .btn:active {
-  background-color: rgba(0, 244, 141, 0.8);
+  background-color: rgba(0, 244, 141, 0.4);
 }
 
 .btn.loading:hover {
@@ -68,6 +68,10 @@
 .outlined:hover {
   box-shadow: none;
   opacity: 0.8;
+}
+
+.outlinedWhite:active {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .fullWidth {
