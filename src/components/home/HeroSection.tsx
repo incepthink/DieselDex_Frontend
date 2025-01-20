@@ -40,7 +40,7 @@ const HeroSection = () => {
   const [data, setdata] = useState({
     tvlUSD: "n/a",
     vol: "n/a",
-    traders: 20,
+    trades: 20,
   });
 
   const getHomeData = async () => {
@@ -49,7 +49,7 @@ const HeroSection = () => {
     setdata({
       tvlUSD: res.data.totalTvlUsd,
       vol: res.data.totalVol,
-      traders: res.data.traders,
+      trades: res.data.trades,
     });
   };
 
@@ -135,9 +135,9 @@ const HeroSection = () => {
 
           <div className="bg-[#1C1C1C] p-16 lg:px-32 px-10 rounded-md flex flex-col gap-8 justify-center items-center">
             <p className="text-6xl font-semibold text-[#00F48D]">
-              {data.traders}
+              {data.trades}
             </p>
-            <p className="lg:text-3xl text-xl">TRADERS</p>
+            <p className="lg:text-3xl text-xl">TRADES</p>
           </div>
         </div>
 
