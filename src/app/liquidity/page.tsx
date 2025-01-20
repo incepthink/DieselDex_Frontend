@@ -10,6 +10,8 @@ import Positions from "@/components/pages/liquidity-page/Positions/Positions";
 import Pools from "@/components/pages/liquidity-page/pools/Pools";
 import AuthLayout from "./Layout";
 import axios from "axios";
+import useWindowSize from "@/hooks/useWindowSize";
+import clsx from "clsx";
 
 const Liquidity = () => {
   const [data, setData] = useState([
@@ -40,6 +42,8 @@ const Liquidity = () => {
     getPriceDefiLama();
   }, []);
 
+  const windowSize = useWindowSize();
+
   return (
     <LayoutWrapper>
       {/* <AuthLayout> */}
@@ -61,11 +65,18 @@ const Liquidity = () => {
 
             <section className="w-full text-black">
               <p className="text-xl mb-4">Current Price</p>
-              <div className="flex lg:flow-col flex-row  justify-center gap-24 items-center">
+              <div
+                className={clsx(
+                  "flex justify-center items-center",
+                  windowSize.width! > 1280
+                    ? "flex-row gap-24"
+                    : "flex-col gap-10 mt-6 mb-6"
+                )}
+              >
                 {data.map((item) => {
                   return (
-                    <div className="p-6 py-4 rounded-3xl border-2 border-[#00EA82] flex gap-6">
-                      <div className="w-14 h-14 rounded-full overflow-hidden">
+                    <div className="p-6 py-4 rounded-3xl border-2 border-[#00EA82] flex gap-6 backdrop-blur-3xl bg-green-100 items-center">
+                      <div className="lg:w-14 w-10 lg:h-14 h-10 rounded-full overflow-hidden">
                         <img
                           src={item.image}
                           className="w-full h-full object-cover"
@@ -76,7 +87,7 @@ const Liquidity = () => {
                         <p className="text-[#00EA82] font-medium">
                           {item.name} Price
                         </p>
-                        <p className="text-2xl">${item.price}</p>
+                        <p className="lg:text-2xl text-xl">${item.price}</p>
                       </div>
                     </div>
                   );

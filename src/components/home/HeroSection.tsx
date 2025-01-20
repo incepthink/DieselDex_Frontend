@@ -267,14 +267,18 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="flex lg:flow-col flex-row justify-between w-full pb-14">
-            <p>© 2025 www.dieseldex.com</p>
-            <div className="flex lg:flow-col flex-row items-center gap-14">
-              <p className="hover:text-[#00F48D] transition">
+          <div className="flex lg:flow-col flex-row justify-between w-full pb-14 text-center">
+            <p className="md:text-base text-sm">© 2025 www.dieseldex.com</p>
+            <div className="flex lg:flow-col flex-row items-center md:gap-14 gap-4">
+              <p className="hover:text-[#00F48D] transition md:text-base text-sm">
                 Terms of Service
               </p>
-              <p className="hover:text-[#00F48D] transition">Privacy Policy</p>
-              <p className="hover:text-[#00F48D] transition">Cookies</p>
+              <p className="hover:text-[#00F48D] transition md:text-base text-sm">
+                Privacy Policy
+              </p>
+              <p className="hover:text-[#00F48D] transition md:text-base text-sm">
+                Cookies
+              </p>
             </div>
           </div>
         </Container>

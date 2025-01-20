@@ -41,9 +41,6 @@ const Header: React.FC = () => {
                       key={item.name}
                       href={item.href}
                       className={`font-medium text-lg disabled opacity-80 bg-[#00F48D] text-black rounded-full p-2 px-4 hover:text-black`}
-                      onClick={() =>
-                        isMobileMenuOpen && setMobileMenuOpen(false)
-                      }
                     >
                       {item.name}
                     </Link>
@@ -119,7 +116,7 @@ const Header: React.FC = () => {
       </Container>
 
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 flex bg-black/50 backdrop-blur z-40">
+        <div className="fixed inset-0 flex bg-black/50 h-screen backdrop-blur z-40">
           <div className="relative w-3/4 h-full p-6 bg-black text-white drop-shadow-lg">
             <BrandLogo />
             <NavLinks className="mt-8" />

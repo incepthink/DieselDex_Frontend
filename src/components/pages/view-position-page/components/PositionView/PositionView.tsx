@@ -204,7 +204,7 @@ const PositionView = ({ pool }: Props) => {
         </div>
         <div className={styles.miraBlock}>
           <div className={styles.miraLogo}>
-            <LogoIcon />
+            <p className="text-3xl font-semibold -mt-4">DIESEL</p>
           </div>
           <p className={styles.tokenDisplayValue}>
             {lpTokenDisplayValue} DSL-LP tokens
