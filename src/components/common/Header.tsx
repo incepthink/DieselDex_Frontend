@@ -8,6 +8,12 @@ import { FaXTwitter } from "react-icons/fa6";
 import { IoClose, IoMenu } from "react-icons/io5";
 import Container from "./Container";
 import ConnectButton from "./ConnectButton/ConnectButton";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const navItems = [
   { name: "Swap", href: "/swap" },
@@ -28,14 +34,25 @@ const Header: React.FC = () => {
         {navItems.map((item) => {
           if (item.disabled) {
             return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`font-medium text-lg disabled opacity-80 bg-[#00F48D] text-black rounded-full p-2 px-4 hover:text-black`}
-                onClick={() => isMobileMenuOpen && setMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`font-medium text-lg disabled opacity-80 bg-[#00F48D] text-black rounded-full p-2 px-4 hover:text-black`}
+                      onClick={() =>
+                        isMobileMenuOpen && setMobileMenuOpen(false)
+                      }
+                    >
+                      {item.name}
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="mt-3">Coming Soon...</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             );
           }
           return (
