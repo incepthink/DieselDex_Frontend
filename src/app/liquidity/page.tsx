@@ -53,14 +53,13 @@ const Liquidity = () => {
           windowSize.width! < 1024 ? "pt-14" : "pt-24"
         )}
       >
-        <section className="w-full text-black mb-14">
-          <p className="text-xl mb-4">Current Price</p>
+        <section className="w-full text-black mb-14 pt-10">
           <div
             className={clsx(
               "flex justify-center items-center",
-              windowSize.width! > 1280
+              windowSize.width! > 1020
                 ? "flex-row gap-24"
-                : "flex-col gap-10 mt-6 mb-6"
+                : "flex-col gap-10 mt-6 mb-6 hidden"
             )}
           >
             {data.map((item) => {
