@@ -12,6 +12,7 @@ import ConnectButton from "./ConnectButton/ConnectButton";
 const navItems = [
   { name: "Swap", href: "/swap" },
   { name: "Liquidity", href: "/liquidity" },
+  { name: "Points Program", href: "", disabled: true },
 ];
 
 const Header: React.FC = () => {
@@ -24,20 +25,34 @@ const Header: React.FC = () => {
       className={`flex flex-col lg:flex-row justify-between lg:items-center gap-6 lg:gap-8 w-full ${className}`}
     >
       <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
-        {navItems.map((item) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            className={`font-medium text-lg ${
-              pathname === item.href
-                ? "text-[#00F48D]"
-                : "hover:text-[#00F48D] transition-all duration-300"
-            }`}
-            onClick={() => isMobileMenuOpen && setMobileMenuOpen(false)}
-          >
-            {item.name}
-          </Link>
-        ))}
+        {navItems.map((item) => {
+          if (item.disabled) {
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`font-medium text-lg disabled opacity-80 bg-[#00F48D] text-black rounded-full p-2 px-4 hover:text-black`}
+                onClick={() => isMobileMenuOpen && setMobileMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            );
+          }
+          return (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`font-medium text-lg ${
+                pathname === item.href
+                  ? "text-[#00F48D]"
+                  : "hover:text-[#00F48D] transition-all duration-300"
+              }`}
+              onClick={() => isMobileMenuOpen && setMobileMenuOpen(false)}
+            >
+              {item.name}
+            </Link>
+          );
+        })}
       </div>
 
       <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
