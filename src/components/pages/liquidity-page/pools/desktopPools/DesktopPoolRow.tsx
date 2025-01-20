@@ -61,7 +61,7 @@ export default function DesktopPoolRow({ poolData }: { poolData: PoolData }) {
       <td>{tvlValue}</td>
       <td className="pr-4">
         <Link href={`/liquidity/add?pool=${poolData.id}`}>
-          <ActionButton className={styles.addButton} variant="highlight">
+          <ActionButton className={styles.addButton} variant="outlined-white">
             Add Liquidity
           </ActionButton>
         </Link>

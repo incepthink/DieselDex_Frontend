@@ -28,10 +28,10 @@ const Swap = () => {
               <RecentTrades />
             </section>
           </div> */}
-
+          {/* inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100 */}
           <div
-            style={{ boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)" }}
-            className="relative z-20 mt-16 rounded-xl w-full sm:w-auto bg-white/20 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100"
+            //style={{ boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)" }}
+            className="relative z-20 mt-16 rounded-xl w-full sm:w-auto bg-white/20 backdrop-blur-2xl "
           >
             {/* <div
               className="absolute -z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 "

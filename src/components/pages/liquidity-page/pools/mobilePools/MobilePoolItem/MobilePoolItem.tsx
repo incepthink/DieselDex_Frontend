@@ -63,15 +63,15 @@ const MobilePoolItem = ({ poolData }: Props) => {
           isStablePool={isStablePool}
         />
         <div className={styles.infoBlocks}>
-          <InfoBlock title='APR' value={aprValue} type='positive' />
-          <InfoBlock title='Volume' value={volumeValue} />
-          <InfoBlock title='TVL' value={tvlValue} />
+          <InfoBlock title="APR" value={aprValue} type="positive" />
+          <InfoBlock title="Volume" value={volumeValue} />
+          <InfoBlock title="TVL" value={tvlValue} />
         </div>
         <p className={styles.poolDescription}>{poolDescription}</p>
-      </div>  
+      </div>
       <ActionButton
         className={styles.addButton}
-        variant='highlight'
+        variant="outlined-white"
         onClick={handleAddClick}
         fullWidth
       >

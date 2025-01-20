@@ -2,7 +2,13 @@ import styles from "./Loader.module.css";
 import { clsx } from "clsx";
 
 type Props = {
-  variant?: "primary" | "secondary" | "outlined" | "highlight" | "green";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "outlined"
+    | "highlight"
+    | "green"
+    | "outlined-white";
 };
 
 const Loader = ({ variant }: Props) => {

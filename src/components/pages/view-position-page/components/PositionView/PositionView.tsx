@@ -203,11 +203,12 @@ const PositionView = ({ pool }: Props) => {
           </div>
         </div>
         <div
-          style={{
-            boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-          }}
+          // style={{
+          //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+          // }}
+          // inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
           className={clsx(
-            "bg-green-400/30 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+            "bg-green-400/30 rounded-2xl overflow-hidden backdrop-blur-2xl ",
             styles.miraBlock
           )}
         >
@@ -229,11 +230,12 @@ const PositionView = ({ pool }: Props) => {
         <div className={styles.priceBlocks}>
           <p>Selected Price</p>
           <div
-            style={{
-              boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-            }}
+            // style={{
+            //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+            // }}
+            //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
             className={clsx(
-              "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+              "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl ",
               styles.priceBlock,
               styles.priceBlockTop
             )}
@@ -253,11 +255,12 @@ const PositionView = ({ pool }: Props) => {
           </div>
           <div className={styles.bottomPriceBlocks}>
             <div
-              style={{
-                boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-              }}
+              // style={{
+              //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+              // }}
+              //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
               className={clsx(
-                "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+                "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl ",
                 styles.priceBlock
               )}
             >
@@ -268,11 +271,12 @@ const PositionView = ({ pool }: Props) => {
               </p>
             </div>
             <div
-              style={{
-                boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-              }}
+              // style={{
+              //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+              // }}
+              //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
               className={clsx(
-                "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+                "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl ",
                 styles.priceBlock
               )}
             >
@@ -311,11 +315,12 @@ const PositionView = ({ pool }: Props) => {
         </div>
         <div className={styles.topRow}>
           <div
-            style={{
-              boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-            }}
+            // style={{
+            //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+            // }}
+            //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
             className={clsx(
-              "bg-green-400/30 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+              "bg-green-400/30 rounded-2xl overflow-hidden backdrop-blur-2xl ",
               styles.miraBlock
             )}
           >
@@ -334,11 +339,12 @@ const PositionView = ({ pool }: Props) => {
             </p>
           </div>
           <div
-            style={{
-              boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-            }}
+            // style={{
+            //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+            // }}
+            //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
             className={clsx(
-              "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+              "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl ",
               styles.infoBlocks
             )}
           >
@@ -366,11 +372,12 @@ const PositionView = ({ pool }: Props) => {
           </div>
         </div>
         <div
-          style={{
-            boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-          }}
+          // style={{
+          //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+          // }}
+          //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
           className={clsx(
-            "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+            "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl ",
             styles.priceBlockLargeDesktop
           )}
         >

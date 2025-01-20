@@ -53,7 +53,7 @@ const Liquidity = () => {
           windowSize.width! < 1024 ? "pt-14" : "pt-24"
         )}
       >
-        <section className="w-full text-black">
+        {/* <section className="w-full text-black">
           <div
             className={clsx(
               "flex justify-center items-center mb-14 pt-10",
@@ -87,7 +87,7 @@ const Liquidity = () => {
               );
             })}
           </div>
-        </section>
+        </section> */}
 
         <Container className="">
           <div className="flex flex-col justify-start items-start gap-10 text-white p-4 lg:p-8 z-30 mt-4 w-full">

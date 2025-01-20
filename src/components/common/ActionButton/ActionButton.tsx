@@ -10,7 +10,8 @@ type ButtonVariant =
   | "secondary"
   | "outlined"
   | "highlight"
-  | "green";
+  | "green"
+  | "outlined-white";
 
 type Props = {
   children: ReactNode;
@@ -56,6 +57,7 @@ const ActionButton = forwardRef<HTMLButtonElement, Props>(function ActionButton(
         variant === "outlined" && styles.outlined,
         variant === "highlight" && styles.highlight,
         variant === "green" && styles.green,
+        variant === "outlined-white" && styles.outlinedWhite,
         loading && styles.loading,
         completed && styles.completed,
         fullWidth && styles.fullWidth,

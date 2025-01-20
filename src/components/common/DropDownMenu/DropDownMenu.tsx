@@ -25,7 +25,11 @@ const DropDownMenu = forwardRef<HTMLUListElement, DropDownMenuProps>(
             styles.menuList
           )}
           style={{
-            transform: `${windowSize.width! > 1020 ? "translateY(20px)" : ""}`,
+            transform: `${
+              windowSize.width! > 1020
+                ? "translateY(20px) translateX(-10px)"
+                : ""
+            }`,
             boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
           }}
           ref={ref}

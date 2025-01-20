@@ -36,10 +36,11 @@ const AddLiquidityPageLayout = () => {
       <div className="fixed top-0 bg-black text-white w-full h-screen">
         <main className={styles.addLiquidityLayout} ref={mainRef}>
           <div
-            style={{
-              boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-            }}
-            className="z-20 mt-16 bg-white/10 overflow-hidden backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100 rounded-xl shadow-md p-4"
+            // style={{
+            //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+            // }}
+            //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
+            className="z-20 mt-16 bg-white/10 overflow-hidden backdrop-blur-2xl  rounded-xl shadow-md p-4"
           >
             <AddLiquidity poolId={poolId} />
           </div>

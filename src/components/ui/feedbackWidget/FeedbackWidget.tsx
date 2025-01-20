@@ -83,10 +83,10 @@ export default function FeedbackWidget() {
     <div
       style={{ zIndex: "100" }}
       className={clsx(
-        "fixed sm:right-20 sm:bottom-20 right-8 bottom-8 transition-all ease-out flex justify-center items-center text-black",
+        "fixed sm:right-20 sm:bottom-20 right-8 bottom-8 transition-all ease-out flex justify-center items-center",
         !isExpanded &&
-          "sm:w-24 sm:h-24 h-16 w-16 bg-[#00F48D] rounded-full cursor-pointer border-2",
-        isExpanded && "bg-white rounded-md"
+          "sm:w-28 sm:h-28 h-16 w-16 text-white rounded-full cursor-pointer border-2",
+        isExpanded && "bg-white rounded-md text-black"
       )}
       onClick={() => {
         isExpanded === false && setIsExpanded(true);
@@ -145,8 +145,8 @@ export default function FeedbackWidget() {
           </form>
         </div>
       ) : (
-        <p className="text-center font-semibold text-black sm:text-base text-xs -translate-y-0.5">
-          Feedback
+        <p className="text-center font-semibold text-white sm:text-base text-xs -translate-y-0.5">
+          Give us Feedback
         </p>
         // <div>
         //   <img src="/images/logo.png" alt="logo" />

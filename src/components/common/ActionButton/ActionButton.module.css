@@ -103,3 +103,16 @@
   background-color: rgba(0, 244, 141, 0.8);
   color: black;
 }
+
+.outlinedWhite {
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  box-shadow: none;
+  transition: opacity 0.2s;
+}
+
+.outlinedWhite:hover {
+  box-shadow: none;
+  opacity: 0.8;
+}

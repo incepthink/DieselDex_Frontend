@@ -9,6 +9,7 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    font-weight: 500;
   }
 
   .redText {

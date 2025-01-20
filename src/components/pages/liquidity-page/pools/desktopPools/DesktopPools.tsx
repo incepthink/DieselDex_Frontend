@@ -16,16 +16,17 @@ const DesktopPools = ({ poolsData }: Props) => {
 
   return (
     <table
-      style={{
-        boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-      }}
+      // style={{
+      //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+      // }}
+      //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
       className={clsx(
-        "bg-white/10 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+        "bg-white/10 backdrop-blur-2xl ",
         styles.desktopPools,
         "desktopOnly"
       )}
     >
-      <thead className="font-semibold text-[#00EA82] bg-green-400/10">
+      <thead className="font-semibold text-[#00EA82] bg-neutral-400/10">
         <tr>
           <th>POOLS</th>
           <th>APR</th>
@@ -33,7 +34,11 @@ const DesktopPools = ({ poolsData }: Props) => {
           <th>TVL</th>
           <th>
             <Link href="/liquidity/create-pool">
-              <ActionButton className={styles.createButton} fullWidth={false}>
+              <ActionButton
+                className={styles.createButton}
+                fullWidth={false}
+                variant="outlined"
+              >
                 Create Pool
               </ActionButton>
             </Link>

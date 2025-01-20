@@ -4,7 +4,7 @@
   border-radius: 12px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   max-width: 205px;
   box-sizing: border-box;
@@ -21,7 +21,7 @@
   cursor: pointer;
   color: var(--content-primary);
   display: flex;
-  align-items: center;
+  align-items: left;
   gap: 10px;
   padding: 8px 10px;
   width: 100%;
@@ -31,7 +31,7 @@
   border: none;
   background: none;
   display: flex;
-  align-items: center;
+  align-items: left;
   gap: 10px;
   padding: 8px 10px;
   width: 100%;

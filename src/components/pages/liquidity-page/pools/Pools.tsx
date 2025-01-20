@@ -25,6 +25,7 @@ const Pools = () => {
         <ActionButton
           className={clsx("mobileOnly", styles.createButton)}
           onClick={handleCreatePoolClick}
+          variant="outlined"
         >
           Create Pool
         </ActionButton>

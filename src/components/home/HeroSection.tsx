@@ -9,6 +9,7 @@ import { manrope, orbitron, roboto } from "@/app/fonts";
 import useWindowSize from "@/hooks/useWindowSize";
 import axios from "axios";
 import { BackendUrl } from "@/utils/constants";
+import clsx from "clsx";
 
 const mainData = [
   {
@@ -65,7 +66,7 @@ const HeroSection = () => {
             <section className="flex flex-col gap-4 lg:gap-16 w-full lg:w-1/2 mt-28 lg:mt-32">
               <div className="flex flex-col gap-2 lg:gap-4 w-full lg:w-[90%]">
                 <h1
-                  className={`${orbitron.variable} font-orbitron text-3xl lg:text-[80px] font-bold leading-none`}
+                  className={`${manrope.variable} font-manrope text-3xl lg:text-[80px] font-bold leading-none`}
                 >
                   The Best Trading Experience On
                   <span className="text-[#00F48D] lg:text-7xl text-3xl">
@@ -142,7 +143,9 @@ const HeroSection = () => {
         </div>
 
         <div className="w-full">
-          <h2 className="lg:text-4xl text-2xl font-orbitron font-semibold text-center mb-24">
+          <h2
+            className={`${manrope.variable} font-manrope lg:text-4xl text-2xl font-semibold text-center mb-24`}
+          >
             The best features for your{" "}
             <span className="text-[#00F48D] lg:text-4xl text-2xl">
               Trading Journey
@@ -153,7 +156,7 @@ const HeroSection = () => {
             return (
               <div className="w-full flex flex-col items-center justify-center gap-4 text-center mt-4">
                 <div>
-                  <p className="lg:text-4xl text-2xl font-semibold font-orbitron text-[#00F48D] mb-2">
+                  <p className="lg:text-4xl text-2xl font-semibold font-manrope text-[#00F48D] mb-2">
                     {title}
                   </p>
                   <p className="lg:text-xl text-base">{para}</p>
@@ -218,7 +221,7 @@ const HeroSection = () => {
         <div className="w-full bg-[#1C1C1C] p-16 rounded-3xl flex lg:flex-row flex-col justify-between">
           <div className="flex flex-col lg:gap-24 gap-12">
             <div className="flex flex-col gap-8">
-              <p className="lg:text-5xl text-3xl font-semibold font-orbitron">
+              <p className="lg:text-5xl text-3xl font-semibold font-manrope">
                 DIESEL{" "}
                 <span className="lg:text-5xl text-3xl text-[#00F48D]">
                   REWARDS
@@ -229,7 +232,7 @@ const HeroSection = () => {
                 interesting rewards.{" "}
               </p>
             </div>
-            <p className="text-[#00F48D] lg:text-5xl text-3xl font-semibold font-orbitron">
+            <p className="text-[#00F48D] lg:text-5xl text-3xl font-semibold font-manrope">
               Coming Soon...
             </p>
           </div>
@@ -255,7 +258,7 @@ const HeroSection = () => {
 
       <div className="bg-[#2D2D2D] w-full mt-24">
         <Container className="flex flex-col">
-          <div className="flex md:flex-row flex-col md:gap-24 gap-16 items-center md:p-24 p-4 md:py-24 py-14">
+          <div className="flex md:flex-row flex-col md:gap-24 gap-16 items-center md:p-16 p-4 md:py-16 py-14">
             <div>
               <div className="flex gap-4 items-center mb-8">
                 <div className="w-10 h-10 rounded-full overflow-hidden">
@@ -293,9 +296,15 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="flex lg:flow-col flex-row justify-between w-full pb-14 text-center">
-            <p className="md:text-base text-sm">© 2025 www.dieseldex.com</p>
-            <div className="flex lg:flow-col flex-row items-center md:gap-14 gap-4">
+          <div className="flex sm:flow-row flex-col items-center lg:gap-8 gap-8 justify-between w-full pb-14 text-center">
+            <div>
+              <p className="md:text-base text-sm">© 2025 www.dieseldex.com</p>
+            </div>
+            <div
+              className={clsx(
+                "flex lg:flow-row flex-row items-center md:gap-14 gap-4"
+              )}
+            >
               <p className="hover:text-[#00F48D] transition md:text-base text-sm">
                 Terms of Service
               </p>

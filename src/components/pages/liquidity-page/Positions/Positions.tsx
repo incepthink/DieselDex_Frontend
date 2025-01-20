@@ -55,7 +55,7 @@ const Positions = () => {
         //   : ""
       )}
     >
-      {windowSize.width! <= 1024 && (
+      {/* {windowSize.width! <= 1024 && (
         <section className="w-full text-black mb-10">
           <div
             className={clsx(
@@ -91,7 +91,7 @@ const Positions = () => {
             })}
           </div>
         </section>
-      )}
+      )} */}
 
       <p className={styles.positionsTitle}>Your Positions</p>
       {isLoading ? (
@@ -101,11 +101,12 @@ const Positions = () => {
         </div>
       ) : (data && data.length === 0) || !data ? (
         <div
-          style={{
-            boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-          }}
+          // style={{
+          //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+          // }}
+          // inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
           className={clsx(
-            "bg-white/10 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+            "bg-white/10 backdrop-blur-2xl ",
             styles.positionsFallback
           )}
         >

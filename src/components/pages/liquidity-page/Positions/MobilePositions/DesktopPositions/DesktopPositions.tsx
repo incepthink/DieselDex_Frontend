@@ -16,16 +16,17 @@ const DesktopPositions = ({ positions }: Props) => {
   return (
     <div className="rounded-xl border border-black border-opacity-20 shadow-sm overflow-auto lg:overflow-hidden">
       <table
-        style={{
-          boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-        }}
+        // style={{
+        //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+        // }}
+        //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
         className={clsx(
-          "bg-white/10 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
+          "bg-white/10 backdrop-blur-2xl ",
           styles.desktopPositions,
           "desktopOnly"
         )}
       >
-        <thead className="font-semibold text-[#00EA82] bg-green-400/10">
+        <thead className="font-semibold text-[#00EA82] bg-neutral-400/10">
           <tr className="border-0 text-start text-sm lg:text-base">
             <th className="font-semibold">POSITIONS</th>
             <th>SIZE</th>
