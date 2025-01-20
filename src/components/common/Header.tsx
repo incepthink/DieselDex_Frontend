@@ -70,9 +70,9 @@ const Header: React.FC = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-8">
-        <Link href="https://twitter.com/hash_case">
+        <a target="_blank" href="https://x.com/DieselDex_Fuel">
           <FaXTwitter className="text-white text-2xl hover:text-[#00F48D]" />
-        </Link>
+        </a>
 
         <ConnectButton className="text-black bg-white" />
       </div>
