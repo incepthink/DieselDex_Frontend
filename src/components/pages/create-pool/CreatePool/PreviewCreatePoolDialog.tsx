@@ -9,6 +9,8 @@ import { useCallback } from "react";
 import useCreatePool from "@/hooks/useCreatePool";
 import useAssetMetadata from "@/hooks/useAssetMetadata";
 import clsx from "clsx";
+import axios from "axios";
+import { BackendUrl } from "@/utils/constants";
 
 type AssetsData = {
   assetId: string;
@@ -54,6 +56,14 @@ const PreviewCreatePoolDialog = ({ previewData }: Props) => {
 
     if (data?.id) {
       openSuccessModal();
+      Promise.all([
+        axios.get(`${BackendUrl}/pools/`).catch((error) => {
+          console.error("Background pools fetch failed:", error);
+        }),
+      ]).catch((error) => {
+        // Handle any errors that might occur in Promise.all
+        console.error("Background tasks error:", error);
+      });
     }
   }, [createPool, openSuccessModal]);
 

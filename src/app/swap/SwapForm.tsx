@@ -611,7 +611,7 @@ const SwapForm: React.FC = () => {
           )}
 
           {!isConnected && (
-            <div className="w-96 flex justify-center">
+            <div className="sm:w-96 flex justify-center">
               <ActionButton
                 variant="green"
                 onClick={connect}

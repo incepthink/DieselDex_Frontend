@@ -91,12 +91,15 @@
   width: 100%;
   font-weight: 400;
   border-radius: 12px;
+  color: black;
 }
 
 .green:active {
   background-color: rgba(0, 244, 141, 0.8);
+  color: black;
 }
 
 .green:disabled {
   background-color: rgba(0, 244, 141, 0.8);
+  color: black;
 }
