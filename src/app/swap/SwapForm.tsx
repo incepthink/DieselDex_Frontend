@@ -76,16 +76,16 @@ function SwapRouteItem({ pool }: { pool: PoolId }) {
   return (
     <>
       <img
-        className="w-6 h-6 -mr-2"
+        className="w-4 h-4 -mr-1.5"
         src={firstAssetIcon || ""}
         alt={firstAssetMetadata.symbol}
       />
       <img
-        className="w-6 h-6 mr-2"
+        className="w-4 h-4 mr-2"
         src={secondAssetIcon || ""}
         alt={secondAssetMetadata.symbol}
       />
-      <p>({poolFeePercent}%)</p>
+      <p className="text-white/80">({poolFeePercent}%)</p>
     </>
   );
 }
@@ -533,6 +533,7 @@ const SwapForm: React.FC = () => {
               assetId={swapState.sell.assetId}
               mode="sell"
               balance={sellBalanceValue}
+              swapPending={swapPending}
               setAmount={setAmount("sell")}
               loading={inputPreviewLoading || swapPending}
               onCoinSelectorClick={handleCoinSelectorClick}
@@ -564,6 +565,7 @@ const SwapForm: React.FC = () => {
               balance={buyBalanceValue}
               setAmount={setAmount("buy")}
               loading={outputPreviewLoading || swapPending}
+              swapPending={swapPending}
               onCoinSelectorClick={handleCoinSelectorClick}
               usdRate={buyAssetPrice.price}
               previewError={
@@ -575,14 +577,14 @@ const SwapForm: React.FC = () => {
           </div>
 
           {swapPending && (
-            <div className="flex flex-col w-full gap-1 text-[#757575] text-sm lg:text-base">
+            <div className="flex flex-col w-full gap-2.5 text-[#757575] text-sm lg:text-base">
               <div className="flex justify-between items-center gap-4">
                 <p className="font-medium">Rate</p>
-                <p className="font-semibold">{exchangeRate}</p>
+                <p className="font-semibold text-white/80">{exchangeRate}</p>
               </div>
               <div className="flex justify-between items-center gap-4">
                 <p className="font-medium">Order Routing</p>
-                <div className="">
+                <div className="flex items-center gap-2">
                   {previewData?.pools.map((pool, index) => {
                     const poolKey = createPoolKey(pool);
 
@@ -592,7 +594,9 @@ const SwapForm: React.FC = () => {
                         key={poolKey}
                       >
                         <SwapRouteItem pool={pool} />
-                        {index !== previewData.pools.length - 1 && "+"}
+                        {index !== previewData.pools.length - 1 && (
+                          <p className="ml-2 text-white/80">+</p>
+                        )}
                       </div>
                     );
                   })}
@@ -600,13 +604,15 @@ const SwapForm: React.FC = () => {
               </div>
               <div className="flex justify-between items-center gap-4">
                 <p className="font-medium">Estimated Fees</p>
-                <p className="font-semibold">
+                <p className="font-semibold text-white/80">
                   {feeValue} {sellMetadata.symbol}
                 </p>
               </div>
               <div className="flex justify-between items-center gap-4">
                 <p className="font-medium">Network Cost</p>
-                <p className="font-semibold">{txCost?.toFixed(9)} ETH</p>
+                <p className="font-semibold text-white/80">
+                  {txCost?.toFixed(9)} ETH
+                </p>
               </div>
             </div>
           )}

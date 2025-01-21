@@ -22,6 +22,7 @@ type Props = {
   onCoinSelectorClick: (mode: CurrencyBoxMode) => void;
   usdRate: number | null;
   previewError?: Error | null;
+  swapPending: boolean;
 };
 
 const CurrencyBox = ({
@@ -34,6 +35,7 @@ const CurrencyBox = ({
   onCoinSelectorClick,
   usdRate,
   previewError,
+  swapPending,
 }: Props) => {
   const metadata = useAssetMetadata(assetId);
   const balanceValue = balance.formatUnits(metadata.decimals || 0);
@@ -100,7 +102,12 @@ const CurrencyBox = ({
         ) : (
           <>
             <input
-              className={clsx(loading && "opacity-0", styles.input)}
+              style={{ opacity: `${swapPending && "1"}` }}
+              className={clsx(
+                swapPending && "!opacity-1",
+                loading && "opacity-0",
+                styles.input
+              )}
               type="text"
               inputMode="decimal"
               pattern="^[0-9]*[.,]?[0-9]*$"
@@ -111,9 +118,9 @@ const CurrencyBox = ({
               onChange={handleChange}
             />
             <div
-              className={`absolute w-8 h-8 ${!loading && "hidden"} ${
-                mode === "sell" ? "left-4" : "left-10"
-              }`}
+              className={`absolute w-8 h-8 ${
+                (!loading || swapPending) && "hidden"
+              } ${mode === "sell" ? "left-4" : "left-10"}`}
             >
               <img
                 src="/images/loading.gif"
