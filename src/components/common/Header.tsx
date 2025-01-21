@@ -9,11 +9,10 @@ import { IoClose, IoMenu } from "react-icons/io5";
 import Container from "./Container";
 import ConnectButton from "./ConnectButton/ConnectButton";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const navItems = [
   { name: "Swap", href: "/swap/" },
@@ -30,26 +29,35 @@ const Header: React.FC = () => {
     <nav
       className={`flex flex-col lg:flex-row justify-between lg:items-center gap-6 lg:gap-8 w-full ${className}`}
     >
-      <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-16">
+      <div className="flex flex-col items-start lg:flex-row lg:items-center gap-6 lg:gap-16">
         {navItems.map((item) => {
           if (item.disabled) {
             return (
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className={`font-medium text-lg `}
-                    >
-                      {item.name}
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-green-400/50">
-                    <p className="py-2">Coming Soon...</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <Popover>
+                <PopoverTrigger>
+                  <p
+                    key={item.name}
+                    className={` justify-self-start font-medium text-lg `}
+                  >
+                    {item.name}
+                  </p>
+                </PopoverTrigger>
+                <PopoverContent className="-translate-y-[52px] translate-x-[115px] lg:translate-y-[4px] lg:translate-x-[0px] relative bg-white/50 border-none flex justify-center items-center w-fit">
+                  <div
+                    className=" absolute -left-2 lg:left-[62px] lg:-top-[18px] w-0 h-0 
+  lg:border-l-[10px] lg:border-l-transparent
+  lg:border-b-[8px] lg:border-b-white/50
+  lgborder-r-[10px] lg:border-r-transparent
+  
+  border-t-[10px] border-t-transparent
+  border-r-[8px] border-r-white/50
+  border-b-[10px] border-b-transparent"
+                  ></div>
+                  <p className=" py-2 text-white font-semibold">
+                    Coming Soon...
+                  </p>
+                </PopoverContent>
+              </Popover>
             );
           }
           return (
@@ -69,14 +77,16 @@ const Header: React.FC = () => {
         })}
       </div>
 
-      <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
-        <a target="_blank" href="https://x.com/DieselDex_Fuel">
-          <FaXTwitter className="text-white text-2xl hover:text-[#00F48D]" />
-        </a>
+      <div className="flex lg:flex-row flex-col lg:items-center gap-6 lg:gap-10">
+        <div className="flex gap-6 items-center">
+          <a target="_blank" href="https://x.com/DieselDex_Fuel">
+            <FaXTwitter className="text-white text-2xl hover:text-[#00F48D]" />
+          </a>
 
-        <a target="_blank" href="https://t.me/+TWXU1oStbYphMTll">
-          <FaTelegram className="text-white text-2xl hover:text-[#00F48D]" />
-        </a>
+          <a target="_blank" href="https://t.me/+TWXU1oStbYphMTll">
+            <FaTelegram className="text-white text-2xl hover:text-[#00F48D]" />
+          </a>
+        </div>
 
         <ConnectButton className="text-black bg-white" />
       </div>

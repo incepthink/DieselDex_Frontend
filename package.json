@@ -11,6 +11,7 @@
   "dependencies": {
     "@fuels/connectors": "^0.36.1",
     "@fuels/react": "^0.28.2-preview-e63f612950627980c2b9782d9a731752c639ac3d",
+    "@radix-ui/react-popover": "^1.1.4",
     "@radix-ui/react-tooltip": "^1.1.6",
     "axios": "^1.7.9",
     "chart.js": "^4.4.7",

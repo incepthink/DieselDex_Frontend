@@ -152,23 +152,30 @@ const ConnectButton = ({ className }: Props) => {
     setHistoryOpened(false);
   };
 
-  const menuButtons = useMemo(() => {
-    return DropDownButtons.map((button) => {
-      return {
-        ...button,
-        onClick:
-          button.text === "Disconnect"
-            ? handleDisconnect
-            : button.text === "Transaction History"
-            ? handleHistoryOpen
-            : button.text === "Copy Address"
-            ? handleCopy
-            : button.text === "View in Explorer"
-            ? handleExplorerClick
-            : button.onClick,
-      };
-    });
-  }, [handleDisconnect, handleCopy, handleExplorerClick]);
+  // const menuButtons = useMemo(() => {
+  //   return DropDownButtons.map((button) => {
+  //     return {
+  //       ...button,
+  //       onClick:
+  //         button.text === "Disconnect"
+  //           ? handleDisconnect
+  //           : button.text === "Transaction History"
+  //           ? handleHistoryOpen
+  //           : button.text === "Copy Address"
+  //           ? handleCopy
+  //           : button.text === "View in Explorer"
+  //           ? handleExplorerClick
+  //           : button.onClick,
+  //     };
+  //   });
+  // }, [handleDisconnect, handleCopy, handleExplorerClick]);
+
+  const menuButtons = [
+    { text: "View in Explorer", onClick: handleExplorerClick },
+    { text: "Copy Address", onClick: handleCopy },
+    { text: "Transaction History", onClick: handleHistoryOpen },
+    { text: "Disconnect", onClick: handleDisconnect },
+  ];
 
   useEffect(() => {
     if (isHistoryOpened) {
@@ -182,23 +189,50 @@ const ConnectButton = ({ className }: Props) => {
 
   return (
     <>
-      <ActionButton
-        className={clsx(className, isConnected && styles.connected)}
-        onClick={handleClick}
-        loading={loading}
-        ref={buttonRef}
-      >
-        {isConnected && <img src="/images/avatar.png" width="24" height="24" />}
-        {title}
-        {isConnected && (!isMenuOpened ? <ArrowDownIcon /> : <ArrowUpIcon />)}
-      </ActionButton>
-      {isMenuOpened && (
-        <DropDownMenu
-          windowSize={windowSize}
-          buttons={menuButtons}
-          ref={menuRef}
-        />
-      )}
+      <div className="relative">
+        <ActionButton
+          className={clsx(className, isConnected && styles.connected)}
+          onClick={handleClick}
+          loading={loading}
+          ref={buttonRef}
+        >
+          {isConnected && (
+            <img src="/images/avatar.png" width="24" height="24" />
+          )}
+          {title}
+          {isConnected && (!isMenuOpened ? <ArrowDownIcon /> : <ArrowUpIcon />)}
+        </ActionButton>
+        {isMenuOpened && (
+          // <DropDownMenu
+          //   windowSize={windowSize}
+          //   buttons={menuButtons}
+          //   ref={menuRef}
+          // />
+          <div className="bg-white/10 backdrop-blur-2xl w-[195.45px] absolute">
+            <ul
+              className={clsx(
+                "bg-white/10 backdrop-blur-2xl p-2 flex flex-col gap-1",
+                styles.menuList
+              )}
+            >
+              {menuButtons.map((button) => (
+                <li key={button.text}>
+                  <button
+                    className={styles.menuButton}
+                    onClick={button.onClick}
+                  >
+                    {/* <button.icon /> */}
+                    <span>{button.text}</span>
+                    {/* {button.disabled && button.tooltip && (
+                  <div className={styles.tooltip}>{button.tooltip}</div>
+                )} */}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
       <TransactionsHistory
         onClose={handleHistoryClose}
         isOpened={isHistoryOpened}

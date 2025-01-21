@@ -19,8 +19,6 @@ const DropDownMenu = forwardRef<HTMLUListElement, DropDownMenuProps>(
   function DropDownMenu({ buttons, children, windowSize }, ref) {
     return (
       <>
-        inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring
-        inset-ring-white/100
         <ul
           className={clsx("bg-white/10 backdrop-blur-2xl ", styles.menuList)}
           style={{

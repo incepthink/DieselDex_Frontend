@@ -83,31 +83,31 @@ export default function FeedbackWidget() {
     <div
       style={{ zIndex: "100" }}
       className={clsx(
-        "fixed sm:right-20 sm:bottom-20 right-8 bottom-8 transition-all ease-out flex justify-center items-center",
+        "fixed sm:right-20 sm:bottom-20 right-8 bottom-8  ease-out flex justify-center items-center",
         !isExpanded &&
-          "sm:w-28 sm:h-28 h-16 w-16 text-white rounded-full cursor-pointer border-2",
-        isExpanded && "bg-white rounded-md text-black"
+          "sm:w-28 sm:h-28 h-16 w-16  rounded-full cursor-pointer border-2",
+        isExpanded && "bg-white/70 rounded-md text-black"
       )}
       onClick={() => {
         isExpanded === false && setIsExpanded(true);
       }}
     >
       {isExpanded ? (
-        <div className="p-3 border-2 border-[#00F48D] rounded-md shadow-2xl relative">
+        <div className="p-3 rounded-md shadow-2xl relative">
           {shownstatus !== "" && (
             <div className="absolute -translate-y-3 -translate-x-3 rounded-md w-full h-full bg-white flex items-center justify-center">
               <p className="text-xl font-semibold text-center">{shownstatus}</p>
             </div>
           )}
           <div className="flex justify-between items-center mb-4">
-            <p className="font-semibold sm:text-2xl text-xl">Feedback</p>
+            <p className="font-medium sm:text-2xl text-xl">Feedback</p>
             <button
               className="bg-[#00F48D] rounded-full p-1"
               onClick={() => {
                 isExpanded === true && setIsExpanded(false);
               }}
             >
-              <IoMdClose color="white" className="  text-xl" />
+              <IoMdClose color="black" className="  text-xl" />
             </button>
           </div>
 
@@ -137,7 +137,7 @@ export default function FeedbackWidget() {
             ></textarea>
             <button
               type="submit"
-              className="bg-[#00F48D] text-black py-2 px-4 rounded-sm disabled:opacity-85 sm:text-xl text-lg font-semibold"
+              className="bg-[#00F48D] text-black py-2 px-4 rounded-sm disabled:opacity-85 sm:text-xl text-lg"
               disabled={loading}
             >
               {loading ? "Loading.." : "Submit"}
