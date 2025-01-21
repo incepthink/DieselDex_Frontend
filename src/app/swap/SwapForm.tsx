@@ -515,7 +515,10 @@ const SwapForm: React.FC = () => {
         <div className="flex items-center justify-between">
           <p className="text-xl lg:text-xl font-semibold ">Swap</p>
           <div className="flex justify-center items-center gap-4">
-            <div className="flex items-center gap-2 bg-white bg-opacity-10 rounded-lg px-4 py-2">
+            <div
+              onClick={openSettingsModal}
+              className="cursor-pointer flex items-center gap-2 bg-white bg-opacity-10 rounded-lg px-4 py-2"
+            >
               <p className="text-sm font-medium text-white text-opacity-60">
                 {slippage / 100}% slippage
               </p>
