@@ -208,7 +208,7 @@ const ConnectButton = ({ className }: Props) => {
           //   buttons={menuButtons}
           //   ref={menuRef}
           // />
-          <div className="bg-white/10 backdrop-blur-2xl w-[195.45px] absolute">
+          <div className="bg-white/10 backdrop-blur-2xl w-[195.45px] absolute rounded-sm mt-2 transition ease-out overflow-hidden">
             <ul
               className={clsx(
                 "bg-white/10 backdrop-blur-2xl p-2 flex flex-col gap-1",
