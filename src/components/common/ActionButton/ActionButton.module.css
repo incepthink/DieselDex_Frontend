@@ -44,7 +44,7 @@
 .secondary {
   border: none;
   background: var(--accent-dimmed);
-  color: var(--accent-primary);
+  color: #00F48D;
   box-shadow: none;
 }
 
