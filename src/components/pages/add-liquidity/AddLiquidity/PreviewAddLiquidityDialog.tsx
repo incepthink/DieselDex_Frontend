@@ -180,7 +180,11 @@ const PreviewAddLiquidityDialog = ({ previewData, setPreviewData }: Props) => {
           </p>
         </div>
       </div> */}
-      <ActionButton loading={isPending} onClick={handleAddLiquidity}>
+      <ActionButton
+        variant="green"
+        loading={isPending}
+        onClick={handleAddLiquidity}
+      >
         Add Liquidity
       </ActionButton>
       <SuccessModal title={<></>} onClose={redirectToLiquidity}>

@@ -34,7 +34,7 @@ const Info = ({ tooltipText, tooltipKey }: Props) => {
       }}
     >
       <div
-        className="invisible group-hover:visible opacity-0 group-hover:opacity-100 w-32 leading-tight text-left transition bg-green-600 text-white p-1 text-xs rounded absolute bottom-full mt-2"
+        className="invisible group-hover:visible opacity-0 group-hover:opacity-100 w-32 leading-tight text-justify transition bg-green-600 text-white p-1 text-sm rounded absolute bottom-full mt-2"
         id={tooltipId}
         ref={tooltipRef}
       >

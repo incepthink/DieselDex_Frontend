@@ -13,6 +13,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import ActionButton from "./ActionButton/ActionButton";
 
 const navItems = [
   { name: "Swap", href: "/swap/" },
@@ -69,7 +70,13 @@ const Header: React.FC = () => {
           </a>
         </div>
 
-        <ConnectButton className="text-black bg-white" />
+        {pathname === "/" ? (
+          <ActionButton variant="green" onClick={() => console.log("h")}>
+            Trade Now
+          </ActionButton>
+        ) : (
+          <ConnectButton className="text-black bg-white" />
+        )}
       </div>
     </nav>
   );

@@ -223,12 +223,8 @@
   align-items: center;
   padding: 12px;
   border-radius: 10px;
-  background: linear-gradient(
-    97.15deg,
-    #5872fc -1.13%,
-    #6142ba 56.75%,
-    #c41cff 135.82%
-  );
+  background-image: linear-gradient(to right, #08f48d 0%, #38f9d7 100%);
+  color: black;
 }
 
 .sparkleIcon {

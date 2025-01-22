@@ -206,15 +206,16 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
   let buttonTitle = "Preview";
   if (!isValidNetwork) {
     buttonTitle = "Incorrect network";
-  } else if (!sufficientEthBalance) {
-    buttonTitle = "Bridge more ETH to pay for gas";
   } else if (insufficientBalance) {
     buttonTitle = "Insufficient balance";
+  } else if (!sufficientEthBalance) {
+    buttonTitle = "Bridge more ETH to pay for gas";
   }
 
   const oneOfAmountsIsEmpty = firstAmount.eq(0) || secondAmount.eq(0);
 
-  const buttonDisabled = !isValidNetwork || oneOfAmountsIsEmpty;
+  const buttonDisabled =
+    !isValidNetwork || oneOfAmountsIsEmpty || insufficientBalance;
 
   const { price: asset0Price } = useAssetPrice(poolId[0].bits);
   const { price: asset1Price } = useAssetPrice(poolId[1].bits);
@@ -250,7 +251,7 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
               // }}
               //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
               className={clsx(
-                "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl ",
+                "bg-white/10 rounded-2xl backdrop-blur-2xl ",
                 styles.poolStabilityButton,
                 !isStablePool && styles.poolStabilityButtonActive,
                 styles.poolStabilityButtonDisabled
@@ -273,7 +274,7 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
               // }}
               //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
               className={clsx(
-                "bg-white/10 rounded-2xl overflow-hidden backdrop-blur-2xl ",
+                "bg-white/10 rounded-2xl backdrop-blur-2xl ",
                 styles.poolStabilityButton,
                 isStablePool && styles.poolStabilityButtonActive,
                 styles.poolStabilityButtonDisabled

@@ -60,14 +60,14 @@
 .outlined {
   border: 1px solid #00F48D;
   background: transparent;
-  color: #00F48D;
+  color: rgb(0, 244, 141);
   box-shadow: none;
   transition: opacity 0.2s;
 }
 
 .outlined:hover {
   box-shadow: none;
-  opacity: 0.8;
+  background-color: rgba(0, 244, 141, 0.1);
 }
 
 .outlinedWhite:active {
@@ -93,7 +93,8 @@
 
 .green {
   width: 100%;
-  font-weight: 400;
+  background-image: linear-gradient(to right, #08f48d 0%, #38f9d7 100%);
+font-weight: 600;
   border-radius: 12px;
   color: black;
 }
@@ -104,7 +105,7 @@
 }
 
 .green:disabled {
-  background-color: rgba(0, 244, 141, 0.8);
+  opacity: 0.8;
   color: black;
 }
 
@@ -118,5 +119,5 @@
 
 .outlinedWhite:hover {
   box-shadow: none;
-  opacity: 0.8;
+  background-color: rgba(255,255,255,0.1);
 }

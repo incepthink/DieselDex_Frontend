@@ -83,9 +83,9 @@ export default function FeedbackWidget() {
     <div
       style={{ zIndex: "100" }}
       className={clsx(
-        "fixed sm:right-20 sm:bottom-20 right-8 bottom-8  ease-out flex justify-center items-center",
+        "fixed lg:right-20 lg:bottom-20 right-6 bottom-6  ease-out flex justify-center items-center",
         !isExpanded &&
-          "sm:w-28 sm:h-28 h-16 w-16  rounded-full cursor-pointer border-2",
+          "lg:w-28 lg:h-28 h-16 w-16  rounded-full cursor-pointer border-2",
         isExpanded && "bg-white/70 rounded-md text-black"
       )}
       onClick={() => {
@@ -145,9 +145,14 @@ export default function FeedbackWidget() {
           </form>
         </div>
       ) : (
-        <p className="text-center font-semibold text-white sm:text-base text-xs -translate-y-0.5">
-          Give us Feedback
-        </p>
+        <>
+          <p className="text-center font-semibold text-white lg:text-base hidden lg:block text-xs -translate-y-0.5">
+            Give us Feedback
+          </p>
+          <p className="text-center font-semibold text-white text-xs lg:hidden -translate-y-0.5">
+            Feedback
+          </p>
+        </>
         // <div>
         //   <img src="/images/logo.png" alt="logo" />
         // </div>

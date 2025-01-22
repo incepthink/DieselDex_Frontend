@@ -26,6 +26,7 @@ import SparkleIcon from "@/components/icons/Sparkle/SparkleIcon";
 import Link from "next/link";
 import useExchangeRateV2 from "@/hooks/useExchangeRate/useExchangeRateV2";
 import ExchangeIcon from "@/components/icons/Exchange/ExchangeIcon";
+import { FuelAppUrl } from "@/utils/constants";
 
 type Props = {
   setPreviewData: Dispatch<SetStateAction<CreatePoolPreviewData | null>>;
@@ -105,11 +106,9 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
   });
   const sufficientEthBalance =
     sufficientEthBalanceForFirstCoin && sufficientEthBalanceForSecondCoin;
-
-  const faucetLink = useFaucetLink();
   const handleButtonClick = useCallback(() => {
     if (!sufficientEthBalance) {
-      openNewTab(faucetLink);
+      openNewTab(`${FuelAppUrl}/bridge?from=eth&to=fuel&auto_close=true&=true`);
       return;
     }
 
@@ -138,7 +137,6 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
     secondAssetId,
     secondAmount,
     isStablePool,
-    faucetLink,
   ]);
 
   const isValidNetwork = useCheckActiveNetwork();
@@ -166,12 +164,11 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
     buttonTitle = "Choose assets";
   } else if (insufficientBalance) {
     buttonTitle = "Insufficient balance";
-  } else if (!sufficientEthBalance) {
-    buttonTitle = "Claim some ETH to pay for gas";
   } else if (oneOfAmountsIsEmpty) {
     buttonTitle = "Enter asset amounts";
+  } else if (!sufficientEthBalance) {
+    buttonTitle = "Bridge more ETH to pay for gas";
   }
-
   const buttonDisabled =
     !isValidNetwork ||
     poolExists ||

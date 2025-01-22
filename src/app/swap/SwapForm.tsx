@@ -431,7 +431,7 @@ const SwapForm: React.FC = () => {
     const insufficientSellBalance = sellBalanceValue.lt(
       bn.parseUnits(sellValue, sellMetadata.decimals || 0)
     );
-    showInsufficientBalance = insufficientSellBalance && sufficientEthBalance;
+    showInsufficientBalance = insufficientSellBalance;
   } catch (e) {
     console.log(e);
   }
@@ -441,10 +441,10 @@ const SwapForm: React.FC = () => {
     swapButtonTitle = "Incorrect network";
   } else if (swapPending) {
     swapButtonTitle = "Waiting for approval in wallet";
-  } else if (!sufficientEthBalance) {
-    swapButtonTitle = "Bridge more ETH to pay for gas";
   } else if (showInsufficientBalance) {
     swapButtonTitle = "Insufficient balance";
+  } else if (!sufficientEthBalance) {
+    swapButtonTitle = "Bridge more ETH to pay for gas";
   }
 
   const swapDisabled =

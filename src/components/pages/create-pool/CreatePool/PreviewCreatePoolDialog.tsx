@@ -158,6 +158,7 @@ const PreviewCreatePoolDialog = ({ previewData }: Props) => {
       <ActionButton
         loading={isPoolCreationPending}
         onClick={handleCreateLiquidity}
+        variant="green"
       >
         Create pool
       </ActionButton>
