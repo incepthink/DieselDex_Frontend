@@ -71,9 +71,11 @@ const Header: React.FC = () => {
         </div>
 
         {pathname === "/" ? (
-          <ActionButton variant="green" onClick={() => console.log("h")}>
-            Trade Now
-          </ActionButton>
+          <Link href={"/swap/"}>
+            <ActionButton variant="green" onClick={() => console.log("h")}>
+              Trade Now
+            </ActionButton>
+          </Link>
         ) : (
           <ConnectButton className="text-black bg-white" />
         )}
