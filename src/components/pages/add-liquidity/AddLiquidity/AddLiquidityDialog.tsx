@@ -312,11 +312,7 @@ const AddLiquidityDialog = ({ poolId, setPreviewData }: Props) => {
         </div>
       </div>
       {!isConnected ? (
-        <ActionButton
-          variant="secondary"
-          onClick={connect}
-          loading={isConnecting}
-        >
+        <ActionButton variant="green" onClick={connect} loading={isConnecting}>
           Connect Wallet
         </ActionButton>
       ) : (

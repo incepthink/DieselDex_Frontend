@@ -332,11 +332,7 @@ const CreatePoolDialog = ({ setPreviewData }: Props) => {
         </div>
       )}
       {!isConnected ? (
-        <ActionButton
-          variant="secondary"
-          onClick={connect}
-          loading={isConnecting}
-        >
+        <ActionButton variant="green" onClick={connect} loading={isConnecting}>
           Connect Wallet
         </ActionButton>
       ) : (

@@ -85,7 +85,7 @@ export default function FeedbackWidget() {
       className={clsx(
         "fixed lg:right-20 lg:bottom-20 right-6 bottom-6  ease-out flex justify-center items-center",
         !isExpanded &&
-          "lg:w-28 lg:h-28 h-16 w-16  rounded-full cursor-pointer border-2",
+          "lg:w-28 lg:h-28 h-16 w-16 border-white/40  rounded-full cursor-pointer border-2",
         isExpanded && "bg-white/70 rounded-md text-black"
       )}
       onClick={() => {

@@ -195,6 +195,7 @@ const ConnectButton = ({ className }: Props) => {
           onClick={handleClick}
           loading={loading}
           ref={buttonRef}
+          variant={`${!isConnected ? "green" : "outlined-white"}`}
         >
           {isConnected && (
             <img src="/images/avatar.png" width="24" height="24" />

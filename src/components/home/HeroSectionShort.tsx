@@ -38,7 +38,7 @@ const HeroSectionShort = () => {
     <div className="w-full h-full">
       <div className="relative">
         <Container className="h-full">
-          <div className="relative flex flex-col lg:flex-row justify-start lg:justify-between items-center gap-4 lg:gap-0 w-full h-screen">
+          <div className="relative flex flex-col justify-evenly pt-0 lg:pt-52 w-full h-screen">
             <section className="flex flex-col gap-4 lg:gap-14 w-full lg:w-1/2 mt-28 lg:-mt-28">
               <div className="flex flex-col gap-2 lg:gap-4 w-full lg:w-[90%]">
                 <h1
@@ -61,7 +61,7 @@ const HeroSectionShort = () => {
                 //   className="flex justify-center items-center gap-2 px-6 py-2 lg:py-3 font-semibold rounded bg-[#00F48D] text-black"
                 variant="green"
                 fullWidth={false}
-                className="!w-fit !px-6 md:!px-10 !text-base md:!text-lg"
+                className="!w-fit !px-10 !py-6 md:!px-10 md:!py-6 !text-3xl md:!text-3xl lg:!px-12 lg:!py-9 lg:!text-4xl"
                 onClick={() => router.push("/swap")}
               >
                 Trade Now
@@ -79,7 +79,7 @@ const HeroSectionShort = () => {
                 />
               </div>
             )}
-            <div className="absolute bottom-20 xl:bottom-28 w-full flex justify-center">
+            <div className="w-full flex justify-center">
               <div className="flex gap-5 md:gap-10 w-full">
                 <div className=" bg-white/15 flex-1 rounded-xl p-2 md:p-4 px-2 md:px-10 flex flex-col gap-1 md:gap-2 justify-center items-center">
                   <p className="text-base md:text-2xl font-medium text-[#00F48D]">
