@@ -69,34 +69,38 @@ const useModal = (): [ReturnType, () => void, () => void] => {
                 }
                 closeModal();
               }}
+              style={{ paddingTop: "100px", display: "flex" }}
             />
-            <div
-              // style={{
-              //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-              // }}
-              //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
-              className={clsx(
-                "bg-white/20 backdrop-blur-2xl ",
-                styles.modalWindow,
-                className
-              )}
-            >
-              <div className={styles.modalHeading}>
-                <div className={clsx(styles.modalTitle, titleClassName)}>
-                  {title}
+            <div className="flex flex-col justify-center items-center w-full h-full">
+              <div className="w-10 h-24 bg-blue-400"></div>
+              <div
+                // style={{
+                //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
+                // }}
+                //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
+                className={clsx(
+                  "bg-white/20 backdrop-blur-2xl",
+                  styles.modalWindow,
+                  className
+                )}
+              >
+                <div className={styles.modalHeading}>
+                  <div className={clsx(styles.modalTitle, titleClassName)}>
+                    {title}
+                  </div>
+                  <IconButton
+                    onClick={() => {
+                      if (onClose) {
+                        onClose();
+                      }
+                      closeModal();
+                    }}
+                  >
+                    <CloseIcon />
+                  </IconButton>
                 </div>
-                <IconButton
-                  onClick={() => {
-                    if (onClose) {
-                      onClose();
-                    }
-                    closeModal();
-                  }}
-                >
-                  <CloseIcon />
-                </IconButton>
+                {children}
               </div>
-              {children}
             </div>
           </>,
           document.body

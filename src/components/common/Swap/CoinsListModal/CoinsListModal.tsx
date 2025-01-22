@@ -13,8 +13,8 @@ type Props = {
   verifiedAssetsOnly?: boolean;
 };
 
-const priorityOrder: string[] = ["ETH", "USDC", "USDT"];
-const lowPriorityOrder: string[] = ["DUCKY"];
+const priorityOrder: string[] = ["ETH", "USDC", "USDT", "PSYCHO"];
+const lowPriorityOrder: string[] = [""];
 
 const assetIdRegex = /^0x[0-9a-fA-F]{64}$/;
 
@@ -116,13 +116,7 @@ const CoinsListModal = ({
   return (
     <>
       <div
-        style={{
-          boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-        }}
-        className={clsx(
-          "bg-white/10 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100",
-          styles.tokenSearch
-        )}
+        className={clsx("bg-white/10 backdrop-blur-2xl  ", styles.tokenSearch)}
       >
         <SearchIcon />
         <input

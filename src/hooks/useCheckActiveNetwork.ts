@@ -3,6 +3,7 @@ import { ValidNetworkChainId } from "@/utils/constants";
 
 const useCheckActiveNetwork = () => {
   const { wallet } = useWallet();
+  console.log(wallet?.provider.getChainId(), ValidNetworkChainId);
 
   return wallet?.provider.getChainId() === ValidNetworkChainId;
 };

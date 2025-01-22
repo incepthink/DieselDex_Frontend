@@ -17,7 +17,7 @@ import {
 const navItems = [
   { name: "Swap", href: "/swap/" },
   { name: "Liquidity", href: "/liquidity/" },
-  { name: "Rewards", href: "", disabled: true },
+  { name: "Coming Soon", href: "", disabled: true },
 ];
 
 const Header: React.FC = () => {
@@ -33,31 +33,12 @@ const Header: React.FC = () => {
         {navItems.map((item) => {
           if (item.disabled) {
             return (
-              <Popover>
-                <PopoverTrigger>
-                  <p
-                    key={item.name}
-                    className={` justify-self-start font-medium text-lg `}
-                  >
-                    {item.name}
-                  </p>
-                </PopoverTrigger>
-                <PopoverContent className="-translate-y-[52px] translate-x-[115px] lg:translate-y-[4px] lg:translate-x-[0px] relative bg-white/50 border-none flex justify-center items-center w-fit">
-                  <div
-                    className=" absolute -left-2 lg:left-[62px] lg:-top-[18px] w-0 h-0 
-  lg:border-l-[10px] lg:border-l-transparent
-  lg:border-b-[8px] lg:border-b-white/50
-  lgborder-r-[10px] lg:border-r-transparent
-  
-  border-t-[10px] border-t-transparent
-  border-r-[8px] border-r-white/50
-  border-b-[10px] border-b-transparent"
-                  ></div>
-                  <p className=" py-2 text-white font-semibold">
-                    Coming Soon...
-                  </p>
-                </PopoverContent>
-              </Popover>
+              <p
+                key={item.name}
+                className={` justify-self-start font-medium text-lg hover:text-[#00F48D] transition-all duration-300 cursor-pointer`}
+              >
+                {item.name}
+              </p>
             );
           }
           return (

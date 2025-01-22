@@ -670,7 +670,10 @@ const SwapForm: React.FC = () => {
           closeModal={closeSettingsModal}
         />
       </SettingsModal>
-      <CoinsModal title="Choose token">
+      <CoinsModal
+        className="bg-black hidden translate-x-2"
+        title="Choose token"
+      >
         <CoinsListModal selectCoin={handleCoinSelection} balances={balances} />
       </CoinsModal>
       <SuccessModal title={<></>}>
