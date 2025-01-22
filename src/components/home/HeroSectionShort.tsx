@@ -35,7 +35,7 @@ const HeroSectionShort = () => {
   }, []);
 
   return (
-    <div className="w-full h-full max-h-screen">
+    <div className="w-full h-full">
       <div className="relative">
         <Container className="h-full">
           <div className="relative flex flex-col lg:flex-row justify-start lg:justify-between items-center gap-4 lg:gap-0 w-full h-screen">
@@ -118,9 +118,6 @@ const HeroSectionShort = () => {
             </div>
           </section>
         )}
-        <div className="bg-[#282828] absolute bottom-0 w-full flex justify-center p-2">
-          <p className="md:text-base text-sm">© 2025 www.dieseldex.com</p>
-        </div>
       </div>
     </div>
   );
