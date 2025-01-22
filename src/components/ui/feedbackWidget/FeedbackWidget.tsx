@@ -3,6 +3,7 @@ import { useState } from "react";
 import { clsx } from "clsx";
 import { IoMdClose } from "react-icons/io";
 import axios from "axios";
+import ActionButton from "@/components/common/ActionButton/ActionButton";
 
 export default function FeedbackWidget() {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -135,13 +136,14 @@ export default function FeedbackWidget() {
               onChange={(e) => handleChange(e)}
               required
             ></textarea>
-            <button
+            <ActionButton
               type="submit"
-              className="bg-[#00F48D] text-black py-2 px-4 rounded-sm disabled:opacity-85 sm:text-xl text-lg"
+              className="!font-medium disabled:!opacity-85 sm:!text-xl !text-lg"
               disabled={loading}
+              variant="green"
             >
               {loading ? "Loading.." : "Submit"}
-            </button>
+            </ActionButton>
           </form>
         </div>
       ) : (

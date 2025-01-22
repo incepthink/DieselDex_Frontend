@@ -6,13 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FaTelegram, FaXTwitter } from "react-icons/fa6";
 import { IoClose, IoMenu } from "react-icons/io5";
-import Container from "./Container";
 import ConnectButton from "./ConnectButton/ConnectButton";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import ActionButton from "./ActionButton/ActionButton";
 
 const navItems = [

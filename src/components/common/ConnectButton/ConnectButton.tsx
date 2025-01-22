@@ -24,6 +24,8 @@ import { FuelAppUrl } from "@/utils/constants";
 import { useScrollLock } from "usehooks-ts";
 import { useRouter } from "next/navigation";
 import useWindowSize from "@/hooks/useWindowSize";
+import { MdContentCopy, MdExitToApp, MdOpenInNew } from "react-icons/md";
+import { BiHistory } from "react-icons/bi";
 
 type Props = {
   className?: string;
@@ -171,10 +173,26 @@ const ConnectButton = ({ className }: Props) => {
   // }, [handleDisconnect, handleCopy, handleExplorerClick]);
 
   const menuButtons = [
-    { text: "View in Explorer", onClick: handleExplorerClick },
-    { text: "Copy Address", onClick: handleCopy },
-    { text: "Transaction History", onClick: handleHistoryOpen },
-    { text: "Disconnect", onClick: handleDisconnect },
+    {
+      text: "View in Explorer",
+      onClick: handleExplorerClick,
+      icon: <MdContentCopy size={18} />,
+    },
+    {
+      text: "Copy Address",
+      onClick: handleCopy,
+      icon: <MdOpenInNew size={18} />,
+    },
+    {
+      text: "Transaction History",
+      onClick: handleHistoryOpen,
+      icon: <BiHistory size={20} />,
+    },
+    {
+      text: "Disconnect",
+      onClick: handleDisconnect,
+      icon: <MdExitToApp size={18} />,
+    },
   ];
 
   useEffect(() => {
@@ -212,17 +230,20 @@ const ConnectButton = ({ className }: Props) => {
           <div className="bg-white/10 backdrop-blur-2xl w-[195.45px] absolute rounded-sm mt-2 transition ease-out overflow-hidden">
             <ul
               className={clsx(
-                "bg-white/10 backdrop-blur-2xl p-2 flex flex-col gap-1",
+                "bg-white/10 backdrop-blur-2xl p-1 flex flex-col gap-1",
                 styles.menuList
               )}
             >
               {menuButtons.map((button) => (
                 <li key={button.text}>
                   <button
-                    className={styles.menuButton}
+                    className={clsx(
+                      "flex items-center text-xs",
+                      styles.menuButton
+                    )}
                     onClick={button.onClick}
                   >
-                    {/* <button.icon /> */}
+                    {button.icon}
                     <span>{button.text}</span>
                     {/* {button.disabled && button.tooltip && (
                   <div className={styles.tooltip}>{button.tooltip}</div>
