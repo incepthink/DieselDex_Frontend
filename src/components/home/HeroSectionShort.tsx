@@ -35,7 +35,7 @@ const HeroSectionShort = () => {
   }, []);
 
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full max-h-screen">
       <div className="relative">
         <Container className="h-full">
           <div className="relative flex flex-col lg:flex-row justify-start lg:justify-between items-center gap-4 lg:gap-0 w-full h-screen">
