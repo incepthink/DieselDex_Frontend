@@ -164,6 +164,16 @@ const initAdditionalAssetsConfig = () => {
       name: "Green TRUMP",
       symbol: "TRUMP",
     },
+    {
+      contractId:
+        "0x4ea6ccef1215d9479f1024dff70fc055ca538215d2c8c348beddffd54583d0e8",
+      decimals: 9,
+      assetId:
+        "0x1d5d97005e41cae2187a895fd8eab0506111e0e2f3331cd3912c15c24e3c1d82",
+      icon: "https://verified-assets.fuel.network/images/fuel.svg",
+      name: "FUEL",
+      symbol: "FUEL",
+    },
   ];
 
   for (const asset of additionalAssets) {

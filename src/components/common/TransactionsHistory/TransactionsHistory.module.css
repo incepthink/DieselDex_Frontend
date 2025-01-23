@@ -54,7 +54,7 @@
 
 .transactionCloseButton {
   border-radius: 1000px;
-  background: #00EA82;
+  background: #fff;
   cursor: pointer;
   color: black;
 }
@@ -69,9 +69,9 @@
   gap: 20px;
   padding: 12px;
   border-radius: 10px;
-  color: black;
+  color: white;
   font-weight: 700;
-  background-color: #00EA82;
+  background-color: rgba(255,255,255,0.3);
 }
 
 .accountUserInfo {
@@ -130,10 +130,11 @@
 
 .transactionInfo {
   display: flex;
-  gap: 28px;
+  gap: 35px;
   padding: 10px;
-  background: #faf6ef;
+  background: rgba(255,255,255,0.1);
   border-radius: 8px;
+  align-items: center;
 }
 
 .transactionCoins {
@@ -143,8 +144,9 @@
 
 .transactionCoins svg,
 .transactionCoins img {
-  height: 28px;
-  width: 28px;
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
 }
 
 .secondCoin {
@@ -152,6 +154,10 @@
   top: 0;
   left: 20px;
   z-index: 2;
+  height: 34px;
+  width: 34px;
+  border-radius: 999px;
+  overflow: hidden;
 }
 
 .transactionText {
@@ -164,7 +170,9 @@
 }
 
 .transactionName {
-  color: var(--content-primary);
+  color: #00F48D;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .transactionAmount {

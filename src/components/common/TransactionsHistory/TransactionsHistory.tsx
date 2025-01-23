@@ -5,10 +5,12 @@ import CopyAddressIcon from "../../icons/Copy/CopyAddressIcon";
 import { useIsConnected, useAccount } from "@fuels/react";
 import useFormattedAddress from "@/hooks/useFormattedAddress/useFormattedAddress";
 import useWalletTransactions, {
+  Transaction,
   TransactionsData,
 } from "@/hooks/useWalletTransactions";
 import { coinsConfig } from "@/utils/coinsConfig";
 import { DefaultLocale } from "@/utils/constants";
+import { IoMdClose } from "react-icons/io";
 
 interface TransactionProps {
   date: string;
@@ -29,14 +31,14 @@ interface TransactionsHistoryProps {
 }
 
 const transformTransactionsDataAndGroupByDate = (
-  transactionsData: TransactionsData | undefined
+  transactionsData: Transaction[] | undefined
 ) => {
   const grouped: Record<string, TransactionProps[]> = {};
   if (!transactionsData) {
     return grouped;
   }
 
-  const transactions = transactionsData.Transaction.toSorted(
+  const transactions = transactionsData.toSorted(
     (txA, txB) => txB.block_time - txA.block_time
   );
 
@@ -49,6 +51,7 @@ const transformTransactionsDataAndGroupByDate = (
         year: "numeric",
       }
     );
+
     const [firstAssetId, secondAssetId] = transaction.pool_id.split("_");
     const firstAssetExists = coinsConfig.has(firstAssetId);
     const secondAssetExists = coinsConfig.has(secondAssetId);
@@ -58,10 +61,12 @@ const transformTransactionsDataAndGroupByDate = (
     const firstAssetName = coinsConfig.get(firstAssetId)?.name;
     const secondAssetName = coinsConfig.get(secondAssetId)?.name;
 
-    const firstAssetIcon = coinsConfig.get(firstAssetName!)?.icon;
-    const secondAssetIcon = coinsConfig.get(secondAssetName!)?.icon;
-    const firstAssetDecimals = coinsConfig.get(firstAssetName!)?.decimals;
-    const secondAssetDecimals = coinsConfig.get(secondAssetName!)?.decimals;
+    console.log();
+
+    const firstAssetIcon = coinsConfig.get(firstAssetId!)?.icon;
+    const secondAssetIcon = coinsConfig.get(secondAssetId!)?.icon;
+    const firstAssetDecimals = coinsConfig.get(firstAssetId!)?.decimals;
+    const secondAssetDecimals = coinsConfig.get(secondAssetId!)?.decimals;
     const firstAssetIn =
       Number(transaction.asset_0_in) / 10 ** firstAssetDecimals!;
     const firstAssetOut =
@@ -88,12 +93,8 @@ const transformTransactionsDataAndGroupByDate = (
       secondAssetNameToUse = reversedAssetsOrder
         ? firstAssetName
         : secondAssetName;
-      const firstAssetDecimals = coinsConfig.get(
-        firstAssetNameToUse!
-      )?.decimals;
-      const secondAssetDecimals = coinsConfig.get(
-        secondAssetNameToUse!
-      )?.decimals;
+      const firstAssetDecimals = coinsConfig.get(firstAssetId)?.decimals;
+      const secondAssetDecimals = coinsConfig.get(secondAssetId)?.decimals;
       const outputValue = Math.max(firstAssetOut, secondAssetOut);
       const inputValue = Math.max(firstAssetIn, secondAssetIn);
       firstAssetAmount = outputValue.toFixed(firstAssetDecimals);
@@ -156,9 +157,11 @@ const TransactionsHistory = forwardRef<
     return "Connect Wallet";
   }, [isConnected, formattedAddress]);
 
-  const { transactions } = useWalletTransactions(account, isOpened);
-  const groupedTransactions =
-    transformTransactionsDataAndGroupByDate(transactions);
+  const transactions = useWalletTransactions(account, isOpened);
+  console.log(transactions);
+  const groupedTransactions = transformTransactionsDataAndGroupByDate(
+    transactions.transactions
+  );
 
   const handleCopy = () => {
     if (navigator.clipboard && account) {
@@ -176,12 +179,9 @@ const TransactionsHistory = forwardRef<
   return (
     <div className={isOpened ? styles.overlayOpened : styles.overlayClosed}>
       <div
-        style={{
-          boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
-        }}
-        className={`bg-green-400/30 backdrop-blur-2xl inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100 ${
-          styles.wrapper
-        } ${isOpened ? styles.open : styles.close}`}
+        className={`bg-white/30 backdrop-blur-2xl ${styles.wrapper} ${
+          isOpened ? styles.open : styles.close
+        }`}
         ref={ref}
       >
         <div className={styles.header}>
@@ -191,7 +191,7 @@ const TransactionsHistory = forwardRef<
             className={styles.transactionCloseButton}
             onClick={onClose}
           >
-            <TransactionsCloseIcon />
+            <IoMdClose size={25} />
           </button>
         </div>
         <div className={styles.accountInfo}>

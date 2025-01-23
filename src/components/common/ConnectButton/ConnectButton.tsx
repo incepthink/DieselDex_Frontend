@@ -19,7 +19,7 @@ import { ArrowUpIcon } from "../../icons/ArrowUp/ArrowUpIcon";
 import { DropDownButtons } from "@/utils/DropDownButtons";
 import { CopyNotification } from "../../common/CopyNotification/CopyNotification";
 import { openNewTab } from "@/utils/common";
-import TransactionsHistory from "@/components/common/TransactionsHistory/TransactionsHistory";
+// import TransactionsHistory from "@/components/common/TransactionsHistory/TransactionsHistory";
 import { FuelAppUrl } from "@/utils/constants";
 import { useScrollLock } from "usehooks-ts";
 import { useRouter } from "next/navigation";
@@ -183,11 +183,11 @@ const ConnectButton = ({ className }: Props) => {
       onClick: handleCopy,
       icon: <MdOpenInNew size={18} />,
     },
-    {
-      text: "Transaction History",
-      onClick: handleHistoryOpen,
-      icon: <BiHistory size={20} />,
-    },
+    // {
+    //   text: "Transaction History",
+    //   onClick: handleHistoryOpen,
+    //   icon: <BiHistory size={20} />,
+    // },
     {
       text: "Disconnect",
       onClick: handleDisconnect,
@@ -255,11 +255,11 @@ const ConnectButton = ({ className }: Props) => {
           </div>
         )}
       </div>
-      <TransactionsHistory
+      {/* <TransactionsHistory
         onClose={handleHistoryClose}
         isOpened={isHistoryOpened}
         ref={transactionsRef}
-      />
+      /> */}
       {isAddressCopied && (
         <CopyNotification onClose={() => setAddressCopied(false)} />
       )}

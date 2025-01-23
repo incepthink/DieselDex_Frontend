@@ -10,7 +10,7 @@ import { TouchCloseIcon } from "../../icons/DropDownClose/TouchCloseIcon";
 import { CloseIcon } from "../../icons/DropDownClose/CloseIcon";
 import { CopyNotification } from "../../common/CopyNotification/CopyNotification";
 import { openNewTab } from "@/utils/common";
-import TransactionsHistory from "@/components/common/TransactionsHistory/TransactionsHistory";
+// import TransactionsHistory from "@/components/common/TransactionsHistory/TransactionsHistory";
 import { FuelAppUrl } from "@/utils/constants";
 import { useScrollLock } from "usehooks-ts";
 import useWindowSize from "@/hooks/useWindowSize";
@@ -145,10 +145,10 @@ const DisconnectMobile = ({ className }: Props) => {
           </DropDownMenu>
         </div>
       )}
-      <TransactionsHistory
+      {/* <TransactionsHistory
         onClose={handleHistoryClose}
         isOpened={isHistoryOpened}
-      />
+      /> */}
       {isAddressCopied && (
         <CopyNotification onClose={() => setAddressCopied(false)} />
       )}

@@ -12,7 +12,6 @@ import ActionButton from "./ActionButton/ActionButton";
 const navItems = [
   { name: "Swap", href: "/swap/" },
   { name: "Liquidity", href: "/liquidity/" },
-  { name: "Coming Soon", href: "", disabled: true },
 ];
 
 const Header: React.FC = () => {
@@ -26,16 +25,16 @@ const Header: React.FC = () => {
     >
       <div className="flex flex-col items-start lg:flex-row lg:items-center gap-6 lg:gap-16">
         {navItems.map((item) => {
-          if (item.disabled) {
-            return (
-              <p
-                key={item.name}
-                className={` justify-self-start font-medium text-lg hover:text-[#00F48D] transition-all duration-300 cursor-pointer`}
-              >
-                {item.name}
-              </p>
-            );
-          }
+          // if (item.disabled) {
+          //   return (
+          //     <p
+          //       key={item.name}
+          //       className={` justify-self-start font-medium text-lg hover:text-[#00F48D] transition-all duration-300 cursor-pointer`}
+          //     >
+          //       {item.name}
+          //     </p>
+          //   );
+          // }
           return (
             <Link
               key={item.name}
