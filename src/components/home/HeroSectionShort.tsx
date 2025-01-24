@@ -9,6 +9,12 @@ import ActionButton from "../common/ActionButton/ActionButton";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BackendUrl } from "@/utils/constants";
+import { GiLockedChest } from "react-icons/gi";
+import {
+  MdLock,
+  MdOutlineAttachMoney,
+  MdOutlineSwapVert,
+} from "react-icons/md";
 
 const HeroSectionShort = () => {
   const windowSize = useWindowSize();
@@ -50,12 +56,12 @@ const HeroSectionShort = () => {
                     FUEL
                   </span>
                 </h1>
-                <p
+                {/* <p
                   className={`text-lg xl:text-2xl !leading-8 xl:!leading-10 text-[rgba(255,255,255,0.8)] w-full lg:w-[80%] ${manrope.variable}`}
                 >
                   Trade, Earn and get Rewards using the most efficient AMM on
                   Fuel.
-                </p>
+                </p> */}
               </div>
               <ActionButton
                 //   className="flex justify-center items-center gap-2 px-6 py-2 lg:py-3 font-semibold rounded bg-[#00F48D] text-black"
@@ -80,25 +86,34 @@ const HeroSectionShort = () => {
               </div>
             )}
             <div className="w-full flex justify-center">
-              <div className="flex gap-5 md:gap-10 w-full">
-                <div className=" bg-white/15 flex-1 rounded-xl p-2 md:p-4 px-2 md:px-10 flex flex-col gap-1 md:gap-2 justify-center items-center">
+              <div className="flex gap-2 md:gap-5  bg-white/15 w-full max-w-6xl p-2 md:p-4 rounded-xl *:border-[#00F48D] *:border-dashed">
+                <div className=" flex-1  px-2 md:px-10 flex border-r-2 flex-col gap-1 md:gap-2 justify-center items-center">
                   <p className="text-base md:text-2xl font-medium text-[#00F48D]">
                     {/* ${data.tvlUSD} */}${data.tvlUSD}
                   </p>
-                  <p className="text-xs md:text-base">TVL</p>
+                  <div className="flex items-center gap-1">
+                    <MdLock size={20} />{" "}
+                    <p className="text-xs md:text-base">TVL</p>
+                  </div>
                 </div>
-                <div className="bg-white/15 flex-1 rounded-xl p-2 md:p-4 px-2 md:px-10 flex flex-col gap-1 md:gap-2  justify-center items-center">
+                <div className="flex-1  px-2 md:px-10 flex flex-col border-l-2 border-r-2  gap-1 md:gap-2  justify-center items-center">
                   <p className="text-base md:text-2xl font-medium text-[#00F48D]">
                     {/* ${data.tvlUSD} */}${data.vol}
                   </p>
-                  <p className="text-xs md:text-base">VOL</p>
+                  <div className="flex items-center gap-1">
+                    <MdOutlineAttachMoney className="text-xl" />{" "}
+                    <p className="text-xs md:text-base">VOL</p>
+                  </div>
                 </div>
-                <div className="bg-white/15 flex-1 rounded-xl p-2 md:p-4 px-2 md:px-10 flex flex-col gap-1 md:gap-2  justify-center items-center">
+                <div className="flex-1  px-2 md:px-10 flex flex-col gap-1 md:gap-2  border-l-2 justify-center items-center">
                   <p className="text-base md:text-2xl font-medium text-[#00F48D]">
                     {/* ${data.tvlUSD} */}
                     {data.trades}
                   </p>
-                  <p className="text-xs md:text-base">TRADES</p>
+                  <div className="flex items-center gap-1">
+                    <MdOutlineSwapVert size={20} />{" "}
+                    <p className="text-xs md:text-base">TRADES</p>
+                  </div>
                 </div>
               </div>
             </div>
