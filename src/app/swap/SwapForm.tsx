@@ -360,10 +360,6 @@ const SwapForm: React.FC = () => {
     swapState.buy.amount === "" || swapState.sell.amount === "";
   const sufficientEthBalance = useCheckEthBalance(swapState.sell);
 
-  useEffect(() => {
-    openSuccess();
-  }, []);
-
   const handleSwapClick = useCallback(async () => {
     if (!sufficientEthBalance) {
       openNewTab(`${FuelAppUrl}/bridge?from=eth&to=fuel&auto_close=true&=true`);
