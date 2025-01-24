@@ -67,7 +67,7 @@ const HeroSectionShort = () => {
                 //   className="flex justify-center items-center gap-2 px-6 py-2 lg:py-3 font-semibold rounded bg-[#00F48D] text-black"
                 variant="green"
                 fullWidth={false}
-                className="!w-fit !px-10 !py-6 md:!px-10 md:!py-6 !text-3xl md:!text-3xl lg:!px-12 lg:!py-9 lg:!text-4xl"
+                className="!w-fit !px-10 !py-6 md:!px-10 md:!py-6 !text-3xl md:!text-3xl lg:!px-12 lg:!py-9 lg:!text-4xl hover:scale-105 !transition-all !duration-200"
                 onClick={() => router.push("/swap")}
               >
                 Trade Now
@@ -86,17 +86,16 @@ const HeroSectionShort = () => {
               </div>
             )}
             <div className="w-full flex justify-center">
-              <div className="flex gap-2 md:gap-5  bg-white/15 w-full max-w-6xl p-2 md:p-4 rounded-xl *:border-[#00F48D] *:border-dashed">
+              <div className="flex bg-white/15 w-full max-w-6xl p-2 md:p-4 rounded-xl *:border-[#00F48D]">
                 <div className=" flex-1  px-2 md:px-10 flex border-r-2 flex-col gap-1 md:gap-2 justify-center items-center">
                   <p className="text-base md:text-2xl font-medium text-[#00F48D]">
                     {/* ${data.tvlUSD} */}${data.tvlUSD}
                   </p>
                   <div className="flex items-center gap-1">
-                    <MdLock size={20} />{" "}
-                    <p className="text-xs md:text-base">TVL</p>
+                    <MdLock /> <p className="text-xs md:text-base">TVL</p>
                   </div>
                 </div>
-                <div className="flex-1  px-2 md:px-10 flex flex-col border-l-2 border-r-2  gap-1 md:gap-2  justify-center items-center">
+                <div className="flex-1  px-2 md:px-10 flex flex-col border-r-2  gap-1 md:gap-2  justify-center items-center">
                   <p className="text-base md:text-2xl font-medium text-[#00F48D]">
                     {/* ${data.tvlUSD} */}${data.vol}
                   </p>
@@ -105,7 +104,7 @@ const HeroSectionShort = () => {
                     <p className="text-xs md:text-base">VOL</p>
                   </div>
                 </div>
-                <div className="flex-1  px-2 md:px-10 flex flex-col gap-1 md:gap-2  border-l-2 justify-center items-center">
+                <div className="flex-1  px-2 md:px-10 flex flex-col gap-1 md:gap-2 justify-center items-center">
                   <p className="text-base md:text-2xl font-medium text-[#00F48D]">
                     {/* ${data.tvlUSD} */}
                     {data.trades}

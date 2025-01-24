@@ -6,6 +6,7 @@ import { useCallback } from "react";
 import { openNewTab } from "@/utils/common";
 import { FuelAppUrl } from "@/utils/constants";
 import useAssetMetadata from "@/hooks/useAssetMetadata";
+import { MdOpenInNew, MdShare } from "react-icons/md";
 
 type Props = {
   swapState: SwapState;
@@ -24,6 +25,14 @@ const SwapSuccessModal = ({ swapState, transactionHash }: Props) => {
     openNewTab(`${FuelAppUrl}/tx/${transactionHash}/simple`);
   }, [transactionHash]);
 
+  const tweetText = `Seamlessly swapped $${sellMetadata.name} for $${buyMetadata.name} on @DieselDex_Fuel 🚀 Fast & smooth! 🔁💎 #CryptoSwap`;
+
+  const handleShareClick = useCallback(() => {
+    openNewTab(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`
+    );
+  }, [tweetText]);
+
   const subText = `${swapState.sell.amount} ${sellMetadata.symbol} for ${swapState.buy.amount} ${buyMetadata.symbol}`;
 
   return (
@@ -31,12 +40,25 @@ const SwapSuccessModal = ({ swapState, transactionHash }: Props) => {
       <SuccessIcon />
       <p className={styles.mainText}>Swap success</p>
       <p className={styles.subText}>{subText}</p>
-      <ActionButton
-        onClick={handleViewTransactionClick}
-        className={styles.viewButton}
-      >
-        View transaction
-      </ActionButton>
+      <div className="flex gap-2 w-full">
+        <ActionButton
+          onClick={handleViewTransactionClick}
+          className={styles.viewButton}
+          variant="green"
+        >
+          View transaction
+          <MdOpenInNew className="text-xl ml-2" />
+        </ActionButton>
+
+        <ActionButton
+          onClick={handleShareClick}
+          className={styles.viewButton}
+          variant="green"
+        >
+          Share
+          <MdShare className="text-xl ml-2" />
+        </ActionButton>
+      </div>
     </div>
   );
 };
