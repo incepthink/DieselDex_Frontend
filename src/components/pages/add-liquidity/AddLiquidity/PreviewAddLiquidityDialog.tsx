@@ -77,6 +77,11 @@ const PreviewAddLiquidityDialog = ({ previewData, setPreviewData }: Props) => {
           axios.get(`${BackendUrl}/pools/`).catch((error) => {
             console.error("Background pools fetch failed:", error);
           }),
+          axios
+            .get(`${BackendUrl}/platform/transactions/update`)
+            .catch((error) => {
+              console.error("Transaction update failure", error);
+            }),
         ]).catch((error) => {
           // Handle any errors that might occur in Promise.all
           console.error("Background tasks error:", error);
