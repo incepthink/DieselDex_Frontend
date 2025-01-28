@@ -89,6 +89,7 @@ const useSwapPreview = ({ swapState, mode }: Props) => {
       }
 
       const previewData: MultihopPreviewData = await res.json();
+      console.log(previewData);
 
       // API is returning unreliable data, let's re-simulate
       if (tradeType === "ExactInput") {
