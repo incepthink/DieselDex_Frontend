@@ -158,28 +158,16 @@ function TradingViewWidget({
         visible: true,
         entireTextOnly: false,
         ticksVisible: true,
-        formatPrice: (price: number) => {
-          if (price < 0.000001) {
-            return price.toExponential(6);
-          }
-          return price.toLocaleString("en-US", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 9,
-            useGrouping: false,
-          });
-        },
-      },
-      grid: {
-        vertLines: {
-          color: "#2B2B43",
-          style: 1,
-          visible: true,
-        },
-        horzLines: {
-          color: "#2B2B43",
-          style: 1,
-          visible: true,
-        },
+        // formatPrice: (price: number) => {
+        //   if (price < 0.000001) {
+        //     return price.toExponential(6);
+        //   }
+        //   return price.toLocaleString("en-US", {
+        //     minimumFractionDigits: 0,
+        //     maximumFractionDigits: 9,
+        //     useGrouping: false,
+        //   });
+        // },
       },
       crosshair: {
         mode: 1,
@@ -222,11 +210,6 @@ function TradingViewWidget({
         precision: 5,
       },
       priceScaleId: "",
-      overlay: true,
-      scaleMargins: {
-        top: 0.7,
-        bottom: 0,
-      },
     });
 
     chartRef.current = chart;
@@ -302,14 +285,14 @@ function TradingViewWidget({
 
       // Format volume numbers
       chartRef.current.priceScale("right").applyOptions({
-        formatPrice: (price: number) => {
-          if (price >= 1000000) {
-            return (price / 1000000).toFixed(2) + "M";
-          } else if (price >= 1000) {
-            return (price / 1000).toFixed(2) + "K";
-          }
-          return price.toFixed(0);
-        },
+        // formatPrice: (price: number) => {
+        //   if (price >= 1000000) {
+        //     return (price / 1000000).toFixed(2) + "M";
+        //   } else if (price >= 1000) {
+        //     return (price / 1000).toFixed(2) + "K";
+        //   }
+        //   return price.toFixed(0);
+        // },
         visible: true,
       });
 
@@ -339,7 +322,7 @@ function TradingViewWidget({
         barSpacing: Math.min(12, Math.max(6, timeToShow / barsToShow / 10)),
       });
 
-      timeScale.setVisibleRange(visibleRange);
+      // timeScale.setVisibleRange(visibleRange);
     } catch (error) {
       console.error("Error updating chart data:", error);
     }
