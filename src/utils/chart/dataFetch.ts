@@ -36,28 +36,28 @@ export const fetchTradesFromRedis = async (
 };
 
 // Update the generateETHPriceHistory function
-export const generateETHPriceHistory = async (
-  pool_id: string,
-  ChartData: ChartData,
-  startPrice: number,
-  baseTimestamp: number,
-  miraAmm: any
-) => {
-  // Fetch real ETH price data
-  const historicalPrices = await fetchHistoricalPrices(pool_id, "ETH");
-  const data = await calculateStats(historicalPrices, "24H");
-  const poolData = await getPoolData(ChartData, miraAmm);
-  const newData = await calculatePrice(poolData, historicalPrices);
+// export const generateETHPriceHistory = async (
+//   pool_id: string,
+//   ChartData: ChartData,
+//   startPrice: number,
+//   baseTimestamp: number,
+//   miraAmm: any
+// ) => {
+//   // Fetch real ETH price data
+//   const historicalPrices = await fetchHistoricalPrices(pool_id, "ETH");
+//   const data = await calculateStats(historicalPrices, "24H");
+//   const poolData = await getPoolData(ChartData, miraAmm);
+//   const newData = await calculatePrice(poolData, historicalPrices);
 
-  console.log("pool data", poolData);
+//   console.log("pool data", poolData);
 
-  // if (historicalPrices.length === 0) {
-  //   // Fallback to synthetic data if API fails
-  //   return generateSyntheticPriceHistory(startPrice, baseTimestamp);
-  // }
+//   // if (historicalPrices.length === 0) {
+//   //   // Fallback to synthetic data if API fails
+//   //   return generateSyntheticPriceHistory(startPrice, baseTimestamp);
+//   // }
 
-  return { historicalPrices, data: newData, poolData };
-};
+//   return { historicalPrices, data: newData, poolData };
+// };
 
 // let stats = {
 //   price: { usd: "0", eth: "0", lastTradeIsBuy: false },
@@ -92,7 +92,7 @@ function calculatePriceChangeForPeriod(
 
   const cutoffTime = now - periodMs;
   const relevantTrades = rawData.filter(
-    (trade) => trade.time * 1000 >= cutoffTime
+    (trade: any) => trade.time * 1000 >= cutoffTime
   );
 
   if (relevantTrades.length < 2) return 0;
@@ -131,27 +131,27 @@ export async function calculateChangeTransactions(
       "1W": 7 * 24 * 60 * 60 * 1000,
     }[timeframe];
 
-    const cutoffTime = now - timeInMs;
+    const cutoffTime = now - timeInMs!;
     const relevantTrades = rawData.filter(
-      (trade) => trade.time * 1000 >= cutoffTime
+      (trade: any) => trade.time * 1000 >= cutoffTime
     );
 
     // Calculate transactions stats for the selected timeframe
-    const buys = relevantTrades.filter((t) => t.is_buy);
-    const sells = relevantTrades.filter((t) => t.is_sell);
+    const buys = relevantTrades.filter((t: any) => t.is_buy);
+    const sells = relevantTrades.filter((t: any) => t.is_sell);
 
     // Get unique addresses for the selected timeframe
-    const uniqueMakers = new Set(relevantTrades.map((t) => t.recipient));
-    const uniqueBuyers = new Set(buys.map((t) => t.recipient));
-    const uniqueSellers = new Set(sells.map((t) => t.recipient));
+    const uniqueMakers = new Set(relevantTrades.map((t: any) => t.recipient));
+    const uniqueBuyers = new Set(buys.map((t: any) => t.recipient));
+    const uniqueSellers = new Set(sells.map((t: any) => t.recipient));
 
     // Calculate volume in terms of token0 (base token)
     const buyVolume = buys.reduce(
-      (acc, t) => acc + Number(t.asset_0_out) / 1e9,
+      (acc: any, t: any) => acc + Number(t.asset_0_out) / 1e9,
       0
     );
     const sellVolume = sells.reduce(
-      (acc, t) => acc + Number(t.asset_0_in) / 1e9,
+      (acc: any, t: any) => acc + Number(t.asset_0_in) / 1e9,
       0
     );
     const volume = buyVolume + sellVolume;

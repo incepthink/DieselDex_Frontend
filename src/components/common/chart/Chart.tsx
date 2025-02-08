@@ -5,10 +5,7 @@ import { useAssetImage } from "@/hooks/useAssetImage";
 import useAssetMetadata from "@/hooks/useAssetMetadata";
 import useChartData from "@/hooks/useChartData";
 import useReadonlyMira from "@/hooks/useReadonlyMira";
-import {
-  formatCurrency,
-  generateETHPriceHistory,
-} from "@/utils/chart/dataFetch";
+import { formatCurrency } from "@/utils/chart/dataFetch";
 import React, { useEffect, useState } from "react";
 import ChartTransactionHistory from "../ChartTransactionHistory/ChartTransactionHistory";
 import SwapForm from "@/app/swap/SwapForm";

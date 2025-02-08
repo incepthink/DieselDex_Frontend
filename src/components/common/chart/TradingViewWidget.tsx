@@ -169,6 +169,19 @@ function TradingViewWidget({
         //   });
         // },
       },
+      //@ts-ignore
+      grid: {
+        vertLines: {
+          color: "#2B2B43",
+          style: 1,
+          visible: true,
+        },
+        horzLines: {
+          color: "#2B2B43",
+          style: 1,
+          visible: true,
+        },
+      },
       crosshair: {
         mode: 1,
         vertLine: {
@@ -234,13 +247,14 @@ function TradingViewWidget({
         timeScale.fitContent();
 
         const visibleRange = timeScale.getVisibleRange();
-        // if (visibleRange) {
-        //   const newRange = {
-        //     from: (visibleRange.from as number) - (24 * 60 * 60),
-        //     to: (visibleRange.to as number) + (24 * 60 * 60),
-        //   };
-        //   timeScale.setVisibleRange(newRange);
-        // }
+        if (visibleRange) {
+          const newRange = {
+            from: (visibleRange.from as number) - 24 * 60 * 60,
+            to: (visibleRange.to as number) + 24 * 60 * 60,
+          };
+          //@ts-ignore
+          timeScale.setVisibleRange(newRange);
+        }
       }
     }, 50);
 
