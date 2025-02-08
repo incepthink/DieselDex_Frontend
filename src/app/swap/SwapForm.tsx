@@ -535,7 +535,7 @@ const SwapForm: React.FC = () => {
         </div>
 
         <div className="space-y-4 mt-4">
-          <div className="rounded-xl p-1 lg:p-1 bg-black backdrop-blur-2xl">
+          <div className="rounded-xl p-1 lg:p-1 bg-[#242424] backdrop-blur-2xl">
             <CurrencyBox
               value={sellValue}
               assetId={swapState.sell.assetId}
@@ -565,7 +565,7 @@ const SwapForm: React.FC = () => {
             <div className="h-[1px] w-full bg-[#E5E9EB]" />
           </div>
 
-          <div className="rounded-lg p-1 lg:p-1 bg-black">
+          <div className="rounded-lg p-1 lg:p-1 bg-[#242424]">
             <CurrencyBox
               value={buyValue}
               assetId={swapState.buy.assetId}

@@ -71,7 +71,10 @@ const useModal = (): [ReturnType, () => void, () => void] => {
               }}
               style={{ paddingTop: "100px", display: "flex" }}
             />
-            <div className="flex flex-col justify-center items-center w-full h-full">
+            <div
+              className="absolute top-0 justify-center items-center w-full h-full"
+              style={{ zIndex: "100" }}
+            >
               <div className="w-10 h-24 bg-blue-400"></div>
               <div
                 // style={{

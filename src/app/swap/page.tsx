@@ -1,52 +1,166 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import LayoutWrapper from "@/components/common/LayoutWrapper";
 // import AuthLayout from "./Layout";
 import Container from "@/components/common/Container";
 import SwapForm from "./SwapForm";
+import Chart from "@/components/common/chart/Chart";
+import { IoSearch } from "react-icons/io5";
+import useModal from "@/hooks/useModal/useModal";
+import PoolsSearchModal from "@/components/common/Swap/PoolsSearchModal/PoolsSearchModal";
 // import RecentTrades from "./RecentTrades";
 // import Chart from "./Chart";
 
+export interface Stats {
+  price: {
+    usd: string;
+    eth: string;
+    lastTradeIsBuy: boolean;
+  };
+  liquidity: {
+    usd: number;
+    eth: number;
+    fdv: number;
+    mcap: number;
+  };
+  changes: {
+    "1H": number;
+    "6H": number;
+    "24H": number;
+    "1W": number;
+  };
+  transactions: {
+    total: number;
+    buys: number;
+    sells: number;
+    volume: number;
+    buyVolume: number;
+    sellVolume: number;
+    volumeDelta: number;
+    makers: number;
+    buyers: number;
+    sellers: number;
+  };
+}
+
+export interface ChartData {
+  poolData: {
+    id: string;
+    token0Address: string;
+    token1Address: string;
+    selectedPrimaryToken?: {
+      supply: number;
+    };
+    selectedCounterPartyToken?: {
+      supply: number;
+      price: number;
+    };
+  };
+  stats: Stats;
+  trades: [];
+}
+
 const Swap = () => {
+  const [currentPool, setCurrentPool] = useState("");
+  const [PoolsModal, openPoolsModal, closePoolsModal] = useModal();
+  const [ChartData, setChartData] = useState<ChartData>({
+    poolData: {
+      id: "0x86fa05e9fef64f76fa61c03f5906c87a03cb9148120b6171910566173d36fc9e_0xf8f8b6283d7fa5b672b530cbb84fcccb4ff8dc40f8176ef4544ddb1f1952ad07_false",
+      token0Address:
+        "0x86fa05e9fef64f76fa61c03f5906c87a03cb9148120b6171910566173d36fc9e",
+      token1Address:
+        "0xf8f8b6283d7fa5b672b530cbb84fcccb4ff8dc40f8176ef4544ddb1f1952ad07",
+    },
+    stats: {
+      price: {
+        usd: "0",
+        eth: "0",
+        lastTradeIsBuy: false,
+      },
+      liquidity: {
+        usd: 0,
+        eth: 0,
+        mcap: 0,
+        fdv: 0,
+      },
+      changes: {
+        "1H": 0,
+        "6H": 0,
+        "24H": 0,
+        "1W": 0,
+      },
+      transactions: {
+        total: 0,
+        buys: 0,
+        sells: 0,
+        volume: 0,
+        buyVolume: 0,
+        sellVolume: 0,
+        volumeDelta: 0,
+        makers: 0,
+        buyers: 0,
+        sellers: 0,
+      },
+    },
+    trades: [],
+  });
+
+  const handlePoolsSelectorClick = () => {
+    openPoolsModal();
+  };
+
+  const handlePoolSelection = (pool: string) => {
+    const [token0Address, token1Address] = pool.split("_");
+    setChartData({
+      ...ChartData,
+      poolData: { id: pool, token0Address, token1Address },
+    });
+    console.log();
+
+    closePoolsModal();
+  };
+
+  useEffect(() => {
+    console.log(ChartData);
+  }, [ChartData]);
+
   return (
     <LayoutWrapper>
-      {/* <AuthLayout> */}
-      <div className="fixed top-0 bg-black w-full h-screen">
-        <Container>
-          {/* <div className="flex flex-col justify-start items-start gap-10 rounded-lg p-4 lg:p-8 bg-white z-30 mt-24 max-h-[80%] w-full overflow-y-scroll">
-            <section className="grid grid-cols-1 lg:grid-cols-3 gap-10 w-full">
-              <div className="lg:col-span-2">
-                <Chart />
-              </div>
-              <div className="h-full">
-                <SwapForm />
-              </div>
-            </section>
-            <section className="flex w-full pb-20">
-              <RecentTrades />
-            </section>
-          </div> */}
-          {/* inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100 */}
+      <div className="relative">
+        {/* <AuthLayout> */}
+        <div className=" bg-black w-full pt-24 flex flex-col items-center">
           <div
-            //style={{ boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)" }}
-            className="relative z-20 mt-16 rounded-xl w-full sm:w-auto bg-white/20 backdrop-blur-2xl "
+            className="flex items-center bg-white/20 rounded-full p-2 px-3 gap-2 w-1/3 cursor-pointer mb-8w"
+            onClick={handlePoolsSelectorClick}
           >
-            {/* <div
-              className="absolute -z-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 "
-              style={{
-                height: 1000,
-                width: 1000,
-                background:
-                  "radial-gradient(circle, rgba(0,234,128,1) 0%, rgba(2,0,36,0) 50%)",
-              }}
-            ></div> */}
-            <SwapForm />
+            <IoSearch size={26} />
+            <input
+              type="text"
+              name="pools"
+              id=""
+              placeholder="Search Pools"
+              className="bg-transparent w-full"
+            />
           </div>
-        </Container>
+          <Container className="">
+            <div className=" backdrop-blur-2xl p-6 rounded-2xl">
+              <Chart
+                pool_id={
+                  "0x86fa05e9fef64f76fa61c03f5906c87a03cb9148120b6171910566173d36fc9e_0xf8f8b6283d7fa5b672b530cbb84fcccb4ff8dc40f8176ef4544ddb1f1952ad07_false"
+                }
+                setChartData={setChartData}
+                ChartData={ChartData}
+              />
+            </div>
+          </Container>
+        </div>
+        <PoolsModal title={"Pools"}>
+          <PoolsSearchModal selectPool={handlePoolSelection} />
+        </PoolsModal>
+        {/* </AuthLayout> */}
       </div>
-      {/* </AuthLayout> */}
     </LayoutWrapper>
   );
 };
