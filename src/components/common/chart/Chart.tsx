@@ -185,7 +185,6 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
           ) : (
             <TradingViewWidget
               trades={data ? data.trades : []}
-              userTrades={userTrades}
               selectedTimeframe={selectedTimeframe}
               onTimeframeChange={setSelectedTimeframe} // Add this prop
             />
