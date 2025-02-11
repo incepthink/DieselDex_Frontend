@@ -5,6 +5,7 @@
   padding: 14px 12px;
   border-radius: 8px;
   color: var(--content-grey);
+  margin: 10px;
 }
 
 .tokenSearchInput {
