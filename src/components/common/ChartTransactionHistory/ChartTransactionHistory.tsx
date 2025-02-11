@@ -5,6 +5,7 @@ import { CiWallet } from "react-icons/ci";
 import { LuType } from "react-icons/lu";
 import { IoPricetagOutline } from "react-icons/io5";
 import { FiExternalLink } from "react-icons/fi";
+import { useState } from "react";
 
 type Props = {
   trades: SwapEvent[];
@@ -73,131 +74,170 @@ function formatTokenNumber(
   }).format(value);
 }
 
+const ITEMS_PER_PAGE = 10;
+
 const ChartTransactionHistory = ({ trades, chartData }: Props) => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const totalPages = Math.ceil(trades.length / ITEMS_PER_PAGE);
+
+  const paginatedTrades = trades.slice(
+    currentPage * ITEMS_PER_PAGE,
+    (currentPage + 1) * ITEMS_PER_PAGE
+  );
+
   return (
-    <table className="w-full">
-      <thead className=" bg-white/20 *:text-center *:font-semibold">
-        <tr className=" w-full">
-          <th className="px-[16px] py-[12px]  text-[#d1d4dc] ">
-            <div className="flex items-center justify-center gap-1">
-              {" "}
-              <p className="xl:text-xl text-sm">TIME</p>{" "}
-              {/* <WiTime3 className="xl:text-2xl text-base" /> */}
-            </div>
-          </th>
-          <th className="px-[16px] py-[12px]  text-[#d1d4dc] sm:block hidden">
-            {" "}
-            <div className="flex items-center justify-center gap-1">
-              <p className="xl:text-xl text-sm">Wallet</p>{" "}
-              {/* <CiWallet className="xl:text-2xl text-base" /> */}
-            </div>
-          </th>
-          <th className="px-[16px] py-[12px]  text-[#d1d4dc]">
-            {" "}
-            <div className="flex items-center justify-center gap-1">
-              <p className="xl:text-xl text-sm">TYPE</p>{" "}
-              {/* <LuType className="xl:text-2xl text-base" /> */}
-            </div>
-          </th>
-          <th className="px-[16px] py-[12px]  text-[#d1d4dc]">
-            {" "}
-            <div className="flex items-center justify-center gap-1">
-              <p className="xl:text-xl text-sm">PRICE</p>{" "}
-              {/* <IoPricetagOutline className="xl:text-2xl text-base" /> */}
-            </div>
-          </th>
-          <th className="px-4 py-2  text-[#d1d4dc] xl:text-xl text-sm">
-            QUANTITY
-          </th>
-          <th className="px-4 py-2  text-[#d1d4dc]"></th>
-        </tr>
-      </thead>
-      <tbody className="sm:text-sm text-xs">
-        {trades.map((trade, i) => {
-          return (
-            <tr key={i}>
-              <td>
-                <div className="text-center py-[2px]">
+    <>
+      <div className="border-[#E5E9EB] border-[1px] rounded-[16px] overflow-hidden">
+        <div className="w-full h-[56px] bg-[#242424] flex justify-center items-center">
+          <p className="text-[18px] font-medium">Recent Trades</p>
+        </div>
+        <table className="w-full">
+          <thead className=" bg-white/20 *:text-center *:font-semibold">
+            <tr className=" w-full">
+              <th className="px-[16px] py-[12px]  text-[#d1d4dc] ">
+                <div className="flex items-center justify-center gap-1">
                   {" "}
-                  {getTimeAgo(trade.time)}
+                  <p className="xl:text-xl text-sm">TIME</p>{" "}
+                  {/* <WiTime3 className="xl:text-2xl text-base" /> */}
                 </div>
-              </td>
-              <td className=" sm:block hidden">
-                <div className="text-center py-[2px]">
-                  {" "}
-                  <a
-                    href={`https://app.fuel.network/account/${trade.recipient}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#26a69a] hover:text-[#2196f3]"
-                  >
-                    {trade.recipient?.slice(0, 8)}...
-                  </a>
+              </th>
+              <th className="px-[16px] py-[12px]  text-[#d1d4dc] sm:block hidden">
+                {" "}
+                <div className="flex items-center justify-center gap-1">
+                  <p className="xl:text-xl text-sm">Wallet</p>{" "}
+                  {/* <CiWallet className="xl:text-2xl text-base" /> */}
                 </div>
-              </td>
-              <td className="px-4 py-2">
-                <div className="text-center py-[2px]">
-                  <span>
-                    {trade.is_buy ? (
-                      <span className="bg-[#26a69a] p-0.5 px-1.5 rounded-sm">
-                        B
+              </th>
+              <th className="px-[16px] py-[12px]  text-[#d1d4dc]">
+                {" "}
+                <div className="flex items-center justify-center gap-1">
+                  <p className="xl:text-xl text-sm">TYPE</p>{" "}
+                  {/* <LuType className="xl:text-2xl text-base" /> */}
+                </div>
+              </th>
+              <th className="px-[16px] py-[12px]  text-[#d1d4dc]">
+                {" "}
+                <div className="flex items-center justify-center gap-1">
+                  <p className="xl:text-xl text-sm">PRICE</p>{" "}
+                  {/* <IoPricetagOutline className="xl:text-2xl text-base" /> */}
+                </div>
+              </th>
+              <th className="px-4 py-2  text-[#d1d4dc] xl:text-xl text-sm">
+                QUANTITY
+              </th>
+              <th className="px-4 py-2  text-[#d1d4dc]"></th>
+            </tr>
+          </thead>
+          <tbody className="sm:text-sm text-xs">
+            {paginatedTrades.map((trade, i) => {
+              return (
+                <tr key={i}>
+                  <td>
+                    <div className="text-center py-[2px]">
+                      {" "}
+                      {getTimeAgo(trade.time)}
+                    </div>
+                  </td>
+                  <td className=" sm:block hidden">
+                    <div className="text-center py-[2px]">
+                      {" "}
+                      <a
+                        href={`https://app.fuel.network/account/${trade.recipient}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#26a69a] hover:text-[#2196f3]"
+                      >
+                        {trade.recipient?.slice(0, 8)}...
+                      </a>
+                    </div>
+                  </td>
+                  <td className="px-4 py-2">
+                    <div className="text-center py-[2px]">
+                      <span>
+                        {trade.is_buy ? (
+                          <span className="bg-[#26a69a] p-0.5 px-1.5 rounded-sm">
+                            B
+                          </span>
+                        ) : (
+                          <span className="bg-[#ef5350] p-0.5 px-1.5 rounded-sm">
+                            S
+                          </span>
+                        )}
                       </span>
-                    ) : (
-                      <span className="bg-[#ef5350] p-0.5 px-1.5 rounded-sm">
-                        S
-                      </span>
-                    )}
-                  </span>
-                </div>
-              </td>
-              <td className="px-4 py-2 text-[#d1d4dc]">
-                <div className="text-center py-[2px]">
-                  <span>{formatNumber(trade.exchange_rate)}</span>
-                  {/* {#if index < visibleData.length - 1}
+                    </div>
+                  </td>
+                  <td className="px-4 py-2 text-[#d1d4dc]">
+                    <div className="text-center py-[2px]">
+                      <span>{formatNumber(trade.exchange_rate)}</span>
+                      {/* {#if index < visibleData.length - 1}
                                 <span class={getPriceDirectionColor(event.exchange_rate, visibleData[index + 1].exchange_rate)}>
                                     {getPriceDirection(evaent.exchange_rate, visibleData[index + 1].exchange_rate)}a
                                 </span>
                             {/if} */}
-                </div>
-              </td>
-              {trade.is_buy ? (
-                <td className="px-4 py-2 text-[#d1d4dc]">
-                  <div className="text-center py-[2px]">
-                    {formatTokenNumber(
-                      trade.asset_0_in,
-                      trade.asset_0_out,
-                      true
-                    )}
-                  </div>
-                </td>
-              ) : (
-                <td className="px-4 py-2 text-[#d1d4dc]">
-                  <div className="text-center py-[2px]">
-                    {formatTokenNumber(
-                      trade.asset_0_in,
-                      trade.asset_0_out,
-                      false
-                    )}
-                  </div>
-                </td>
-              )}
-              <td className="px-4 py-2">
-                <div className="text-center py-[2px]">
-                  <a
-                    href={`https://app.fuel.network/tx/${trade.transaction_id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#26a69a] hover:text-[#2196f3]"
-                  >
-                    <FiExternalLink size={18} />
-                  </a>
-                </div>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+                    </div>
+                  </td>
+                  {trade.is_buy ? (
+                    <td className="px-4 py-2 text-[#d1d4dc]">
+                      <div className="text-center py-[2px]">
+                        {formatTokenNumber(
+                          trade.asset_0_in,
+                          trade.asset_0_out,
+                          true
+                        )}
+                      </div>
+                    </td>
+                  ) : (
+                    <td className="px-4 py-2 text-[#d1d4dc]">
+                      <div className="text-center py-[2px]">
+                        {formatTokenNumber(
+                          trade.asset_0_in,
+                          trade.asset_0_out,
+                          false
+                        )}
+                      </div>
+                    </td>
+                  )}
+                  <td className="px-4 py-2">
+                    <div className="text-center py-[2px]">
+                      <a
+                        href={`https://app.fuel.network/tx/${trade.transaction_id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#26a69a] hover:text-[#2196f3]"
+                      >
+                        <FiExternalLink size={18} />
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      {/* Pagination Controls */}
+      <div className="flex justify-center gap-4 mt-4 items-center">
+        <button
+          className="px-4 py-2 bg-gray-700 text-white rounded disabled:opacity-50"
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
+          disabled={currentPage === 0}
+        >
+          Previous
+        </button>
+        <span className="text-white">
+          Page {currentPage + 1} of {totalPages}
+        </span>
+        <button
+          className="px-4 py-2 bg-gray-700 text-white rounded disabled:opacity-50"
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))
+          }
+          disabled={currentPage >= totalPages - 1}
+        >
+          Next
+        </button>
+      </div>
+    </>
   );
 };
 

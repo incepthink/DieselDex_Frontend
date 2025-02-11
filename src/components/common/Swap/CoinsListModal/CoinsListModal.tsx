@@ -116,7 +116,7 @@ const CoinsListModal = ({
   return (
     <>
       <div
-        className={clsx("bg-white/10 backdrop-blur-2xl  ", styles.tokenSearch)}
+        className={clsx("bg-white/10 backdrop-blur-2xl", styles.tokenSearch)}
       >
         <SearchIcon />
         <input

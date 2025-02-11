@@ -17,7 +17,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${orbitron.variable} antialiased bg-black`}>
         {children}
-        <FeedbackWidget />
       </body>
     </html>
   );

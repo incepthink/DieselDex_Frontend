@@ -209,10 +209,7 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
               )}
             </div>
           </div>
-          <div className="border-[#E5E9EB] border-[1px] rounded-[16px] overflow-hidden">
-            <div className="w-full h-[56px] bg-[#242424] flex justify-center items-center">
-              <p className="text-[18px] font-medium">Recent Trades</p>
-            </div>
+          <div>
             <ChartTransactionHistory
               trades={data ? data.trades : []}
               chartData={ChartData}

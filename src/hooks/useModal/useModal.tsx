@@ -72,17 +72,17 @@ const useModal = (): [ReturnType, () => void, () => void] => {
               style={{ paddingTop: "100px", display: "flex" }}
             />
             <div
-              className="absolute top-0 justify-center items-center w-full h-full"
+              className="justify-center items-center w-full h-full"
               style={{ zIndex: "100" }}
             >
-              <div className="w-10 h-24 bg-blue-400"></div>
+              {/* <div className="w-10 h-24 bg-blue-400"></div> */}
               <div
                 // style={{
                 //   boxShadow: "inset 0px 0px 5px 5px rgba(255,255,255,0.1)",
                 // }}
                 //inset-shadow-sm inset-shadow-white/20 ring ring-white/50 inset-ring inset-ring-white/100
                 className={clsx(
-                  "bg-white/20 backdrop-blur-2xl",
+                  "bg-white/20 backdrop-blur-2xl absolute -translate-x-1/2 -translate-y-1/2",
                   styles.modalWindow,
                   className
                 )}
