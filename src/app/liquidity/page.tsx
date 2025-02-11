@@ -49,7 +49,7 @@ const Liquidity = () => {
       {/* <AuthLayout> */}
       <div
         className={clsx(
-          "bg-black w-full",
+          " w-full",
           windowSize.width! < 1024 ? "pt-14" : "pt-24"
         )}
       >

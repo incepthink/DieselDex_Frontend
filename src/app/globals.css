@@ -34,6 +34,13 @@
   margin: 0;
 }
 
+.bg-diesel {
+  background-image: url(/public/images/main-bg.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 html,
 body {
   height: 100%;

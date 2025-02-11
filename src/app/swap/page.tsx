@@ -10,6 +10,7 @@ import Chart from "@/components/common/chart/Chart";
 import { IoSearch } from "react-icons/io5";
 import useModal from "@/hooks/useModal/useModal";
 import PoolsSearchModal from "@/components/common/Swap/PoolsSearchModal/PoolsSearchModal";
+import bgMain from "../../../public/images/main-bg.jpeg";
 // import RecentTrades from "./RecentTrades";
 // import Chart from "./Chart";
 
@@ -128,24 +129,21 @@ const Swap = () => {
 
   return (
     <LayoutWrapper>
-      <div className="relative">
+      <div className="relative ">
         {/* <AuthLayout> */}
-        <div className=" bg-black w-full pt-24 flex flex-col items-center px-2">
+        <div className="  w-full pt-24 flex flex-col items-center px-2 ">
           <div
-            className="flex items-center bg-white/20 rounded-full p-2 px-3 gap-2 sm:w-1/3 w-full cursor-pointer mb-4"
+            className="flex items-center bg-white/20 backdrop-blur-2xl rounded-full p-2 px-3 gap-2 sm:w-1/3 w-full cursor-pointer mb-4"
             onClick={handlePoolsSelectorClick}
           >
             <IoSearch size={26} />
-            <input
-              type="text"
-              name="pools"
-              id=""
-              placeholder="Search Pools"
-              className="bg-transparent w-full"
-            />
+            <div className="bg-transparent w-full">
+              {" "}
+              <p className="opacity-80">Search Pools</p>
+            </div>
           </div>
           <Container className="">
-            <div className=" backdrop-blur-2xl p-6 rounded-2xl">
+            <div className=" p-6 rounded-2xl">
               <Chart
                 pool_id={
                   "0x86fa05e9fef64f76fa61c03f5906c87a03cb9148120b6171910566173d36fc9e_0xf8f8b6283d7fa5b672b530cbb84fcccb4ff8dc40f8176ef4544ddb1f1952ad07_false"

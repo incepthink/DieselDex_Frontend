@@ -15,8 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${orbitron.variable} antialiased bg-black`}>
-        {children}
+      <body
+        style={{ backgroundImage: "url('/images/main-bg.jpeg')" }}
+        className={`bg-center bg-cover bg-fixed ${orbitron.variable} antialiased`}
+      >
+        <div className="bg-black/65">{children}</div>
       </body>
     </html>
   );

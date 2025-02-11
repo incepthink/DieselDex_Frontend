@@ -131,7 +131,7 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
     <>
       <div className="flex 2xl:flex-row flex-col-reverse items-center w-full gap-12 2xl:items-start">
         <div className="flex flex-col gap-12 mb-12">
-          <div className="2xl:w-auto max-w-screen bg-fuel-dark-800 border-[#84919A] border-[0.5px]  p-[20px] rounded-[16px]">
+          <div className=" backdrop-blur-2xl 2xl:w-auto max-w-screen bg-fuel-dark-800 border-[#84919A] border-[0.5px]  p-[20px] rounded-[16px] bg-white/10">
             {!isLoading && (
               <div className="flex justify-between items-center xl:mb-2 mb-1">
                 <div className="flex flex-col">
@@ -162,9 +162,9 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
                       </p>
                     </div>
                   </div>
-                  <div className="text-sm lg:mt-0.5 mt-0">
+                  <div className="text-sm lg:mt-1 mt-1 ml-1 font-semibold">
                     {Number(data?.data.changes["24H"].toFixed(2)) > 0 ? (
-                      <p className="text-[#26a69a]">
+                      <p className="text-green-400">
                         {data?.data.changes["24H"].toFixed(2)}%
                       </p>
                     ) : (
@@ -177,13 +177,13 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
                 <div className="flex gap-4">
                   <div className="flex flex-col items-center">
                     <p className="text-sm opacity-80">FDV</p>
-                    <p className="font-medium lg:text-base text-sm">
+                    <p className="font-medium lg:text-lg text-sm">
                       {data ? formatCurrency(data.data.liquidity.fdv) : 0}
                     </p>
                   </div>
-                  <div>
+                  <div className="flex flex-col items-center">
                     <p className="text-sm opacity-80">24H Vol</p>
-                    <p className="lg:text-base text-sm">
+                    <p className="lg:text-lg font-medium text-sm">
                       {data ? formatCurrency(data.data.transactions.volume) : 0}
                     </p>
                   </div>
@@ -216,7 +216,7 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
             />
           </div>
         </div>
-        <div className="border-[#84919A] border-[0.5px] rounded-[16px] w-full">
+        <div className="border-[#84919A] border-[0.5px] rounded-[16px] w-full bg-white/10 backdrop-blur-2xl">
           <SwapForm />
         </div>
       </div>
