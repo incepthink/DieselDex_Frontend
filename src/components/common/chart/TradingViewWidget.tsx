@@ -158,17 +158,18 @@ function TradingViewWidget({
         visible: true,
         entireTextOnly: false,
         ticksVisible: true,
-        formatPrice: (price: number) => {
-          if (price < 0.000001) {
-            return price.toExponential(6);
-          }
-          return price.toLocaleString("en-US", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 9,
-            useGrouping: false,
-          });
-        },
+        // formatPrice: (price: number) => {
+        //   if (price < 0.000001) {
+        //     return price.toExponential(6);
+        //   }
+        //   return price.toLocaleString("en-US", {
+        //     minimumFractionDigits: 0,
+        //     maximumFractionDigits: 9,
+        //     useGrouping: false,
+        //   });
+        // },
       },
+      //@ts-ignore
       grid: {
         vertLines: {
           color: "#2B2B43",
@@ -222,11 +223,6 @@ function TradingViewWidget({
         precision: 5,
       },
       priceScaleId: "",
-      overlay: true,
-      scaleMargins: {
-        top: 0.7,
-        bottom: 0,
-      },
     });
 
     chartRef.current = chart;
@@ -251,13 +247,14 @@ function TradingViewWidget({
         timeScale.fitContent();
 
         const visibleRange = timeScale.getVisibleRange();
-        // if (visibleRange) {
-        //   const newRange = {
-        //     from: (visibleRange.from as number) - (24 * 60 * 60),
-        //     to: (visibleRange.to as number) + (24 * 60 * 60),
-        //   };
-        //   timeScale.setVisibleRange(newRange);
-        // }
+        if (visibleRange) {
+          const newRange = {
+            from: (visibleRange.from as number) - 24 * 60 * 60,
+            to: (visibleRange.to as number) + 24 * 60 * 60,
+          };
+          //@ts-ignore
+          timeScale.setVisibleRange(newRange);
+        }
       }
     }, 50);
 
@@ -302,14 +299,14 @@ function TradingViewWidget({
 
       // Format volume numbers
       chartRef.current.priceScale("right").applyOptions({
-        formatPrice: (price: number) => {
-          if (price >= 1000000) {
-            return (price / 1000000).toFixed(2) + "M";
-          } else if (price >= 1000) {
-            return (price / 1000).toFixed(2) + "K";
-          }
-          return price.toFixed(0);
-        },
+        // formatPrice: (price: number) => {
+        //   if (price >= 1000000) {
+        //     return (price / 1000000).toFixed(2) + "M";
+        //   } else if (price >= 1000) {
+        //     return (price / 1000).toFixed(2) + "K";
+        //   }
+        //   return price.toFixed(0);
+        // },
         visible: true,
       });
 
@@ -339,7 +336,7 @@ function TradingViewWidget({
         barSpacing: Math.min(12, Math.max(6, timeToShow / barsToShow / 10)),
       });
 
-      timeScale.setVisibleRange(visibleRange);
+      // timeScale.setVisibleRange(visibleRange);
     } catch (error) {
       console.error("Error updating chart data:", error);
     }
