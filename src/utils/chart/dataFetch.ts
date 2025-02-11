@@ -261,7 +261,7 @@ export async function calculatePrice(
     lastTradeIsBuy: latestTrade.is_buy,
   };
 
-  stats.liquidity.mcap =
+  stats.liquidity.fdv =
     Number(_usdPrice.toString()) *
     Number(statsPrice.selectedPrimaryToken.supply);
 

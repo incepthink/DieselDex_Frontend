@@ -4,11 +4,42 @@ import { WiTime3 } from "react-icons/wi";
 import { CiWallet } from "react-icons/ci";
 import { LuType } from "react-icons/lu";
 import { IoPricetagOutline } from "react-icons/io5";
+import { FiExternalLink } from "react-icons/fi";
 
 type Props = {
   trades: SwapEvent[];
   chartData: ChartData;
 };
+
+function getTimeAgo(timestamp: number): string {
+  const now = Math.floor(Date.now() / 1000); // Current time in seconds
+  const diff = now - timestamp;
+
+  // Handle future dates
+  if (diff < 0) return "in the future";
+
+  // Time intervals in seconds
+  const intervals = {
+    yr: 31536000,
+    month: 2592000,
+    d: 86400,
+    hr: 3600,
+    min: 60,
+    s: 1,
+  };
+
+  // Find the appropriate interval
+  for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+    const value = Math.floor(diff / secondsInUnit);
+    if (value >= 1) {
+      // Handle plural/singular
+      const unitLabel = value === 1 ? unit : unit;
+      return `${value}${unitLabel} ago`;
+    }
+  }
+
+  return "just now";
+}
 
 function formatTime(timestamp: number): string {
   return new Date(timestamp * 1000).toLocaleString();
@@ -50,42 +81,48 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
           <th className="px-[16px] py-[12px]  text-[#d1d4dc] ">
             <div className="flex items-center justify-center gap-1">
               {" "}
-              <p className="text-xl">TIME</p> <WiTime3 size={24} />
+              <p className="xl:text-xl text-sm">TIME</p>{" "}
+              {/* <WiTime3 className="xl:text-2xl text-base" /> */}
+            </div>
+          </th>
+          <th className="px-[16px] py-[12px]  text-[#d1d4dc] sm:block hidden">
+            {" "}
+            <div className="flex items-center justify-center gap-1">
+              <p className="xl:text-xl text-sm">Wallet</p>{" "}
+              {/* <CiWallet className="xl:text-2xl text-base" /> */}
             </div>
           </th>
           <th className="px-[16px] py-[12px]  text-[#d1d4dc]">
             {" "}
             <div className="flex items-center justify-center gap-1">
-              <p className="text-xl">Wallet</p> <CiWallet size={24} />
+              <p className="xl:text-xl text-sm">TYPE</p>{" "}
+              {/* <LuType className="xl:text-2xl text-base" /> */}
             </div>
           </th>
           <th className="px-[16px] py-[12px]  text-[#d1d4dc]">
             {" "}
             <div className="flex items-center justify-center gap-1">
-              <p className="text-xl">TYPE</p> <LuType size={20} />
+              <p className="xl:text-xl text-sm">PRICE</p>{" "}
+              {/* <IoPricetagOutline className="xl:text-2xl text-base" /> */}
             </div>
           </th>
-          <th className="px-[16px] py-[12px]  text-[#d1d4dc]">
-            {" "}
-            <div className="flex items-center justify-center gap-1">
-              <p className="text-xl">PRICE</p> <IoPricetagOutline size={20} />
-            </div>
+          <th className="px-4 py-2  text-[#d1d4dc] xl:text-xl text-sm">
+            QUANTITY
           </th>
-          <th className="px-4 py-2  text-[#d1d4dc]">QUANTITY</th>
-          <th className="px-4 py-2  text-[#d1d4dc]">TRANSACTION</th>
+          <th className="px-4 py-2  text-[#d1d4dc]"></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="sm:text-sm text-xs">
         {trades.map((trade, i) => {
           return (
             <tr key={i}>
               <td>
                 <div className="text-center py-[2px]">
                   {" "}
-                  {formatTime(trade.time)}
+                  {getTimeAgo(trade.time)}
                 </div>
               </td>
-              <td>
+              <td className=" sm:block hidden">
                 <div className="text-center py-[2px]">
                   {" "}
                   <a
@@ -100,12 +137,16 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
               </td>
               <td className="px-4 py-2">
                 <div className="text-center py-[2px]">
-                  <span
-                    className={
-                      trade.is_buy ? "text-[#26a69a]" : "text-[#ef5350]"
-                    }
-                  >
-                    {trade.is_buy ? "BUY" : "SELL"}
+                  <span>
+                    {trade.is_buy ? (
+                      <span className="bg-[#26a69a] p-0.5 px-1.5 rounded-sm">
+                        B
+                      </span>
+                    ) : (
+                      <span className="bg-[#ef5350] p-0.5 px-1.5 rounded-sm">
+                        S
+                      </span>
+                    )}
                   </span>
                 </div>
               </td>
@@ -148,7 +189,7 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
                     rel="noopener noreferrer"
                     className="text-[#26a69a] hover:text-[#2196f3]"
                   >
-                    {trade.transaction_id.slice(0, 8)}...
+                    <FiExternalLink size={18} />
                   </a>
                 </div>
               </td>

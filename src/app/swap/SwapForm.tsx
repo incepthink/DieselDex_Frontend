@@ -626,7 +626,7 @@ const SwapForm: React.FC = () => {
           )}
 
           {!isConnected && (
-            <div className="sm:w-96 flex justify-center">
+            <div className="sm:w-96 flex justify-center mx-auto">
               <ActionButton
                 variant="green"
                 onClick={connect}
@@ -638,7 +638,7 @@ const SwapForm: React.FC = () => {
           )}
 
           {isConnected && (
-            <div className="sm:w-96 flex justify-center">
+            <div className="sm:w-96 flex justify-center mx-auto">
               <ActionButton
                 variant="green"
                 disabled={swapDisabled}
