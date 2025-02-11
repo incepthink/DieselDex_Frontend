@@ -45,10 +45,10 @@ const HeroSectionShort = () => {
       <div className="relative">
         <Container className="h-full">
           <div className="relative flex flex-col justify-evenly pt-0 lg:pt-52 w-full h-screen">
-            <section className="flex flex-col gap-4 lg:gap-14 w-full lg:w-1/2 mt-28 lg:-mt-28">
+            <section className="flex flex-col gap-4 lg:gap-14 w-full lg:w-3/4 mt-28 lg:-mt-28">
               <div className="flex flex-col gap-2 lg:gap-4 w-full lg:w-[90%]">
                 <h1
-                  className={`${manrope.variable} font-manrope text-3xl lg:text-5xl xl:text-6xl 2xl:text-[75px] font-bold !leading-tight`}
+                  className={`${manrope.variable} font-manrope text-3xl lg:text-5xl xl:text-6xl 2xl:text-[85px] font-bold !leading-tight`}
                 >
                   The Best Trading Experience On
                   <span className="text-[#00F48D] xl:text-6xl 2xl:text-[75px] lg:text-5xl text-3xl">
@@ -73,10 +73,10 @@ const HeroSectionShort = () => {
                 Trade Now
               </ActionButton>
             </section>
-            {windowSize.width! < 1024 && (
+            {/* {windowSize.width! < 1024 && (
               <div className="w-full max-w-xl">
                 <Image
-                  src={"/images/home-main.gif"}
+                  src={"/images/home-main.png"}
                   alt="hero"
                   width={1080}
                   height={1080}
@@ -84,7 +84,7 @@ const HeroSectionShort = () => {
                   className="object-contain w-full h-full"
                 />
               </div>
-            )}
+            )} */}
             <div className="w-full flex justify-center">
               <div className="flex bg-white/15 w-full max-w-6xl p-2 md:p-4 rounded-xl *:border-[#00F48D]">
                 <div className=" flex-1  px-2 md:px-10 flex border-r-2 flex-col gap-1 md:gap-2 justify-center items-center">
@@ -118,20 +118,20 @@ const HeroSectionShort = () => {
             </div>
           </div>
         </Container>
-        {windowSize.width! >= 1024 && (
+        {/* {windowSize.width! >= 1024 && (
           <section className="flex w-full lg:w-1/2 h-full lg:absolute right-0 bottom-20">
             <div className="w-full ">
               <Image
-                src={"/images/home-main.gif"}
+                src={"/images/home-main.png"}
                 alt="hero"
-                width={1080}
-                height={1080}
+                width={200}
+                height={200}
                 quality={100}
-                className="object-contain w-full h-full"
+                className="object-contain w-1/2 h-full"
               />
             </div>
           </section>
-        )}
+        )} */}
       </div>
     </div>
   );

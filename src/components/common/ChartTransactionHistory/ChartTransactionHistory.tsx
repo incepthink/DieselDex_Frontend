@@ -87,42 +87,42 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
 
   return (
     <>
-      <div className="border-[#E5E9EB] border-[1px] rounded-[16px] overflow-hidden">
+      <div className="border-[#E5E9EB] border-[1px] rounded-[16px] overflow-hidden backdrop-blur-2xl bg-white/10">
         <div className="w-full h-[56px] bg-[#242424] flex justify-center items-center">
-          <p className="text-[18px] font-medium">Recent Trades</p>
+          <p className="text-[18px] font-semibold">Recent Trades</p>
         </div>
         <table className="w-full">
-          <thead className=" bg-white/20 *:text-center *:font-semibold">
+          <thead className=" bg-white/20 *:text-center *:font-semibold border-t-[0.5px] border-white/30">
             <tr className=" w-full">
-              <th className="px-[16px] py-[12px]  text-[#d1d4dc] ">
+              <th className="px-[16px] py-[12px]  text-[#d1d4dc] border-r-[0.5px] border-white/30">
                 <div className="flex items-center justify-center gap-1">
                   {" "}
-                  <p className="xl:text-xl text-sm">TIME</p>{" "}
+                  <p className="xl:text-lg text-sm">TIME</p>{" "}
                   {/* <WiTime3 className="xl:text-2xl text-base" /> */}
                 </div>
               </th>
-              <th className="px-[16px] py-[12px]  text-[#d1d4dc] sm:block hidden">
+              <th className="px-[16px] py-[12px]  text-[#d1d4dc] border-r-[0.5px] border-white/30 sm:block hidden">
                 {" "}
                 <div className="flex items-center justify-center gap-1">
-                  <p className="xl:text-xl text-sm">Wallet</p>{" "}
+                  <p className="xl:text-lg text-sm">WALLET</p>{" "}
                   {/* <CiWallet className="xl:text-2xl text-base" /> */}
                 </div>
               </th>
-              <th className="px-[16px] py-[12px]  text-[#d1d4dc]">
+              <th className="px-[16px] py-[12px]  text-[#d1d4dc] border-r-[0.5px] border-white/30">
                 {" "}
                 <div className="flex items-center justify-center gap-1">
-                  <p className="xl:text-xl text-sm">TYPE</p>{" "}
+                  <p className="xl:text-lg text-sm">TYPE</p>{" "}
                   {/* <LuType className="xl:text-2xl text-base" /> */}
                 </div>
               </th>
-              <th className="px-[16px] py-[12px]  text-[#d1d4dc]">
+              <th className="px-[16px] py-[12px]  text-[#d1d4dc] border-r-[0.5px] border-white/30">
                 {" "}
                 <div className="flex items-center justify-center gap-1">
-                  <p className="xl:text-xl text-sm">PRICE</p>{" "}
+                  <p className="xl:text-lg text-sm">ETH</p>{" "}
                   {/* <IoPricetagOutline className="xl:text-2xl text-base" /> */}
                 </div>
               </th>
-              <th className="px-4 py-2  text-[#d1d4dc] xl:text-xl text-sm">
+              <th className="px-4 py-2  text-[#d1d4dc] xl:text-lg text-sm border-r-[0.5px] border-white/30">
                 QUANTITY
               </th>
               <th className="px-4 py-2  text-[#d1d4dc]"></th>
@@ -131,14 +131,14 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
           <tbody className="sm:text-sm text-xs">
             {paginatedTrades.map((trade, i) => {
               return (
-                <tr key={i}>
-                  <td>
+                <tr key={i} className="border-b-[0.5px] border-white/30">
+                  <td className="border-r-[0.5px] border-white/30">
                     <div className="text-center py-[2px]">
                       {" "}
                       {getTimeAgo(trade.time)}
                     </div>
                   </td>
-                  <td className=" sm:block hidden">
+                  <td className="sm:table-cell hidden border-r-[0.5px] border-white/30">
                     <div className="text-center py-[2px]">
                       {" "}
                       <a
@@ -151,7 +151,7 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
                       </a>
                     </div>
                   </td>
-                  <td className="px-4 py-2">
+                  <td className="px-4 py-2 border-r-[0.5px] border-white/30">
                     <div className="text-center py-[2px]">
                       <span>
                         {trade.is_buy ? (
@@ -166,7 +166,7 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
                       </span>
                     </div>
                   </td>
-                  <td className="px-4 py-2 text-[#d1d4dc]">
+                  <td className="px-4 py-2 text-[#d1d4dc] border-r-[0.5px] border-white/30">
                     <div className="text-center py-[2px]">
                       <span>{formatNumber(trade.exchange_rate)}</span>
                       {/* {#if index < visibleData.length - 1}
@@ -177,7 +177,7 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
                     </div>
                   </td>
                   {trade.is_buy ? (
-                    <td className="px-4 py-2 text-[#d1d4dc]">
+                    <td className="px-4 py-2 text-[#d1d4dc] border-r-[0.5px] border-white/30">
                       <div className="text-center py-[2px]">
                         {formatTokenNumber(
                           trade.asset_0_in,
@@ -187,7 +187,7 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
                       </div>
                     </td>
                   ) : (
-                    <td className="px-4 py-2 text-[#d1d4dc]">
+                    <td className="px-4 py-2 text-[#d1d4dc] border-r-[0.5px] border-white/30">
                       <div className="text-center py-[2px]">
                         {formatTokenNumber(
                           trade.asset_0_in,
@@ -197,8 +197,8 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
                       </div>
                     </td>
                   )}
-                  <td className="px-4 py-2">
-                    <div className="text-center py-[2px]">
+                  <td className="px-4 py-2 border-r-[0.5px] border-white/30">
+                    <div className="text-center py-[2px] flex justify-center">
                       <a
                         href={`https://app.fuel.network/tx/${trade.transaction_id}`}
                         target="_blank"
@@ -216,9 +216,9 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
         </table>
       </div>
       {/* Pagination Controls */}
-      <div className="flex justify-center gap-4 mt-4 items-center">
+      <div className="flex justify-center gap-4 mt-6 items-center">
         <button
-          className="px-4 py-2 bg-gray-700 text-white rounded disabled:opacity-50"
+          className="px-4 py-2 bg-white/20 backdrop-blur-2xl text-white rounded disabled:opacity-50 hover:bg-white/30"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 0))}
           disabled={currentPage === 0}
         >
@@ -228,7 +228,7 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
           Page {currentPage + 1} of {totalPages}
         </span>
         <button
-          className="px-4 py-2 bg-gray-700 text-white rounded disabled:opacity-50"
+          className="px-6 py-2 bg-white/20 backdrop-blur-2xl text-white rounded disabled:opacity-50 hover:bg-white/30"
           onClick={() =>
             setCurrentPage((prev) => Math.min(prev + 1, totalPages - 1))
           }

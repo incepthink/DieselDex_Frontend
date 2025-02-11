@@ -116,11 +116,11 @@ const CurrencyBox = ({
               value={value}
               disabled={coinNotSelected || loading}
               onChange={handleChange}
-            />
+            ></input>
             <div
               className={`absolute w-8 h-8 ${
                 (!loading || swapPending) && "hidden"
-              } ${mode === "sell" ? "left-4" : "left-10"}`}
+              } ${mode === "sell" ? "left-4" : "left-4"}`}
             >
               <img
                 src="/images/loading.gif"

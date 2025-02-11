@@ -522,20 +522,20 @@ const SwapForm: React.FC = () => {
           <div className="flex justify-center items-center gap-4">
             <div
               onClick={openSettingsModal}
-              className="cursor-pointer flex items-center gap-2 bg-white bg-opacity-10 rounded-lg px-4 py-2"
+              className="cursor-pointer flex items-center gap-2 bg-white bg-opacity-10 rounded-lg px-4 py-2 hover:bg-green-400/30"
             >
               <p className="text-sm font-medium text-white text-opacity-60">
                 {slippage / 100}% slippage
               </p>
             </div>
-            <IconButton onClick={openSettingsModal}>
+            <IconButton className="" onClick={openSettingsModal}>
               <SettingsIcon />
             </IconButton>
           </div>
         </div>
 
         <div className="space-y-4 mt-4">
-          <div className="rounded-xl p-1 lg:p-1 bg-[#242424] backdrop-blur-2xl">
+          <div className="rounded-xl p-1 lg:p-1 bg-black/60 backdrop-blur-2xl ">
             <CurrencyBox
               value={sellValue}
               assetId={swapState.sell.assetId}
@@ -565,7 +565,7 @@ const SwapForm: React.FC = () => {
             <div className="h-[1px] w-full bg-[#E5E9EB]" />
           </div>
 
-          <div className="rounded-lg p-1 lg:p-1 bg-[#242424]">
+          <div className="rounded-xl p-1 lg:p-1 bg-black/60 backdrop-blur-2xl relative">
             <CurrencyBox
               value={buyValue}
               assetId={swapState.buy.assetId}
