@@ -174,6 +174,16 @@ const initAdditionalAssetsConfig = () => {
       name: "FUEL",
       symbol: "FUEL",
     },
+    {
+      contractId:
+        "0x81d5964bfbb24fd994591cc7d0a4137458d746ac0eb7ececb9a9cf2ae966d942",
+      decimals: 9,
+      assetId:
+        "0xb3424e9d0540e4e37e23513b00365e3c439b815810bd7e543c8eb4f7519e9646",
+      icon: "https://firebasestorage.googleapis.com/v0/b/pump-555ee.appspot.com/o/images%2FDucky%20logo.png?alt=media&token=edce0a12-fb14-4e3e-aa2f-84dc7e4dbe12",
+      name: "DUCKY Coin",
+      symbol: "DUCKY",
+    },
   ];
 
   for (const asset of additionalAssets) {

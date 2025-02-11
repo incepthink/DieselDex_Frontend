@@ -130,9 +130,9 @@ const Swap = () => {
     <LayoutWrapper>
       <div className="relative">
         {/* <AuthLayout> */}
-        <div className=" bg-black w-full pt-24 flex flex-col items-center">
+        <div className=" bg-black w-full pt-24 flex flex-col items-center px-2">
           <div
-            className="flex items-center bg-white/20 rounded-full p-2 px-3 gap-2 w-1/3 cursor-pointer mb-8w"
+            className="flex items-center bg-white/20 rounded-full p-2 px-3 gap-2 sm:w-1/3 w-full cursor-pointer mb-4"
             onClick={handlePoolsSelectorClick}
           >
             <IoSearch size={26} />

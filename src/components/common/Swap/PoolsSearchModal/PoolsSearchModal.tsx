@@ -19,7 +19,7 @@ const PoolsSearchModal = ({ selectPool }: Props) => {
               onClick={() => selectPool(pool.id)}
             >
               <p className="text-xl font-semibold">
-                {pool.details.asset_0_symbol} {"<>"}{" "}
+                {pool.details.asset_0_symbol} {"/"}{" "}
                 {pool.details.asset_1_symbol}
               </p>
               <p className="text-sm">TVL: ${pool.details.tvl}</p>

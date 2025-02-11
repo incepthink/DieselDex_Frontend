@@ -6,6 +6,15 @@ import {
   ColorType,
   UTCTimestamp,
 } from "lightweight-charts";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { MdOutlineArrowDropDown } from "react-icons/md";
 
 interface Trade {
   price: number;
@@ -39,15 +48,18 @@ type TimeframeOption = {
 
 const TIMEFRAME_OPTIONS: TimeframeOption[] = [
   { label: "1s", minutes: 1 / 60 }, // 5 seconds
-  { label: "1m", minutes: 1 }, // 1 minute
   { label: "5m", minutes: 5 },
   { label: "15m", minutes: 15 },
-  { label: "30m", minutes: 1800 / 60 },
-  { label: "1h", minutes: 3600 / 60 },
   { label: "2h", minutes: 7200 / 60 },
   { label: "4h", minutes: 14400 / 60 },
   { label: "6h", minutes: 21600 / 60 },
   { label: "12h", minutes: 43200 / 60 },
+];
+
+const TIMEFRAME_OPTIONS_SHORT: TimeframeOption[] = [
+  { label: "1m", minutes: 1 }, // 1 minute
+  { label: "30m", minutes: 1800 / 60 },
+  { label: "1h", minutes: 3600 / 60 },
   { label: "24h", minutes: 86400 / 60 },
 ];
 
@@ -108,7 +120,6 @@ function TradingViewWidget({
   const chartContainerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
   const candlestickSeriesRef = useRef<any>(null);
-  const volumeSeriesRef = useRef<any>(null);
 
   // Initialize chart
   useEffect(() => {
@@ -216,18 +227,8 @@ function TradingViewWidget({
       },
     });
 
-    const volumeSeries = chart.addHistogramSeries({
-      color: "#26a69a",
-      priceFormat: {
-        type: "volume",
-        precision: 5,
-      },
-      priceScaleId: "",
-    });
-
     chartRef.current = chart;
     candlestickSeriesRef.current = candlestickSeries;
-    volumeSeriesRef.current = volumeSeries;
 
     // Configure the volume price scale
     chart.priceScale("right").applyOptions({
@@ -266,12 +267,7 @@ function TradingViewWidget({
 
   // Update data when trades or timeframe changes
   useEffect(() => {
-    if (
-      !chartRef.current ||
-      !candlestickSeriesRef.current ||
-      !volumeSeriesRef.current
-    )
-      return;
+    if (!chartRef.current || !candlestickSeriesRef.current) return;
 
     try {
       const candleData = convertToOHLC(trades, selectedTimeframe.minutes);
@@ -294,8 +290,6 @@ function TradingViewWidget({
             ? "rgba(38, 166, 154, 0.5)" // Green for bullish
             : "rgba(239, 83, 80, 0.5)", // Red for bearish
       }));
-
-      volumeSeriesRef.current.setData(volumeData);
 
       // Format volume numbers
       chartRef.current.priceScale("right").applyOptions({
@@ -360,13 +354,13 @@ function TradingViewWidget({
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex bg-fuel-dark-800 border-fuel-dark-600">
-        {TIMEFRAME_OPTIONS.map((timeframe) => (
+      <div className="flex bg-fuel-dark-800 border-fuel-dark-600 items-center">
+        {TIMEFRAME_OPTIONS_SHORT.map((timeframe) => (
           <button
             key={timeframe.label}
-            className={`px-3 py-1 text-xs rounded transition-colors ${
+            className={`px-3 py-1 text-sm rounded transition-colors ${
               selectedTimeframe.label === timeframe.label
-                ? "bg-fuel-green text-fuel-dark-900"
+                ? "bg-fuel-green text-[#00EA82]"
                 : "bg-fuel-dark-700 text-gray-400 hover:bg-fuel-dark-600"
             }`}
             onClick={() => onTimeframeChange(timeframe)}
@@ -374,12 +368,29 @@ function TradingViewWidget({
             {timeframe.label}
           </button>
         ))}
+        <div className="px-3">
+          <DropdownMenu>
+            <DropdownMenuTrigger className="bg-white/20 p-0.5 rounded-sm">
+              <MdOutlineArrowDropDown size={18} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-white/20 border-none backdrop-blur-2xl">
+              {TIMEFRAME_OPTIONS.map((timeframe) => (
+                <DropdownMenuItem
+                  className={`hover:bg-white/10 ${
+                    selectedTimeframe.label === timeframe.label
+                      ? "bg-fuel-green text-[#00EA82]"
+                      : "bg-fuel-dark-700 text-gray-400"
+                  }`}
+                  onClick={() => onTimeframeChange(timeframe)}
+                >
+                  {timeframe.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
-      <div
-        ref={chartContainerRef}
-        className="flex-1 h-full"
-        style={{ width: "800px" }}
-      />
+      <div ref={chartContainerRef} className="flex-1 h-full 2xl:w-[800px]" />
     </div>
   );
 }

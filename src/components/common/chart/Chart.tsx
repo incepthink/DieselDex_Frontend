@@ -54,7 +54,7 @@ const TIMEFRAME_OPTIONS: TimeframeOption[] = [
   { label: "15m", minutes: 15 },
   { label: "1h", minutes: 60 },
   { label: "4h", minutes: 240 },
-  { label: "1d", minutes: 1440 },
+  { label: "24h", minutes: 1440 },
 ];
 type TradingPair = "ETH/USDT" | "ETH/USDC" | "USDC/USDT";
 
@@ -104,7 +104,7 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
   const [selectedPair, setSelectedPair] = useState<TradingPair>("ETH/USDT");
   const [stats, setStats] = useState<any>(undefined);
   const [selectedTimeframe, setSelectedTimeframe] = useState<TimeframeOption>(
-    TIMEFRAME_OPTIONS[2]
+    TIMEFRAME_OPTIONS[6]
   ); // Default to 5m
 
   const { data, isLoading } = useChartData(ChartData);
@@ -129,77 +129,101 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
 
   return (
     <>
-      <div className="flex max-h-[600px] gap-12 mb-12">
-        <div className="flex-1 bg-fuel-dark-800 border-[#84919A] border-[0.5px]  p-[20px] rounded-[16px]">
-          {!isLoading && (
-            <div className="flex justify-between items-center mb-2">
-              <div className="flex gap-2 text-2xl mb-2">
-                <div className="flex items-center gap-2 text-2xl font-semibold">
-                  <div className="w-8 h-8 rounded-full overflow-hidden">
-                    <img
-                      src={token0img || ""}
-                      alt="token0"
-                      className="w-full h-full object-cover"
-                    />
+      <div className="flex 2xl:flex-row flex-col-reverse items-center w-full gap-12 2xl:items-start">
+        <div className="flex flex-col gap-12 mb-12">
+          <div className="2xl:w-auto max-w-screen bg-fuel-dark-800 border-[#84919A] border-[0.5px]  p-[20px] rounded-[16px]">
+            {!isLoading && (
+              <div className="flex justify-between items-center xl:mb-2 mb-1">
+                <div className="flex flex-col">
+                  <div className="flex gap-2 text-2xl mb-2">
+                    <div className="flex items-center gap-2 text-2xl font-semibold">
+                      <div className="xl:w-8 xl:h-8 h-4 w-4 rounded-full overflow-hidden">
+                        <img
+                          src={token0img || ""}
+                          alt="token0"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <p className="xl:text-xl lg:text-lg text-base">
+                        {token0meta.symbol}
+                      </p>
+                    </div>
+                    {"/"}
+                    <div className="flex items-center gap-2 text-2xl font-semibold">
+                      <div className="xl:w-8 xl:h-8 h-4 w-4 rounded-full overflow-hidden">
+                        <img
+                          src={token1img || ""}
+                          alt="token1"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <p className="xl:text-xl lg:text-lg text-base">
+                        {token1meta.symbol}
+                      </p>
+                    </div>
                   </div>
-                  <p>{token0meta.symbol}</p>
+                  <div className="text-sm lg:mt-0.5 mt-0">
+                    {Number(data?.data.changes["24H"].toFixed(2)) > 0 ? (
+                      <p className="text-[#26a69a]">
+                        {data?.data.changes["24H"].toFixed(2)}%
+                      </p>
+                    ) : (
+                      <p className="text-[#ef5350]">
+                        {data?.data.changes["24H"].toFixed(2)}%
+                      </p>
+                    )}
+                  </div>
                 </div>
-                {"<>"}
-                <div className="flex items-center gap-2 text-2xl font-semibold">
-                  <div className="w-8 h-8 rounded-full overflow-hidden">
-                    <img
-                      src={token1img || ""}
-                      alt="token1"
-                      className="w-full h-full object-cover"
-                    />
+                <div className="flex gap-4">
+                  <div className="flex flex-col items-center">
+                    <p className="text-sm opacity-80">FDV</p>
+                    <p className="font-medium lg:text-base text-sm">
+                      {data ? formatCurrency(data.data.liquidity.fdv) : 0}
+                    </p>
                   </div>
-                  <p>{token1meta.symbol}</p>
+                  <div>
+                    <p className="text-sm opacity-80">24H Vol</p>
+                    <p className="lg:text-base text-sm">
+                      {data ? formatCurrency(data.data.transactions.volume) : 0}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <div>
-                  <p>Mkt Cap</p>
-                  <p>{data ? formatCurrency(data.data.liquidity.mcap) : 0}</p>
-                </div>
-                <div>
-                  <p>24H Vol</p>
-                  <p>
-                    {data ? formatCurrency(data.data.transactions.volume) : 0}
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
+            )}
 
-          {isLoading ? (
-            <div className="w-[800px] flex justify-center items-center h-full">
-              <img
-                src="/images/loading.gif"
-                className="w-24 object-cover"
-                alt=""
-              />
+            <div className=" h-[500px]">
+              {isLoading ? (
+                <div className="2xl:w-[800px] w-full flex justify-center items-center h-full">
+                  <img
+                    src="/images/loading.gif"
+                    className="w-24 object-cover"
+                    alt=""
+                  />
+                </div>
+              ) : (
+                <TradingViewWidget
+                  trades={data ? data.trades : []}
+                  selectedTimeframe={selectedTimeframe}
+                  onTimeframeChange={setSelectedTimeframe} // Add this prop
+                />
+              )}
             </div>
-          ) : (
-            <TradingViewWidget
+          </div>
+          <div className="border-[#E5E9EB] border-[1px] rounded-[16px] overflow-hidden">
+            <div className="w-full h-[56px] bg-[#242424] flex justify-center items-center">
+              <p className="text-[18px] font-medium">Recent Trades</p>
+            </div>
+            <ChartTransactionHistory
               trades={data ? data.trades : []}
-              selectedTimeframe={selectedTimeframe}
-              onTimeframeChange={setSelectedTimeframe} // Add this prop
+              chartData={ChartData}
             />
-          )}
+          </div>
         </div>
-        <div className="border-[#84919A] border-[0.5px] rounded-[16px]">
+        <div className="border-[#84919A] border-[0.5px] rounded-[16px] w-full">
           <SwapForm />
         </div>
       </div>
-      <div className="border-[#E5E9EB] border-[1px] rounded-[16px] overflow-hidden">
-        <div className="w-full h-[56px] bg-[#242424] flex justify-center items-center">
-          <p className="text-[18px] font-medium">Recent Trades</p>
-        </div>
-        <ChartTransactionHistory
-          trades={data ? data.trades : []}
-          chartData={ChartData}
-        />
-      </div>
+
       {stats !== undefined && (
         <div>
           <p className="mt-2">Price changes:</p>
