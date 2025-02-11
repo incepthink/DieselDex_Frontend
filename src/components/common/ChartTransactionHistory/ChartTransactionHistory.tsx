@@ -101,7 +101,7 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
                   {/* <WiTime3 className="xl:text-2xl text-base" /> */}
                 </div>
               </th>
-              <th className="px-[16px] py-[12px]  text-[#d1d4dc] border-r-[0.5px] border-white/30 sm:block hidden">
+              <th className="px-[16px] py-[12px] pr-[0.5px] text-[#d1d4dc] border-r-[0.5px] border-white/30 sm:block hidden">
                 {" "}
                 <div className="flex items-center justify-center gap-1">
                   <p className="xl:text-lg text-sm">WALLET</p>{" "}
@@ -118,14 +118,14 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
               <th className="px-[16px] py-[12px]  text-[#d1d4dc] border-r-[0.5px] border-white/30">
                 {" "}
                 <div className="flex items-center justify-center gap-1">
-                  <p className="xl:text-lg text-sm">ETH</p>{" "}
+                  <p className="xl:text-lg text-sm">PRICE</p>{" "}
                   {/* <IoPricetagOutline className="xl:text-2xl text-base" /> */}
                 </div>
               </th>
               <th className="px-4 py-2  text-[#d1d4dc] xl:text-lg text-sm border-r-[0.5px] border-white/30">
                 QUANTITY
               </th>
-              <th className="px-4 py-2  text-[#d1d4dc]"></th>
+              <th className="px-4 py-2  text-[#d1d4dc]">TRX</th>
             </tr>
           </thead>
           <tbody className="sm:text-sm text-xs">
