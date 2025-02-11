@@ -1,6 +1,6 @@
 "use client";
 
-import { manrope } from "@/app/fonts";
+import { manrope, orbitron } from "@/app/fonts";
 import Container from "../common/Container";
 import useWindowSize from "@/hooks/useWindowSize";
 import Image from "next/image";
@@ -48,7 +48,7 @@ const HeroSectionShort = () => {
             <section className="flex flex-col gap-4 lg:gap-14 w-full lg:w-3/4 mt-28 lg:-mt-28">
               <div className="flex flex-col gap-2 lg:gap-4 w-full lg:w-[90%]">
                 <h1
-                  className={`${manrope.variable} font-manrope text-3xl lg:text-5xl xl:text-6xl 2xl:text-[85px] font-bold !leading-tight`}
+                  className={`${orbitron.variable} font-orbitron text-3xl lg:text-5xl xl:text-6xl 2xl:text-[85px] font-bold !leading-tight`}
                 >
                   The Best Trading Experience On
                   <span className="text-[#00F48D] xl:text-6xl 2xl:text-[75px] lg:text-5xl text-3xl">
@@ -86,7 +86,7 @@ const HeroSectionShort = () => {
               </div>
             )} */}
             <div className="w-full flex justify-center">
-              <div className="flex bg-white/15 w-full max-w-6xl p-2 md:p-4 rounded-xl *:border-[#00F48D]">
+              <div className="flex bg-white/15 backdrop-blur-2xl w-full max-w-6xl p-2 md:p-4 rounded-xl *:border-[#00F48D]">
                 <div className=" flex-1  px-2 md:px-10 flex border-r-2 flex-col gap-1 md:gap-2 justify-center items-center">
                   <p className="text-base md:text-2xl font-medium text-[#00F48D]">
                     {/* ${data.tvlUSD} */}${data.tvlUSD}

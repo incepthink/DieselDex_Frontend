@@ -66,7 +66,7 @@ const HeroSection = () => {
             <section className="flex flex-col gap-4 lg:gap-16 w-full lg:w-1/2 mt-28 lg:mt-32">
               <div className="flex flex-col gap-2 lg:gap-4 w-full lg:w-[90%]">
                 <h1
-                  className={`${manrope.variable} font-manrope text-3xl lg:text-[80px] font-bold leading-none`}
+                  className={`${orbitron.variable} font-orbitron text-3xl lg:text-[80px] font-bold leading-none`}
                 >
                   The Best Trading Experience On
                   <span className="text-[#00F48D] lg:text-7xl text-3xl">
