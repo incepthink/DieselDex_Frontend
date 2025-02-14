@@ -11,6 +11,7 @@ import { InsufficientReservesError } from "disel-dex-ts/dist/sdk/errors";
 import { NoRouteFoundError } from "@/hooks/useSwapPreview";
 import { B256Address, BN } from "fuels";
 import useAssetMetadata from "@/hooks/useAssetMetadata";
+import { FaChevronDown } from "react-icons/fa6";
 
 type Props = {
   value: string;
@@ -133,6 +134,7 @@ const CurrencyBox = ({
 
         <button
           className={clsx(
+            "!bg-white/15 !py-2 !px-3 hover:!bg-green-400/40 backdrop-blur-2xl transition-all hover:!drop-shadow-md hover:!drop-shadow-green-400/40",
             styles.selector,
             coinNotSelected && styles.selectorHighlighted
           )}
@@ -144,13 +146,13 @@ const CurrencyBox = ({
           ) : (
             <Coin assetId={assetId} />
           )}
-          <ChevronDownIcon />
+          <FaChevronDown style={{ height: "12px", opacity: "0.5" }} />
         </button>
       </div>
       <div className={styles.estimateAndBalance}>
         <p className={styles.estimate}>{usdValue !== null && `$${usdValue}`}</p>
         {balance.gt(0) && (
-          <span className={styles.balance}>
+          <span className={clsx("", styles.balance)}>
             Balance: {balanceValue}
             &nbsp;
             <TextButton onClick={handleMaxClick}>Max</TextButton>

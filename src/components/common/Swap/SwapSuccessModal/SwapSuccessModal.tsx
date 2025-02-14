@@ -48,7 +48,7 @@ const SwapSuccessModal = ({ swapState, transactionHash }: Props) => {
             className={styles.viewButton}
             variant="green"
           >
-            View transaction
+            Txn
             <MdOpenInNew className="text-xl ml-2" />
           </ActionButton>
 
