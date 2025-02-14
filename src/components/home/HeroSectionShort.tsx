@@ -70,7 +70,7 @@ const HeroSectionShort = () => {
                 className="!w-fit !px-10 !py-6 md:!px-10 md:!py-6 !text-3xl md:!text-3xl lg:!px-12 lg:!py-9 lg:!text-4xl hover:scale-105 !transition-all !duration-200"
                 onClick={() => router.push("/swap")}
               >
-                Trade Now
+                Trade with 0-fees
               </ActionButton>
             </section>
             {/* {windowSize.width! < 1024 && (

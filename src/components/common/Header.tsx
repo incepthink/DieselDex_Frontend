@@ -66,7 +66,7 @@ const Header: React.FC = () => {
         {pathname === "/" ? (
           <Link href={"/swap/"}>
             <ActionButton variant="green" onClick={() => console.log("h")}>
-              Trade Now
+              Trade with 0-fees
             </ActionButton>
           </Link>
         ) : (
