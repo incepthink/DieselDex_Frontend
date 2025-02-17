@@ -522,15 +522,17 @@ const SwapForm: React.FC = () => {
           <div className="flex justify-center items-center gap-4">
             <div
               onClick={openSettingsModal}
-              className="cursor-pointer flex items-center gap-2 bg-white bg-opacity-10 rounded-lg px-4 py-2 hover:bg-green-400/30"
+              className="icon-button cursor-pointer flex items-center gap-2 bg-white bg-opacity-10 rounded-lg px-4 py-2 hover:bg-green-400/30"
             >
               <p className="text-sm font-medium text-white text-opacity-60">
                 {slippage / 100}% slippage
               </p>
             </div>
-            <IconButton className="" onClick={openSettingsModal}>
-              <SettingsIcon />
-            </IconButton>
+            <div className="rounded-full icon-button-sm hover:bg-[#10f59941]">
+              <IconButton className="" onClick={openSettingsModal}>
+                <SettingsIcon />
+              </IconButton>
+            </div>
           </div>
         </div>
 
@@ -556,7 +558,7 @@ const SwapForm: React.FC = () => {
 
           <div className="flex justify-center items-center gap-4">
             <div className="h-[1px] w-full bg-[#E5E9EB]" />
-            <div className="p-2 rounded-full bg-[#00EA82] text-xl text-black cursor-pointer border-2 hover:border-2 hover:rotate-180 hover:border-green-900/80 transition-all border-[#00EA82]">
+            <div className="icon-button p-2 rounded-full bg-[#00EA82] text-xl text-black cursor-pointer  hover:rotate-180  transition-all ">
               <IconButton onClick={swapAssets}>
                 {/* // change icon */}
                 <IoSwapVertical />

@@ -134,7 +134,7 @@ const CurrencyBox = ({
 
         <button
           className={clsx(
-            "!bg-white/15 !py-2 !px-3 hover:!bg-green-400/40 backdrop-blur-2xl transition-all hover:!drop-shadow-md hover:!drop-shadow-green-400/40",
+            "!bg-white/15  !py-2 !px-3 hover:!bg-green-400/40 backdrop-blur-2xl transition-all hover:!drop-shadow-md hover:!drop-shadow-green-400/40",
             styles.selector,
             coinNotSelected && styles.selectorHighlighted
           )}

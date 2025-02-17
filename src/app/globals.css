@@ -34,6 +34,14 @@
   margin: 0;
 }
 
+.icon-button:hover {
+  box-shadow: 1px 1px 20px 0 rgba(16, 245, 153, 0.9);
+}
+
+.icon-button-sm:hover {
+  box-shadow: 1px 1px 10px 0 rgba(16, 245, 153, 0.9);
+}
+
 .bg-diesel {
   background-image: url(/public/images/main-bg.jpeg);
   background-size: cover;

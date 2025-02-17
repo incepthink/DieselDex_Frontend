@@ -67,7 +67,7 @@
 }
 
 .selector:hover {
-  background-color: var(--background-grey-dark);
+  box-shadow: 1px 1px 25px 0 rgba(16, 245, 153, 0.7);
   cursor: pointer;
 }
 
