@@ -522,14 +522,17 @@ const SwapForm: React.FC = () => {
           <div className="flex justify-center items-center gap-4">
             <div
               onClick={openSettingsModal}
-              className="icon-button cursor-pointer flex items-center gap-2 bg-white bg-opacity-10 rounded-lg px-4 py-2 hover:bg-green-400/30"
+              className="icon-button cursor-pointer flex items-center gap-2 bg-white bg-opacity-10 rounded-lg px-4 py-2 !border-[1px] hover:!bg-green-400/30 border-transparent hover:!border-[1px] hover:!border-green-400/70"
             >
               <p className="text-sm font-medium text-white text-opacity-60">
                 {slippage / 100}% slippage
               </p>
             </div>
-            <div className="rounded-full icon-button-sm hover:bg-[#10f59941]">
-              <IconButton className="" onClick={openSettingsModal}>
+            <div className="rounded-full">
+              <IconButton
+                className="hover:!text-green-400"
+                onClick={openSettingsModal}
+              >
                 <SettingsIcon />
               </IconButton>
             </div>
