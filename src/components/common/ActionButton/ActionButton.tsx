@@ -52,6 +52,7 @@ const ActionButton = forwardRef<HTMLButtonElement, Props>(function ActionButton(
   return (
     <button
       className={clsx(
+        "hover:border-[1px] border-[1px] border-transparent hover:border-green-400/70",
         styles.btn,
         variant === "secondary" && styles.secondary,
         variant === "outlined" && styles.outlined,
