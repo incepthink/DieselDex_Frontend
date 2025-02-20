@@ -8,6 +8,7 @@ import { FaTelegram, FaXTwitter } from "react-icons/fa6";
 import { IoClose, IoMenu } from "react-icons/io5";
 import ConnectButton from "./ConnectButton/ConnectButton";
 import ActionButton from "./ActionButton/ActionButton";
+import svgLogo from "./logo-new.svg";
 
 const navItems = [
   { name: "Swap", href: "/swap/" },
@@ -77,10 +78,10 @@ const Header: React.FC = () => {
   );
 
   const BrandLogo = () => (
-    <Link href="/" className="flex items-center gap-2">
-      <div className="w-8 lg:w-10 rounded-full overflow-hidden mr-2 ">
+    <Link href="/" className="flex items-center -mt-1.5">
+      <div className="w-48 lg:w-48 rounded-full overflow-hidden">
         <Image
-          src="/images/logo.png"
+          src={svgLogo}
           alt="Diesel Dex Logo"
           width={100}
           height={100}
@@ -88,16 +89,13 @@ const Header: React.FC = () => {
           className="object-contain w-full"
         />
       </div>
-      <p className="text-xl lg:text-2xl font-bold text-nowrap">
-        Diesel <span className="text-[#00F48D] text-xl lg:text-2xl">Dex</span>
-      </p>
     </Link>
   );
 
   return (
     <header className="shadow-sm fixed top-0 left-0 w-full z-50 backdrop-blur-md">
       <div className="py-4 px-8 max-w-[1800px] mx-auto">
-        <div className="flex justify-between items-center gap-20 w-full">
+        <div className="flex justify-between items-center gap-16 w-full">
           <BrandLogo />
           <div className="hidden lg:block w-full">
             <NavLinks />

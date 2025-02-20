@@ -28,6 +28,12 @@
   --content-positive: #46cc44; */
 }
 
+.logo-main {
+  background-color: white;
+  -webkit-mask: url(/src/components/common/logo-new.svg) no-repeat center;
+  mask: url(/src/components/common/logo-new.svg) no-repeat center;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
