@@ -6,6 +6,7 @@ import { LuType } from "react-icons/lu";
 import { IoPricetagOutline } from "react-icons/io5";
 import { FiExternalLink } from "react-icons/fi";
 import { useState } from "react";
+import useAssetMetadata from "@/hooks/useAssetMetadata";
 
 type Props = {
   trades: SwapEvent[];
@@ -89,6 +90,10 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
     (currentPage + 1) * ITEMS_PER_PAGE
   );
 
+  const token0 = useAssetMetadata(chartData.poolData.token0Address);
+  const token1 = useAssetMetadata(chartData.poolData.token1Address);
+  console.log("token0::", token0);
+
   return (
     <>
       <div className="border-[#E5E9EB] border-[1px] rounded-[16px] overflow-hidden backdrop-blur-2xl bg-white/10">
@@ -122,12 +127,12 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
               <th className="px-[16px] py-[12px]  text-[#d1d4dc] border-r-[0.5px] border-white/30">
                 {" "}
                 <div className="flex items-center justify-center gap-1">
-                  <p className="xl:text-lg text-sm">ETH</p>{" "}
+                  <p className="xl:text-lg text-sm">{token1.symbol}</p>{" "}
                   {/* <IoPricetagOutline className="xl:text-2xl text-base" /> */}
                 </div>
               </th>
               <th className="px-4 py-2  text-[#d1d4dc] xl:text-lg text-sm border-r-[0.5px] border-white/30">
-                QUANTITY
+                {token0.symbol}
               </th>
               <th className="px-4 py-2  text-[#d1d4dc]">TRX</th>
             </tr>
