@@ -51,16 +51,20 @@ function formatNumber(value: string): string {
   return num.toExponential(4);
 }
 
-function formatTokenNumber(
-  inValue: string,
-  outValue: string,
-  isBuy: boolean
-): string {
-  const value = isBuy ? Number(outValue) / 1e9 : -(Number(inValue) / 1e9);
+function formatTokenNumber(valueIn: string): string {
+  // let value;
+  // if (is1) {
+  //   value = isBuy ? -(Number(inValue) / 1e9) : Number(outValue) / 1e9;
+  // } else {
+  //   value = isBuy ? Number(outValue) / 1e9 : -(Number(inValue) / 1e9);
+  // }
+
+  let value = Number(valueIn) / 1e9;
 
   let maxDigits = 2;
+
   // Handle very small numbers
-  if (Math.abs(value) < 0.000001) {
+  if (Math.abs(value) < 0.1) {
     maxDigits = 16;
     //return value.toExponential(6);
   } else {
@@ -118,7 +122,7 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
               <th className="px-[16px] py-[12px]  text-[#d1d4dc] border-r-[0.5px] border-white/30">
                 {" "}
                 <div className="flex items-center justify-center gap-1">
-                  <p className="xl:text-lg text-sm">PRICE</p>{" "}
+                  <p className="xl:text-lg text-sm">ETH</p>{" "}
                   {/* <IoPricetagOutline className="xl:text-2xl text-base" /> */}
                 </div>
               </th>
@@ -166,34 +170,29 @@ const ChartTransactionHistory = ({ trades, chartData }: Props) => {
                       </span>
                     </div>
                   </td>
-                  <td className="px-4 py-2 text-[#d1d4dc] border-r-[0.5px] border-white/30">
-                    <div className="text-center py-[2px]">
-                      <span>{formatNumber(trade.exchange_rate)}</span>
-                      {/* {#if index < visibleData.length - 1}
-                                <span class={getPriceDirectionColor(event.exchange_rate, visibleData[index + 1].exchange_rate)}>
-                                    {getPriceDirection(evaent.exchange_rate, visibleData[index + 1].exchange_rate)}a
-                                </span>
-                            {/if} */}
-                    </div>
-                  </td>
-                  {trade.is_buy ? (
+                  {Number(trade.asset_1_in) > 0 ? (
                     <td className="px-4 py-2 text-[#d1d4dc] border-r-[0.5px] border-white/30">
                       <div className="text-center py-[2px]">
-                        {formatTokenNumber(
-                          trade.asset_0_in,
-                          trade.asset_0_out,
-                          true
-                        )}
+                        {formatTokenNumber(trade.asset_1_in)}
                       </div>
                     </td>
                   ) : (
                     <td className="px-4 py-2 text-[#d1d4dc] border-r-[0.5px] border-white/30">
                       <div className="text-center py-[2px]">
-                        {formatTokenNumber(
-                          trade.asset_0_in,
-                          trade.asset_0_out,
-                          false
-                        )}
+                        {formatTokenNumber(trade.asset_1_out)}
+                      </div>
+                    </td>
+                  )}
+                  {Number(trade.asset_0_in) > 0 ? (
+                    <td className="px-4 py-2 text-[#d1d4dc] border-r-[0.5px] border-white/30">
+                      <div className="text-center py-[2px]">
+                        {formatTokenNumber(trade.asset_0_in)}
+                      </div>
+                    </td>
+                  ) : (
+                    <td className="px-4 py-2 text-[#d1d4dc] border-r-[0.5px] border-white/30">
+                      <div className="text-center py-[2px]">
+                        {formatTokenNumber(trade.asset_0_out)}
                       </div>
                     </td>
                   )}
