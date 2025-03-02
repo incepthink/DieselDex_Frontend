@@ -390,14 +390,14 @@ const SwapForm: React.FC = () => {
               console.error("Background pools fetch failed:", error);
             }),
             // Add your Telegram bot notification here
-            axios
-              .post(`${BackendUrl}/bot/message`, { id: swapResult.id })
-              .then((res) => {
-                console.log(res);
-              })
-              .catch((error) => {
-                console.error("Telegram notification failed:", error);
-              }),
+            // axios
+            //   .post(`${BackendUrl}/bot/message`, { id: swapResult.id })
+            //   .then((res) => {
+            //     console.log(res);
+            //   })
+            //   .catch((error) => {
+            //     console.error("Telegram notification failed:", error);
+            //   }),
             axios
               .get(`${BackendUrl}/platform/transactions/update`)
               .catch((error) => {
