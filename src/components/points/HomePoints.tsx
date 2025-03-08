@@ -22,7 +22,7 @@ const HomePoints = () => {
           <div className="flex flex-col items-center justify-center rounded-full border-green-400 border-8 p-12 md:w-52 w-40 md:h-52 h-40">
             {isConnected && !isPending ? (
               <p className="font-bold md:text-7xl text-5xl">
-                {data.tradesCount}
+                {data?.tradesCount || 0}
               </p>
             ) : (
               <p className="font-bold md:text-7xl text-5xl">0</p>
@@ -51,7 +51,7 @@ const HomePoints = () => {
                   <ImCoinDollar className="opacity-60 md:text-5xl text-3xl" />
                   <div className="flex justify-between items-end">
                     <p className="md:text-4xl text-3xl font-semibold">
-                      ${data.totalSum.toFixed(2)}
+                      ${data?.totalSum.toFixed(2) || 0}
                     </p>
                     <p className="md:text-sm text-xs opacity-80 font-semibold">
                       TOTAL TVL
@@ -75,7 +75,7 @@ const HomePoints = () => {
                   <MdOutlineSwapVerticalCircle className="opacity-60 md:text-5xl text-3xl" />
                   <div className="flex justify-between items-end">
                     <p className="md:text-4xl text-3xl font-semibold">
-                      {data.tradesCount}
+                      {data?.tradesCount || 0}
                     </p>
                     <p className="md:text-sm text-xs opacity-80 font-semibold">
                       TRADES
