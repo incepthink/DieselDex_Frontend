@@ -13,7 +13,7 @@ type Props = {
   chartData: ChartData;
 };
 
-function getTimeAgo(timestamp: number): string {
+export function getTimeAgo(timestamp: number): string {
   const now = Math.floor(Date.now() / 1000); // Current time in seconds
   const diff = now - timestamp;
 
