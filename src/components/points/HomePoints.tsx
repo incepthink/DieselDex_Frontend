@@ -27,7 +27,7 @@ const HomePoints = () => {
   const { data, isPending } = usePointsData(account || "");
   const { transactions } = useWalletTransactions(account, true);
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = Math.ceil(transactions.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(transactions?.length || 0 / ITEMS_PER_PAGE);
 
   const assetMap = assets.reduce((map: any, asset) => {
     if (asset.asset_id && asset.symbol) {
@@ -39,10 +39,11 @@ const HomePoints = () => {
     return map;
   }, {});
 
-  const paginatedTrx = transactions.slice(
-    currentPage * ITEMS_PER_PAGE,
-    (currentPage + 1) * ITEMS_PER_PAGE
-  );
+  const paginatedTrx =
+    transactions?.slice(
+      currentPage * ITEMS_PER_PAGE,
+      (currentPage + 1) * ITEMS_PER_PAGE
+    ) || [];
   return (
     <div className="w-full xl:h-screen md:pt-32 pt-28 max-w-[1800px] mx-auto md:px-8 px-4">
       <div className="flex flex-col gap-3">
@@ -110,7 +111,7 @@ const HomePoints = () => {
       </div>
 
       <div className="pb-10">
-        <div className="bg-[#151515] rounded-md border-[1px] border-[rgba(255,255,255,0.1)] md:p-8 p-4 flex flex-col gap-6 mt-8">
+        <div className="bg-[#151515] rounded-md border-[1px] border-[rgba(255,255,255,0.1)] md:p-6 p-4 flex flex-col gap-6 mt-8">
           <p className="md:text-3xl text-2xl">Recent Activity</p>
 
           <div className="flex flex-col">
