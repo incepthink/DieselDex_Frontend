@@ -13,6 +13,7 @@ import svgLogo from "./logo-new.svg";
 const navItems = [
   { name: "Swap", href: "/swap/" },
   { name: "Liquidity", href: "/liquidity/" },
+  { name: "Points", href: "/points/" },
 ];
 
 const Header: React.FC = () => {

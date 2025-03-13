@@ -54,7 +54,7 @@ const useWalletTransactions = (
 
   const shouldFetch = Boolean(account) && Boolean(fetchCondition);
 
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["transactions", account],
     queryFn: async () => {
       const res = await axios.get(`${BackendUrl}/platform/user/${account}`);
@@ -78,7 +78,7 @@ const useWalletTransactions = (
         ];
       }
 
-      return res.data.transactions;
+      return res.data.transactions.reverse();
     },
     enabled: shouldFetch,
   });
