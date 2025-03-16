@@ -59,7 +59,6 @@ const useWalletTransactions = (
     queryFn: async () => {
       const res = await axios.get(`${BackendUrl}/platform/user/${account}`);
       console.log(res.data);
-      console.log(res);
 
       if (!res.data.transactions) {
         return [
