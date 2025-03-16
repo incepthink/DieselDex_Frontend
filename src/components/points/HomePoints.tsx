@@ -86,7 +86,6 @@ const HomePoints = () => {
           <p className="lg:text-7xl text-5xl font-medium">
             ${data?.lpPositionSum.toFixed(2) || 0}
           </p>
-          <p className="text-[#01CB6A] text-xl">+2.5% from last 24h</p>
         </div>
 
         <div className="bg-[#151515] p-5 flex flex-col gap-6 rounded-md h-auto">
@@ -103,7 +102,6 @@ const HomePoints = () => {
           <p className="lg:text-7xl text-5xl font-medium">
             ${data?.tradedVolSum.toFixed(2) || 0}
           </p>
-          <p className="text-[#01CB6A] text-xl">+2.5% from last 24h</p>
         </div>
       </div>
 
