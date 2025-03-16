@@ -51,9 +51,6 @@ const HomePoints = () => {
           <p className="sm:text-4xl text-3xl text-[#00EA82]">DIESEL POINTS:</p>
           <p className="sm:text-2xl text-lg">Coming Soon...</p>
         </div>
-        <p className="sm:text-xl text-lg">
-          Real-time Trading Analytics Dashboard
-        </p>
       </div>
 
       <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 w-full gap-6 mt-8">
