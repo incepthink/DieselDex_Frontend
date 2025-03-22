@@ -43,7 +43,7 @@ export const DefaultLocale = "en-US" as const;
 
 export const CoinGeckoApiUrl = "https://pro-api.coingecko.com/api/v3" as const;
 
-export const BackendUrl = "https://points.api.dieseldex.com";
+export const BackendUrl = "https://api.dieseldex.com";
 
 export const PointsBackend = "https://points.api.dieseldex.com";
 
