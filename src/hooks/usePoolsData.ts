@@ -9,7 +9,7 @@ import {
 import { createPoolIdFromIdString, isPoolIdValid } from "@/utils/common";
 import request, { gql } from "graphql-request";
 import { time } from "console";
-import axios from "axios";
+import { clientAxios } from "@/utils/common";
 
 export type PoolData = {
   id: string;
@@ -79,7 +79,7 @@ export const usePoolsData = (): {
   const { data, isLoading } = useQuery<any>({
     queryKey: ["pools"],
     queryFn: async () => {
-      return await axios.get(`${BackendUrl}/pools/db`);
+      return await clientAxios.get(`${BackendUrl}/pools/db`);
     },
     // enabled: shouldFetch,
     staleTime: 0,
@@ -211,7 +211,7 @@ export default usePoolsData;
 //   const { data, isLoading } = useQuery<any>({
 //     queryKey: ["pools"],
 //     queryFn: async () => {
-//       return await axios.get(`${BackendUrl}/pools`);
+//       return await clientAxios.get(`${BackendUrl}/pools`);
 //     },
 //     // enabled: shouldFetch,
 //   });

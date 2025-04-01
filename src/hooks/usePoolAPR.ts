@@ -3,7 +3,7 @@ import { PoolId } from "disel-dex-ts";
 import { createPoolIdString } from "@/utils/common";
 import { BackendUrl, SQDIndexerUrl } from "@/utils/constants";
 import request, { gql } from "graphql-request";
-import axios from "axios";
+import { clientAxios } from "@/utils/common";
 
 const usePoolAPR = (pool: PoolId) => {
   const poolIdString = createPoolIdString(pool);
@@ -13,7 +13,7 @@ const usePoolAPR = (pool: PoolId) => {
     queryFn: async () => {
       // CHANGE STRUCTURE OF ID
       const newID = poolIdString.replace(/-/g, "_");
-      const res = await axios.get(`${BackendUrl}/pools/apr/${newID}`);
+      const res = await clientAxios.get(`${BackendUrl}/pools/apr/${newID}`);
       console.log(newID);
 
       console.log(res, newID);

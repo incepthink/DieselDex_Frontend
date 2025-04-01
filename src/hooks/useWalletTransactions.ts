@@ -2,7 +2,7 @@ import { gql, request } from "graphql-request";
 import { useQuery } from "@tanstack/react-query";
 import { B256Address } from "fuels";
 import { BackendUrl, IndexerUrl } from "@/utils/constants";
-import axios from "axios";
+import { clientAxios } from "@/utils/common";
 
 export type TransactionsData = {
   Transaction: {
@@ -57,7 +57,9 @@ const useWalletTransactions = (
   const { data, isLoading } = useQuery({
     queryKey: ["transactions", account],
     queryFn: async () => {
-      const res = await axios.get(`${BackendUrl}/platform/user/${account}`);
+      const res = await clientAxios.get(
+        `${BackendUrl}/platform/user/${account}`
+      );
       console.log(res.data);
 
       if (!res.data.transactions) {

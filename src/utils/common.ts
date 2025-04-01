@@ -1,6 +1,7 @@
 import { CoinName, coinsConfig } from "@/utils/coinsConfig";
 import { B256Address } from "fuels";
 import { buildPoolId, PoolId } from "disel-dex-ts";
+import axios from "axios";
 
 export const openNewTab = (url: string) => {
   window.open(url, "_blank");
@@ -101,3 +102,12 @@ export const calculateSHA256Hash = async (message: string) => {
     .map((byte) => byte.toString(16).padStart(2, "0"))
     .join("");
 };
+
+const clientAxios = axios.create();
+
+clientAxios.interceptors.request.use((config) => {
+  config.headers["x-api-key"] = process.env.NEXT_PUBLIC_API_KEY || "";
+  return config;
+});
+
+export { clientAxios };

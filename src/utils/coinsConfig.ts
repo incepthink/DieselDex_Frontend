@@ -71,7 +71,7 @@ const initAdditionalAssetsConfig = () => {
         "0x86fa05e9fef64f76fa61c03f5906c87a03cb9148120b6171910566173d36fc9e",
       decimals: 9,
       name: "Psycho Ducky",
-      icon: "https://mira-dex-resources.s3.us-east-1.amazonaws.com/icons/psycho-icon.png",
+      icon: "https://firebasestorage.googleapis.com/v0/b/pump-555ee.appspot.com/o/images%2FPsyco%20Ducky%20Final%20logo.png?alt=media&token=4b321e05-c8b7-482f-a3ef-a9518bf71a4e",
       contractId:
         "0x81d5964bfbb24fd994591cc7d0a4137458d746ac0eb7ececb9a9cf2ae966d942",
       subId:

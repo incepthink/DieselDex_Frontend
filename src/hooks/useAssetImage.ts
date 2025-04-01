@@ -3,7 +3,7 @@ import { coinsConfig } from "../utils/coinsConfig";
 import request, { gql } from "graphql-request";
 import { BackendUrl, SQDIndexerUrl } from "../utils/constants";
 import defaultImage from "@/assets/unknown-asset.svg";
-import axios from "axios";
+import { clientAxios } from "@/utils/common";
 
 export const useAssetImage = (assetId: string | null): string | null => {
   const { data } = useQuery<string | null>({
@@ -27,7 +27,7 @@ export const useAssetImage = (assetId: string | null): string | null => {
         url: SQDIndexerUrl,
       });
 
-      // const results = await axios.get(`${BackendUrl}/assets/${assetId}`);
+      // const results = await clientAxios.get(`${BackendUrl}/assets/${assetId}`);
 
       if (results.assetById.icon) {
         return results.assetById.icon;

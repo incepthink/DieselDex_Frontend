@@ -41,19 +41,8 @@ const useCreatePool = ({
       !firstAssetContract.subId ||
       !secondAssetContract.subId
     ) {
-      return;
+      return null; // Explicitly return null instead of undefined
     }
-
-    console.log(
-      "-----firstAssetAmount",
-      firstAssetAmount,
-      firstAssetMetadata.decimals
-    );
-    console.log(
-      "-----secondAssetAmount",
-      secondAssetAmount,
-      secondAssetMetadata.decimals
-    );
 
     const firstCoinAmountToUse = bn.parseUnits(
       firstAssetAmount,
@@ -63,16 +52,6 @@ const useCreatePool = ({
       secondAssetAmount,
       secondAssetMetadata.decimals || 0
     );
-
-    console.log("firstAssetContractID:", firstAssetContract.contractId);
-    console.log("firstAssetContractsubID", firstAssetContract.subId);
-    console.log("secondAssetContractID", secondAssetContract.contractId);
-    console.log("secondAssetContractsubID", secondAssetContract.subId);
-    console.log("isPoolStable", isPoolStable);
-    console.log("--------firstCoinAmountToUse", firstCoinAmountToUse);
-    console.log("--------secondCoinAmountToUse", secondCoinAmountToUse);
-    console.log("MaxDeadline", MaxDeadline);
-    console.log("DefaultTxParams", DefaultTxParams);
 
     const txRequest = await mira.createPoolAndAddLiquidity(
       firstAssetContract.contractId,
@@ -85,10 +64,16 @@ const useCreatePool = ({
       MaxDeadline,
       DefaultTxParams
     );
-    const gasCost = await wallet.getTransactionCost(txRequest);
-    const fundedTx = await wallet.fund(txRequest, gasCost);
-    const tx = await wallet.sendTransaction(fundedTx);
-    return await tx.waitForResult();
+
+    try {
+      const gasCost = await wallet.getTransactionCost(txRequest);
+      const fundedTx = await wallet.fund(txRequest, gasCost);
+      const tx = await wallet.sendTransaction(fundedTx);
+      return await tx.waitForResult(); // Ensure the transaction result is returned
+    } catch (err) {
+      console.error("Simulation failed:", err);
+      return null; // Return null explicitly to prevent TypeScript issues
+    }
   }, [
     mira,
     wallet,
@@ -101,7 +86,7 @@ const useCreatePool = ({
     isPoolStable,
   ]);
 
-  const { data, mutateAsync, isPending } = useMutation({
+  const { data, mutateAsync, isPending } = useMutation<{ id: string } | null>({ // Explicitly define the expected return type
     mutationFn,
   });
 

@@ -15,6 +15,7 @@ import {
   MdOutlineAttachMoney,
   MdOutlineSwapVert,
 } from "react-icons/md";
+import { clientAxios } from "@/utils/common";
 
 const HeroSectionShort = () => {
   const windowSize = useWindowSize();
@@ -27,7 +28,7 @@ const HeroSectionShort = () => {
   });
 
   const getHomeData = async () => {
-    const res = await axios.get(`${BackendUrl}/platform/home`);
+    const res = await clientAxios.get(`${BackendUrl}/platform/home`);
 
     setdata({
       tvlUSD: res.data.totalTvlUsd,

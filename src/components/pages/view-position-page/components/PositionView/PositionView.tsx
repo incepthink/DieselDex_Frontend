@@ -33,6 +33,7 @@ import { bn, formatUnits } from "fuels";
 import useAssetMetadata from "@/hooks/useAssetMetadata";
 import axios from "axios";
 import { QueryClient } from "@tanstack/react-query";
+import { clientAxios } from "@/utils/common";
 
 type Props = {
   pool: PoolId;
@@ -133,10 +134,10 @@ const PositionView = ({ pool }: Props) => {
         closeRemoveLiquidityModal();
         openSuccessModal();
         Promise.all([
-          axios.get(`${BackendUrl}/pools/`).catch((error) => {
+          clientAxios.get(`${BackendUrl}/pools/`).catch((error) => {
             console.error("Background pools fetch failed:", error);
           }),
-          axios
+          clientAxios
             .get(`${BackendUrl}/platform/transactions/update`)
             .catch((error) => {
               console.error("Transaction update failure", error);
