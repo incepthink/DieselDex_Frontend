@@ -37,6 +37,7 @@ import ExchangeRate from "@/components/common/Swap/ExchangeRate/ExchangeRate";
 import axios from "axios";
 import { IoSwapVertical } from "react-icons/io5";
 import clsx from "clsx";
+import { clientAxios } from "@/utils/common";
 
 export type CurrencyBoxMode = "buy" | "sell";
 export type CurrencyBoxState = {
@@ -386,7 +387,7 @@ const SwapForm: React.FC = () => {
 
           // Execute background tasks without awaiting them
           Promise.all([
-            axios.get(`${BackendUrl}/pools/`).catch((error) => {
+            clientAxios.get(`${BackendUrl}/pools/`).catch((error) => {
               console.error("Background pools fetch failed:", error);
             }),
             // Add your Telegram bot notification here
@@ -398,7 +399,7 @@ const SwapForm: React.FC = () => {
             //   .catch((error) => {
             //     console.error("Telegram notification failed:", error);
             //   }),
-            axios
+            clientAxios
               .get(`${BackendUrl}/platform/transactions/update`)
               .catch((error) => {
                 console.error("Transaction update failure", error);

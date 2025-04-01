@@ -1,4 +1,4 @@
-import axios from "axios";
+import { clientAxios } from "@/utils/common";
 import { BackendUrl } from "../constants";
 import { getBaseAssetPrice, getBaseAssetSupply } from "./assetFetch";
 import { ChartData, Stats } from "@/app/swap/page";
@@ -22,7 +22,7 @@ export const fetchTradesFromRedis = async (
 ) => {
   try {
     const offset = 0;
-    const response = await axios.get(
+    const response = await clientAxios.get(
       `${BackendUrl}/trades?pool_id=${pool_id}&offset=${offset}&limit=${limit}`
     );
 
@@ -200,7 +200,6 @@ export async function getLiquidityAndTokenData(
     const token0Supply = await getBaseAssetSupply(
       ChartData.poolData.token0Address
     );
-    console.log("token0Supply::::", token0Supply);
     let primaryTokenSupply;
     if (token0Supply?.supply <= 0) {
       primaryTokenSupply = 1000000000;

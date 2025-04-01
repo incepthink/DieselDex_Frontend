@@ -4,7 +4,7 @@ import { useAssetMinterContract } from "./useAssetMinterContract";
 import src7Abi from "@/abis/src7-abi.json";
 import { Contract, Provider } from "fuels";
 import { BackendUrl, NetworkUrl } from "../utils/constants";
-import axios from "axios";
+import { clientAxios } from "@/utils/common";
 
 const ETH_ASSET_ID =
   "0xf8f8b6283d7fa5b672b530cbb84fcccb4ff8dc40f8176ef4544ddb1f1952ad07";
@@ -24,7 +24,7 @@ export const useAssetPrice = (
     queryKey: ["assetPrice", assetId],
     queryFn: async () => {
       // Query the backend to get the exchange rate
-      // const data = await axios.post(`${BackendUrl}/assets/exchangeRate`, {
+      // const data = await clientAxios.post(`${BackendUrl}/assets/exchangeRate`, {
       //   id: assetId,
       // });
       // console.log(data);

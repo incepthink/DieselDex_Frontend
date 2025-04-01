@@ -10,6 +10,7 @@ import useWindowSize from "@/hooks/useWindowSize";
 import axios from "axios";
 import { BackendUrl } from "@/utils/constants";
 import clsx from "clsx";
+import { clientAxios } from "@/utils/common";
 
 const mainData = [
   {
@@ -45,7 +46,7 @@ const HeroSection = () => {
   });
 
   const getHomeData = async () => {
-    const res = await axios.get(`${BackendUrl}/platform/home`);
+    const res = await clientAxios.get(`${BackendUrl}/platform/home`);
 
     setdata({
       tvlUSD: res.data.totalTvlUsd,

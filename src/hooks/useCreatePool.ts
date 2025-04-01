@@ -85,10 +85,18 @@ const useCreatePool = ({
       MaxDeadline,
       DefaultTxParams
     );
-    const gasCost = await wallet.getTransactionCost(txRequest);
-    const fundedTx = await wallet.fund(txRequest, gasCost);
-    const tx = await wallet.sendTransaction(fundedTx);
-    return await tx.waitForResult();
+    try {
+      const gasCost = await wallet.getTransactionCost(txRequest);
+      const fundedTx = await wallet.fund(txRequest, gasCost);
+      console.log(fundedTx);
+    } catch (err) {
+      console.error("Simulation failed:", err);
+    }
+
+    // const gasCost = await wallet.getTransactionCost(txRequest);
+    // const fundedTx = await wallet.fund(txRequest, gasCost);
+    // const tx = await wallet.sendTransaction(fundedTx);
+    // return await tx.waitForResult();
   }, [
     mira,
     wallet,

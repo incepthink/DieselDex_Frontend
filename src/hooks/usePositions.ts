@@ -5,7 +5,7 @@ import request, { gql } from "graphql-request";
 import { BackendUrl, SQDIndexerUrl } from "../utils/constants";
 import { createPoolIdFromIdString } from "../utils/common";
 import { Asset, PoolId } from "disel-dex-ts";
-import axios from "axios";
+import { clientAxios } from "@/utils/common";
 
 export interface Position {
   poolId: PoolId;
@@ -29,9 +29,9 @@ const usePositions = (): {
     queryFn: async () => {
       const assetIds = balances?.map((balance) => balance.assetId);
 
-      const result = await axios.post(`${BackendUrl}/pools/lp`, {
-        ids: assetIds
-      })
+      const result = await clientAxios.post(`${BackendUrl}/pools/lp`, {
+        ids: assetIds,
+      });
 
       // const query = gql`
       //   query MyQuery {
@@ -62,31 +62,29 @@ const usePositions = (): {
 
       const pools = await Promise.all(
         result.data.pools.map(async (pool: any) => {
-
-          if (pool !== null) { 
-          const poolId = createPoolIdFromIdString(pool.pool_id, "_");
-          const lpBalance = balances!.find(
-            (balance) => balance.assetId === pool.lpId
-          );
-          const [token0Position, token1Position] =
-            await mira!.getLiquidityPosition(
-              poolId,
-              lpBalance!.amount.toString()
+          if (pool !== null) {
+            const poolId = createPoolIdFromIdString(pool.pool_id, "_");
+            const lpBalance = balances!.find(
+              (balance) => balance.assetId === pool.lpId
             );
+            const [token0Position, token1Position] =
+              await mira!.getLiquidityPosition(
+                poolId,
+                lpBalance!.amount.toString()
+              );
 
-          return {
-            poolId,
-            lpAssetId: pool.lpId,
-            isStable: pool.is_stable,
-            token0Position,
-            token1Position,
-          };
-        }
+            return {
+              poolId,
+              lpAssetId: pool.lpId,
+              isStable: pool.is_stable,
+              token0Position,
+              token1Position,
+            };
+          }
         })
       );
-      
-      
-      return pools.filter(element => element !== undefined);
+
+      return pools.filter((element) => element !== undefined);
     },
     enabled: miraExists && !!balances,
   });

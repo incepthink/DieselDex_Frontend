@@ -14,6 +14,7 @@ import axios from "axios";
 import { BackendUrl } from "@/utils/constants";
 import { QueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
+import { clientAxios } from "@/utils/common";
 
 type AssetsData = {
   assetId: string;
@@ -74,10 +75,10 @@ const PreviewAddLiquidityDialog = ({ previewData, setPreviewData }: Props) => {
       if (data?.id) {
         openSuccessModal();
         Promise.all([
-          axios.get(`${BackendUrl}/pools/`).catch((error) => {
+          clientAxios.get(`${BackendUrl}/pools/`).catch((error) => {
             console.error("Background pools fetch failed:", error);
           }),
-          axios
+          clientAxios
             .get(`${BackendUrl}/platform/transactions/update`)
             .catch((error) => {
               console.error("Transaction update failure", error);
