@@ -129,7 +129,7 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
 
   return (
     <>
-      <div className="flex [@media(min-width:1360px)]:flex-row flex-col-reverse items-center w-full gap-12 [@media(min-width:1360px)]:items-start">
+      <div className="flex flex-col-reverse 2xl:flex-row items-center 2xl:items-start w-full gap-12">
         <div className="flex flex-col gap-12 mb-12">
           <div className=" backdrop-blur-2xl 2xl:w-auto max-w-screen bg-fuel-dark-800 border-[#84919A] border-[0.5px]  p-[20px] rounded-[16px] bg-white/10">
             {!isLoading && (
@@ -191,7 +191,7 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
               </div>
             )}
 
-            <div className=" h-[500px]">
+            <div className="min-h-[400px] max-h-[600px] h-[60vh]">
               {isLoading ? (
                 <div className="2xl:w-[800px] w-full flex justify-center items-center h-full">
                   <img
