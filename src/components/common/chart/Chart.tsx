@@ -191,7 +191,7 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
               </div>
             )}
 
-            <div className=" h-[500px]">
+            <div className="min-h-[400px] max-h-[600px] h-[60vh]">
               {isLoading ? (
                 <div className="2xl:w-[800px] w-full flex justify-center items-center h-full">
                   <img
