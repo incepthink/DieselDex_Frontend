@@ -6,13 +6,18 @@ import { useAssetImage } from "@/hooks/useAssetImage";
 
 type Props = {
   assetId: string | null;
+  symbol?: string;
+  name?: string;
+  icon?: string;
   className?: string;
   onClick?: VoidFunction;
 };
 
-const Coin = ({ assetId, className, onClick }: Props) => {
+const Coin = ({ assetId, symbol, name, icon, className, onClick }: Props) => {
   const metadata = useAssetMetadata(assetId);
-  const icon = useAssetImage(assetId);
+  const fallbackIcon = useAssetImage(assetId); // ✅ dedicated icon hook
+  const finalIcon = icon ?? fallbackIcon;
+  const finalSymbol = symbol;
 
   const handleClick = () => {
     if (onClick) {
@@ -27,9 +32,11 @@ const Coin = ({ assetId, className, onClick }: Props) => {
       className={clsx(styles.coin, newPool && styles.clickable)}
       onClick={handleClick}
     >
-      {icon && <img src={icon} alt={`${metadata.symbol} icon`} />}
+      {finalIcon && (
+        <img src={finalIcon} alt={`${finalSymbol || "asset"} icon`} />
+      )}
       <p className={clsx(styles.name, className)}>
-        {metadata.symbol ?? "Choose Asset"}
+        {finalSymbol ?? "Choose Asset"}
       </p>
       {newPool && <ChevronDownIcon />}
     </div>

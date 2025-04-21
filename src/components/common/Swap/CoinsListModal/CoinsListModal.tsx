@@ -52,7 +52,6 @@ const CoinsListModal = ({
     });
   }, [verifiedAssetsOnly, value, assets]);
 
-  // TODO: Pre-sort the list by priorityOrder and alphabet to avoid sorting each time
   const sortedCoinsList = useMemo(() => {
     return filteredCoinsList.toSorted((firstAsset, secondAsset) => {
       const firstAssetPriority = priorityOrder.indexOf(firstAsset.name!);
@@ -92,7 +91,6 @@ const CoinsListModal = ({
           new BN(0);
         const firstAssetDivisor = new BN(10).pow(firstAsset.decimals);
         const secondAssetDivisor = new BN(10).pow(secondAsset.decimals);
-        // Dividing BN to a large value can lead to zero, we use proportion rule here: a/b = c/d => a*d = b*c
         const firstAssetBalanceMultiplied =
           firstAssetBalance.mul(secondAssetDivisor);
         const secondAssetBalanceMultiplied =
@@ -125,6 +123,7 @@ const CoinsListModal = ({
           placeholder="Search by token or paste address"
           onChange={handleChange}
           ref={inputRef}
+          value={value}
         />
       </div>
       <div className={styles.tokenList}>
@@ -135,15 +134,18 @@ const CoinsListModal = ({
             onClick={() => selectCoin(value)}
           />
         )}
-        {sortedCoinsList.map(({ assetId }) => (
+        {sortedCoinsList.map((asset) => (
           <div
             className={styles.tokenListItem}
-            onClick={() => selectCoin(assetId)}
-            key={assetId}
+            onClick={() => selectCoin(asset.assetId)}
+            key={asset.assetId}
           >
             <CoinListItem
-              assetId={assetId}
-              balance={balances?.find((b) => b.assetId === assetId)}
+              assetId={asset.assetId}
+              name={asset.name}
+              symbol={asset.symbol}
+              decimals={asset.decimals}
+              balance={balances?.find((b) => b.assetId === asset.assetId)}
             />
           </div>
         ))}

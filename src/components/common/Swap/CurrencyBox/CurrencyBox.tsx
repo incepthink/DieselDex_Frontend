@@ -2,7 +2,6 @@ import { ChangeEvent, memo, useCallback } from "react";
 import { clsx } from "clsx";
 
 import Coin from "@/components/common/Coin/Coin";
-import ChevronDownIcon from "@/components/icons/ChevronDown/ChevronDownIcon";
 import { CurrencyBoxMode } from "@/app/swap/SwapForm";
 import styles from "./CurrencyBox.module.css";
 import TextButton from "@/components/common/TextButton/TextButton";
@@ -10,12 +9,14 @@ import { DefaultLocale, MinEthValueBN } from "@/utils/constants";
 import { InsufficientReservesError } from "disel-dex-ts/dist/sdk/errors";
 import { NoRouteFoundError } from "@/hooks/useSwapPreview";
 import { B256Address, BN } from "fuels";
-import useAssetMetadata from "@/hooks/useAssetMetadata";
 import { FaChevronDown } from "react-icons/fa6";
 
 type Props = {
   value: string;
   assetId: B256Address | null;
+  symbol?: string;
+  name?: string;
+  decimals?: number;
   mode: CurrencyBoxMode;
   balance: BN;
   setAmount: (amount: string) => void;
@@ -24,6 +25,7 @@ type Props = {
   usdRate: number | null;
   previewError?: Error | null;
   swapPending: boolean;
+  icon?: string;
 };
 
 const CurrencyBox = ({
@@ -37,13 +39,15 @@ const CurrencyBox = ({
   usdRate,
   previewError,
   swapPending,
+  decimals = 0,
+  name,
+  symbol,
 }: Props) => {
-  const metadata = useAssetMetadata(assetId);
-  const balanceValue = balance.formatUnits(metadata.decimals || 0);
+  const balanceValue = balance.formatUnits(decimals);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value.replace(",", ".");
-    const re = new RegExp(`^[0-9]*[.]?[0-9]{0,${metadata.decimals || 0}}$`);
+    const re = new RegExp(`^[0-9]*[.]?[0-9]{0,${decimals}}$`);
 
     if (re.test(inputValue)) {
       setAmount(inputValue);
@@ -58,18 +62,17 @@ const CurrencyBox = ({
 
   const handleMaxClick = useCallback(() => {
     let amountStringToSet;
-    // TODO ETH AssetId
-    if (metadata.symbol === "ETH" && mode === "sell") {
+    if (symbol === "ETH" && mode === "sell") {
       const amountWithoutGasFee = balance.sub(MinEthValueBN);
       amountStringToSet = amountWithoutGasFee.gt(0)
-        ? amountWithoutGasFee.formatUnits(metadata.decimals || 0)
+        ? amountWithoutGasFee.formatUnits(decimals)
         : balanceValue;
     } else {
       amountStringToSet = balanceValue;
     }
 
     setAmount(amountStringToSet);
-  }, [assetId, mode, balance, setAmount, metadata]);
+  }, [symbol, mode, balance, setAmount, decimals, balanceValue]);
 
   const coinNotSelected = assetId === null;
 
@@ -117,11 +120,11 @@ const CurrencyBox = ({
               value={value}
               disabled={coinNotSelected || loading}
               onChange={handleChange}
-            ></input>
+            />
             <div
               className={`absolute w-8 h-8 ${
                 (!loading || swapPending) && "hidden"
-              } ${mode === "sell" ? "left-4" : "left-4"}`}
+              } left-4`}
             >
               <img
                 src="/images/loading.gif"
@@ -144,11 +147,12 @@ const CurrencyBox = ({
           {coinNotSelected ? (
             <p className={styles.chooseCoin}>Choose coin</p>
           ) : (
-            <Coin assetId={assetId} />
+            <Coin assetId={assetId} symbol={symbol} name={name} />
           )}
           <FaChevronDown style={{ height: "12px", opacity: "0.5" }} />
         </button>
       </div>
+
       <div className={styles.estimateAndBalance}>
         <p className={styles.estimate}>{usdValue !== null && `$${usdValue}`}</p>
         {balance.gt(0) && (
