@@ -347,7 +347,7 @@ const SwapForm: React.FC = () => {
 
   return (
     <>
-      <div className="p-4 lg:p-6 text-white space-y-4 border border-transparent rounded-md w-full 2xl:w-[400px]">
+      <div className="p-4 lg:p-6 text-white space-y-4 border border-transparent rounded-md w-full 2xl:w-[350px]">
         <div className="flex justify-between items-center">
           <p className="text-xl font-semibold">Swap</p>
           <div className="flex gap-2">
