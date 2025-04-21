@@ -2,8 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import { B256Address, Contract, Provider } from "fuels";
 import src20Abi from "@/abis/src20-abi.json";
 import { useAssetMinterContract } from "./useAssetMinterContract";
-import { NetworkUrl } from "../utils/constants";
+import { BackendUrl, NetworkUrl } from "../utils/constants";
 import { coinsConfig } from "../utils/coinsConfig";
+import { clientAxios } from "@/utils/common";
 
 interface AssetMetadata {
   name?: string;
@@ -21,7 +22,10 @@ const useAssetMetadata = (
 
   const { data, isLoading: metadataLoading } = useQuery({
     queryKey: ["assetMetadata", contractId, assetId],
-    queryFn: async () => {
+    queryFn: async (): Promise<AssetMetadata> => {
+      if (!assetId) return {};
+
+      // 2. Try from coinsConfig
       const config = coinsConfig.get(assetId);
       if (config) {
         return {
@@ -31,6 +35,7 @@ const useAssetMetadata = (
         };
       }
 
+      // 3. Fallback to contract call
       const provider = await providerPromise;
       const src20Contract = new Contract(contractId!, src20Abi, provider);
 
@@ -41,7 +46,6 @@ const useAssetMetadata = (
           src20Contract.functions.decimals({ bits: assetId }),
         ])
         .addContracts([
-          // The current bridge implementation
           new Contract(
             "0x0ceafc5ef55c66912e855917782a3804dc489fb9e27edfd3621ea47d2a281156",
             src20Abi,
