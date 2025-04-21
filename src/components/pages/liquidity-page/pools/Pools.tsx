@@ -17,6 +17,7 @@ const Pools = () => {
   }, [router]);
 
   const { data, isLoading } = usePoolsData();
+  console.log(data);
 
   return (
     <section className={styles.pools}>
