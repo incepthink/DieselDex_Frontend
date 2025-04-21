@@ -52,6 +52,8 @@ export default function DesktopPoolRow({ poolData }: { poolData: PoolData }) {
           secondCoin={poolData.details.asset1Id}
           isStablePool={poolId[2]}
           withPoolDescription
+          asset0symbol={poolData.details.asset_0_symbol || ""}
+          asset1symbol={poolData.details.asset_1_symbol || ""}
         />
       </td>
       <td className={clsx(!aprValue && styles.pending)}>

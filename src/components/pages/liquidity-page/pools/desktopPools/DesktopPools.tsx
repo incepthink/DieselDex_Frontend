@@ -14,6 +14,8 @@ const DesktopPools = ({ poolsData }: Props) => {
     return null;
   }
 
+  console.log(poolsData);
+
   return (
     <table
       // style={{

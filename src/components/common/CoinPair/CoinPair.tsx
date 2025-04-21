@@ -12,6 +12,8 @@ type Props = {
   withFee?: boolean;
   withFeeBelow?: boolean;
   withPoolDescription?: boolean;
+  asset0symbol?: string;
+  asset1symbol?: string;
 };
 
 const CoinPair = ({
@@ -21,6 +23,8 @@ const CoinPair = ({
   withFee,
   withFeeBelow,
   withPoolDescription,
+  asset0symbol,
+  asset1symbol,
 }: Props) => {
   const firstCoinIcon = useAssetImage(firstCoin);
   const secondCoinIcon = useAssetImage(secondCoin);
@@ -46,8 +50,8 @@ const CoinPair = ({
         )}
       </div>
       <div className={styles.namesAndFee}>
-        <p className={styles.coinNames} data-identifier='coin-pair'>
-          {firstSymbol}/{secondSymbol}
+        <p className={styles.coinNames} data-identifier="coin-pair">
+          {asset0symbol || firstSymbol}/{asset1symbol || secondSymbol}
         </p>
         {withFeeBelow && <p className={styles.coinPairFee}>{feeText}</p>}
         {withPoolDescription && (
