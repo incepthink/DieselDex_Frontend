@@ -390,7 +390,7 @@ function TradingViewWidget({
           </DropdownMenu>
         </div>
       </div>
-      <div ref={chartContainerRef} className="flex-1 h-full 2xl:w-[800px]" />
+      <div ref={chartContainerRef} className="w-full h-full" />
     </div>
   );
 }

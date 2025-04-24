@@ -129,40 +129,51 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
 
   return (
     <>
-      <div className="flex flex-col-reverse 2xl:flex-row items-center 2xl:items-start w-full gap-12">
-        <div className="flex flex-col gap-12 mb-12">
-          <div className=" backdrop-blur-2xl 2xl:w-auto max-w-screen bg-fuel-dark-800 border-[#84919A] border-[0.5px]  p-[20px] rounded-[16px] bg-white/10">
+      <div className="grid grid-cols-1 2xl:grid-cols-[800px_1fr] gap-12 items-start">
+        {/* === SwapForm: comes first on mobile, second on desktop === */}
+        <div className="order-1 2xl:order-2 w-full bg-white/10 backdrop-blur-2xl border border-[#84919A] rounded-[16px]">
+          <SwapForm />
+        </div>
+
+        {/* === Chart + Token Info + Recent Trades: comes second on mobile, first on desktop === */}
+        <div className="order-2 2xl:order-1 flex flex-col gap-12 w-full">
+          {/* Chart & Token Info Card */}
+          <div className="bg-white/10 backdrop-blur-2xl border border-[#84919A] rounded-[16px] p-[20px]">
             {!isLoading && (
-              <div className="flex justify-between items-center xl:mb-2 mb-1">
+              <div className="flex justify-between items-center mb-2">
+                {/* Token Info */}
                 <div className="flex flex-col">
                   <div className="flex gap-2 text-2xl mb-2">
-                    <div className="flex items-center gap-2 text-2xl font-semibold">
-                      <div className="xl:w-8 xl:h-8 h-4 w-4 rounded-full overflow-hidden">
+                    {/* Token 0 */}
+                    <div className="flex items-center gap-2 font-semibold">
+                      <div className="h-4 w-4 xl:h-8 xl:w-8 rounded-full overflow-hidden">
                         <img
                           src={token0img || ""}
                           alt="token0"
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <p className="xl:text-xl lg:text-lg text-base">
+                      <p className="text-base lg:text-lg xl:text-xl">
                         {token0meta.symbol}
                       </p>
                     </div>
-                    {"/"}
-                    <div className="flex items-center gap-2 text-2xl font-semibold">
-                      <div className="xl:w-8 xl:h-8 h-4 w-4 rounded-full overflow-hidden">
+                    /{/* Token 1 */}
+                    <div className="flex items-center gap-2 font-semibold">
+                      <div className="h-4 w-4 xl:h-8 xl:w-8 rounded-full overflow-hidden">
                         <img
                           src={token1img || ""}
                           alt="token1"
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <p className="xl:text-xl lg:text-lg text-base">
+                      <p className="text-base lg:text-lg xl:text-xl">
                         {token1meta.symbol}
                       </p>
                     </div>
                   </div>
-                  <div className="text-sm lg:mt-1 mt-1 ml-1 font-semibold">
+
+                  {/* 24H % Change */}
+                  <div className="ml-1 mt-1 text-sm font-semibold">
                     {Number(data?.data.changes["24H"].toFixed(2)) > 0 ? (
                       <p className="text-green-400">
                         {data?.data.changes["24H"].toFixed(2)}%
@@ -174,16 +185,18 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
                     )}
                   </div>
                 </div>
+
+                {/* FDV & 24H Volume */}
                 <div className="flex gap-4">
                   <div className="flex flex-col items-center">
                     <p className="text-sm opacity-80">FDV</p>
-                    <p className="font-medium lg:text-lg text-sm">
+                    <p className="font-medium text-sm lg:text-lg">
                       {data ? formatCurrency(data.data.liquidity.fdv) : 0}
                     </p>
                   </div>
                   <div className="flex flex-col items-center">
                     <p className="text-sm opacity-80">24H Vol</p>
-                    <p className="lg:text-lg font-medium text-sm">
+                    <p className="font-medium text-sm lg:text-lg">
                       {data ? formatCurrency(data.data.transactions.volume) : 0}
                     </p>
                   </div>
@@ -191,33 +204,35 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
               </div>
             )}
 
-            <div className="min-h-[400px] max-h-[600px] h-[60vh]">
+            {/* Trading Chart */}
+            <div className="relative w-full h-[60vh] max-h-[600px] min-h-[400px] rounded-[16px]">
               {isLoading ? (
-                <div className="2xl:w-[800px] w-full flex justify-center items-center h-full">
+                <div className="flex justify-center items-center w-full h-full">
                   <img
                     src="/images/loading.gif"
                     className="w-24 object-cover"
-                    alt=""
+                    alt="loading"
                   />
                 </div>
               ) : (
-                <TradingViewWidget
-                  trades={data ? data.trades : []}
-                  selectedTimeframe={selectedTimeframe}
-                  onTimeframeChange={setSelectedTimeframe} // Add this prop
-                />
+                <div className="absolute inset-0">
+                  <div className="w-full h-full overflow-hidden rounded-[16px]">
+                    <TradingViewWidget
+                      trades={data?.trades || []}
+                      selectedTimeframe={selectedTimeframe}
+                      onTimeframeChange={setSelectedTimeframe}
+                    />
+                  </div>
+                </div>
               )}
             </div>
           </div>
-          <div>
-            <ChartTransactionHistory
-              trades={data ? data.trades : []}
-              chartData={ChartData}
-            />
-          </div>
-        </div>
-        <div className="border-[#84919A] border-[0.5px] rounded-[16px] w-full bg-white/10 backdrop-blur-2xl">
-          <SwapForm />
+
+          {/* Recent Trades Below Chart */}
+          <ChartTransactionHistory
+            trades={data?.trades || []}
+            chartData={ChartData}
+          />
         </div>
       </div>
 
