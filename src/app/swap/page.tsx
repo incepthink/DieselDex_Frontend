@@ -138,7 +138,7 @@ const Swap = () => {
         </div>
 
         <Container className="w-full">
-          <div className="p-6 rounded-2xl">
+          <div className="p-6 rounded-2xl w-full">
             <Chart
               pool_id={ChartData.poolData.id}
               setChartData={setChartData}
