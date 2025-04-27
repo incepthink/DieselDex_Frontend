@@ -129,16 +129,16 @@ const Chart = ({ pool_id, setChartData, ChartData }: Props) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 2xl:grid-cols-[800px_1fr] gap-12 items-start">
+      <div className="grid grid-cols-1 2xl:grid-cols-3 gap-12 items-start">
         {/* === SwapForm: comes first on mobile, second on desktop === */}
-        <div className="order-1 2xl:order-2 w-full bg-white/10 backdrop-blur-2xl border border-[#84919A] rounded-[16px]">
+        <div className="order-1 2xl:order-2 col-span-1 w-full bg-white/10 backdrop-blur-2xl border border-[#84919A] rounded-[16px]">
           <SwapForm />
         </div>
 
         {/* === Chart + Token Info + Recent Trades: comes second on mobile, first on desktop === */}
-        <div className="order-2 2xl:order-1 flex flex-col gap-12 w-full">
+        <div className="order-2 2xl:order-1 col-span-2 w-full flex flex-col gap-12">
           {/* Chart & Token Info Card */}
-          <div className="bg-white/10 backdrop-blur-2xl border border-[#84919A] rounded-[16px] p-[20px]">
+          <div className="bg-white/10 backdrop-blur-2xl border border-[#84919A] rounded-[16px] p-[20px] w-full">
             {!isLoading && (
               <div className="flex justify-between items-center mb-2">
                 {/* Token Info */}
