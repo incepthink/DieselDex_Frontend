@@ -30,7 +30,7 @@ export const NetworkUrl: string = "https://mainnet.fuel.network/v1/graphql";
 export const IndexerUrl =
   "https://indexer.bigdevenergy.link/755fa3e/v1/graphql" as const;
 export const SQDIndexerUrl =
-  "https://mira-dex.squids.live/mira-indexer@v2/api/graphql" as const;
+  "https://mira-dex.squids.live/mira-indexer@v3/api/graphql" as const;
 export const ApiBaseUrl = "https://prod.api.mira.ly" as const;
 
 export const FuelAppUrl = "https://app.fuel.network" as const;
