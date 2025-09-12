@@ -98,7 +98,6 @@ export const usePoolsData = (): {
         (parseFloat(pool.volume24hr) * feeRate * 365) / parseFloat(pool.tvlUSD);
 
       // const apr = (pool.fees24hr / parseFloat(pool.tvlUSD)) * 365 * 100;
-      console.log("SYMBOLS::", pool.Asset0.symbol, pool.Asset1.symbol);
 
       return {
         id: pool.pool_id,

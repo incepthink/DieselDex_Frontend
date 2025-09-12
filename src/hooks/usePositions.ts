@@ -18,78 +18,101 @@ export interface Position {
 const usePositions = (): {
   data: Position[] | undefined;
   isLoading: boolean;
+  error?: Error | null;
 } => {
   const mira = useReadonlyMira();
   const { balances } = useBalances();
 
   const miraExists = Boolean(mira);
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["positions", balances],
-    queryFn: async () => {
-      const assetIds = balances?.map((balance) => balance.assetId);
+    queryFn: async (): Promise<Position[]> => {
+      try {
+        if (!balances || balances.length === 0) {
+          return [];
+        }
 
-      const result = await clientAxios.post(`${BackendUrl}/pools/lp`, {
-        ids: assetIds,
-      });
+        if (!mira) {
+          throw new Error("Mira instance not available");
+        }
 
-      // const query = gql`
-      //   query MyQuery {
-      //     pools(where: {
-      //       lpToken: {id_in: [${assetIds!
-      //         .map((assetId) => `"${assetId}"`)
-      //         .join(", ")}]}
-      //     }) {
-      //       id
-      //       lpToken {
-      //         id
-      //       }
-      //       asset0 {
-      //         id
-      //       }
-      //       asset1 {
-      //         id
-      //       }
-      //       isStable
-      //     }
-      //   }
-      // `;
+        const assetIds = balances.map((balance) => balance.assetId);
 
-      // const result = await request<{ pools: any[] }>({
-      //   url: SQDIndexerUrl,
-      //   document: query,
-      // });
+        const result = await clientAxios.post(`${BackendUrl}/pools/lp`, {
+          ids: assetIds,
+        });
 
-      const pools = await Promise.all(
-        result.data.pools.map(async (pool: any) => {
-          if (pool !== null) {
+        if (!result.data?.pools) {
+          return [];
+        }
+
+        const pools = result.data.pools;
+        const positions: Position[] = [];
+        
+        for (let i = 0; i < pools.length; i++) {
+          const pool = pools[i];
+
+          if (!pool) {
+            continue;
+          }
+
+          try {
             const poolId = createPoolIdFromIdString(pool.pool_id, "_");
-            const lpBalance = balances!.find(
+
+            const lpBalance = balances.find(
               (balance) => balance.assetId === pool.lpId
             );
-            const [token0Position, token1Position] =
-              await mira!.getLiquidityPosition(
-                poolId,
-                lpBalance!.amount.toString()
-              );
 
-            return {
+            if (!lpBalance || !lpBalance.amount) {
+              continue;
+            }
+
+            const amountString = lpBalance.amount.toString();
+            const amountNumber = Number(amountString);
+            
+            if (amountNumber <= 0) {
+              continue;
+            }
+
+            const liquidityResult = await mira.getLiquidityPosition(
+              poolId,
+              amountString
+            );
+            
+            const [token0Position, token1Position] = liquidityResult;
+            
+            const position: Position = {
               poolId,
               lpAssetId: pool.lpId,
               isStable: pool.is_stable,
               token0Position,
               token1Position,
             };
+            
+            positions.push(position);
+            
+          } catch (poolError) {
+            // Continue processing other pools instead of failing completely
+            continue;
           }
-        })
-      );
+        }
 
-      return pools.filter((element) => element !== undefined);
+        return positions;
+
+      } catch (error) {
+        throw error;
+      }
     },
     enabled: miraExists && !!balances,
+    retry: (failureCount, error) => {
+      return failureCount < 2;
+    },
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
   });
-  console.log(data);
-  return { data, isLoading };
+
+  return { data, isLoading, error };
 };
 
 export default usePositions;

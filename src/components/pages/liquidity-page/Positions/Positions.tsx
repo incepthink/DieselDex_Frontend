@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 
 const Positions = () => {
   const { data, isLoading } = usePositions();
-  console.log(data);
+  console.log("POSITIONS", data);
 
   const [pricedata, setPriceData] = useState([
     { name: "BTC", price: 0, image: "/images/bitcoin.png" },
