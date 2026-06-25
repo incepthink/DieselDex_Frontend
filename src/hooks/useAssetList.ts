@@ -11,30 +11,33 @@ export const useAssetList = (): {
   const { data, isLoading } = useQuery<CoinDataWithPrice[]>({
     queryKey: ["assets"],
     queryFn: async (): Promise<CoinDataWithPrice[]> => {
-      const gqlQuery = gql`
-        query MyQuery {
-          assets(where: { numPools_gt: 0 }) {
-            image
-            name
-            symbol
-            id
-            decimals
-            numPools
-            l1Address
-            price
-            contractId
-            subId
+      // Primary source: SQD indexer. If it's unavailable we fall through to the
+      // DB below so the asset list keeps working.
+      let gqlAssets: CoinDataWithPrice[] = [];
+      try {
+        const gqlQuery = gql`
+          query MyQuery {
+            assets(where: { numPools_gt: 0 }) {
+              image
+              name
+              symbol
+              id
+              decimals
+              numPools
+              l1Address
+              price
+              contractId
+              subId
+            }
           }
-        }
-      `;
+        `;
 
-      const gqlResult = await request<{ assets: any[] }>({
-        url: SQDIndexerUrl,
-        document: gqlQuery,
-      });
+        const gqlResult = await request<{ assets: any[] }>({
+          url: SQDIndexerUrl,
+          document: gqlQuery,
+        });
 
-      const gqlAssets = gqlResult.assets.map(
-        (asset: any): CoinDataWithPrice => {
+        gqlAssets = gqlResult.assets.map((asset: any): CoinDataWithPrice => {
           const config = coinsConfig.get(asset.id);
           return {
             assetId: asset.id,
@@ -48,30 +51,39 @@ export const useAssetList = (): {
             price: asset.price,
             isVerified: config?.isVerified || false,
           };
-        }
-      );
+        });
+      } catch (error) {
+        console.warn(
+          "SQD indexer unavailable, falling back to DB for asset list",
+          error
+        );
+      }
 
+      // Backup source: our own indexer DB. Used to fill any assets the SQD
+      // indexer doesn't return, and as the sole source when SQD is down.
       const dbRes = await clientAxios.get(`${BackendUrl}/assets/db`);
-      const dbAssetsRaw = dbRes.data;
 
-      const dbAssets = dbAssetsRaw.assets.map(
-        (asset: any): CoinDataWithPrice => ({
-          assetId: asset.asset_id,
-          name: asset.name,
-          symbol: asset.symbol,
-          decimals: asset.decimals,
-          icon: asset.icon,
-          l1Address: asset.l1_address,
-          contractId: asset.contract_id,
-          subId: asset.subId,
-          price: asset.price_usd,
-          isVerified: asset.is_verified,
-        })
+      const dbAssets: CoinDataWithPrice[] = (dbRes.data.assets ?? []).map(
+        (asset: any): CoinDataWithPrice => {
+          const config = coinsConfig.get(asset.asset_id);
+          return {
+            assetId: asset.asset_id,
+            name: config?.name || asset.name,
+            symbol: config?.symbol || asset.symbol,
+            decimals: asset.decimals,
+            icon: config?.icon || asset.icon,
+            l1Address: asset.l1_address,
+            contractId: asset.contract_id,
+            subId: asset.subId,
+            price: asset.price_usd,
+            isVerified: config?.isVerified ?? asset.is_verified ?? false,
+          };
+        }
       );
 
       const combinedMap = new Map<string, CoinDataWithPrice>();
       gqlAssets.forEach((asset) => combinedMap.set(asset.assetId, asset));
-      dbAssets.forEach((asset: any) => {
+      dbAssets.forEach((asset) => {
         if (!combinedMap.has(asset.assetId)) {
           combinedMap.set(asset.assetId, asset);
         }
